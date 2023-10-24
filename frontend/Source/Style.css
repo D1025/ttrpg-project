@@ -10,6 +10,8 @@
 	--Radius-Duzy: 1.3vw;
 }
 
+
+
 /* Wygląd HTML. */
 Html
 {
@@ -35,15 +37,33 @@ A
 	text-decoration: none;
 }
 
+
+
 /* Nagłówe. */
 Header
 {
 	width: 90vw;
-	font-size: 2.0rem;
-	background-color: var(--Motyw);
-	border-radius: var(--Radius-Podstawowy);
+	font-size: 1.4rem;
 	margin-top: 1.0vw;
 	margin-bottom: 1.5vw;
 	margin-left: auto;
 	margin-right: auto;
+	display: flex;
 }
+
+	/* Nagłówek lewy. */
+	Header > Div.Naglowek_Lewy
+	{
+		background-color: var(--Motyw);
+		border-radius: var(--Radius-Podstawowy);
+		padding: 0.5vw 1.5vw 0.5vw 1.5vw;
+	}
+
+	/* Nagłówek prawy. */
+	Header > Div.Naglowek_Prawy
+	{
+		background-color: var(--Motyw);
+		border-radius: var(--Radius-Podstawowy);
+		margin-left: auto;
+		padding: 0.5vw 1.5vw 0.5vw 1.5vw;
+	}
