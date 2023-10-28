@@ -1,9 +1,41 @@
+version: '3.8'
+
 services:
   postgres:
-    image: 'postgres:latest'
-    environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+    image: postgres:15.3
+    container_name: database
+    command: -p ${DATABASE_PORT}
+    restart: always
     ports:
-      - '5432'
+      - ${DATABASE_PORT}:${DATABASE_PORT}
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+      - ./data/infra/postgres:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./
+      dockerfile: ./backend/Dockerfile
+    container_name: backend
+    restart: always
+    environment:
+      - DB_SERVER=${POSTGRES_DB_SERVER}
+      - SPRING_DATASOURCE_URL=${DB_URL}
+      - SPRING_DATASOURCE_USER=${POSTGRES_USER}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
+      - SERVER_PORT=${BACKEND_PORT}
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+    driver: bridge
