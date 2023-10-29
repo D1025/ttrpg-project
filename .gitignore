@@ -1,1 +1,5 @@
 .env
+.gradle
+.vscode
+
+data
