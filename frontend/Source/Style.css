@@ -3,11 +3,16 @@
 {
 	--Tlo: rgba(100, 100, 100, 1.0);
 	
-	--Motyw: rgba(150, 105, 100, 1.0);
+	--Motyw: rgba(91, 79, 77, 0.7);
+	--Motyw-Ciemny: rgba(64, 59, 58, 1.0);
+	--Motyw-Czarny: rgba(0, 0, 0, 0.5);
+	--Kolor: rgba(205, 197, 135, 0.95);
 	
 	--Radius-Maly: 0.8vw;
 	--Radius-Podstawowy: 1.0vw;
 	--Radius-Duzy: 1.3vw;
+	
+	--Blur: blur(1vw);
 }
 
 
@@ -25,6 +30,10 @@ Body
 {
 	font-size: 1.0vw;
 	color: white;
+	background-image: url("https://www.wallpaperup.com/uploads/wallpapers/2014/11/09/511448/4f484aafdd7ee86d3e479462ef7760f7.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
 	background-color: var(--Tlo);
 	margin: 0;
 	padding: 0;
@@ -42,7 +51,7 @@ A
 /* Nagłówe. */
 Header
 {
-	width: 90vw;
+	width: 95vw;
 	font-size: 1.4rem;
 	margin-top: 1.0vw;
 	margin-bottom: 1.5vw;
@@ -54,16 +63,136 @@ Header
 	/* Nagłówek lewy. */
 	Header > Div.Naglowek_Lewy
 	{
-		background-color: var(--Motyw);
+		/* backdrop-filter: var(--Blur); */
 		border-radius: var(--Radius-Podstawowy);
-		padding: 0.5vw 1.5vw 0.5vw 1.5vw;
+		display: flex;
 	}
+		/* . */
+		Header > Div.Naglowek_Lewy > Div.Naglowek_Lewy_Lewy
+		{
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			background-color: var(--Motyw);
+			border-radius: inherit;
+			margin-right: 0.5vw;
+			padding: 0.65vw 1.0vw 0.65vw 1.0vw;
+			display: flex;backdrop-filter: var(--Blur);
+		}
+			/* . */
+			Header > Div.Naglowek_Lewy > Div.Naglowek_Lewy_Lewy Img
+			{
+				max-height: 3vw;
+				cursor: pointer;
+			}
+			/* . */
+			Header > Div.Naglowek_Lewy H1
+			{
+				font-size: 1rem;
+				margin-left: 0.5vw;
+			}
+		/* . */
+		Header > Div.Naglowek_Lewy > Div.Naglowek_Lewy_Prawy
+		{
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			background-color: var(--Motyw);
+			border-radius: inherit;
+			padding: 0.65vw 1.0vw 0.65vw 1.0vw;
+			display: flex;backdrop-filter: var(--Blur);
+		}
 
 	/* Nagłówek prawy. */
 	Header > Div.Naglowek_Prawy
 	{
+		text-align: center;
+		justify-content: center;
+		align-items: center;
 		background-color: var(--Motyw);
+		backdrop-filter: var(--Blur);
 		border-radius: var(--Radius-Podstawowy);
 		margin-left: auto;
-		padding: 0.5vw 1.5vw 0.5vw 1.5vw;
+		padding: 0.65vw 1.0vw 0.65vw 1.0vw;
+		display: flex;
+	}
+
+/* . */
+Div.Maly_Przycisk
+{
+	width: 2.5vw;
+	height: 2.5vw;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--Kolor);
+	border-radius: var(--Radius-Maly);
+	margin-right: 0.5vw;
+	padding: 0.25vw;
+	display: flex;
+	cursor: pointer;
+}
+/* . */
+Div.Maly_Przycisk:last-of-type
+{
+	margin-right: 0;
+}
+/* . */
+Div.Maly_Przycisk:only-of-type
+{
+	margin-right: 0;
+}
+	/* . */
+	Div.Maly_Przycisk > Img
+	{
+		max-width: %;
+		max-height: 75%;
+	}
+	/* . */
+	Div.Maly_Przycisk:hover
+	{
+		background-color: var(--Motyw-Ciemny);
+	}
+	/* . */
+	Div.Maly_Przycisk:active
+	{
+		background-color: var(--Motyw-Czarny);
+	}
+
+/* . */
+Div.Szeroki_Przycisk
+{
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	min-width: 8.0vw;
+	height: 2.5vw;
+	font-size: 1.23rem;
+	font-weight: bold;
+	background-color: var(--Kolor);
+	border-radius: var(--Radius-Maly);
+	margin-right: 0.5vw;
+	padding: 0.25vw 0.5vw 0.25vw 0.5vw;
+	display: flex;
+	cursor: pointer;
+}
+/* . */
+Div.Szeroki_Przycisk:last-of-type
+{
+	margin-right: 0;
+}
+/* . */
+Div.Szeroki_Przycisk:only-of-type
+{
+	margin-right: 0;
+}
+	/* . */
+	Div.Szeroki_Przycisk:hover
+	{
+		background-color: var(--Motyw-Ciemny);
+	}
+	/* . */
+	Div.Szeroki_Przycisk:active
+	{
+		background-color: var(--Motyw-Czarny);
 	}
