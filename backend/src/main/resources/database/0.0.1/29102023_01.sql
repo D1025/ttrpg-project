@@ -1,14 +1,15 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE "Users" (
     "id" UUID DEFAULT uuid_generate_v4() NOT NULL,
 	"nickname" varchar NOT NULL,
 	"email" varchar NOT NULL UNIQUE,
 	"password" varchar NOT NULL,
 	"token" varchar,
-	"token_expiration_time" TIME,
+	"token_expiration_time" TIMESTAMP,
 	"admin" bool NOT NULL DEFAULT 'false',
-	"avatar" bytea
-) WITH (
-  OIDS=FALSE
+	"avatar" bytea,
+	CONSTRAINT "Users_pk" PRIMARY KEY ("id")
 );
 
 
@@ -23,8 +24,6 @@ CREATE TABLE "Rooms" (
 	"owner" uuid NOT NULL,
 	"private" bool NOT NULL DEFAULT 'false',
 	CONSTRAINT "Rooms_pk" PRIMARY KEY ("id")
-) WITH (
-  OIDS=FALSE
 );
 
 
@@ -34,8 +33,6 @@ CREATE TABLE "User_room" (
 	"user_id" uuid NOT NULL,
 	"room_id" uuid NOT NULL,
 	CONSTRAINT "User_room_pk" PRIMARY KEY ("id")
-) WITH (
-  OIDS=FALSE
 );
 
 
@@ -45,8 +42,6 @@ CREATE TABLE "Remember_me" (
 	"user_id" uuid NOT NULL,
 	"remember_token" varchar NOT NULL,
 	CONSTRAINT "Remember_me_pk" PRIMARY KEY ("id")
-) WITH (
-  OIDS=FALSE
 );
 
 
@@ -58,8 +53,6 @@ CREATE TABLE "Characters" (
 	"avatar" bytea NOT NULL,
 	"data" json NOT NULL,
 	CONSTRAINT "Characters_pk" PRIMARY KEY ("id")
-) WITH (
-  OIDS=FALSE
 );
 
 
@@ -69,10 +62,8 @@ CREATE TABLE "Messages" (
 	"user_id" uuid NOT NULL,
 	"room_id" uuid NOT NULL,
 	"message" varchar NOT NULL,
-	"timestamp" TIME NOT NULL,
+	"timestamp" TIMESTAMP NOT NULL,
 	CONSTRAINT "Messages_pk" PRIMARY KEY ("id")
-) WITH (
-  OIDS=FALSE
 );
 
 
@@ -82,10 +73,8 @@ CREATE TABLE "Rolls" (
 	"user_id" uuid NOT NULL,
 	"room_id" uuid NOT NULL,
 	"roll" json NOT NULL,
-	"timestamp" TIME NOT NULL,
+	"timestamp" TIMESTAMP NOT NULL,
 	CONSTRAINT "Rolls_pk" PRIMARY KEY ("id")
-) WITH (
-  OIDS=FALSE
 );
 
 

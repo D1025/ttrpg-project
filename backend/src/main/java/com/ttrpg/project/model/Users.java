@@ -54,7 +54,7 @@ public class Users extends Model {
 
     @NotNull
     @Column(name = "admin")
-    private boolean admin = false;
+    private boolean admin;
 
     @JdbcType(VarbinaryJdbcType.class)
     @Column(name = "avatar")

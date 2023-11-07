@@ -2,8 +2,10 @@ package com.ttrpg.project.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -23,15 +25,20 @@ import lombok.ToString;
 public class Messages extends Model {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private Users user;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_id")
     private Room room;
 
     @NotNull
+    @ToString.Exclude
+    @JoinColumn(name = "message")
     private String message;
 
     @NotNull
+    @Column(name = "timestamp")
     private LocalDateTime timestamp;
 }
