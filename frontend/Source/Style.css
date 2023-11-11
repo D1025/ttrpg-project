@@ -76,13 +76,13 @@ Header
 			background-color: var(--Motyw);
 			border-radius: inherit;
 			margin-right: 0.5vw;
-			padding: 0.65vw 1.0vw 0.65vw 1.0vw;
+			padding: 0.5vw 1.0vw 0.5vw 1.0vw;
 			display: flex;backdrop-filter: var(--Blur);
 		}
 			/* . */
 			Header > Div.Naglowek_Lewy > Div.Naglowek_Lewy_Lewy Img
 			{
-				max-height: 3vw;
+				max-height: 2.8vw;
 				cursor: pointer;
 			}
 			/* . */
@@ -99,7 +99,7 @@ Header
 			align-items: center;
 			background-color: var(--Motyw);
 			border-radius: inherit;
-			padding: 0.65vw 1.0vw 0.65vw 1.0vw;
+			padding: 0.5vw 1.0vw 0.5vw 1.0vw;
 			display: flex;backdrop-filter: var(--Blur);
 		}
 
@@ -113,15 +113,15 @@ Header
 		backdrop-filter: var(--Blur);
 		border-radius: var(--Radius-Podstawowy);
 		margin-left: auto;
-		padding: 0.65vw 1.0vw 0.65vw 1.0vw;
+		padding: 0.5vw 1.0vw 0.5vw 1.0vw;
 		display: flex;
 	}
 
 /* . */
 Div.Maly_Przycisk
 {
-	width: 2.5vw;
-	height: 2.5vw;
+	width: 2.0vw;
+	height: 2.0vw;
 	text-align: center;
 	justify-content: center;
 	align-items: center;
@@ -131,6 +131,12 @@ Div.Maly_Przycisk
 	padding: 0.25vw;
 	display: flex;
 	cursor: pointer;
+}
+/* . */
+Div.Maly_Przycisk[data-type="Ostatni"]
+{
+	margin-left: auto;
+	margin-right: 0;
 }
 /* . */
 Div.Maly_Przycisk:last-of-type
@@ -165,9 +171,9 @@ Div.Szeroki_Przycisk
 	text-align: center;
 	justify-content: center;
 	align-items: center;
-	min-width: 8.0vw;
-	height: 2.5vw;
-	font-size: 1.23rem;
+	min-width: 9.0vw;
+	height: 1.9vw;
+	font-size: 1.12rem;
 	font-weight: bold;
 	background-color: var(--Kolor);
 	border-radius: var(--Radius-Maly);
@@ -175,6 +181,14 @@ Div.Szeroki_Przycisk
 	padding: 0.25vw 0.5vw 0.25vw 0.5vw;
 	display: flex;
 	cursor: pointer;
+}
+/* . */
+Div.Szeroki_Przycisk[data-type="Pokoje"]
+{
+	width: 10.1vw;
+	height: 1.9vw;
+	margin-right: 0.2vw;
+	display: inline-flex;
 }
 /* . */
 Div.Szeroki_Przycisk:last-of-type
@@ -196,3 +210,64 @@ Div.Szeroki_Przycisk:only-of-type
 	{
 		background-color: var(--Motyw-Czarny);
 	}
+
+/* . */
+Div.Przycisk_Aktywny
+{
+	background-color: var(--Motyw-Czarny)!important;
+}
+
+/* Main. */
+Main
+{
+	max-width: 70vw;
+	background-color: var(--Motyw);
+	backdrop-filter: var(--Blur);
+	border-radius: var(--Radius-Duzy);
+	margin-top: 4vw;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 1.4vw;
+	padding-bottom: 1.4vw;
+	padding-left: 2.0vw;
+	padding-right: 2.0vw;
+}
+
+	/* . */
+	H2.Main_Napis
+	{
+		font-size: 1.8rem;
+		margin: 0;
+		margin-bottom: 0.8vw;
+	}
+
+	/* . */
+	Div.Main_Przyciski
+	{
+		margin-bottom: 0.6vw;
+		display: flex;
+	}
+
+	/* . */
+	Div.Dostepne_Pokoje
+	{
+		
+	}
+
+/* . */
+Div.Pokoj
+{
+	height: 2vw;
+	align-items: center;
+	background-color: var(--Motyw-Ciemny);
+	border-radius: var(--Radius-Duzy);
+	margin-bottom: 0.25vw;
+	padding-top: 0.6vw;
+	padding-bottom: 0.6vw;
+	padding-left: 1.0vw;
+	padding-right: 1.0vw;
+	display: flex;
+}
+
+
+
