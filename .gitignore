@@ -2,6 +2,6 @@
 .gradle
 .vscode
 .idea
-.idea/*
 
 data
+build
