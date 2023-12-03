@@ -1,14 +1,12 @@
 package com.ttrpg.project.model;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,22 +21,19 @@ import lombok.ToString;
 @AllArgsConstructor
 @Table(name = "Messages")
 public class Messages extends Model {
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private Users user;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "room_id")
+    @ManyToOne
+    @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
-    @NotNull
-    @ToString.Exclude
-    @JoinColumn(name = "message")
+    @Column(name = "message", nullable = false)
     private String message;
 
-    @NotNull
-    @Column(name = "timestamp")
-    private LocalDateTime timestamp;
+    @Column(name = "timestamp", nullable = false)
+    private Timestamp timestamp;
+
 }

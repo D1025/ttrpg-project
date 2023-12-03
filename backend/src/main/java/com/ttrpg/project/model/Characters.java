@@ -1,15 +1,11 @@
 package com.ttrpg.project.model;
 
-import org.hibernate.annotations.JdbcType;
-import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,21 +21,17 @@ import lombok.ToString;
 @Table(name = "Characters")
 public class Characters extends Model {
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "room_id")
+    @ManyToOne
+    @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private Users user;
 
-    @JdbcType(VarbinaryJdbcType.class)
-    @Column(name = "avatar")
+    @Column(name = "avatar", nullable = false)
     private byte[] avatar;
 
-    @NotNull
-    @Column(name = "data")
+    @Column(name = "data", nullable = false)
     private String data;
 }

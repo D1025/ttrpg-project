@@ -1,26 +1,15 @@
 package com.ttrpg.project.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
-import java.util.Collection;
+import java.sql.Timestamp;
+import java.util.List;
 
-import org.hibernate.annotations.JdbcType;
-import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 @Entity
 @Getter
@@ -30,40 +19,49 @@ import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 @AllArgsConstructor
 @Table(name = "Users")
 public class Users extends Model {
-    
-    @NotNull
-    @Size(max = 50)
-    @Column(name = "nickname")
+
+    @Column(name = "nickname", nullable = false)
     private String nickname;
 
-    @NotNull
-    @Size(max = 60)
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @NotNull
-    @Size(max = 20)
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "token")
     private String token;
 
     @Column(name = "token_expiration_time")
-    private LocalDateTime tokenExpirationTime;
+    private Timestamp tokenExpirationTime;
 
-    @NotNull
-    @Column(name = "admin")
+    @Column(name = "admin", nullable = false)
     private boolean admin;
 
-    @JdbcType(VarbinaryJdbcType.class)
     @Column(name = "avatar")
     private byte[] avatar;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "User_room",
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
+    private List<Room> ownedRooms;
+
+    @ManyToMany
+    @JoinTable(
+            name = "User_room",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "room_id"))
-    @ToString.Exclude
-    private Collection<Room> rooms;
+            inverseJoinColumns = @JoinColumn(name = "room_id")
+    )
+    private List<Room> joinedRooms;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<RememberMe> rememberMeTokens;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Characters> characters;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Messages> messages;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Roll> rolls;
+
 }

@@ -1,10 +1,6 @@
 package com.ttrpg.project.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,12 +16,10 @@ import lombok.ToString;
 @Table(name = "Remember_me")
 public class RememberMe extends Model {
 
-    @NotNull
-    @JoinColumn(name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private Users user;
 
-    @NotNull
-    @Column(name = "remember_token")
+    @Column(name = "remember_token", nullable = false)
     private String rememberToken;
-
 }
