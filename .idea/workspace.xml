@@ -56,6 +56,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adria\WebstormProjects\ttrpg-project\frontend\NaPotem" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ttrpg/backend/src/main/resources/static/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
