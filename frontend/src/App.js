@@ -1,4 +1,5 @@
-import appLogo from './Grafiki/Logo.png';
+import React from 'react';
+import appLogo from './Logo.png';
 import './App.css';
 
 function App()
@@ -8,10 +9,8 @@ function App()
             <header className="App_header">
 
                 <img src={appLogo} className="App_logo" alt="logo"/>
-
-                <p>Paragraf</p>
-                {/*<br/>*/}
-                <p>lol</p>
+                <p>Test</p>
+                <p>Jak dodać obrazek? xD</p>
 
             </header>
         </div>
