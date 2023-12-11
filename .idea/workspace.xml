@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="poprawa">
+    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="workspace">
       <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/configuration/WebSocketConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/controller/ChatController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/controller/GreetingController.java" afterDir="false" />
@@ -80,7 +80,9 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2X2X7Om7mJ3vrIXDxC7cFStPjLs" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -96,7 +98,6 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "7-konfiguracja-websocketow",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "E:/Programing/ttrpg project",
     "list.type.of.created.stylesheet": "CSS",
@@ -109,10 +110,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.TtrpgApplication">
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ttrpg/backend/src/main/resources/static/index.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="ttrpg-project" />
       <method v="2">
@@ -125,6 +123,9 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ttrpg/backend/src/main/resources/static/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
     </configuration>
     <configuration name="TtrpgApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ttrpg.backend.main" />
