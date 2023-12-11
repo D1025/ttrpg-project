@@ -1,16 +1,19 @@
-import React from 'react';
-import appLogo from './Logo.png';
+import appLogo from './Grafiki/Logo.png';
 import './App.css';
+import './funkcje.js';
+import ustawTittle from "./funkcje";
 
 function App()
 {
+	ustawTittle("Naglowek");
     return (
         <div className="App">
             <header className="App_header">
 
-                <img src={appLogo} className="App_logo" alt="logo"/>
-                <p>Test</p>
-                <p>Jak dodać obrazek? xD</p>
+                <div className="Flex">
+                    <img src={appLogo} className="App_logo" alt="Nie załadowano obrazka."/>
+                    <p>Nazwa</p>
+                </div>
 
             </header>
         </div>
