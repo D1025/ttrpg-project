@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4998ccbe-d0c8-4a9f-b12b-aad33bcb2c6d" name="Changes" comment="Przygotowanie do pracy" />
+    <list default="true" id="4998ccbe-d0c8-4a9f-b12b-aad33bcb2c6d" name="Changes" comment="Merge remote-tracking branch 'origin/13-Front' into 13-Front" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +17,9 @@
   <component name="KubernetesApiProvider"><![CDATA[{
   "isMigrated": true
 }]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 1
 }]]></component>
@@ -52,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1702311914480</updated>
-      <workItem from="1702311915486" duration="380000" />
+      <workItem from="1702311915486" duration="913000" />
     </task>
     <task id="LOCAL-00001" summary="Przygotowanie do pracy">
       <option name="closed" value="true" />
@@ -62,7 +65,23 @@
       <option name="project" value="LOCAL" />
       <updated>1702312168915</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Merge remote-tracking branch 'origin/13-Front' into 13-Front&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <option name="closed" value="true" />
+      <created>1702312534213</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702312534213</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Merge remote-tracking branch 'origin/13-Front' into 13-Front">
+      <option name="closed" value="true" />
+      <created>1702312830296</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702312830296</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,6 +100,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Przygotowanie do pracy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Przygotowanie do pracy" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/13-Front' into 13-Front&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/13-Front' into 13-Front" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/13-Front' into 13-Front" />
   </component>
 </project>
