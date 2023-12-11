@@ -12,7 +12,7 @@ function App()
 
                 <div className="Flex">
                     <img src={appLogo} className="App_logo" alt="Nie załadowano obrazka."/>
-                    <p>Nazwa</p>
+                    <p>Nazwa Strony</p>
                 </div>
 
             </header>
