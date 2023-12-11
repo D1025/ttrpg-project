@@ -1,4 +1,4 @@
-import appLogo from './Grafiki/Logo.png';
+import React from 'react';
 import './App.css';
 
 function App()
@@ -7,7 +7,7 @@ function App()
         <div className="App">
             <header className="App_header">
 
-                <img src={appLogo} className="App_logo" alt="logo"/>
+                <img src="Logo.png" className="App_logo" alt="logo"/>
 
                 <p>Paragraf</p>
                 {/*<br/>*/}
