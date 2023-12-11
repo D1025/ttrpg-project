@@ -1,12 +1,12 @@
 package com.ttrpg.project.controller;
 
-import com.ttrpg.project.dto.ChatMessage;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
+
+import com.ttrpg.project.dto.ChatMessage;
 
 @Controller
 public class ChatController {

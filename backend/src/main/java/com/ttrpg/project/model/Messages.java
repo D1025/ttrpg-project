@@ -1,6 +1,6 @@
 package com.ttrpg.project.model;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,6 +34,6 @@ public class Messages extends Model {
     private String message;
 
     @Column(name = "timestamp", nullable = false)
-    private Timestamp timestamp;
+    private LocalDateTime timestamp;
 
 }
