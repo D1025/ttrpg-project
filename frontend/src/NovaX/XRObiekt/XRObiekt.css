@@ -53,7 +53,7 @@ Div.XRObiekt > Div.XRObiekt-Opis
         {
             max-width: 70%;
             max-height: 10vw;
-            border-radius: var(--Radius-III);
+            border-radius: var(--Radius-II);
         }
 
     /* Wariant gdy jest sam orbazek bez opisu. */
@@ -66,8 +66,8 @@ Div.XRObiekt > Div.XRObiekt-Opis
         Div.XRObiekt > Div.XRObiekt-Opis > Div.XRObiekt-Opis-Obraz:only-of-type > Img
         {
             max-width: 30%;
-            max-height: 15vw;
-            border-radius: var(--Radius-III);
+            max-height: 10vw;
+            border-radius: var(--Radius-II);
         }
 
     /* Opis Przedmiotu [Opis] [2/2]. */

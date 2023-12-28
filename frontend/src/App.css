@@ -1,11 +1,7 @@
-.App
+/* . */
+Img.XHeaderLogo
 {
-    ;
-}
-
-.App_header
-{
-    /*height: 5vw;*/
-    background-color: var(--Motyw);
-    margin-bottom: 2vw;
+    height: 2.8vw;
+    padding-top: 0.15vw ;
+    padding-bottom: 0.15vw;
 }

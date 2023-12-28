@@ -8,7 +8,7 @@ Div.XPMaly
     text-align: center;
     background-color: var(--Kolor-Dodatkowy);
     backdrop-filter: blur(10vw);
-    border-radius: var(--Radius-II);
+    border-radius: var(--Radius-I);
     margin-left: var(--Przycisk-Odstep);
     margin-right: var(--Przycisk-Odstep);
     display: flex;

@@ -1,6 +1,6 @@
 import './XPWybor.css';
 
-const XPWybor = ({onClick, obraz, aktywny}) =>
+const XPWybor = ({onClick, obraz, obraz2, aktywny}) =>
 {
     let klasy = "XPWybor";
     if(aktywny === true)
@@ -11,11 +11,11 @@ const XPWybor = ({onClick, obraz, aktywny}) =>
     return (
         <div className={klasy} onClick={onClick}>
             <img src={obraz} alt={""}/>
+            {
+                obraz2 && (<img src={obraz2} alt={""}/>)
+            }
         </div>
     );
 };
 
 export default XPWybor;
-
-// Struktura.
-// <XPWybor  onClick={() => funkcja} aktywny={true/false} >

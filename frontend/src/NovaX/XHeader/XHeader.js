@@ -2,24 +2,10 @@ import './XHeader.css';
 
 const XHeader = ({children, styl}) =>
 {
-    let klasy = "XHeader";
+    let klasy = "XHeader XHeader";
 
-    if(styl === 2)
-    {
-        klasy += " XHeader2";
-    }
-    else if(styl === 3)
-    {
-        klasy += " XHeader3";
-    }
-    else if(styl === 4)
-    {
-        klasy += " XHeader4";
-    }
-    else
-    {
-        klasy += " XHeader1";
-    }
+    if(!styl || styl > 3 || styl < 0) styl = 1
+    klasy += styl;
 
     return (
         <div className={klasy}>
