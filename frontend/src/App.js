@@ -24,13 +24,8 @@ function App()
             <main>
                 <XRObiekt>
                     <div nazwa={"TTRPG"} opis={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
-                    <div nazwa={"Różowy Diament"} obraz={"./NewRoseGem2.webp"} opis={"Klejnot Stevena, który pojawia się na jego połowie klejnotu."}/>
-                    <div nazwa={"Różowy Diament"} obraz={"./NewRoseGem2.webp"}/>
-                </XRObiekt>
-
-                <XRObiekt>
-                    <div nazwa={"TTRPG"} opis={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
-                    <div nazwa={"TTRPG"} opis={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
+                    <div nazwa={"TTRPG"} obraz={"./Grafiki/Logo.png"} opis={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
+                    <div nazwa={"TTRPG"} obraz={"./Grafiki/Logo.png"}/>
                 </XRObiekt>
 
                 <XRObiekt>
