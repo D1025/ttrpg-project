@@ -16,6 +16,7 @@ export { default as XRObiekt } from './XRObiekt/XRObiekt.js';
 
 // Przyciski.
 export { default as XPMaly } from './XPrzycisk/XPMaly/XPMaly.js';
+export { default as XPSzeroki } from './XPrzycisk/XPSzeroki/XPSzeroki.js';
 export { default as XPWybor } from './XPrzycisk/XPWybor/XPWybor.js';
 
 // Funkcje.

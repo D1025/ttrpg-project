@@ -1,0 +1,40 @@
+/* Duży Przycisk z Tekstem. */
+Div.XPSzeroki
+{
+    min-width: var(--Przycisk-Szerokość-I);
+    height: var(--Przycisk-Wysokość);
+    font-size: 1.0rem;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: var(--Radius-I);
+    margin-left: 0.25vw;
+    margin-right: 0.25vw;
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    transition: var(--Animacja);
+}
+/* Po Najechaniu. */
+Div.XPSzeroki:hover
+{
+    background-color: var(--Motyw-Czarny)!important;
+}
+/* Po Kliknięciu. */
+Div.XPSzeroki:active
+{
+    background-color: var(--Motyw)!important;
+}
+
+/* Styl 1. */
+Div.XPSzeroki1
+{
+    background-color: var(--Kolor-Dodatkowy);
+}
+
+/* Styl 2. */
+Div.XPSzeroki2
+{
+    background-color: var(--Motyw-Ciemny);
+}

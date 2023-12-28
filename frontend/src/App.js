@@ -1,5 +1,6 @@
 import './App.css';
-import {ustawNaglowek, XHeader, XHeaderLewy, XHeaderSrodek, XHeaderPrawy, XPMaly, XRObiekt} from "./NovaX";
+import {ustawNaglowek, XHeader, XHeaderLewy, XHeaderSrodek, XHeaderPrawy, XPMaly, XRObiekt, XPSzeroki} from "./NovaX";
+import React from "react";
 
 function App()
 {
@@ -12,11 +13,12 @@ function App()
                 </XHeaderLewy>
 
                 <XHeaderSrodek>
-                    1,2,3
+                    <XPSzeroki styl={2} nazwa={"Cosiek 1"}/>
+                    <XPSzeroki nazwa={"Cosiek 2"}/>
                 </XHeaderSrodek>
 
                 <XHeaderPrawy>
-                    <XPMaly obraz={"./Ikonki/Style.png"}/>
+                    <XPMaly styl={2} obraz={"./Ikonki/Style.png"}/>
                     <XPMaly obraz={"./Ikonki/Konto.png"}/>
                 </XHeaderPrawy>
             </XHeader>

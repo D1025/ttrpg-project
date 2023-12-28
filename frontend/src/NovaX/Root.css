@@ -8,10 +8,10 @@
     --Motyw-Oznaczenia: rgba(169, 169, 169, 1.0);
 
     --Tło-Dodatkowe: url("/public/Grafiki/TłoDodatkowe/TOPanime.jpg");
-    --Tło-Strony: url("https://www.wallpaperup.com/uploads/wallpapers/2014/11/09/511448/4f484aafdd7ee86d3e479462ef7760f7.jpg");
-    --Kolor-Dodatkowy: rgba(205, 197, 135, 0.95);
-    /*--Tło-Strony: url("/public/Grafiki/Tło/CzerwonyLas.jpg");*/
-    /*--Kolor-Dodatkowy: rgba(148, 5, 48, 0.8);*/
+    /*--Tło-Strony: url("https://www.wallpaperup.com/uploads/wallpapers/2014/11/09/511448/4f484aafdd7ee86d3e479462ef7760f7.jpg");*/
+    /*--Kolor-Dodatkowy: rgba(205, 197, 135, 0.95);*/
+    --Tło-Strony: url("/public/Grafiki/Tło/CzerwonyLas.jpg");
+    --Kolor-Dodatkowy: rgba(148, 5, 48, 0.8);
 
     --Animacja: background-color 0.05s ease-in-out, color 0.0s ease-in-out;
     --Blur: blur(2.5vw);
@@ -21,8 +21,9 @@
     --Radius-I: 0.9vw;
 
     --Przycisk-Wysokość: 2.4vw;
-    --Przycisk-Szerokość-I: 10.2vw;
-    --Przycisk-Szerokość-II: 12.0vw;
+    --Przycisk-Szerokość-III: 12.0vw;
+    --Przycisk-Szerokość-II: 11.0vw;
+    --Przycisk-Szerokość-I: 10.0vw;
     --Przycisk-Odstep: 0.15vw;
 }
 

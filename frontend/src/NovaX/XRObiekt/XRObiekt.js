@@ -35,7 +35,7 @@ const XRObiekt = ({children, obraz = "./Ikonki/Tekst.png"}) => {
                 onClick={() => ustawIndex(i)}
                 obraz={listaObiektow[i].obraz ? listaObiektow[i].obraz : obraz}
                 obraz2={listaObiektow[i].obraz && listaObiektow[i].opis ? obraz : null}
-                aktywny={obecnyIndeks === i}
+                styl={obecnyIndeks === i ? 2 : 1}
             />
         ));
     };

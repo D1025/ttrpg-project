@@ -1,4 +1,4 @@
-/* Przycisk z blurem, który częśto jest używany do prezentacji obrazków do zmiany. */
+/* Szeroki przycisk XPWybor. */
 Div.XPWybor
 {
     min-width: var(--Przycisk-Wysokość);
@@ -39,19 +39,17 @@ Div.XPWybor
     }
 
 
-/* Wygląd Aktywowanego Przycisku. */
-.XPWybor-Aktywny
+/* Styl 2. */
+.XPWybor2
 {
     background-color: var(--Motyw-Ciemny)!important;
     border: 0.2vw solid var(--Kolor-Dodatkowy)!important;
 }
-    /* Wygląd Aktywowanego Przycisku. */
-    .XPWybor-Aktywny > Img:nth-child(1)
+    .XPWybor2> Img:nth-child(1)
     {
         height: calc(65% + 0.2vw)!important;
     }
-    /* Wygląd Aktywowanego Przycisku. */
-    .XPWybor-Aktywny > Img:nth-child(2)
+    .XPWybor2 > Img:nth-child(2)
     {
         height: 0.85vw!important;
         position: absolute;

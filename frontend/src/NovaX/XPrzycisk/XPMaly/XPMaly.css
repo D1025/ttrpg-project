@@ -6,7 +6,6 @@ Div.XPMaly
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: var(--Kolor-Dodatkowy);
     backdrop-filter: blur(10vw);
     border-radius: var(--Radius-I);
     margin-left: var(--Przycisk-Odstep);
@@ -19,7 +18,7 @@ Div.XPMaly
 /* Przycisk po najechaniu. */
 Div.XPMaly:hover
 {
-    background-color: var(--Motyw-Ciemny)!important;
+    background-color: var(--Motyw-Czarny)!important;
 }
 
 /* Przycisk po kliknięciu. */
@@ -33,4 +32,16 @@ Div.XPMaly > Img
 {
     max-width: 65%;
     max-height: 65%;
+}
+
+/* Styl 1. */
+Div.XPMaly1
+{
+    background-color: var(--Kolor-Dodatkowy);
+}
+
+/* Styl 2. */
+Div.XPMaly2
+{
+    background-color: var(--Motyw-Ciemny);
 }
