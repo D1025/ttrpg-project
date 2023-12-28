@@ -1,0 +1,36 @@
+/* Małe Przyciski, Pole trzymające mały przycisk. */
+Div.XPMaly
+{
+    width: var(--Przycisk-Wysokość);
+    height: var(--Przycisk-Wysokość);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--Kolor-Dodatkowy);
+    backdrop-filter: blur(10vw);
+    border-radius: var(--Radius-II);
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    display: flex;
+    cursor: pointer;
+    transition: var(--Animacja);
+}
+
+/* Przycisk po najechaniu. */
+Div.XPMaly:hover
+{
+    background-color: var(--Motyw-Ciemny)!important;
+}
+
+/* Przycisk po kliknięciu. */
+Div.XPMaly:active
+{
+    background-color: var(--Motyw)!important;
+}
+
+/* Wygląd obrazka w przycisku. */
+Div.XPMaly > Img
+{
+    max-width: 65%;
+    max-height: 65%;
+}

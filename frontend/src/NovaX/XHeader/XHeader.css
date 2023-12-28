@@ -1,0 +1,102 @@
+/* . */
+Div.XHeader
+{
+    width: 89vw;
+    font-size: 1.0rem;
+    border-radius: var(--Radius-III);
+    margin: 1.0vw auto 1.5vw auto;
+    display: flex;
+}
+    /* . */
+    Div.XHeader > *
+    {
+        padding-top: 0.5vw!important;
+        padding-bottom: 0.5vw!important;
+        text-align: center;
+        align-items: center;
+        display: flex;
+    }
+    /* . */
+    Div.XHeader > Div.XHeaderLewy
+    {
+        padding-left: 1.0vw;
+        padding-right: 0.5vw;
+    }
+        /* . */
+        Div.XHeader > Div.XHeaderLewy > Img.XHeaderLogo
+        {
+            max-width: 2.5vw;
+            max-height: 3.5vw;
+            padding-top: 0.15vw ;
+            padding-bottom: 0.15vw;
+        }
+    /* . */
+    Div.XHeader > Div.XHeaderSrodek
+    {
+        min-width: 10vw;
+        padding-left: 0.5vw;
+        padding-right: 0.5vw;
+    }
+    /* . */
+    Div.XHeader > Div.XHeaderPrawy
+    {
+        margin-left: auto;
+        padding-right: 0.5vw;
+        padding-left: 0.5vw;
+    }
+
+/* . */
+Div.XHeader1
+{
+    background-color: var(--Motyw);
+}
+
+/* . */
+Div.XHeader2
+{}
+    Div.XHeader2 > Div.XHeaderLewy
+    {
+        background-color: var(--Motyw);
+        border-radius: var(--Radius-III) 0 0 var(--Radius-III);
+    }
+    Div.XHeader2 > Div.XHeaderSrodek
+    {
+        background-color: var(--Motyw);
+        border-radius: 0 var(--Radius-III) var(--Radius-III) 0;
+    }
+    Div.XHeader2 > Div.XHeaderPrawy
+    {
+        background-color: var(--Motyw);
+        border-radius: var(--Radius-III);
+    }
+
+/* . */
+Div.XHeader3
+{}
+    Div.XHeader3 > Div.XHeaderLewy
+    {
+        background-color: red;
+    }
+    Div.XHeader3 > Div.XHeaderSrodek
+    {
+        background-color: green;
+    }
+    Div.XHeader3 > Div.XHeaderPrawy
+    {
+        background-color: purple;
+    }
+
+/* . */
+Div.XHeader4
+{
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 25%;
+    background-color: var(--Motyw);
+    background-image: linear-gradient(to right, var(--Motyw), transparent 190%), var(--Tło-Dodatkowe);
+}
+
+
+
+
+

@@ -1,0 +1,109 @@
+/* Ramka Przedmiotów. */
+Div.XRObiekt
+{
+    width: 55vw; /*Dodatkowe*/
+    background-color: var(--Motyw-Ciemny);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-III);
+    margin-bottom: 1vw !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1.5vw;
+}
+    /* Usuwanie dolnego amrginesu ostatniej ramki. */
+    Div.XRObiekt:last-of-type
+    {
+        margin-bottom: 0;
+    }
+
+/* Nazwa Przedmiotu. */
+Div.XRObiekt > Div.XRObiekt-Nazwa
+{
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 1.0vw;
+    padding-bottom: 1.0vw;
+}
+
+/* Pole ze zdjęciem i opisem. */
+Div.XRObiekt > Div.XRObiekt-Opis
+{
+    padding-bottom: 1.5vw;
+    padding-right: 1.0vw;
+    padding-left: 1.0vw;
+    display: flex;
+}
+
+    /* Opis przedmiotu [Zdjęcie] [1/2]. */
+    Div.XRObiekt > Div.XRObiekt-Opis > Div.XRObiekt-Opis-Obraz
+    {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+        border-right: 0.2vw solid var(--Kolor-Dodatkowy);
+        flex: 1;
+        display: flex;
+    }
+
+        /* Zdjęcie w powyższym elemencie. */
+        Div.XRObiekt > Div.XRObiekt-Opis > Div.XRObiekt-Opis-Obraz > Img
+        {
+            max-width: 70%;
+            max-height: 10vw;
+            border-radius: var(--Radius-III);
+        }
+
+    /* Wariant gdy jest sam orbazek bez opisu. */
+    Div.XRObiekt > Div.XRObiekt-Opis > Div.XRObiekt-Opis-Obraz:only-of-type
+    {
+        border-right: 0;
+    }
+
+        /* Zdjęcie w powyższym elemencie. */
+        Div.XRObiekt > Div.XRObiekt-Opis > Div.XRObiekt-Opis-Obraz:only-of-type > Img
+        {
+            max-width: 30%;
+            max-height: 15vw;
+            border-radius: var(--Radius-III);
+        }
+
+    /* Opis Przedmiotu [Opis] [2/2]. */
+    Div.XRObiekt > Div.XRObiekt-Opis > Div.XRObiekt-Opis-Opis
+    {
+        font-size: 0.95rem;
+        align-items: center;
+        padding-left: 1.5vw;
+        padding-right: 0.5vw;
+        flex: 4;
+        display: flex;
+    }
+
+
+/* Nadpisanie paddingu w Pole_Przwiajania_Zdjęć-Poziom dla lepszego wyglądu. */
+Div.XRObiekt > Div.XRObiekt-Zdjecia
+{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+    /* Nadpisanie paddingu w Pole_Przwiajania_Zdjęć-Poziom dla lepszego wyglądu. */
+    Div.XRObiekt > Div.XRObiekt-Zdjecia > Div.XRObiekt-Zdjecia-Wybor
+    {
+        max-width: 8.4vw;
+        overflow: auto;
+    }
+
+        /* Obszar trzymający małe zdjęcia do przewijania. */
+        Div.XRObiekt > Div.XRObiekt-Zdjecia > Div.XRObiekt-Zdjecia-Wybor > Div
+        {
+            width: max-content;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }

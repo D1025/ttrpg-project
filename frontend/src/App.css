@@ -1,23 +1,11 @@
 .App
 {
-    width: 100vw;
-    height: 100vh;
-    background-color: red;
+    ;
 }
 
 .App_header
 {
-    height: 5vw;
-    background-color: blue;
-}
-
-.App_logo
-{
-    max-width: 4.5vw;
-    max-height: 4.5vw;
-}
-
-Div.Flex
-{
-    display: flex;
+    /*height: 5vw;*/
+    background-color: var(--Motyw);
+    margin-bottom: 2vw;
 }
