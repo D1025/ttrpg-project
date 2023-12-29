@@ -13,13 +13,13 @@ function App()
                 </XHeaderLewy>
 
                 <XHeaderSrodek>
-                    <XPSzeroki styl={2} nazwa={"Cosiek 1"}/>
-                    <XPSzeroki nazwa={"Cosiek 2"}/>
+                    <XPSzeroki styl={1} nazwa={"Cosiek 1"}/>
+                    <XPSzeroki styl={1} nazwa={"Cosiek 2"}/>
                 </XHeaderSrodek>
 
                 <XHeaderPrawy>
-                    <XPMaly styl={2} obraz={"./Ikonki/Style.png"}/>
-                    <XPMaly obraz={"./Ikonki/Konto.png"}/>
+                    <XPMaly styl={1} obraz={"./Ikonki/Style.png"}/>
+                    <XPMaly styl={1} obraz={"./Ikonki/Konto.png"}/>
                 </XHeaderPrawy>
             </XHeader>
 
