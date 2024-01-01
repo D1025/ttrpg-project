@@ -7,9 +7,9 @@ Div.XPWybor
     align-items: center;
     text-align: center;
     background-color: var(--Motyw);
-    box-sizing: border-box;
     backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-I);
+    border: 0.2vw solid var(--Motyw);
+    box-sizing: border-box;
     margin-left: 0.1vw;
     margin-right: 0.1vw;
     display: flex;
@@ -19,7 +19,7 @@ Div.XPWybor
     /* Wygląd Img w przycisku. */
     Div.XPWybor > Img:nth-child(1)
     {
-        height: 65%;
+        height: 75%;
         max-width: 4.0vw;
         display: block;
     }
@@ -27,32 +27,39 @@ Div.XPWybor
     /* Wygląd Img w przycisku. */
     Div.XPWybor > Img:nth-child(2)
     {
-        height: 0.8vw;
-        max-width: 0.8vw;
+        height: 0.7vw;
+        max-width: 0.7vw;
         background-color: var(--Motyw-Czarny);
         backdrop-filter: var(--Blur);
         border-radius: 0.23vw;
         display: block;
         position: absolute;
-        top: 1.2vw;
-        left: 1.2vw;
+        top: 1.1vw;
+        left: 1.1vw;
     }
 
+/* Styl 1. */
+Div.XPWybor-S1
+{
+    border-radius: var(--Radius-I);
+}
 
 /* Styl 2. */
-.XPWybor2
+Div.XPWybor-S2
+{
+    min-width: 0.0vw;
+    width: 0.8vw;
+    height: 0.8vw;
+    border-radius: var(--Radius-III);
+}
+    Div.XPWybor-S2 > Img
+    {
+        display: none!important;
+    }
+
+/* Aktywny. */
+.XPWybor-Aktywny
 {
     background-color: var(--Motyw-Ciemny)!important;
-    border: 0.2vw solid var(--Kolor-Dodatkowy)!important;
+    border-color: var(--Kolor-Dodatkowy)!important;
 }
-    .XPWybor2> Img:nth-child(1)
-    {
-        height: calc(65% + 0.2vw)!important;
-    }
-    .XPWybor2 > Img:nth-child(2)
-    {
-        height: 0.85vw!important;
-        position: absolute;
-        top: 1.0vw!important;
-        left: 1.05vw!important;
-    }

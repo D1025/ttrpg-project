@@ -1,16 +1,14 @@
 /* Duży Przycisk z Tekstem. */
 Div.XPSzeroki
 {
-    min-width: var(--Przycisk-Szerokość-I);
     height: var(--Przycisk-Wysokość);
     font-size: 1.0rem;
     font-weight: bold;
     align-items: center;
     text-align: center;
     justify-content: center;
+    background-color: var(--Kolor-Dodatkowy);
     border-radius: var(--Radius-I);
-    margin-left: 0.25vw;
-    margin-right: 0.25vw;
     display: flex;
     cursor: pointer;
     user-select: none;
@@ -27,14 +25,46 @@ Div.XPSzeroki:active
     background-color: var(--Motyw)!important;
 }
 
+
 /* Styl 1. */
-Div.XPSzeroki1
+Div.XPSzeroki-S1
 {
-    background-color: var(--Kolor-Dodatkowy);
+    min-width: var(--Przycisk-Szerokość-I);
+}
+/* Styl 2. */
+Div.XPSzeroki-S2
+{
+    min-width: var(--Przycisk-Szerokość-II);
+}
+/* Styl 3. */
+Div.XPSzeroki-S3
+{
+    min-width: var(--Przycisk-Szerokość-III);
 }
 
-/* Styl 2. */
-Div.XPSzeroki2
+
+/* Aktywny. */
+Div.XPSzeroki-Aktywny
 {
     background-color: var(--Motyw-Ciemny);
 }
+
+
+/* Poziomy. */
+Div.XPSzeroki-Poziom
+{
+    margin-left: 0.25vw;
+    margin-right: 0.25vw;
+}
+/* Pionowy. */
+Div.XPSzeroki-Pion
+{
+    margin-bottom: 0.5vw;
+    margin-left: 0.25vw;
+    margin-right: 0.25vw;
+}
+    /* Pionowy. */
+    Div.XPSzeroki-Pion:last-of-type
+    {
+        margin-bottom: 0.0vw;
+    }

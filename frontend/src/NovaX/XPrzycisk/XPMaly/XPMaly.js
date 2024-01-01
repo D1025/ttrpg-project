@@ -1,10 +1,10 @@
 import './XPMaly.css';
 
-const XPMaly = ({onClick, styl, obraz}) =>
+const XPMaly = ({onClick, styl=1, aktywny=false, obraz}) =>
 {
-    let klasy = "XPMaly XPMaly";
-    if(!styl || styl < 0) styl = 1
-    klasy += styl;
+    let klasy = "XPMaly";
+    if(styl > 0) klasy += " XPMaly-S" + 1;
+    if(aktywny === true) klasy += " XPMaly-Aktywny";
 
     return(
         <div className={klasy} onClick={onClick}>

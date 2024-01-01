@@ -1,10 +1,10 @@
 import './XPWybor.css';
 
-const XPWybor = ({onClick, obraz, obraz2, styl}) =>
+const XPWybor = ({styl=1, aktywny=false, obraz, obraz2, onClick}) =>
 {
-    let klasy = "XPWybor XPWybor";
-    if(!styl || styl < 0) styl = 1
-    klasy += styl;
+    let klasy = "XPWybor";
+    if(styl > 0) klasy += " XPWybor-S" + styl;
+    if(aktywny === true) klasy += " XPWybor-Aktywny";
 
     return (
         <div className={klasy} onClick={onClick}>

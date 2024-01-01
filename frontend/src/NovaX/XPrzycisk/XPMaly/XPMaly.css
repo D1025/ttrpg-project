@@ -6,6 +6,7 @@ Div.XPMaly
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: var(--Kolor-Dodatkowy);
     backdrop-filter: blur(10vw);
     border-radius: var(--Radius-I);
     margin-left: var(--Przycisk-Odstep);
@@ -34,14 +35,16 @@ Div.XPMaly > Img
     max-height: 65%;
 }
 
+
 /* Styl 1. */
-Div.XPMaly1
+Div.XPMaly-S1
 {
-    background-color: var(--Kolor-Dodatkowy);
+    ;
 }
 
-/* Styl 2. */
-Div.XPMaly2
+
+/* Aktywny. */
+Div.XPMaly-Aktywny
 {
     background-color: var(--Motyw-Ciemny);
 }

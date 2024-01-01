@@ -13,13 +13,14 @@ function App()
                 </XHeaderLewy>
 
                 <XHeaderSrodek>
-                    <XPSzeroki styl={1} nazwa={"Cosiek 1"}/>
-                    <XPSzeroki styl={1} nazwa={"Cosiek 2"}/>
+                    <XPSzeroki styl={1} pion={false} aktywny={false} nazwa={"Cosiek 1"}/>
+                    <XPSzeroki styl={2} pion={false} aktywny={true} nazwa={"Cosiek 2"}/>
+                    <XPSzeroki styl={3} pion={false} aktywny={false} nazwa={"Cosiek 2"}/>
                 </XHeaderSrodek>
 
                 <XHeaderPrawy>
-                    <XPMaly styl={1} obraz={"./Ikonki/Style.png"}/>
-                    <XPMaly styl={1} obraz={"./Ikonki/Konto.png"}/>
+                    <XPMaly aktywny={false} obraz={"./Ikonki/Style.png"}/>
+                    <XPMaly aktywny={true} obraz={"./Ikonki/Konto.png"}/>
                 </XHeaderPrawy>
             </XHeader>
 
@@ -33,8 +34,6 @@ function App()
                 <XRObiekt>
                     <div nazwa={"Logo Strony"} obraz={"./Grafiki/Logo.png"} opis={"Platforma do gier TTRPG"}/>
                 </XRObiekt>
-
-                {/*<XPMaly obraz={"./Ikonki/Strzałka_Prawo.png"}/>*/}
             </main>
         </>
     );
