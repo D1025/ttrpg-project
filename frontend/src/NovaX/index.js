@@ -7,7 +7,7 @@ export { default as XHeaderSrodek } from './XHeader/XHeaderSrodek/XHeaderSrodek.
 export { default as XHeaderPrawy } from './XHeader/XHeaderPrawy/XHeaderPrawy.js';
 
 // Nav.
-// export { default as XNav } from './XNav/XNav.js';
+export { default as XNav } from './XNav/XNav.js';
 
 // Main.
 

@@ -6,28 +6,28 @@ const XRObiekt = ({children, obraz = "./Ikonki/Tekst.png"}) => {
     const [listaObiektow, ustawListeObiektow] = useState([]);
     const [obecnyIndeks, ustawObecnyIndeks] = useState(0);
 
-    // .
+    // useEffect.
     useEffect(() => {
         const przetworzoneObiekty= React.Children.map(children, child => child.props);
         ustawListeObiektow(przetworzoneObiekty);
     }, [children]);
 
-    // .
+    // Następny Index.
     const pokazNastepnyObiekt = () => {
         ustawObecnyIndeks((obecnyIndeks) => (obecnyIndeks + 1) % listaObiektow.length);
     };
 
-    // .
+    // Poprzedni Index.
     const pokazPoprzedniObiekt = () => {
         ustawObecnyIndeks((obecnyIndeks) => (obecnyIndeks - 1 + listaObiektow.length) % listaObiektow.length);
     };
 
-    // .
+    // Setuje Index.
     const ustawIndex = (indeks) => {
         ustawObecnyIndeks(indeks);
     };
 
-    // .
+    // Wypisuje wszystkie elementy z listy.
     const renderWyborZdjec = () => {
         return listaObiektow.map((_, i) => (
             <XPWybor
@@ -41,7 +41,7 @@ const XRObiekt = ({children, obraz = "./Ikonki/Tekst.png"}) => {
         ));
     };
 
-    // .
+    // Renderuje główny obiekt.
     if (listaObiektow.length === 0) return null;
     return (
         <div className={"XRObiekt"}>
