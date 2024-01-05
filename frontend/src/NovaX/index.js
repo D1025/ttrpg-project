@@ -8,7 +8,7 @@ export { default as XHeaderPrawy } from './XHeader/XHeaderPrawy/XHeaderPrawy.js'
 
 // Nav.
 export { default as XMMenu } from './XMenu/XMMenu/XMMenu.js';
-export {default as XMLi} from './XMenu/XMLi/XMLi.js';
+export {default as XMLi} from './XMenu/XMMenu/XMLi/XMLi.js';
 // export { default as XMMenu2 [A] } from './XMenu/XMMenu2 [A]/XMMenu2 [A].js';
 // export { default as XMMenu2 [A] } from './XMenu/XMMenu2 [A]/XMMenu2 [A].js';
 
