@@ -1,5 +1,5 @@
 /* Menu. */
-Nav.XNav
+.XMenu
 {
     font-weight: bold;
     list-style: none;
@@ -11,7 +11,7 @@ Nav.XNav
 }
 
 /* . */
-Nav.XNav > Li
+.XMenu > Li
 {
     width: var(--Przycisk-Szerokość-I);
     height: var(--Przycisk-Wysokość);
@@ -30,7 +30,7 @@ Nav.XNav > Li
 }
 
 /* . */
-Nav.XNav > Li a
+.XMenu > Li a
 {
     width: 100%;
     text-align: center;
@@ -42,19 +42,19 @@ Nav.XNav > Li a
 }
 
 /* . */
-Nav.XNav Li:hover
+.XMenu Li:hover
 {
     background-color: var(--Motyw-Ciemny);
 }
 
 /* . */
-Nav.XNav Li:active
+.XMenu Li:active
 {
     background-color: var(--Motyw);
 }
 
 /* . */
-Nav.XNav > Li > Nav
+.XMenu > Li > *
 {
     width: calc( var(--Przycisk-Szerokość-I) + 0.5vw );
     background-color: var(--Motyw);
@@ -70,13 +70,13 @@ Nav.XNav > Li > Nav
 }
 
 /* . */
-Nav.XNav > Li:hover > Nav
+.XMenu > Li:hover > *
 {
     display: block;
 }
 
 /* . */
-Nav.XNav > Li > Nav > Li
+.XMenu > Li > * > Li
 {
     width: 90%;
     font-size: 0.9rem;
@@ -95,7 +95,7 @@ Nav.XNav > Li > Nav > Li
 }
 
 /* . */
-Nav.XNav > Li > Nav > Li a
+.XMenu > Li > * > Li a
 {
     width: 100%;
     padding-top: 0.6vw;
@@ -104,19 +104,3 @@ Nav.XNav > Li > Nav > Li a
     padding-right: 0.5vw;
     display: flex;
 }
-
-/* Blokada Klikania Li. */
-Li.Li-Nieklikalny
-{
-    width: var(--Przycisk-Szerokość-I);
-    min-height: var(--Przycisk-Wysokość);
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    display: flex;
-}
-    /* Po Najechaniu i Kliknięciu. */
-    Li.Li-Nieklikalny:hover, Li.Li-Nieklikalny:active
-    {
-        background-color: var(--Motyw-Ciemny)!important;
-    }

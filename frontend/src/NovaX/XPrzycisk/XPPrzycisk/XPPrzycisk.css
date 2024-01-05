@@ -98,6 +98,18 @@ Div.XPPrzycisk-W3
 }
 
 
+/* Margines dolny jeśli przycisk jest w menu pionowym. */
+Div.XPPrzycisk-Margin
+{
+    margin-bottom: var(--Przycisk-Odstep);
+}
+    /* Jeśli jest ostatni to styl niedziała. */
+    Div.XPPrzycisk-Margin:last-of-type
+    {
+        margin-bottom: 0.0vw!important;
+    }
+
+
 /* Aktywny. */
 Div.XPPrzycisk-Aktywny
 {

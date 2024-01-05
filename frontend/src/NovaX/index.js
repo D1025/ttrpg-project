@@ -8,8 +8,9 @@ export { default as XHeaderPrawy } from './XHeader/XHeaderPrawy/XHeaderPrawy.js'
 
 // Nav.
 export { default as XMMenu } from './XMenu/XMMenu/XMMenu.js';
-// export { default as XMMenu2 } from './XMenu/XMMenu2/XMMenu2.js';
-// export { default as XMMenu2 } from './XMenu/XMMenu2/XMMenu2.js';
+export {default as XMLi} from './XMenu/XMLi/XMLi.js';
+// export { default as XMMenu2 [A] } from './XMenu/XMMenu2 [A]/XMMenu2 [A].js';
+// export { default as XMMenu2 [A] } from './XMenu/XMMenu2 [A]/XMMenu2 [A].js';
 
 // Main.
 
@@ -19,6 +20,7 @@ export { default as XRObiekt } from './XRObiekt/XRObiekt.js';
 // Przyciski.
 export { default as XPPrzycisk } from './XPrzycisk/XPPrzycisk/XPPrzycisk.js';
 export { default as XPWybor } from './XPrzycisk/XPWybor/XPWybor.js';
+export { default as XImput} from './XInput/XInput.js';
 
 // Funkcje.
 export { default as ustawNaglowek } from './Naglowek/ustawNaglowek.js';

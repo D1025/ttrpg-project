@@ -1,0 +1,117 @@
+/* Nadpisany: Input do Klikania. */
+Input.XInput[type="submit"], Input.XInput[type="button"]
+{
+    min-width: var(--Przycisk-Szerokość-I);
+    width: 0.0vw;
+    height: var(--Przycisk-Wysokość);
+    align-items: center;
+    text-align: center;
+    font-size: 1.0rem;
+    font-weight: bold;
+    color: inherit;
+    justify-content: center;
+    background-color: var(--Kolor-Dodatkowy);
+    border-radius: var(--Radius-I);
+    border: 0.0vw;
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    padding-left: var(--Przycisk-Odstep);
+    padding-right: var(--Przycisk-Odstep);
+    cursor: pointer;
+    user-select: none;
+    transition: var(--Animacja);
+}
+/* Wygląd Przycisku po Najechaniu. */
+Input.XInput[type="submit"]:hover, Input.XInput[type="button"]:hover
+{
+    background-color: var(--Motyw-Czarny)!important;
+}
+/* Wygląd Przycisku po Aktywacji. */
+Input.XInput[type="submit"]:active, Input.XInput[type="button"]:active
+{
+    background-color: var(--Motyw)!important;
+}
+
+/*!* Dodatkowy Wariant: Pozytywny. *!*/
+/*Input[type="submit"][data-type="Pozytywny"],*/
+/*Input[type="button"][data-type="Pozytywny"]*/
+/*{*/
+/*    background-color: var(--Kolor-Pozytywny);*/
+/*}*/
+/*!* Dodatkowy Wariant: Umiarkowany. *!*/
+/*Input[type="submit"][data-type="Umiarkowany"],*/
+/*Input[type="button"][data-type="Umiarkowany"]*/
+/*{*/
+/*    background-color: var(--Kolor-Umiarkowany);*/
+/*}*/
+/*!* Dodatkowy Wariant: Negatywny. *!*/
+/*Input[type="submit"][data-type="Negatywny"],*/
+/*Input[type="button"][data-type="Negatywny"]*/
+/*{*/
+/*    background-color: var(--Kolor-Negatywny);*/
+/*}*/
+/*!* Dodatkowy Wariant: Niekatywny. *!*/
+/*Input[type="submit"][data-type="Niekatywny"],*/
+/*Input[type="button"][data-type="Niekatywny"]*/
+/*{*/
+/*    background-color: var(--Kolor-Niekatywny);*/
+/*}*/
+
+/* Nadpisany: Input do Wyszukiwania. */
+Input.XInput[type="text"], Input.XInput[type="password"]
+{
+    min-width: var(--Przycisk-Szerokość-I);
+    width: 0;
+    height: var(--Przycisk-Wysokość);
+    color: inherit;
+    font-size: 1.0rem;
+    font-weight: bold;
+    background-color: var(--Motyw);
+    border: 0.2vw solid var(--Kolor-Dodatkowy);
+    border-radius: var(--Radius-I);
+    box-sizing: border-box;
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    padding-left: var(--Przycisk-Odstep);
+    padding-right: var(--Przycisk-Odstep);
+    cursor: pointer;
+    transition: var(--Animacja);
+}
+/* Wygląd Podczas Wpisywania i po Wpisaniu. */
+Input.XInput[type="text"]:focus, Input.XInput[type="text"]:valid:not(:placeholder-shown),
+Input.XInput[type="password"]:focus, Input.XInput[type="password"]:valid:not(:placeholder-shown)
+{
+    background-color: var(--Motyw-Ciemny);
+    cursor: text;
+}
+/* Nadpisanie Placecholder. */
+Input.XInput[type="text"]::placeholder, Input.XInput[type="password"]::placeholder
+{
+    color: white;
+    opacity: 0.6;
+}
+
+/*!* Dodatkowy Wariant: Pozytywny. *!*/
+/*Input[type="text"][data-type="Pozytywny"],*/
+/*Input[type="password"][data-type="Pozytywny"]*/
+/*{*/
+/*    border-color: var(--Kolor-Pozytywny);*/
+/*}*/
+/*!* Dodatkowy Wariant: Umiarkowany. *!*/
+/*Input[type="text"][data-type="Umiarkowany"],*/
+/*Input[type="password"][data-type="Umiarkowany"]*/
+/*{*/
+/*    border-color: var(--Kolor-Umiarkowany);*/
+/*}*/
+/*!* Dodatkowy Wariant: Negatywny. *!*/
+/*Input[type="text"][data-type="Negatywny"],*/
+/*Input[type="password"][data-type="Negatywny"]*/
+/*{*/
+/*    border-color: var(--Kolor-Negatywny);*/
+/*}*/
+/*!* Dodatkowy Wariant: Niekatywny. *!*/
+/*Input[type="text"][data-type="Niekatywny"],*/
+/*Input[type="password"][data-type="Niekatywny"]*/
+/*{*/
+/*    border-color: var(--Kolor-Niekatywny);*/
+/*}*/

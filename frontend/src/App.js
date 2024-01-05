@@ -1,7 +1,6 @@
 import './App.css';
-import {ustawNaglowek, XHeader, XHeaderLewy, XHeaderSrodek, XHeaderPrawy, XRObiekt, XPPrzycisk} from "./NovaX";
+import {ustawNaglowek, XMMenu, XMLi, XHeader, XHeaderLewy, XHeaderSrodek, XHeaderPrawy, XRObiekt, XPPrzycisk, XImput} from "./NovaX";
 import React from "react";
-import XMMenu from "./NovaX/XMenu/XMMenu/XMMenu";
 
 function App()
 {
@@ -14,25 +13,28 @@ function App()
                 </XHeaderLewy>
 
                 <XHeaderSrodek>
-                    {/*<XPSzeroki styl={1} pion={false} aktywny={false} nazwa={"Cosiek 1"}/>*/}
-                    {/*<XPSzeroki styl={2} pion={false} aktywny={false} nazwa={"Cosiek 2"}/>*/}
-                    {/*<XPSzeroki styl={3} pion={false} aktywny={false} nazwa={"Cosiek 2"}/>*/}
+                    {/*<XPPrzycisk active={false} tittle={"Cosiek 1"}/>*/}
+                    {/*<XPPrzycisk active={false} tittle={"Cosiek 2"}/>*/}
+                    {/*<XPPrzycisk active={false} tittle={"Cosiek 2"}/>*/}
                     <XMMenu>
-                    <li>1</li>
-                        <li>2
+                    <XMLi>Pokoje</XMLi>
+                        <XMLi>Wiadomości {/* tutaj ma dodać: MLi-Nieklikalny. bo w środku jest tag*/}
                             <XMMenu>
                                 <li>2.1</li>
                                 <li>2.2</li>
                             </XMMenu>
-                        </li>
-                        <li>3</li>
+                        </XMLi>
+                        <XMLi>O Nas</XMLi>
                     </XMMenu>
                 </XHeaderSrodek>
 
                 <XHeaderPrawy>
-                    <XPPrzycisk active={false} src={"./Ikonki/Konto.png"}/>
-                    <XPPrzycisk active={false} tittle={"Sam"} width={1}/>
-                    <XPPrzycisk active={false} tittle={"Nie Sam"} src={"./Ikonki/Konto.png"}/>
+                    <XPPrzycisk active={false} src={"./Ikonki/Style.png"}/>
+                    {/*<XPPrzycisk active={false} src={"./Ikonki/Konto.png"}/>*/}
+                    <XPPrzycisk active={false} tittle={"Zaloguj Się"} src={"./Ikonki/Konto.png"} width={1}/>
+
+                    {/*<XImput type={'text'}/>*/}
+                    {/*<XImput type={'button'} value={"Zaloguj Się"}/>*/}
                 </XHeaderPrawy>
             </XHeader>
 

@@ -1,10 +1,12 @@
 import './XMMenu.css';
 
-const XMMenu = ({children}) => {
+const XMMenu = ({children, tag = "nav"}) => {
+    const TagName = tag;
+
     return (
-        <nav className={"XNav"}>
+        <TagName className={"XMenu"}>
             {children}
-        </nav>
+        </TagName>
     );
 }
 
