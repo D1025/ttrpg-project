@@ -18,7 +18,7 @@ function App()
                     {/*<XPPrzycisk active={false} tittle={"Cosiek 2"}/>*/}
                     <XMMenu>
                     <XMLi>Pokoje</XMLi>
-                        <XMLi>Wiadomości {/* tutaj ma dodać: MLi-Nieklikalny. bo w środku jest tag*/}
+                        <XMLi>Wiadomości
                             <XMMenu>
                                 <li>2.1</li>
                                 <li>2.2</li>
