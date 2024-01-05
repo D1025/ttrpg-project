@@ -1,19 +1,25 @@
 import './XPWybor.css';
 
-const XPWybor = ({styl=1, aktywny=false, obraz, obraz2, onClick}) =>
-{
+const XPWybor = ({design=1, active=false, src, src2, ...rest}) => {
     let klasy = "XPWybor";
-    if(styl > 0) klasy += " XPWybor-S" + styl;
-    if(aktywny === true) klasy += " XPWybor-Aktywny";
+    if (design > 1) klasy = "XPWybor" + design;
+    if (active === true) klasy += " XPWybor-Aktywny";
 
     return (
-        <div className={klasy} onClick={onClick}>
-            <img src={obraz} alt={""}/>
-            {
-                obraz2 && (<img src={obraz2} alt={""}/>)
-            }
+        <div {...rest} className={klasy}>
+            {design === 1 && (
+                <>
+                    <img src={src} alt={""}/>
+                    {src2 && <img src={src2} alt={""}/>}
+                </>
+            )}
+            {design===2 && (
+                <>
+                    <div></div>
+                </>
+            )}
         </div>
     );
-};
+}
 
 export default XPWybor;

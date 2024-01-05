@@ -1,7 +1,7 @@
 import './App.css';
-import {ustawNaglowek, XHeader, XHeaderLewy, XHeaderSrodek, XHeaderPrawy, XPMaly, XRObiekt, XPSzeroki} from "./NovaX";
+import {ustawNaglowek, XHeader, XHeaderLewy, XHeaderSrodek, XHeaderPrawy, XRObiekt, XPPrzycisk} from "./NovaX";
 import React from "react";
-import XNav from "./NovaX/XNav/XNav";
+import XMMenu from "./NovaX/XMenu/XMMenu/XMMenu";
 
 function App()
 {
@@ -17,33 +17,34 @@ function App()
                     {/*<XPSzeroki styl={1} pion={false} aktywny={false} nazwa={"Cosiek 1"}/>*/}
                     {/*<XPSzeroki styl={2} pion={false} aktywny={false} nazwa={"Cosiek 2"}/>*/}
                     {/*<XPSzeroki styl={3} pion={false} aktywny={false} nazwa={"Cosiek 2"}/>*/}
-                    <XNav>
-                        <li>1</li>
+                    <XMMenu>
+                    <li>1</li>
                         <li>2
-                            <XNav>
+                            <XMMenu>
                                 <li>2.1</li>
                                 <li>2.2</li>
-                            </XNav>
+                            </XMMenu>
                         </li>
                         <li>3</li>
-                    </XNav>
+                    </XMMenu>
                 </XHeaderSrodek>
 
                 <XHeaderPrawy>
-                    <XPMaly aktywny={false} obraz={"./Ikonki/Style.png"}/>
-                    <XPMaly aktywny={false} obraz={"./Ikonki/Konto.png"}/>
+                    <XPPrzycisk active={false} src={"./Ikonki/Konto.png"}/>
+                    <XPPrzycisk active={false} tittle={"Sam"} width={1}/>
+                    <XPPrzycisk active={false} tittle={"Nie Sam"} src={"./Ikonki/Konto.png"}/>
                 </XHeaderPrawy>
             </XHeader>
 
             <main>
                 <XRObiekt>
-                    <div nazwa={"TTRPG"} opis={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
-                    <div nazwa={"TTRPG"} obraz={"./Grafiki/Logo.png"} opis={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
-                    <div nazwa={"TTRPG"} obraz={"./Grafiki/Logo.png"}/>
+                    <div tittle={"TTRPG"} describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
+                    <div tittle={"TTRPG"} src={"./Grafiki/Logo.png"} describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
+                    <div tittle={"TTRPG"} src={"./Grafiki/Logo.png"}/>
                 </XRObiekt>
 
                 <XRObiekt>
-                    <div nazwa={"Logo Strony"} obraz={"./Grafiki/Logo.png"} opis={"Platforma do gier TTRPG"}/>
+                    <div tittle={"Logo Strony"} src={"./Grafiki/Logo.png"} describe={"Platforma do gier TTRPG"}/>
                 </XRObiekt>
             </main>
         </>

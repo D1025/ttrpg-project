@@ -1,0 +1,105 @@
+/* Małe Przyciski, Pole trzymające mały przycisk. */
+Div.XPPrzycisk
+{
+    min-width: 0.0vw!important;
+    width: var(--Przycisk-Wysokość);
+    height: var(--Przycisk-Wysokość);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--Kolor-Dodatkowy);
+    border-radius: var(--Radius-I);
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    display: flex;
+    cursor: pointer;
+    transition: var(--Animacja);
+}
+/* Przycisk po najechaniu. */
+Div.XPPrzycisk:hover
+{
+    background-color: var(--Motyw-Czarny)!important;
+}
+/* Przycisk po kliknięciu. */
+Div.XPPrzycisk:active
+{
+    background-color: var(--Motyw)!important;
+}
+/* Wygląd obrazka w przycisku. */
+Div.XPPrzycisk > Img
+{
+    max-width: 65%;
+    max-height: 65%;
+}
+
+
+/* Styl Szeroki. */
+Div.XPPrzycisk2
+{
+    height: var(--Przycisk-Wysokość);
+    width: max-content!important;
+    font-size: 1.0rem;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: var(--Kolor-Dodatkowy);
+    border-radius: var(--Radius-I);
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    padding-left: 0.25vw;
+    padding-right: 0.25vw;
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    transition: var(--Animacja);
+}
+
+    /* Po Najechaniu. */
+    Div.XPPrzycisk2:hover
+    {
+        background-color: var(--Motyw-Czarny)!important;
+    }
+    /* Po Kliknięciu. */
+    Div.XPPrzycisk2:active
+    {
+        background-color: var(--Motyw)!important;
+    }
+    /* Wygląd obrazka w przycisku. */
+    Div.XPPrzycisk2 > Img
+    {
+        max-width: 65%;
+        max-height: 65%;
+        margin-left: 0.25vw;
+        margin-right: 0.25vw;
+    }
+    /* Wygląd tytułu w przycisku. */
+    Div.XPPrzycisk2 > Div
+    {
+        margin-left: 0.25vw;
+        margin-right: 0.25vw;
+    }
+
+
+/* Szwrokość 1. */
+Div.XPPrzycisk-W1
+{
+    min-width: var(--Przycisk-Szerokość-I);
+}
+/* Szwrokość 2. */
+Div.XPPrzycisk-W2
+{
+    min-width: var(--Przycisk-Szerokość-II);
+}
+/* Szwrokość 3. */
+Div.XPPrzycisk-W3
+{
+    min-width: var(--Przycisk-Szerokość-III);
+}
+
+
+/* Aktywny. */
+Div.XPPrzycisk-Aktywny
+{
+    background-color: var(--Motyw-Ciemny);
+}

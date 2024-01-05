@@ -9,6 +9,7 @@ Div.XPWybor
     background-color: var(--Motyw);
     backdrop-filter: var(--Blur);
     border: 0.2vw solid var(--Motyw);
+    border-radius: var(--Radius-I);
     box-sizing: border-box;
     margin-left: 0.1vw;
     margin-right: 0.1vw;
@@ -38,24 +39,41 @@ Div.XPWybor
         left: 1.1vw;
     }
 
-/* Styl 1. */
-Div.XPWybor-S1
-{
-    border-radius: var(--Radius-I);
-}
 
 /* Styl 2. */
-Div.XPWybor-S2
+Div.XPWybor2
 {
-    min-width: 0.0vw;
     width: 0.8vw;
     height: 0.8vw;
-    border-radius: var(--Radius-III);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--Motyw);
+    backdrop-filter: var(--Blur);
+    border: 0.2vw solid var(--Motyw);
+    border-radius: 100%;
+    box-sizing: border-box;
+    margin-left: 0.1vw;
+    margin-right: 0.1vw;
+    display: flex;
+    cursor: pointer;
 }
-    Div.XPWybor-S2 > Img
+    /* Wygląd Img w przycisku. */
+    Div.XPWybor2 > Img
     {
-        display: none!important;
+        display: none;
     }
+    /* Kropka Wybranego. */
+    Div.XPWybor2 > Div
+    {
+        width: 100%;
+        height: 100%;
+        background-color: var(--Kolor-Dodatkowy);
+        opacity: 0.6;
+        border-radius: 100%;
+        display: none;
+    }
+
 
 /* Aktywny. */
 .XPWybor-Aktywny
@@ -63,3 +81,8 @@ Div.XPWybor-S2
     background-color: var(--Motyw-Ciemny)!important;
     border-color: var(--Kolor-Dodatkowy)!important;
 }
+    /* Dotatkowy styl. */
+    .XPWybor-Aktywny > Div
+    {
+        display: block!important;
+    }

@@ -1,6 +1,6 @@
-import './XNav.css';
+import './XMMenu2.css';
 
-const XNav = ({children}) => {
+const XMMenu2 = ({children}) => {
     return (
         <nav className={"XNav"}>
             {children}
@@ -8,4 +8,4 @@ const XNav = ({children}) => {
     );
 }
 
-export default XNav;
+export default XMMenu2;

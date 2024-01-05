@@ -7,7 +7,9 @@ export { default as XHeaderSrodek } from './XHeader/XHeaderSrodek/XHeaderSrodek.
 export { default as XHeaderPrawy } from './XHeader/XHeaderPrawy/XHeaderPrawy.js';
 
 // Nav.
-export { default as XNav } from './XNav/XNav.js';
+export { default as XMMenu } from './XMenu/XMMenu/XMMenu.js';
+// export { default as XMMenu2 } from './XMenu/XMMenu2/XMMenu2.js';
+// export { default as XMMenu2 } from './XMenu/XMMenu2/XMMenu2.js';
 
 // Main.
 
@@ -15,8 +17,7 @@ export { default as XNav } from './XNav/XNav.js';
 export { default as XRObiekt } from './XRObiekt/XRObiekt.js';
 
 // Przyciski.
-export { default as XPMaly } from './XPrzycisk/XPMaly/XPMaly.js';
-export { default as XPSzeroki } from './XPrzycisk/XPSzeroki/XPSzeroki.js';
+export { default as XPPrzycisk } from './XPrzycisk/XPPrzycisk/XPPrzycisk.js';
 export { default as XPWybor } from './XPrzycisk/XPWybor/XPWybor.js';
 
 // Funkcje.

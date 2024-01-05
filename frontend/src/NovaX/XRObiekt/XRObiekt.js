@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './XRObiekt.css';
-import {XPWybor, XPMaly} from "../index";
+import {XPWybor, XPPrzycisk} from "../index";
 
-const XRObiekt = ({children, obraz = "./Ikonki/Tekst.png"}) => {
+const XRObiekt = ({children, srcT = "./Ikonki/Tekst.png", design=1, ...rest}) => {
     const [listaObiektow, ustawListeObiektow] = useState([]);
     const [obecnyIndeks, ustawObecnyIndeks] = useState(0);
 
@@ -33,10 +33,10 @@ const XRObiekt = ({children, obraz = "./Ikonki/Tekst.png"}) => {
             <XPWybor
                 key={i}
                 onClick={() => ustawIndex(i)}
-                obraz={listaObiektow[i].obraz ? listaObiektow[i].obraz : obraz}
-                obraz2={listaObiektow[i].obraz && listaObiektow[i].opis ? obraz : null}
-                aktywny={obecnyIndeks === i ? true : false}
-                styl={1}
+                src={listaObiektow[i].src ? listaObiektow[i].src : srcT}
+                src2={listaObiektow[i].src && listaObiektow[i].describe ? srcT : null}
+                active={obecnyIndeks === i ? true : false}
+                design={design}
             />
         ));
     };
@@ -44,35 +44,35 @@ const XRObiekt = ({children, obraz = "./Ikonki/Tekst.png"}) => {
     // Renderuje główny obiekt.
     if (listaObiektow.length === 0) return null;
     return (
-        <div className={"XRObiekt"}>
-            {listaObiektow[obecnyIndeks].nazwa && (
+        <div {...rest} className={"XRObiekt"}>
+            {listaObiektow[obecnyIndeks].tittle && (
                 <div className={"XRObiekt-Nazwa"}>
-                    {listaObiektow[obecnyIndeks].nazwa}
+                    {listaObiektow[obecnyIndeks].tittle}
                 </div>
             )}
-            {(listaObiektow[obecnyIndeks].obraz || listaObiektow[obecnyIndeks].opis) && (
+            {(listaObiektow[obecnyIndeks].src || listaObiektow[obecnyIndeks].describe) && (
                 <div className={"XRObiekt-Opis"}>
-                    {listaObiektow[obecnyIndeks].obraz && (
+                    {listaObiektow[obecnyIndeks].src && (
                         <div className={"XRObiekt-Opis-Obraz"}>
-                            <img src={listaObiektow[obecnyIndeks].obraz} alt=""/>
+                            <img src={listaObiektow[obecnyIndeks].src} alt=""/>
                         </div>
                     )}
-                    {listaObiektow[obecnyIndeks].opis && (
+                    {listaObiektow[obecnyIndeks].describe && (
                         <div className={"XRObiekt-Opis-Opis"}>
-                            {listaObiektow[obecnyIndeks].opis}
+                            {listaObiektow[obecnyIndeks].describe}
                         </div>
                     )}
                 </div>
             )}
             {listaObiektow.length > 1 && (
                 <div className={"XRObiekt-Zdjecia"}>
-                    <XPMaly onClick={pokazPoprzedniObiekt} obraz={"./Ikonki/Strzałka_Lewo.png"}/>
+                    <XPPrzycisk onClick={pokazPoprzedniObiekt} src={"./Ikonki/Strzałka_Lewo.png"}/>
                     <div className={"XRObiekt-Zdjecia-Wybor"}>
                         <div>
                             {renderWyborZdjec()}
                         </div>
                     </div>
-                    <XPMaly onClick={pokazNastepnyObiekt} obraz={"./Ikonki/Strzałka_Prawo.png"}/>
+                    <XPPrzycisk onClick={pokazNastepnyObiekt} src={"./Ikonki/Strzałka_Prawo.png"}/>
                 </div>
             )}
         </div>
