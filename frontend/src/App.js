@@ -18,13 +18,12 @@ function App()
                     {/*<XPPrzycisk active={false} tittle={"Cosiek 2"}/>*/}
                     <XMMenu>
                     <XMLi>Pokoje</XMLi>
-                        <XMLi>Wiadomości
+                        <XMLi>Strona
                             <XMMenu>
-                                <li>2.1</li>
-                                <li>2.2</li>
+                                <li>Wiadomości</li>
+                                <li>O Nas</li>
                             </XMMenu>
                         </XMLi>
-                        <XMLi>O Nas</XMLi>
                     </XMMenu>
                 </XHeaderSrodek>
 
