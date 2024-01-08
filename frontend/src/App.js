@@ -9,7 +9,7 @@ import {
     XHeaderPrawy,
     XRObiekt,
     XPPrzycisk,
-    XImput,
+    // XImput,
     ModulTest
 } from "./NovaX";
 import React from "react";
@@ -47,7 +47,7 @@ function App()
 
                 <XHeaderPrawy>
                     <XPPrzycisk active={false} src={"./Ikonki/Style.png"}/>
-                    <XPPrzycisk active={false} tittle={"Zaloguj Się"} src={"./Ikonki/Konto.png"} width={1} onClick={""}/>
+                    <XPPrzycisk active={false} tittle={"Zaloguj Się"} src={"./Ikonki/Konto.png"} width={1} onClick={ModulTest}/>
                 </XHeaderPrawy>
             </XHeader>
 
@@ -65,7 +65,7 @@ function App()
                 </XRObiekt>
             </main>
 
-            {/*<ModulTest/>*/}
+            <ModulTest/>
         </>
     );
 }
