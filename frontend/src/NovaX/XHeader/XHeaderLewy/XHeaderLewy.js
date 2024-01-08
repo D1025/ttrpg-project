@@ -1,7 +1,7 @@
-const XHeaderLewy = ({children}) =>
+const XHeaderLewy = ({children, ...rest}) =>
 {
     return (
-        <div className={"XHeaderLewy"}>
+        <div {...rest} className={"XHeaderLewy"}>
             {children}
         </div>
     );

@@ -7,7 +7,7 @@ const XMLi = ({ children, ...rest }) => {
         child => React.isValidElement(child)
     );
 
-    // Zabespiecza miganie elementów.
+    // Zabespieczenie migania elementu.
     const classNames = czyMaTag ? 'XMLi-Nieklikalny' : '';
 
     return (

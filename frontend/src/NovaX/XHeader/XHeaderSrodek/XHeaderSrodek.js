@@ -1,7 +1,7 @@
 const XHeaderSrodek = ({children}) =>
 {
     return (
-        <div className={"XHeaderSrodek"}>
+        <div {...rest} className={"XHeaderSrodek"}>
             {children}
         </div>
     );

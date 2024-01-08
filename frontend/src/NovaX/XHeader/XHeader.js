@@ -1,13 +1,13 @@
 import './XHeader.css';
 
-const XHeader = ({children, styl}) =>
+const XHeader = ({children, styl, ...rest}) =>
 {
     let klasy = "XHeader XHeader";
     if(!styl || styl > 3 || styl < 0) styl = 1
     klasy += styl;
 
     return (
-        <div className={klasy}>
+        <div {...rest} className={klasy}>
             {children}
         </div>
     );

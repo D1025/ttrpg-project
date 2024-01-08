@@ -1,7 +1,7 @@
 const XHeaderPrawy = ({children}) =>
 {
     return (
-        <div className={"XHeaderPrawy"}>
+        <div {...rest} className={"XHeaderPrawy"}>
             {children}
         </div>
     );
