@@ -7,7 +7,7 @@ function App()
 	ustawNaglowek("./Grafiki/Logo.png", "TTRPG");
     return (
         <>
-            <XHeader styl={3}>
+            <XHeader design={3}>
                 <XHeaderLewy>
                     <img src={"./Grafiki/Logo.png"} className="XHeaderLogo" alt=""/>
                 </XHeaderLewy>

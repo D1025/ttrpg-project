@@ -1,4 +1,4 @@
-const XHeaderPrawy = ({children}) =>
+const XHeaderPrawy = ({children, ...rest}) =>
 {
     return (
         <div {...rest} className={"XHeaderPrawy"}>
