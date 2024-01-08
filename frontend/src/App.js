@@ -1,10 +1,22 @@
 import './App.css';
-import {ustawNaglowek, XMMenu, XMLi, XHeader, XHeaderLewy, XHeaderSrodek, XHeaderPrawy, XRObiekt, XPPrzycisk, XImput} from "./NovaX";
+import {
+    setTittle,
+    XMMenu,
+    XMLi,
+    XHeader,
+    XHeaderLewy,
+    XHeaderSrodek,
+    XHeaderPrawy,
+    XRObiekt,
+    XPPrzycisk,
+    XImput,
+    ModulTest
+} from "./NovaX";
 import React from "react";
 
 function App()
 {
-	ustawNaglowek("./Grafiki/Logo.png", "TTRPG");
+	setTittle("./Grafiki/Logo.png", "TTRPG");
     return (
         <>
             <XHeader design={3}>
@@ -35,7 +47,7 @@ function App()
 
                 <XHeaderPrawy>
                     <XPPrzycisk active={false} src={"./Ikonki/Style.png"}/>
-                    <XPPrzycisk active={false} tittle={"Zaloguj Się"} src={"./Ikonki/Konto.png"} width={1}/>
+                    <XPPrzycisk active={false} tittle={"Zaloguj Się"} src={"./Ikonki/Konto.png"} width={1} onClick={""}/>
                 </XHeaderPrawy>
             </XHeader>
 
@@ -52,6 +64,8 @@ function App()
                     <div tittle={"Logo Strony"} src={"./Grafiki/Logo.png"} describe={"Platforma do gier TTRPG"}/>
                 </XRObiekt>
             </main>
+
+            {/*<ModulTest/>*/}
         </>
     );
 }

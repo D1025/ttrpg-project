@@ -23,6 +23,7 @@ export { default as XPWybor } from './XPrzycisk/XPWybor/XPWybor.js';
 export { default as XImput} from './XInput/XInput.js';
 
 // Funkcje.
-export { default as ustawNaglowek } from './Naglowek/ustawNaglowek.js';
+export { default as setTittle } from './Funkcje/SetTittle/setTittle.js';
+export { default as ModulTest } from './Funkcje/XModuly/ModulTest.js';
 
 
