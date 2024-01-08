@@ -41,8 +41,10 @@ function App()
 
             <main>
                 <XRObiekt>
-                    <div tittle={"TTRPG"} describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
-                    <div tittle={"TTRPG"} src={"./Grafiki/Logo.png"} describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
+                    <div tittle={"TTRPG"}
+                         describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
+                    <div tittle={"TTRPG"} src={"./Grafiki/Logo.png"}
+                         describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
                     <div tittle={"TTRPG"} src={"./Grafiki/Logo.png"}/>
                 </XRObiekt>
 

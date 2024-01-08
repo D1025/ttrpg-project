@@ -6,11 +6,13 @@ const XRObiekt = ({children, srcT = "./Ikonki/Tekst.png", design=1, ...rest}) =>
     const [listaObiektow, ustawListeObiektow] = useState([]);
     const [obecnyIndeks, ustawObecnyIndeks] = useState(0);
 
-    // useEffect.
+    // Dodawanie argumentów do listy.
     useEffect(() => {
-        const przetworzoneObiekty= React.Children.map(children, child => child.props);
+        const przetworzoneObiekty = React.Children.map(children, child => child.props)
+            .filter(obj => obj.src || obj.title || obj.describe); // [Filtr] Eleminuje całkowicei puste elementy.
         ustawListeObiektow(przetworzoneObiekty);
     }, [children]);
+
 
     // Następny Index.
     const pokazNastepnyObiekt = () => {
