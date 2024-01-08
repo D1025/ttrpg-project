@@ -27,13 +27,15 @@ function App()
                     </XMMenu>
                 </XHeaderSrodek>
 
+                {/*<XHeaderPrawy>*/}
+                {/*    <XPPrzycisk active={false} src={"./Ikonki/Konto.png"}/>*/}
+                {/*    <XImput type={'button'} value={"Zaloguj Się"}/>*/}
+                {/*    <XImput type={'text'} placeholder={"Wpisz"}/>*/}
+                {/*</XHeaderPrawy>*/}
+
                 <XHeaderPrawy>
                     <XPPrzycisk active={false} src={"./Ikonki/Style.png"}/>
                     <XPPrzycisk active={false} tittle={"Zaloguj Się"} src={"./Ikonki/Konto.png"} width={1}/>
-
-                    {/*<XImput type={'text'}/>*/}
-                    {/*<XPPrzycisk active={false} src={"./Ikonki/Konto.png"}/>*/}
-                    {/*<XImput type={'button'} value={"Zaloguj Się"}/>*/}
                 </XHeaderPrawy>
             </XHeader>
 
