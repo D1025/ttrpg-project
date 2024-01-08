@@ -1,10 +1,9 @@
 import './XHeader.css';
 
-const XHeader = ({children, design, ...rest}) =>
+const XHeader = ({children, design=1, ...rest}) =>
 {
-    let klasy = "XHeader XHeader";
-    if(!design || design > 3 || design < 0) design = 1
-    klasy += design;
+    let klasy = "";
+    if(design > 0) klasy += "XHeader" + design;
 
     return (
         <div {...rest} className={klasy}>
