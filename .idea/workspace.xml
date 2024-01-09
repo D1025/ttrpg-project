@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="something?">
+    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/configuration/ProjectProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/configuration/ProjectProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/exceptions/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/exceptions/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/LoginServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,12 +24,50 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="ttrpg" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ttrpg" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ttrpg" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ttrpg" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="runtimeClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ttrpg" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="runtimeClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
+                <item name="org.liquibase:liquibase-core:4.20.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ttrpg" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="runtimeClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
+                <item name="org.liquibase:liquibase-core:4.20.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
+                <item name="com.opencsv:opencsv:5.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
               </path>
             </expand>
             <select />
@@ -39,41 +80,37 @@
     <branch-grouping />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="8-endpoint-logowania" />
+        <entry key="$PROJECT_DIR$" value="3-Stroktora" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SHOW_RECENT_BRANCHES" value="false" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2X2X7Om7mJ3vrIXDxC7cFStPjLs" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Gradle.ttrpg-project [dependencies].executor": "Run",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "android.gradle.sync.needed": "true",
     "git-widget-placeholder": "8-endpoint-logowania",
     "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/patry/OneDrive/Dokumenty/Informatyka rok 3/Inzyniera oprogramowania 2/PROJECT/ttrpg-project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "Template Data Languages",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Dockerfile",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -100,6 +137,22 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ttrpg/backend/src/main/resources/static/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="ttrpg" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="ttrpg" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TtrpgApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="com.ttrpg.ttrpg.backend.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ttrpg.project.TtrpgApplication" />
@@ -122,17 +175,12 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ttrpg-project [dependencies]" />
         <item itemvalue="Spring Boot.TtrpgApplication (1)" />
+        <item itemvalue="Gradle.ttrpg-project [dependencies]" />
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-17.0.9-corretto-17.0.9-3183f394aec4-8f899f12" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -146,7 +194,10 @@
       <workItem from="1697828120238" duration="776000" />
       <workItem from="1698586791643" duration="792000" />
       <workItem from="1698587596099" duration="737000" />
-      <workItem from="1702299902771" duration="175000" />
+      <workItem from="1698670099659" duration="351000" />
+      <workItem from="1698670464123" duration="461000" />
+      <workItem from="1699283485118" duration="1801000" />
+      <workItem from="1700909757588" duration="614000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <option name="closed" value="true" />
@@ -188,19 +239,48 @@
       <option name="project" value="LOCAL" />
       <updated>1698587509589</updated>
     </task>
-    <task id="LOCAL-00006" summary="something?">
+    <task id="LOCAL-00006" summary="poprawa">
       <option name="closed" value="true" />
-      <created>1702300327384</created>
+      <created>1698670884878</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1702300327384</updated>
+      <updated>1698670884878</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="poprawa">
+      <option name="closed" value="true" />
+      <created>1698670908418</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698670908418</updated>
+    </task>
+    <task id="LOCAL-00008" summary="poprawa">
+      <option name="closed" value="true" />
+      <created>1699286919571</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699286919571</updated>
+    </task>
+    <task id="LOCAL-00009" summary="poprawa">
+      <option name="closed" value="true" />
+      <created>1699287504389</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699287504389</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="com.intellij.configurationType" implementationName="SpringBootApplicationConfigurationType" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -214,12 +294,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value=":)" />
     <MESSAGE value="poprawa" />
-    <MESSAGE value="added .idea to gitignore" />
-    <MESSAGE value="initial" />
-    <MESSAGE value="fix: module for websocket" />
-    <MESSAGE value="something?" />
-    <option name="LAST_COMMIT_MESSAGE" value="something?" />
+    <option name="LAST_COMMIT_MESSAGE" value="poprawa" />
   </component>
 </project>

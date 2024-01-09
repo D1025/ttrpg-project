@@ -5,7 +5,7 @@ import com.ttrpg.project.model.Users;
 
 public interface LoginService {
     
-    Users login(String email, String password);
+    Users login(String email, String password, boolean rememberMe);
 
     Users register(PartialUsers registerForm);
 

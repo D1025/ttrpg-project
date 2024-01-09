@@ -18,8 +18,8 @@ public class LoginController {
     private final LoginService loginService;
 
     @PostMapping("/login")
-    public ResponseEntity<Users> login(@RequestBody String email, @RequestBody String password) {
-        return ResponseEntity.ok(loginService.login(email, password));
+    public ResponseEntity<Users> login(@RequestBody String email, @RequestBody String password, @RequestBody boolean rememberMe) {
+        return ResponseEntity.ok(loginService.login(email, password, rememberMe));
     }
 
     @PostMapping("/register")

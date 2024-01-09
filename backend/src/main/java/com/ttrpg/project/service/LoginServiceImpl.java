@@ -21,7 +21,8 @@ public class LoginServiceImpl implements LoginService {
     
     @Override
     @Transactional
-    public Users login(String email, String password) {
+    public Users login(String email, String password, boolean rememberMe) {
+        //TODO implement remember me
         Users user = findUserByEmailAdress(email);
         if (user.getPassword().equals(password)) {
             user.setToken("TODO generate token");
