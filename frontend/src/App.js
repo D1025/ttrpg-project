@@ -8,8 +8,9 @@ import {
     XHeaderSrodek,
     XHeaderPrawy,
     XRObiekt,
-    XPPrzycisk,
-    // XImput,
+    XButton,
+    XLogo,
+    XImput,
     ModulTest
 } from "./NovaX";
 import React from "react";
@@ -21,33 +22,33 @@ function App()
         <>
             <XHeader design={3}>
                 <XHeaderLewy>
-                    <img src={"./Grafiki/Logo.png"} className="XHeaderLogo" alt=""/>
+                    <XLogo src={"./Grafiki/Logo.png"}/>
                 </XHeaderLewy>
 
                 <XHeaderSrodek>
-                    {/*<XPPrzycisk active={false} tittle={"Cosiek 1"}/>*/}
-                    {/*<XPPrzycisk active={false} tittle={"Cosiek 2"}/>*/}
-                    {/*<XPPrzycisk active={false} tittle={"Cosiek 2"}/>*/}
-                    <XMMenu>
+                    {/*<XButton active={false} tittle={"Cosiek 1"}/>*/}
+                    {/*<XButton active={false} tittle={"Cosiek 2"}/>*/}
+                    {/*<XButton active={false} tittle={"Cosiek 2"}/>*/}
+                    <XMMenu tag={"nav"}>
                     <XMLi>Pokoje</XMLi>
                         <XMLi>Strona
                             <XMMenu>
-                                <li>Wiadomości</li>
-                                <li>O Nas</li>
+                                <XMLi>Wiadomości</XMLi>
+                                <XMLi>O Nas</XMLi>
                             </XMMenu>
                         </XMLi>
                     </XMMenu>
                 </XHeaderSrodek>
 
                 {/*<XHeaderPrawy>*/}
-                {/*    <XPPrzycisk active={false} src={"./Ikonki/Konto.png"}/>*/}
-                {/*    <XImput type={'button'} value={"Zaloguj Się"}/>*/}
-                {/*    <XImput type={'text'} placeholder={"Wpisz"}/>*/}
+                {/*    <XButton active={false} src={"./Ikonki/Konto.png"}/>*/}
+                {/*    <XImput active={false} type={'button'} value={"Zaloguj Się"}/>*/}
+                {/*    <XImput active={false} type={'text'} placeholder={"Wpisz"}/>*/}
                 {/*</XHeaderPrawy>*/}
 
                 <XHeaderPrawy>
-                    <XPPrzycisk active={false} src={"./Ikonki/Style.png"}/>
-                    <XPPrzycisk active={false} tittle={"Zaloguj Się"} src={"./Ikonki/Konto.png"} width={1} onClick={ModulTest}/>
+                    <XButton active={false} src={"./Ikonki/Style.png"}/>
+                    <XButton active={false} tittle={"Zaloguj Się"} src={"./Ikonki/Konto.png"} width={1} onClick={ModulTest}/>
                 </XHeaderPrawy>
             </XHeader>
 
@@ -65,7 +66,7 @@ function App()
                 </XRObiekt>
             </main>
 
-            <ModulTest/>
+            {/*<ModulTest/>*/}
         </>
     );
 }

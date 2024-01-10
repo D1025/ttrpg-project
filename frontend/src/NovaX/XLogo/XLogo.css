@@ -1,0 +1,33 @@
+/* Pole Loga. */
+A.XLogo
+{
+    height: 2.8vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: var(--Radius-I);
+    padding-top: 0.15vw ;
+    padding-bottom: 0.15vw;
+    padding-left: 0.25vw;
+    padding-right: 0.25vw;
+    display: flex;
+    cursor: pointer;
+    transform: var(--Animacja);
+}
+
+/* Po najechaniu. */
+A.XLogo:hover
+{
+    background-color: var(--Motyw-Ciemny)!important;
+}
+
+/* Po kliknięciu. */
+A{
+    background-color: var(--Motyw)!important;
+}
+
+    /* Wygląd Zdjęcia w Polu. */
+    A.XLogo > Img
+    {
+        height: 90%;
+    }

@@ -1,5 +1,6 @@
 /* Małe Przyciski, Pole trzymające mały przycisk. */
-Div.XPPrzycisk
+/* Design 1 [Kwadrat]. */
+Div.XButton-D1
 {
     min-width: 0.0vw!important;
     width: var(--Przycisk-Wysokość);
@@ -16,25 +17,25 @@ Div.XPPrzycisk
     transition: var(--Animacja);
 }
 /* Przycisk po najechaniu. */
-Div.XPPrzycisk:hover
+Div.XButton-D1:hover
 {
     background-color: var(--Motyw-Czarny)!important;
 }
 /* Przycisk po kliknięciu. */
-Div.XPPrzycisk:active
+Div.XButton-D1:active
 {
     background-color: var(--Motyw)!important;
 }
 /* Wygląd obrazka w przycisku. */
-Div.XPPrzycisk > Img
+Div.XButton-D1 > Img
 {
     max-width: 65%;
     max-height: 65%;
 }
 
 
-/* Styl Szeroki. */
-Div.XPPrzycisk2
+/* Design 2 [Szeroki]. */
+Div.XButton-D2
 {
     height: var(--Przycisk-Wysokość);
     width: max-content!important;
@@ -56,17 +57,17 @@ Div.XPPrzycisk2
 }
 
     /* Po Najechaniu. */
-    Div.XPPrzycisk2:hover
+    Div.XButton-D2:hover
     {
         background-color: var(--Motyw-Czarny)!important;
     }
     /* Po Kliknięciu. */
-    Div.XPPrzycisk2:active
+    Div.XButton-D2:active
     {
         background-color: var(--Motyw)!important;
     }
     /* Wygląd obrazka w przycisku. */
-    Div.XPPrzycisk2 > Img
+    Div.XButton-D2 > Img
     {
         max-width: 65%;
         max-height: 65%;
@@ -74,7 +75,7 @@ Div.XPPrzycisk2
         margin-right: 0.25vw;
     }
     /* Wygląd tytułu w przycisku. */
-    Div.XPPrzycisk2 > Div
+    Div.XButton-D2 > Div
     {
         margin-left: 0.25vw;
         margin-right: 0.25vw;
@@ -82,36 +83,36 @@ Div.XPPrzycisk2
 
 
 /* Szwrokość 1. */
-Div.XPPrzycisk-W1
+Div.XButton-W1
 {
     min-width: var(--Przycisk-Szerokość-I);
 }
 /* Szwrokość 2. */
-Div.XPPrzycisk-W2
+Div.XButton-W2
 {
     min-width: var(--Przycisk-Szerokość-II);
 }
 /* Szwrokość 3. */
-Div.XPPrzycisk-W3
+Div.XButton-W3
 {
     min-width: var(--Przycisk-Szerokość-III);
 }
 
 
 /* Margines dolny jeśli przycisk jest w menu pionowym. */
-Div.XPPrzycisk-Margin
+Div.XButton-Margin
 {
     margin-bottom: var(--Przycisk-Odstep);
 }
     /* Jeśli jest ostatni to styl niedziała. */
-    Div.XPPrzycisk-Margin:last-of-type
+    Div.XButton-Margin:last-of-type
     {
         margin-bottom: 0.0vw!important;
     }
 
 
 /* Aktywny. */
-Div.XPPrzycisk-Aktywny
+Div.XButton-Active
 {
     background-color: var(--Motyw-Ciemny);
 }

@@ -1,50 +1,58 @@
 import React, {useState, useEffect} from 'react';
 import './XRObiekt.css';
-import {XPWybor, XPPrzycisk} from "../index";
+import {XButtonChoice, XButton} from "../index";
 
-const XRObiekt = ({children, srcT = "./Ikonki/Tekst.png", design=1, ...rest}) => {
+const XRObiekt = ({children, srcT = "./Ikonki/Tekst.png", design = 1, ...rest}) =>
+{
     const [listaObiektow, ustawListeObiektow] = useState([]);
     const [obecnyIndeks, ustawObecnyIndeks] = useState(0);
 
     // Dodawanie argumentów do listy.
-    useEffect(() => {
+    useEffect(() =>
+    {
         const przetworzoneObiekty = React.Children.map(children, child => child.props)
-            .filter(obj => obj.src || obj.title || obj.describe); // [Filtr] Eleminuje całkowicei puste elementy.
+            .filter(obj => obj.src || obj.tittle || obj.describe || obj.alt1 || obj.alt2); // [Filtr] Eleminuje całkowicei puste elementy.
         ustawListeObiektow(przetworzoneObiekty);
     }, [children]);
 
 
     // Następny Index.
-    const pokazNastepnyObiekt = () => {
+    const pokazNastepnyObiekt = () =>
+    {
         ustawObecnyIndeks((obecnyIndeks) => (obecnyIndeks + 1) % listaObiektow.length);
     };
 
     // Poprzedni Index.
-    const pokazPoprzedniObiekt = () => {
+    const pokazPoprzedniObiekt = () =>
+    {
         ustawObecnyIndeks((obecnyIndeks) => (obecnyIndeks - 1 + listaObiektow.length) % listaObiektow.length);
     };
 
     // Setuje Index.
-    const ustawIndex = (indeks) => {
+    const ustawIndex = (indeks) =>
+    {
         ustawObecnyIndeks(indeks);
     };
 
     // Wypisuje wszystkie elementy z listy.
-    const renderWyborZdjec = () => {
+    const renderWyborZdjec = () =>
+    {
         return listaObiektow.map((_, i) => (
-            <XPWybor
+            <XButtonChoice
                 key={i}
                 onClick={() => ustawIndex(i)}
                 src={listaObiektow[i].src ? listaObiektow[i].src : srcT}
+                alt1={listaObiektow[i].alt1}
                 src2={listaObiektow[i].src && listaObiektow[i].describe ? srcT : null}
-                active={obecnyIndeks === i ? true : false}
+                alt2={listaObiektow[i].alt2}
+                active={obecnyIndeks === i}
                 design={design}
             />
         ));
     };
 
     // Renderuje główny obiekt.
-    if (listaObiektow.length === 0) return null;
+    if(listaObiektow.length === 0) return null;
     return (
         <div {...rest} className={"XRObiekt"}>
             {listaObiektow[obecnyIndeks].tittle && (
@@ -56,7 +64,7 @@ const XRObiekt = ({children, srcT = "./Ikonki/Tekst.png", design=1, ...rest}) =>
                 <div className={"XRObiekt-Opis"}>
                     {listaObiektow[obecnyIndeks].src && (
                         <div className={"XRObiekt-Opis-Obraz"}>
-                            <img src={listaObiektow[obecnyIndeks].src} alt=""/>
+                            <img src={listaObiektow[obecnyIndeks].src} alt={listaObiektow[obecnyIndeks].alt1}/>
                         </div>
                     )}
                     {listaObiektow[obecnyIndeks].describe && (
@@ -68,13 +76,13 @@ const XRObiekt = ({children, srcT = "./Ikonki/Tekst.png", design=1, ...rest}) =>
             )}
             {listaObiektow.length > 1 && (
                 <div className={"XRObiekt-Zdjecia"}>
-                    <XPPrzycisk onClick={pokazPoprzedniObiekt} src={"./Ikonki/Strzałka_Lewo.png"}/>
+                    <XButton onClick={pokazPoprzedniObiekt} src={"./Ikonki/Strzałka_Lewo.png"}/>
                     <div className={"XRObiekt-Zdjecia-Wybor"}>
                         <div>
                             {renderWyborZdjec()}
                         </div>
                     </div>
-                    <XPPrzycisk onClick={pokazNastepnyObiekt} src={"./Ikonki/Strzałka_Prawo.png"}/>
+                    <XButton onClick={pokazNastepnyObiekt} src={"./Ikonki/Strzałka_Prawo.png"}/>
                 </div>
             )}
         </div>

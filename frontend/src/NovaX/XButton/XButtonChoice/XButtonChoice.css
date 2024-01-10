@@ -1,5 +1,6 @@
-/* Szeroki przycisk XPWybor. */
-Div.XPWybor
+/* Szeroki przycisk XButtonChoice. */
+/* Design 1. */
+Div.XButtonChoice-D1
 {
     min-width: var(--Przycisk-Wysokość);
     height: var(--Przycisk-Wysokość);
@@ -18,7 +19,7 @@ Div.XPWybor
 }
 
     /* Wygląd Img w przycisku. */
-    Div.XPWybor > Img:nth-child(1)
+    Div.XButtonChoice-D1 > Img:nth-child(1)
     {
         height: 75%;
         max-width: 4.0vw;
@@ -26,7 +27,7 @@ Div.XPWybor
     }
 
     /* Wygląd Img w przycisku. */
-    Div.XPWybor > Img:nth-child(2)
+    Div.XButtonChoice-D1 > Img:nth-child(2)
     {
         height: 0.7vw;
         max-width: 0.7vw;
@@ -40,8 +41,8 @@ Div.XPWybor
     }
 
 
-/* Styl 2. */
-Div.XPWybor2
+/* Design 2. */
+Div.XButtonChoice-D2
 {
     width: 0.8vw;
     height: 0.8vw;
@@ -59,12 +60,12 @@ Div.XPWybor2
     cursor: pointer;
 }
     /* Wygląd Img w przycisku. */
-    Div.XPWybor2 > Img
+    Div.XButtonChoice-D2 > Img
     {
         display: none;
     }
     /* Kropka Wybranego. */
-    Div.XPWybor2 > Div
+    Div.XButtonChoice-D2 > Div
     {
         width: 100%;
         height: 100%;
@@ -76,13 +77,13 @@ Div.XPWybor2
 
 
 /* Aktywny. */
-.XPWybor-Aktywny
+.XButtonChoice-Active
 {
     background-color: var(--Motyw-Ciemny)!important;
     border-color: var(--Kolor-Dodatkowy)!important;
 }
     /* Dotatkowy styl. */
-    .XPWybor-Aktywny > Div
+    .XButtonChoice-Active > Div
     {
         display: block!important;
     }

@@ -15,8 +15,8 @@ Input.XInput[type="submit"], Input.XInput[type="button"]
     border: 0.0vw;
     margin-left: var(--Przycisk-Odstep);
     margin-right: var(--Przycisk-Odstep);
-    padding-left: var(--Przycisk-Odstep);
-    padding-right: var(--Przycisk-Odstep);
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
     cursor: pointer;
     user-select: none;
     transition: var(--Animacja);
@@ -32,30 +32,6 @@ Input.XInput[type="submit"]:active, Input.XInput[type="button"]:active
     background-color: var(--Motyw)!important;
 }
 
-/*!* Dodatkowy Wariant: Pozytywny. *!*/
-/*Input[type="submit"][data-type="Pozytywny"],*/
-/*Input[type="button"][data-type="Pozytywny"]*/
-/*{*/
-/*    background-color: var(--Kolor-Pozytywny);*/
-/*}*/
-/*!* Dodatkowy Wariant: Umiarkowany. *!*/
-/*Input[type="submit"][data-type="Umiarkowany"],*/
-/*Input[type="button"][data-type="Umiarkowany"]*/
-/*{*/
-/*    background-color: var(--Kolor-Umiarkowany);*/
-/*}*/
-/*!* Dodatkowy Wariant: Negatywny. *!*/
-/*Input[type="submit"][data-type="Negatywny"],*/
-/*Input[type="button"][data-type="Negatywny"]*/
-/*{*/
-/*    background-color: var(--Kolor-Negatywny);*/
-/*}*/
-/*!* Dodatkowy Wariant: Niekatywny. *!*/
-/*Input[type="submit"][data-type="Niekatywny"],*/
-/*Input[type="button"][data-type="Niekatywny"]*/
-/*{*/
-/*    background-color: var(--Kolor-Niekatywny);*/
-/*}*/
 
 /* Nadpisany: Input do Wyszukiwania. */
 Input.XInput[type="text"], Input.XInput[type="password"]
@@ -72,8 +48,8 @@ Input.XInput[type="text"], Input.XInput[type="password"]
     box-sizing: border-box;
     margin-left: var(--Przycisk-Odstep);
     margin-right: var(--Przycisk-Odstep);
-    padding-left: var(--Przycisk-Odstep);
-    padding-right: var(--Przycisk-Odstep);
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
     cursor: pointer;
     transition: var(--Animacja);
 }
@@ -91,27 +67,9 @@ Input.XInput[type="text"]::placeholder, Input.XInput[type="password"]::placehold
     opacity: 0.6;
 }
 
-/*!* Dodatkowy Wariant: Pozytywny. *!*/
-/*Input[type="text"][data-type="Pozytywny"],*/
-/*Input[type="password"][data-type="Pozytywny"]*/
-/*{*/
-/*    border-color: var(--Kolor-Pozytywny);*/
-/*}*/
-/*!* Dodatkowy Wariant: Umiarkowany. *!*/
-/*Input[type="text"][data-type="Umiarkowany"],*/
-/*Input[type="password"][data-type="Umiarkowany"]*/
-/*{*/
-/*    border-color: var(--Kolor-Umiarkowany);*/
-/*}*/
-/*!* Dodatkowy Wariant: Negatywny. *!*/
-/*Input[type="text"][data-type="Negatywny"],*/
-/*Input[type="password"][data-type="Negatywny"]*/
-/*{*/
-/*    border-color: var(--Kolor-Negatywny);*/
-/*}*/
-/*!* Dodatkowy Wariant: Niekatywny. *!*/
-/*Input[type="text"][data-type="Niekatywny"],*/
-/*Input[type="password"][data-type="Niekatywny"]*/
-/*{*/
-/*    border-color: var(--Kolor-Niekatywny);*/
-/*}*/
+
+/* Aktywny. */
+Input[type="Submit"].XInput-Active, Input[type="Button"].XInput-Active,Input[type="text"].XInput-Active, Input[type="password"].XInput-Active
+{
+    background-color: var(--Motyw-Ciemny)!important;
+}

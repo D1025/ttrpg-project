@@ -1,6 +1,7 @@
 import './XMMenu.css';
 
-const XMMenu = ({children, tag = "nav", ...rest}) => {
+const XMMenu = ({children, tag = "ol", ...rest}) =>
+{
     const TagName = tag;
 
     return (

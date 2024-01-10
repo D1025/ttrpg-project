@@ -4,8 +4,8 @@
     --Szerokosc: 89.0vw;
 }
 
-/* Styl 1. */
-Div.XHeader1
+/* Design 1. */
+Div.XHeader-D1
 {
     width: var(--Szerokosc);
     font-size: 1.0rem;
@@ -15,7 +15,7 @@ Div.XHeader1
     display: flex;
 }
     /* Styl globalny dla piewszych dzieci. */
-    Div.XHeader1 > *
+    Div.XHeader-D1 > *
     {
         padding-top: 0.5vw!important;
         padding-bottom: 0.5vw!important;
@@ -24,19 +24,19 @@ Div.XHeader1
         display: flex;
     }
     /* Lewy nagłówek. */
-    Div.XHeader1 > Div.XHeaderLewy
+    Div.XHeader-D1 > Div.XHeaderLewy
     {
         padding-left: 0.8vw;
         padding-right: 0.8vw;
     }
     /* Środkowy nagłówek. */
-    Div.XHeader1 > Div.XHeaderSrodek
+    Div.XHeader-D1 > Div.XHeaderSrodek
     {
         min-width: 10vw;
         padding-right: 0.8vw;
     }
     /* Prawy nagłówek. */
-    Div.XHeader1 > Div.XHeaderPrawy
+    Div.XHeader-D1 > Div.XHeaderPrawy
     {
         margin-left: auto;
         padding-right: 0.8vw;
@@ -44,8 +44,8 @@ Div.XHeader1
     }
 
 
-/* Styl 2. */
-Div.XHeader2
+/* Design 2. */
+Div.XHeader-D2
 {
     width: var(--Szerokosc);
     font-size: 1.0rem;
@@ -59,7 +59,7 @@ Div.XHeader2
     display: flex;
 }
     /* Styl globalny dla piewszych dzieci. */
-    Div.XHeader2 > *
+    Div.XHeader-D2 > *
     {
         padding-top: 0.5vw!important;
         padding-bottom: 0.5vw!important;
@@ -68,19 +68,19 @@ Div.XHeader2
         display: flex;
     }
     /* Lewy nagłówek. */
-    Div.XHeader2 > Div.XHeaderLewy
+    Div.XHeader-D2 > Div.XHeaderLewy
     {
         padding-left: 0.8vw;
         padding-right: 0.8vw;
     }
     /* Środkowy nagłówek. */
-    Div.XHeader2 > Div.XHeaderSrodek
+    Div.XHeader-D2 > Div.XHeaderSrodek
     {
         min-width: 10vw;
         padding-right: 0.8vw;
     }
     /* Prawy nagłówek. */
-    Div.XHeader2 > Div.XHeaderPrawy
+    Div.XHeader-D2 > Div.XHeaderPrawy
     {
         margin-left: auto;
         padding-right: 0.8vw;
@@ -88,8 +88,8 @@ Div.XHeader2
     }
 
 
-/* Styl 3. */
-Div.XHeader3
+/* Design 3. */
+Div.XHeader-D3
 {
     width: var(--Szerokosc);
     font-size: 1.0rem;
@@ -97,7 +97,7 @@ Div.XHeader3
     display: flex;
 }
     /* Styl globalny dla piewszych dzieci. */
-    Div.XHeader3 > *
+    Div.XHeader-D3 > *
     {
         padding-top: 0.5vw!important;
         padding-bottom: 0.5vw!important;
@@ -105,21 +105,21 @@ Div.XHeader3
         align-items: center;
         display: flex;
     }
-    Div.XHeader3 > Div.XHeaderLewy
+    Div.XHeader-D3 > Div.XHeaderLewy
     {
         background-color: var(--Motyw);
         border-radius: var(--Radius-II) 0 0 var(--Radius-II);
         padding-left: 0.8vw;
         padding-right: 0.8vw;
     }
-    Div.XHeader3 > Div.XHeaderSrodek
+    Div.XHeader-D3 > Div.XHeaderSrodek
     {
         background-color: var(--Motyw);
         border-radius: 0 var(--Radius-II) var(--Radius-II) 0;
         min-width: 10vw;
         padding-right: 0.8vw;
     }
-    Div.XHeader3 > Div.XHeaderPrawy
+    Div.XHeader-D3 > Div.XHeaderPrawy
     {
         background-color: var(--Motyw);
         border-radius: var(--Radius-II);
