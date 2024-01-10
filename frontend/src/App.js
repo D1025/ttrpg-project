@@ -9,7 +9,7 @@ import {
     XHeaderPrawy,
     XRObiekt,
     XButton,
-    XLogo,
+    XButtonLogo,
     XImput,
     ModulTest
 } from "./NovaX";
@@ -22,13 +22,13 @@ function App()
         <>
             <XHeader design={3}>
                 <XHeaderLewy>
-                    <XLogo src={"./Grafiki/Logo.png"}/>
+                    <XButtonLogo title={"TTRPG"} src={"./Grafiki/Logo.png"}/>
                 </XHeaderLewy>
 
                 <XHeaderSrodek>
-                    {/*<XButton active={false} tittle={"Cosiek 1"}/>*/}
-                    {/*<XButton active={false} tittle={"Cosiek 2"}/>*/}
-                    {/*<XButton active={false} tittle={"Cosiek 2"}/>*/}
+                    {/*<XButton active={false} title={"Cosiek 1"}/>*/}
+                    {/*<XButton active={false} title={"Cosiek 2"}/>*/}
+                    {/*<XButton active={false} title={"Cosiek 2"}/>*/}
                     <XMMenu tag={"nav"}>
                     <XMLi>Pokoje</XMLi>
                         <XMLi>Strona
@@ -48,21 +48,21 @@ function App()
 
                 <XHeaderPrawy>
                     <XButton active={false} src={"./Ikonki/Style.png"}/>
-                    <XButton active={false} tittle={"Zaloguj Się"} src={"./Ikonki/Konto.png"} width={1} onClick={ModulTest}/>
+                    <XButton active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"} design={1} onClick={ModulTest}/>
                 </XHeaderPrawy>
             </XHeader>
 
             <main>
                 <XRObiekt>
-                    <div tittle={"TTRPG"}
+                    <div title={"TTRPG"}
                          describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
-                    <div tittle={"TTRPG"} src={"./Grafiki/Logo.png"}
+                    <div title={"TTRPG"} src={"./Grafiki/Logo.png"}
                          describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
-                    <div tittle={"TTRPG"} src={"./Grafiki/Logo.png"}/>
+                    <div title={"TTRPG"} src={"./Grafiki/Logo.png"}/>
                 </XRObiekt>
 
                 <XRObiekt>
-                    <div tittle={"Logo Strony"} src={"./Grafiki/Logo.png"} describe={"Platforma do gier TTRPG"}/>
+                    <div title={"Logo Strony"} src={"./Grafiki/Logo.png"} describe={"Platforma do gier TTRPG"}/>
                 </XRObiekt>
             </main>
 

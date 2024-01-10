@@ -1,5 +1,5 @@
 /* Pole Loga. */
-A.XLogo
+A.XButtonLogo
 {
     height: 2.8vw;
     justify-content: center;
@@ -16,18 +16,32 @@ A.XLogo
 }
 
 /* Po najechaniu. */
-A.XLogo:hover
+A.XButtonLogo:hover
 {
     background-color: var(--Motyw-Ciemny)!important;
 }
 
 /* Po kliknięciu. */
-A{
+A.XButtonLogo:active
+{
     background-color: var(--Motyw)!important;
 }
 
-    /* Wygląd Zdjęcia w Polu. */
-    A.XLogo > Img
+    /* Wygląd Zdjęcia w Przycisku. */
+    A.XButtonLogo > Img
     {
         height: 90%;
     }
+
+    /* Wygląd Nazwy w Przycisku. */
+    A.XButtonLogo > Div
+    {
+        font-weight: bold;
+        font-size: 1.05rem;
+        margin-left: 0.25vw;
+    }
+        /* Wygląd Nazwy w Przycisku. */
+        A.XButtonLogo > *:first-child
+        {
+            margin-left: 0.0vw!important;
+        }

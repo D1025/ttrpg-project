@@ -1,7 +1,7 @@
 import React from 'react';
 import './XInput.css';
 
-const XInput = ({type, active=false, name, placeholder, value, autoFocus, required, disabled, ...rest}) =>
+const XInput = ({type, active=false, title, placeholder, value, autoFocus, required, disabled, ...rest}) =>
 {
     let klasy = "XInput";
 
@@ -19,7 +19,7 @@ const XInput = ({type, active=false, name, placeholder, value, autoFocus, requir
             disabled={disabled}
             value={value}
             type={type}
-            name={name}
+            name={title}
             className={klasy}
         />
     );

@@ -82,17 +82,17 @@ Div.XButton-D2
     }
 
 
-/* Szwrokość 1. */
+/* Design 1. */
 Div.XButton-W1
 {
     min-width: var(--Przycisk-Szerokość-I);
 }
-/* Szwrokość 2. */
+/* Design 2. */
 Div.XButton-W2
 {
     min-width: var(--Przycisk-Szerokość-II);
 }
-/* Szwrokość 3. */
+/* Design 3. */
 Div.XButton-W3
 {
     min-width: var(--Przycisk-Szerokość-III);

@@ -55,9 +55,9 @@ const XRObiekt = ({children, srcT = "./Ikonki/Tekst.png", design = 1, ...rest}) 
     if(listaObiektow.length === 0) return null;
     return (
         <div {...rest} className={"XRObiekt"}>
-            {listaObiektow[obecnyIndeks].tittle && (
+            {listaObiektow[obecnyIndeks].title && (
                 <div className={"XRObiekt-Nazwa"}>
-                    {listaObiektow[obecnyIndeks].tittle}
+                    {listaObiektow[obecnyIndeks].title}
                 </div>
             )}
             {(listaObiektow[obecnyIndeks].src || listaObiektow[obecnyIndeks].describe) && (
