@@ -13,6 +13,7 @@ A.XButtonLogo
     display: flex;
     cursor: pointer;
     transform: var(--Animacja);
+    user-select: none;
 }
 
 /* Po najechaniu. */
