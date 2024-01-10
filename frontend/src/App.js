@@ -10,7 +10,6 @@ import {
     XRObiekt,
     XButton,
     XButtonLogo,
-    XImput,
     ModulTest
 } from "./NovaX";
 import React from "react";
