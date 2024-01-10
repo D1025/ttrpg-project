@@ -1,7 +1,7 @@
 import './Root.css';
 
 // Header.
-export {default as XHeader} from './XHeader/XHeader.js';
+export {default as XHeader} from './XHeader/XHeader/XHeader.js';
 export {default as XHeaderLewy} from './XHeader/XHeaderLewy/XHeaderLewy.js';
 export {default as XHeaderSrodek} from './XHeader/XHeaderSrodek/XHeaderSrodek.js';
 export {default as XHeaderPrawy} from './XHeader/XHeaderPrawy/XHeaderPrawy.js';
