@@ -2,7 +2,7 @@ import React from "react";
 import './XMenu.css';
 
 // Prywatny komponent zapewniający spójność menu.
-const XLi_Pomocnicze = ({children, ...rest}) =>
+const XLi_Pomocnicze = ({children}) =>
 {
     // Czy children zawiera tag/i.
     const czyMaTag = React.Children.toArray(children).some(
@@ -13,7 +13,7 @@ const XLi_Pomocnicze = ({children, ...rest}) =>
     const classNames = czyMaTag ? 'XMenu-Nieklikalny' : null;
 
     return (
-        <li {...rest} className={classNames}>
+        <li className={classNames}>
             {children}
         </li>
     );
