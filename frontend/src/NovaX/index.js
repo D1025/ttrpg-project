@@ -7,10 +7,9 @@ export {default as XHeaderSrodek} from './XHeader/XHeaderSrodek/XHeaderSrodek.js
 export {default as XHeaderPrawy} from './XHeader/XHeaderPrawy/XHeaderPrawy.js';
 
 // Nav.
-export {default as XMMenu} from './XMenu/XMMenu/XMMenu.js';
-export {default as XMLi} from './XMenu/XMMenu/XMLi/XMLi.js';
-// export { default as XMMenu2 [A] } from './XMenu/XMMenu2 [A]/XMMenu2 [A].js';
-// export { default as XMMenu2 [A] } from './XMenu/XMMenu2 [A]/XMMenu2 [A].js';
+export {default as XMenu} from './XMenu/XMenu/XMenu.js';
+// export { default as XMenu2 [A] } from './XMenu/XMenu2 [A]/XMenu2 [A].js';
+// export { default as XMenu2 [A] } from './XMenu/XMenu2 [A]/XMenu2 [A].js';
 
 // Main.
 
@@ -23,6 +22,6 @@ export {default as XButtonChoice} from './XButton/XButtonChoice/XButtonChoice.js
 export {default as XButtonLogo} from './XButton/XButtonLogo/XButtonLogo';
 export {default as XImput} from './XButton/XInput/XInput.js';
 
-// Funkcje.
-export {default as setTittle} from './Funkcje/SetTittle/setTittle.js';
-export {default as ModulTest} from './Funkcje/XModuly/ModulTest.js';
+// Funkcion.
+export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';
+export {default as ModulTest} from './Funkcion/XModuly/ModulTest.js';

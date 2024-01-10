@@ -1,8 +1,7 @@
 import './App.css';
 import {
     setTittle,
-    XMMenu,
-    XMLi,
+    XMenu,
     XHeader,
     XHeaderLewy,
     XHeaderSrodek,
@@ -28,15 +27,18 @@ function App()
                     {/*<XButton active={false} title={"Cosiek 1"}/>*/}
                     {/*<XButton active={false} title={"Cosiek 2"}/>*/}
                     {/*<XButton active={false} title={"Cosiek 2"}/>*/}
-                    <XMMenu tag={"nav"}>
-                    <XMLi>Pokoje</XMLi>
-                        <XMLi>Strona
-                            <XMMenu>
-                                <XMLi>Wiadomości</XMLi>
-                                <XMLi>O Nas</XMLi>
-                            </XMMenu>
-                        </XMLi>
-                    </XMMenu>
+
+                    <XMenu tag="nav">
+                        <li>Pokoje</li>
+                        <li>
+                            Strona
+                            <XMenu>
+                                <li>Wiadomości</li>
+                                <li>O Nas</li>
+                            </XMenu>
+                        </li>
+                    </XMenu>
+
                 </XHeaderSrodek>
 
                 {/*<XHeaderPrawy>*/}
