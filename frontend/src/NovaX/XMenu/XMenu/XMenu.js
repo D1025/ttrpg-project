@@ -1,7 +1,7 @@
 import React from "react";
 import './XMenu.css';
 
-// Prywatny komponent zapewniający spójność menu.
+// Prywatny komponent zapewniający spójność prostego menu.
 const XLi_Pomocnicze = ({children}) =>
 {
     // Czy children zawiera tag/i.
@@ -9,7 +9,7 @@ const XLi_Pomocnicze = ({children}) =>
         child => React.isValidElement(child)
     );
 
-    // Zabespieczenie migania Li.
+    // Dodaje klasę, kiedy li posiada w sobie jeszcze dodatkowy tag.
     const classNames = czyMaTag ? 'XMenu-Nieklikalny' : null;
 
     return (
