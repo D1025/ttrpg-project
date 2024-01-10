@@ -47,7 +47,7 @@ function App()
 
                 <XHeaderPrawy>
                     <XButton active={false} src={"./Ikonki/Style.png"}/>
-                    <XButton active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"} design={1} onClick={ModulTest}/>
+                    <XButton active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"} width={1} onClick={ModulTest}/>
                 </XHeaderPrawy>
             </XHeader>
 
