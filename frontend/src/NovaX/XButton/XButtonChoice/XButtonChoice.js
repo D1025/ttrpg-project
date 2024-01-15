@@ -16,7 +16,7 @@ const XButtonChoice = ({design = 1, active = false, src, alt1 = "", src2, alt2 =
             )}
             {design === 2 && (
                 <>
-                    <div></div>
+                    <div className={"D2"}></div>
                 </>
             )}
         </div>

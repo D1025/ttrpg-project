@@ -82,8 +82,8 @@ Div.XButtonChoice-D2
     background-color: var(--Motyw-Ciemny)!important;
     border-color: var(--Kolor-Dodatkowy)!important;
 }
-    /* Dotatkowy styl. */
-    .XButtonChoice-Active > Div
+    /* Styl aktywny tylko dla Design 2. */
+    .XButtonChoice-Active > Div.D2
     {
         display: block!important;
     }

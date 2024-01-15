@@ -9,9 +9,9 @@ import {
     XRObiekt,
     XButton,
     XButtonLogo,
-    ModulTest
+    ModulTest,
+    XImput
 } from "./NovaX";
-import React from "react";
 
 function App()
 {
@@ -54,7 +54,7 @@ function App()
             </XHeader>
 
             <main>
-                <XRObiekt>
+                <XRObiekt design={1}>
                     <div title={"TTRPG"}
                          describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
                     <div title={"TTRPG"} src={"./Grafiki/Logo.png"}
@@ -67,7 +67,7 @@ function App()
                 </XRObiekt>
             </main>
 
-            {/*<ModulTest/>*/}
+            <div id={"test"}/>
         </>
     );
 }

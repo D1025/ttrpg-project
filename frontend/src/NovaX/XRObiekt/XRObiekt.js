@@ -42,9 +42,9 @@ const XRObiekt = ({children, srcT = "./Ikonki/Tekst.png", design = 1, ...rest}) 
                 key={i}
                 onClick={() => ustawIndex(i)}
                 src={listaObiektow[i].src ? listaObiektow[i].src : srcT}
-                alt1={listaObiektow[i].alt1}
+                alt1={listaObiektow[i].src ? listaObiektow[i].alt1 : null}
                 src2={listaObiektow[i].src && listaObiektow[i].describe ? srcT : null}
-                alt2={listaObiektow[i].alt2}
+                alt2={listaObiektow[i].src && listaObiektow[i].describe ? listaObiektow[i].alt2 : null}
                 active={obecnyIndeks === i}
                 design={design}
             />

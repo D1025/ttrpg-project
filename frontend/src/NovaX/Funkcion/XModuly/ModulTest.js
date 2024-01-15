@@ -1,8 +1,8 @@
 import React from 'react';
 import XModul from '../XModul/XModul';
 
-function ModulTest()
-{
+const ModulTest = ({isOpen}) => {
+
     // Przykłdowy Moduł.
     const renderZawartosc = (zamknij) => (
         <div>
@@ -12,7 +12,7 @@ function ModulTest()
     );
 
     return (
-        <XModul zawartosc={renderZawartosc}/>
+        !isOpen ? {} : <XModul zawartosc={renderZawartosc}/>
     );
 }
 
