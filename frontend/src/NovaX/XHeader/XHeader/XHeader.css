@@ -1,13 +1,15 @@
 /* Niepubliczny Root. */
 :root
 {
-    --Szerokosc: 89.0vw;
+    --Szerokosc: 92.0vw;
+    --MinWysokosc: 4.5vw;
 }
 
 /* Design 1. */
 Div.XHeader-D1
 {
     width: var(--Szerokosc);
+    min-height: var(--MinWysokosc);
     font-size: 1.0rem;
     border-radius: var(--Radius-II);
     background-color: var(--Motyw);
@@ -24,23 +26,23 @@ Div.XHeader-D1
         display: flex;
     }
     /* Lewy nagłówek. */
-    Div.XHeader-D1 > Div.XHeaderLewy
+    Div.XHeader-D1 > Div.XHeaderLeft
     {
-        padding-left: 0.8vw;
-        padding-right: 0.8vw;
+        padding-left: 1.5vw;
+        padding-right: 1.0vw;
     }
     /* Środkowy nagłówek. */
-    Div.XHeader-D1 > Div.XHeaderSrodek
+    Div.XHeader-D1 > Div.XHeaderCenter
     {
-        min-width: 10vw;
-        padding-right: 0.8vw;
+        min-width: 5vw;
+        padding-right: 1.5vw;
     }
     /* Prawy nagłówek. */
-    Div.XHeader-D1 > Div.XHeaderPrawy
+    Div.XHeader-D1 > Div.XHeaderRight
     {
         margin-left: auto;
-        padding-right: 0.8vw;
-        padding-left: 0.8vw;
+        padding-right: 1.5vw;
+        padding-left: 1.5vw;
     }
 
 
@@ -48,6 +50,7 @@ Div.XHeader-D1
 Div.XHeader-D2
 {
     width: var(--Szerokosc);
+    min-height: var(--MinWysokosc);
     font-size: 1.0rem;
     border-radius: var(--Radius-II);
     background-color: var(--Motyw);
@@ -68,23 +71,23 @@ Div.XHeader-D2
         display: flex;
     }
     /* Lewy nagłówek. */
-    Div.XHeader-D2 > Div.XHeaderLewy
+    Div.XHeader-D2 > Div.XHeaderLeft
     {
-        padding-left: 0.8vw;
-        padding-right: 0.8vw;
+        padding-left: 1.5vw;
+        padding-right: 1.0vw;
     }
     /* Środkowy nagłówek. */
-    Div.XHeader-D2 > Div.XHeaderSrodek
+    Div.XHeader-D2 > Div.XHeaderCenter
     {
-        min-width: 10vw;
-        padding-right: 0.8vw;
+        min-width: 5vw;
+        padding-right: 1.5vw;
     }
     /* Prawy nagłówek. */
-    Div.XHeader-D2 > Div.XHeaderPrawy
+    Div.XHeader-D2 > Div.XHeaderRight
     {
         margin-left: auto;
-        padding-right: 0.8vw;
-        padding-left: 0.8vw;
+        padding-right: 1.5vw;
+        padding-left: 1.5vw;
     }
 
 
@@ -92,6 +95,7 @@ Div.XHeader-D2
 Div.XHeader-D3
 {
     width: var(--Szerokosc);
+    min-height: var(--MinWysokosc);
     font-size: 1.0rem;
     margin: 1.0vw auto 1.5vw auto;
     display: flex;
@@ -105,25 +109,25 @@ Div.XHeader-D3
         align-items: center;
         display: flex;
     }
-    Div.XHeader-D3 > Div.XHeaderLewy
+    Div.XHeader-D3 > Div.XHeaderLeft
     {
         background-color: var(--Motyw);
         border-radius: var(--Radius-II) 0 0 var(--Radius-II);
-        padding-left: 0.8vw;
-        padding-right: 0.8vw;
+        padding-left: 1.3vw;
+        padding-right: 0.3vw;
     }
-    Div.XHeader-D3 > Div.XHeaderSrodek
+    Div.XHeader-D3 > Div.XHeaderCenter
     {
+        min-width: 5vw;
         background-color: var(--Motyw);
         border-radius: 0 var(--Radius-II) var(--Radius-II) 0;
-        min-width: 10vw;
-        padding-right: 0.8vw;
+        padding-right: 1.3vw;
     }
-    Div.XHeader-D3 > Div.XHeaderPrawy
+    Div.XHeader-D3 > Div.XHeaderRight
     {
         background-color: var(--Motyw);
         border-radius: var(--Radius-II);
         margin-left: auto;
-        padding-right: 0.8vw;
-        padding-left: 0.8vw;
+        padding-right: 1.3vw;
+        padding-left: 1.3vw;
     }

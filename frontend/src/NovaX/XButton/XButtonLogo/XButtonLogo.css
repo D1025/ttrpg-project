@@ -1,5 +1,6 @@
 /* Pole Loga. */
-A.XButtonLogo
+/* Design 1. */
+A.XButtonLogo-D1
 {
     height: 2.8vw;
     justify-content: center;
@@ -17,32 +18,82 @@ A.XButtonLogo
 }
 
 /* Po najechaniu. */
-A.XButtonLogo:hover
+A.XButtonLogo-D1:hover
 {
     background-color: var(--Motyw-Ciemny)!important;
 }
 
 /* Po kliknięciu. */
-A.XButtonLogo:active
+A.XButtonLogo-D1:active
 {
     background-color: var(--Motyw)!important;
 }
 
     /* Wygląd Zdjęcia w Przycisku. */
-    A.XButtonLogo > Img
+    A.XButtonLogo-D1 > Img
     {
         height: 90%;
     }
 
     /* Wygląd Nazwy w Przycisku. */
-    A.XButtonLogo > Div
+    A.XButtonLogo-D1 > Div
     {
         font-weight: bold;
         font-size: 1.05rem;
         margin-left: 0.25vw;
     }
         /* Wygląd Nazwy w Przycisku. */
-        A.XButtonLogo > *:first-child
+        A.XButtonLogo-D1 > *:first-child
         {
             margin-left: 0.0vw!important;
         }
+
+
+/* Design 2. */
+A.XButtonLogo-D2
+{
+    height: 2.8vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: var(--Radius-I);
+    padding-top: 0.15vw ;
+    padding-bottom: 0.15vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    display: flex;
+    cursor: pointer;
+    transform: var(--Animacja);
+    user-select: none;
+}
+
+/* Po najechaniu. */
+A.XButtonLogo-D2:hover
+{
+    background-color: var(--Motyw-Ciemny)!important;
+}
+
+/* Po kliknięciu. */
+A.XButtonLogo-D2:active
+{
+    background-color: var(--Motyw)!important;
+}
+
+/* Wygląd Zdjęcia w Przycisku. */
+A.XButtonLogo-D2 > Img
+{
+    height: 85%;
+}
+
+/* Wygląd Nazwy w Przycisku. */
+A.XButtonLogo-D2 > Div
+{
+    font-weight: bold;
+    font-size: 1.05rem;
+    margin-left: 0.5vw;
+}
+/* Wygląd Nazwy w Przycisku. */
+A.XButtonLogo-D2 > *:first-child
+{
+    margin-left: 0.0vw!important;
+}

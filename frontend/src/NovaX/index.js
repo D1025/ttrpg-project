@@ -2,16 +2,19 @@ import './Root.css';
 
 // Header.
 export {default as XHeader} from './XHeader/XHeader/XHeader.js';
-export {default as XHeaderLewy} from './XHeader/XHeaderLewy/XHeaderLewy.js';
-export {default as XHeaderSrodek} from './XHeader/XHeaderSrodek/XHeaderSrodek.js';
-export {default as XHeaderPrawy} from './XHeader/XHeaderPrawy/XHeaderPrawy.js';
+export {default as XHeaderLeft} from './XHeader/XHeaderLeft/XHeaderLeft.js';
+export {default as XHeaderCenter} from './XHeader/XHeaderCenter/XHeaderCenter.js';
+export {default as XHeaderRight} from './XHeader/XHeaderRight/XHeaderRight.js';
 
-// Nav.
+// Menu.
 export {default as XMenu} from './XMenu/XMenu/XMenu.js';
-// export { default as XMenu2 [A] } from './XMenu/XMenu2 [A]/XMenu2 [A].js';
-// export { default as XMenu2 [A] } from './XMenu/XMenu2 [A]/XMenu2 [A].js';
+// export { default as XMenu2 } from './XMenu/XMenu2 [A]/XMenu2.js';
 
 // Main.
+export {default as XMain} from './XMain/XMain/XMain.js';
+export {default as XMainMain} from './XMain/XMainMain/XMainMain.js';
+export {default as XMainPanel} from './XMain/XMainPanel/XMainPanel.js';
+export {default as XMainTitle} from './XMainTitle/XMainTitle.js';
 
 // Ramka Obiektów.
 export {default as XRObiekt} from './XRObiekt/XRObiekt.js';
@@ -24,4 +27,4 @@ export {default as XImput} from './XButton/XInput/XInput.js';
 
 // Funkcion.
 export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';
-export {default as ModulTest} from './Funkcion/XModuly/ModulTest.js';
+export {default as ModulTest} from './Funkcion/XModuly/ModulTest.js'; // Test :)

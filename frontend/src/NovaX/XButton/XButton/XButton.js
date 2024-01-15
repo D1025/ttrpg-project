@@ -4,8 +4,8 @@ const XButton = ({title, width = 1, marginBottom = false, active = false, src, a
 {
     let klasy = "XButton-D1";
     if(title) klasy = "XButton-D2";
-    if(width > 0) klasy += " XButton-W" + width;
-    if(marginBottom === true) klasy += " XButton-Margin";
+    if(width >= 0) klasy += " XButton-W" + width;
+    if(marginBottom === true) klasy += " XButton-BMargin";
     if(active === true) klasy += " XButton-Active";
 
     return (

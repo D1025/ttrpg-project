@@ -9,6 +9,7 @@ Div.XButton-D1
     align-items: center;
     text-align: center;
     background-color: var(--Kolor-Dodatkowy);
+    backdrop-filter: var(--Blur);
     border-radius: var(--Radius-I);
     margin-left: var(--Przycisk-Odstep);
     margin-right: var(--Przycisk-Odstep);
@@ -45,6 +46,7 @@ Div.XButton-D2
     text-align: center;
     justify-content: center;
     background-color: var(--Kolor-Dodatkowy);
+    backdrop-filter: var(--Blur);
     border-radius: var(--Radius-I);
     margin-left: var(--Przycisk-Odstep);
     margin-right: var(--Przycisk-Odstep);
@@ -82,30 +84,35 @@ Div.XButton-D2
     }
 
 
-/* Design 1. */
+/* Width 0. */
+Div.XButton-W0
+{
+    min-width: 0;
+}
+/* Width 1. */
 Div.XButton-W1
 {
-    min-width: var(--Przycisk-Szerokość-I);
+    min-width: calc(var(--Przycisk-Szerokość-I) - var(--Przycisk-Odstep) - var(--Przycisk-Odstep));
 }
-/* Design 2. */
+/* Width 2. */
 Div.XButton-W2
 {
-    min-width: var(--Przycisk-Szerokość-II);
+    min-width: calc(var(--Przycisk-Szerokość-II) - var(--Przycisk-Odstep) - var(--Przycisk-Odstep));
 }
-/* Design 3. */
+/* Width 3. */
 Div.XButton-W3
 {
-    min-width: var(--Przycisk-Szerokość-III);
+    min-width: calc(var(--Przycisk-Szerokość-III) - var(--Przycisk-Odstep) - var(--Przycisk-Odstep));
 }
 
 
 /* Margines dolny jeśli przycisk jest w menu pionowym. */
-Div.XButton-Margin
+Div.XButton-BMargin
 {
-    margin-bottom: var(--Przycisk-Odstep);
+    margin-bottom: 0.3vw;
 }
     /* Jeśli jest ostatni to styl niedziała. */
-    Div.XButton-Margin:last-of-type
+    Div.XButton-BMargin:last-of-type
     {
         margin-bottom: 0.0vw!important;
     }

@@ -16,9 +16,9 @@
     --Animacja: background-color 0.05s ease-in-out, color 0.0s ease-in-out;
     --Blur: blur(2.5vw);
 
-    --Radius-III: 2.5vw;
-    --Radius-II: 1.5vw;
-    --Radius-I: 0.8vw;
+    --Radius-III: 2.0vw;
+    --Radius-II: 1.3vw;
+    --Radius-I: 0.7vw;
 
     --Przycisk-Wysokość: 2.4vw;
     --Przycisk-Szerokość-III: 12.0vw;
@@ -31,7 +31,7 @@
 Html
 {
     font-family: Verdana;
-    font-size: 1.0vw;
+    font-size: 1.01vw;
     scroll-behavior: smooth;
 
     /* Scrollbar w Firefox. */
