@@ -76,6 +76,7 @@ Div.XRObiekt > Div.XRObiekt-Opis
     {
         font-size: 0.95rem;
         align-items: center;
+        text-align: left;
         padding-left: 1.5vw;
         padding-right: 0.5vw;
         flex: 4;

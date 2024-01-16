@@ -12,7 +12,7 @@ import {
     ModulTest,
     XImput,
     XMain,
-    XMainMain,
+    XMainArticle,
     XMainPanel,
     XMainTitle
 } from "./NovaX";
@@ -58,13 +58,13 @@ function App()
             </XHeader>
 
             <XMain design={2}>
-                <XMainMain>
+                <XMainArticle>
                     <XMainTitle title={"Pokoje"} tag={"h2"}>
                         <div type={"option"}>
                             <XButton src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={1}/>
                         </div>
                         {/*<div type={"tag"}>[Tag 1] [Tag 2]</div>*/}
-                        {/*<div type={"tag"}>2</div>*/}
+                        {/*<div type={"tag"}> [2]</div>*/}
                     </XMainTitle>
 
                     <XRObiekt design={1}>
@@ -78,7 +78,7 @@ function App()
                     <XRObiekt>
                         <div title={"Logo Strony"} src={"./Grafiki/Logo.png"} describe={"Platforma do gier TTRPG"}/>
                     </XRObiekt>
-                </XMainMain>
+                </XMainArticle>
 
                 <XMainPanel>
                     <XButton title={"Publiczne"} width={3} active={true}/>

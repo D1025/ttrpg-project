@@ -12,9 +12,9 @@ export {default as XMenu} from './XMenu/XMenu/XMenu.js';
 
 // Main.
 export {default as XMain} from './XMain/XMain/XMain.js';
-export {default as XMainMain} from './XMain/XMainMain/XMainMain.js';
+export {default as XMainArticle} from './XMain/XMainArticle/XMainArticle.js';
 export {default as XMainPanel} from './XMain/XMainPanel/XMainPanel.js';
-export {default as XMainTitle} from './XMainTitle/XMainTitle.js';
+export {default as XMainTitle} from './XMain/XMainTitle/XMainTitle.js';
 
 // Ramka Obiektów.
 export {default as XRObiekt} from './XRObiekt/XRObiekt.js';

@@ -15,20 +15,31 @@ Main.XMain-D1
         display: block;
     }
 
-/* Główny main. */
-Main.XMain-D1 > Div.XMainMain
+/* Pole dla Artykułów. */
+Main.XMain-D1 > Div
 {
-    width: 56vw;
-    background-color: var(--Motyw-Przezroczysty);
-    backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-III);
+    width: min-content;
     margin-left: auto;
-    padding-top: 1.5vw;
-    padding-bottom: 1.5vw;
-    padding-left: 2.0vw;
-    padding-right: 2.0vw;
-    display: inline-table;
 }
+    /* Artykół main'a. */
+    Main.XMain-D1 > Div > Article.XMainArticle
+    {
+        width: 56vw;
+        background-color: var(--Motyw-Przezroczysty);
+        backdrop-filter: var(--Blur);
+        border-radius: var(--Radius-III);
+        margin-bottom: 1.0vw;
+        padding-top: 1.5vw;
+        padding-bottom: 1.5vw;
+        padding-left: 2.0vw;
+        padding-right: 2.0vw;
+        display: inline-table;
+    }
+    /* Artykół main'a. */
+    Main.XMain-D1 > Div > Article.XMainArticle:last-of-type
+    {
+        margin-bottom: 0.0vw;
+    }
 
 /* Panel boczny Maina. */
 Main.XMain-D1 > Div.XMainPanel
@@ -82,36 +93,44 @@ Main.XMain-D2
     margin-bottom: 1.0vw;
     margin-left: auto;
     margin-right: auto;
-    /*display: flex;*/
 }
 
-/* Główny main. */
-Main.XMain-D2 > Div.XMainMain
+/* Pole dla Artykułów. */
+Main.XMain-D2 > Div
 {
-    width: 56vw;
-    background-color: var(--Motyw-Przezroczysty);
-    backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-III);
-    /*margin-left: auto;*/
-    padding-top: 1.5vw;
-    padding-bottom: 1.5vw;
-    padding-left: 2.0vw;
-    padding-right: 2.0vw;
-    /*display: block;*/
+    width: min-content;
 }
+    /* Artykół main'a. */
+    Main.XMain-D2 > Div > Article.XMainArticle
+    {
+        width: 56vw;
+        background-color: var(--Motyw-Przezroczysty);
+        backdrop-filter: var(--Blur);
+        border-radius: var(--Radius-III);
+        margin-bottom: 1.0vw;
+        padding-top: 1.5vw;
+        padding-bottom: 1.5vw;
+        padding-left: 2.0vw;
+        padding-right: 2.0vw;
+        display: inline-table;
+    }
+    /* Artykół main'a. */
+    Main.XMain-D2 > Div > Article.XMainArticle:last-of-type
+    {
+        margin-bottom: 0.0vw;
+    }
 
 /* Panel boczny Maina. */
 Main.XMain-D2 > Div.XMainPanel
 {
-    width: 56vw;;
     text-align: center;
     justify-content: left;
-    /*background-color: var(--Motyw-Przezroczysty);*/
-    /*backdrop-filter: var(--Blur);*/
-    /*border-radius: var(--Radius-III);*/
-    /*margin-right: auto;*/
-    padding-top: 0.5vw;
-    padding-bottom: 0.5vw;
+    background-color: var(--Motyw-Przezroczysty);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-II);
+    margin-bottom: 0.5vw;
+    padding-top: 1.0vw;
+    padding-bottom: 1.0vw;
     padding-left: 1.0vw;
     padding-right: 1.0vw;
     display: flex;
@@ -157,20 +176,31 @@ Main.XMain-D3 > Div:only-of-type
     display: block;
 }
 
-/* Główny main. */
-Main.XMain-D3 > Div.XMainMain
+/* Pole dla Artykułów. */
+Main.XMain-D3 > Div
 {
-    width: 56vw;
-    background-color: var(--Motyw-Przezroczysty);
-    backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-III);
+    width: min-content;
     margin-right: auto;
-    padding-top: 1.5vw;
-    padding-bottom: 1.5vw;
-    padding-left: 2.0vw;
-    padding-right: 2.0vw;
-    display: inline-table;
 }
+    /* Artykół main'a. */
+    Main.XMain-D3 > Div > Article.XMainArticle
+    {
+        width: 56vw;
+        background-color: var(--Motyw-Przezroczysty);
+        backdrop-filter: var(--Blur);
+        border-radius: var(--Radius-III);
+        margin-bottom: 1.0vw;
+        padding-top: 1.5vw;
+        padding-bottom: 1.5vw;
+        padding-left: 2.0vw;
+        padding-right: 2.0vw;
+        display: inline-table;
+    }
+    /* Artykół main'a. */
+    Main.XMain-D3 > Div > Article.XMainArticle:last-of-type
+    {
+        margin-bottom: 0.0vw;
+    }
 
 /* Panel boczny Maina. */
 Main.XMain-D3 > Div.XMainPanel
