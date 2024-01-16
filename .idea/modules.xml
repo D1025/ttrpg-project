@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/com.ttrpg.ttrpg.backend.main.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/com.ttrpg.ttrpg.backend.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ttrpg.iml" filepath="$PROJECT_DIR$/.idea/modules/ttrpg.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ttrpg-project.iml" filepath="$PROJECT_DIR$/.idea/ttrpg-project.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/ttrpg.backend.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/ttrpg.backend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/ttrpg.backend.main.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/ttrpg.backend.main.iml" />
     </modules>
   </component>
 </project>
