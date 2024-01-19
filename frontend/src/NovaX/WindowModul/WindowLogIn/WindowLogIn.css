@@ -1,0 +1,86 @@
+/* Modul. */
+.WindowModul
+{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Okienko logowania. */
+Div.WindowLogIn
+{
+    width: 23.0vw;
+    height: 25.0vw;
+    background-color: var(--Motyw);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-III);
+}
+
+/* Górna część pola logowania. */
+Div.WindowLogIn > Div.WindowLogIn-Top
+{
+    height: 3.5vw;
+    justify-content: right;
+    text-align: center;
+    align-items: end;
+    padding-right: 1.0vw;
+    display: flex;
+}
+
+/* Główna część pola logowania. */
+Div.WindowLogIn > Div.WindowLogIn-Main
+{
+    height: 14vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 1.0vw;
+    display: flex;
+}
+    /* . */
+    Div.WindowLogIn > Div.WindowLogIn-Main > Div
+    {
+        text-align: center;
+    }
+    /* . */
+    Div.WindowLogIn > Div.WindowLogIn-Main > Form > Input
+    {
+        width: 13.0vw;
+        height: 2.5vw;
+        font-size: 1.05rem;
+        margin-bottom: 0.5vw;
+    }
+    /* . */
+    Div.WindowLogIn > Div.WindowLogIn-Main > Form > Img
+    {
+        width: 5.0vw;
+        height: 5.0vw;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 0.8vw;
+        display: block;
+    }
+
+
+/* Dolna część pola logowania. */
+Div.WindowLogIn > Div.WindowLogIn-Bottom
+{
+    width: 100%;
+    color: var(--Kolor-Dodatkowy);
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-top: 0.25vw;
+    justify-content: center;
+    display: flex;
+}
+
+
+
+
+

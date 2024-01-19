@@ -5,7 +5,7 @@ import {
     Header, HeaderLeft, HeaderCenter, HeaderRight,
     InfoFrame,
     Button, ButtonLogo, Input,
-    Main, MainArticle, MainPanel, MainTitle, WindowTest,
+    Main, MainArticle, MainPanel, MainTitle, WindowLogIn,
 } from "./NovaX";
 import React, {createRoot} from "react-dom/client";
 
@@ -41,7 +41,7 @@ function App()
 
                 <HeaderRight>
                     <Button active={false} src={"./Ikonki/Style.png"}/>
-                    <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"} onClick={WindowTest} width={0}/>
+                    <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"} onClick={WindowLogIn} width={0}/>
                 </HeaderRight>
             </Header>
 
@@ -76,7 +76,7 @@ function App()
             </Main>
 
             <div id={"test"}/>
-            {/*<WindowTest></WindowTest>*/}
+            {/*<WindowLogIn></WindowLogIn>*/}
         </>
     );
 }

@@ -28,4 +28,4 @@ export {default as Input} from './Button/Input/Input.js';
 // Funkcion.
 export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';
 export {default as WindowModul} from './WindowModul/WindowModul/WindowModul.js';
-export {default as WindowTest} from './WindowModul/WindowTest/WindowTest.js';
+export {default as WindowLogIn} from './WindowModul/WindowLogIn/WindowLogIn.js';
