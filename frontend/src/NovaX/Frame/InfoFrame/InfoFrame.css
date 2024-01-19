@@ -5,7 +5,7 @@ Div.InfoFrame
     background-color: var(--Motyw-Ciemny);
     border-left: 0.3vw solid var(--Motyw-Ciemny);
     border-right: 0.3vw solid var(--Motyw-Ciemny);
-    border-radius: var(--Radius-III);
+    border-radius: var(--Radius-IV);
     margin-bottom: 1.5vw!important;
     margin-left: auto;
     margin-right: auto;
@@ -54,7 +54,7 @@ Div.InfoFrame > Div.InfoFrame-Describe
         {
             max-width: 70%;
             max-height: 10vw;
-            border-radius: var(--Radius-II);
+            border-radius: var(--Radius-III);
         }
 
     /* Wariant gdy jest sam orbazek bez opisu. */
@@ -68,7 +68,7 @@ Div.InfoFrame > Div.InfoFrame-Describe
         {
             max-width: 30%;
             max-height: 10vw;
-            border-radius: var(--Radius-II);
+            border-radius: var(--Radius-III);
         }
 
     /* Opis Przedmiotu [Opis] [2/2]. */

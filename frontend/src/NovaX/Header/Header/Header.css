@@ -11,7 +11,7 @@ Div.Header-D1
     width: var(--Szerokosc);
     min-height: var(--MinWysokosc);
     font-size: 1.0rem;
-    border-radius: var(--Radius-II);
+    border-radius: var(--Radius-III);
     background-color: var(--Motyw);
     margin: 1.0vw auto 1.5vw auto;
     display: flex;
@@ -52,7 +52,7 @@ Div.Header-D2
     width: var(--Szerokosc);
     min-height: var(--MinWysokosc);
     font-size: 1.0rem;
-    border-radius: var(--Radius-II);
+    border-radius: var(--Radius-III);
     background-color: var(--Motyw);
     background-position: right;
     background-repeat: no-repeat;
@@ -112,7 +112,7 @@ Div.Header-D3
     Div.Header-D3 > Div.HeaderLeft
     {
         background-color: var(--Motyw);
-        border-radius: var(--Radius-II) 0 0 var(--Radius-II);
+        border-radius: var(--Radius-III) 0 0 var(--Radius-III);
         padding-left: 1.3vw;
         padding-right: 0.3vw;
     }
@@ -120,13 +120,13 @@ Div.Header-D3
     {
         min-width: 5vw;
         background-color: var(--Motyw);
-        border-radius: 0 var(--Radius-II) var(--Radius-II) 0;
+        border-radius: 0 var(--Radius-III) var(--Radius-III) 0;
         padding-right: 1.3vw;
     }
     Div.Header-D3 > Div.HeaderRight
     {
         background-color: var(--Motyw);
-        border-radius: var(--Radius-II);
+        border-radius: var(--Radius-III);
         margin-left: auto;
         padding-right: 1.3vw;
         padding-left: 1.3vw;

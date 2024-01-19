@@ -27,7 +27,7 @@ Main.Main-D1 > Div
         width: 56vw;
         background-color: var(--Motyw-Przezroczysty);
         backdrop-filter: var(--Blur);
-        border-radius: var(--Radius-III);
+        border-radius: var(--Radius-IV);
         margin-bottom: 1.0vw;
         padding-top: 1.5vw;
         padding-bottom: 1.5vw;
@@ -50,7 +50,7 @@ Main.Main-D1 > Div.MainPanel
     justify-content: center;
     background-color: var(--Motyw-Przezroczysty);
     backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-III);
+    border-radius: var(--Radius-IV);
     margin-left: 0.5vw;
     margin-right: auto;
     padding-top: 1.5vw;
@@ -106,7 +106,7 @@ Main.Main-D2 > Div
         width: 56vw;
         background-color: var(--Motyw-Przezroczysty);
         backdrop-filter: var(--Blur);
-        border-radius: var(--Radius-III);
+        border-radius: var(--Radius-IV);
         margin-bottom: 1.0vw;
         padding-top: 1.5vw;
         padding-bottom: 1.5vw;
@@ -127,7 +127,7 @@ Main.Main-D2 > Div.MainPanel
     justify-content: left;
     background-color: var(--Motyw-Przezroczysty);
     backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-II);
+    border-radius: var(--Radius-III);
     margin-bottom: 0.5vw;
     padding-top: 1.0vw;
     padding-bottom: 1.0vw;
@@ -188,7 +188,7 @@ Main.Main-D3 > Div
         width: 56vw;
         background-color: var(--Motyw-Przezroczysty);
         backdrop-filter: var(--Blur);
-        border-radius: var(--Radius-III);
+        border-radius: var(--Radius-IV);
         margin-bottom: 1.0vw;
         padding-top: 1.5vw;
         padding-bottom: 1.5vw;
@@ -211,7 +211,7 @@ Main.Main-D3 > Div.MainPanel
     justify-content: center;
     background-color: var(--Motyw-Przezroczysty);
     backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-III);
+    border-radius: var(--Radius-IV);
     margin-right: 0.5vw;
     margin-left: auto;
     padding-top: 1.5vw;

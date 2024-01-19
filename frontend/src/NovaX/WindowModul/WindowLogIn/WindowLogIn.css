@@ -1,8 +1,13 @@
-/* Modul. */
+/* Nadpisany Modul. */
 .WindowModul
 {
     justify-content: center;
     align-items: center;
+    background-image: var(--Tło-Strony);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: var(--Motyw);
     display: flex;
     position: fixed;
     top: 0;
@@ -19,7 +24,7 @@ Div.WindowLogIn
     height: 25.0vw;
     background-color: var(--Motyw);
     backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-III);
+    border-radius: var(--Radius-IV);
 }
 
 /* Górna część pola logowania. */
@@ -43,12 +48,12 @@ Div.WindowLogIn > Div.WindowLogIn-Main
     margin-top: 1.0vw;
     display: flex;
 }
-    /* . */
+    /* Pole z hasłem iemailem. */
     Div.WindowLogIn > Div.WindowLogIn-Main > Div
     {
         text-align: center;
     }
-    /* . */
+    /* Nadpisane inputy. */
     Div.WindowLogIn > Div.WindowLogIn-Main > Form > Input
     {
         width: 13.0vw;
@@ -56,7 +61,7 @@ Div.WindowLogIn > Div.WindowLogIn-Main
         font-size: 1.05rem;
         margin-bottom: 0.5vw;
     }
-    /* . */
+    /* Logo w konie logowania. */
     Div.WindowLogIn > Div.WindowLogIn-Main > Form > Img
     {
         width: 5.0vw;
@@ -66,7 +71,6 @@ Div.WindowLogIn > Div.WindowLogIn-Main
         margin-bottom: 0.8vw;
         display: block;
     }
-
 
 /* Dolna część pola logowania. */
 Div.WindowLogIn > Div.WindowLogIn-Bottom

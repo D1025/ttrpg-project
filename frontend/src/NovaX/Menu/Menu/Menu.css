@@ -57,7 +57,7 @@
 {
     width: calc( var(--Przycisk-Szerokość-I) + 0.5vw );
     background-color: var(--Motyw);
-    border-radius: 0.0vw 0.0vw var(--Radius-II) var(--Radius-II);
+    border-radius: 0.0vw 0.0vw var(--Radius-III) var(--Radius-III);
     list-style: none;
     margin: 0.0vw;
     padding: 0.2vw 0.0vw 0.2vw 0.0vw;

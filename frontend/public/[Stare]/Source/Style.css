@@ -10,7 +10,7 @@
 	
 	--Radius-Maly: 0.8vw;
 	--Radius-Podstawowy: 1.0vw;
-	--Radius-Duzy: 1.3vw;
+	--Radius-I: 1.3vw;
 	
 	--Blur: blur(1vw);
 }
@@ -223,7 +223,7 @@ Main
 	max-width: 70vw;
 	background-color: var(--Motyw);
 	backdrop-filter: var(--Blur);
-	border-radius: var(--Radius-Duzy);
+	border-radius: var(--Radius-I);
 	margin-top: 4vw;
 	margin-left: auto;
 	margin-right: auto;
@@ -260,7 +260,7 @@ Div.Pokoj
 	height: 2vw;
 	align-items: center;
 	background-color: var(--Motyw-Ciemny);
-	border-radius: var(--Radius-Duzy);
+	border-radius: var(--Radius-I);
 	margin-bottom: 0.25vw;
 	padding-top: 0.6vw;
 	padding-bottom: 0.6vw;

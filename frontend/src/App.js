@@ -5,7 +5,7 @@ import {
     Header, HeaderLeft, HeaderCenter, HeaderRight,
     InfoFrame,
     Button, ButtonLogo, Input,
-    Main, MainArticle, MainPanel, MainTitle, WindowLogIn,
+    Main, MainArticle, MainPanel, MainTitle, WindowLogIn, RoomBar
 } from "./NovaX";
 import React, {createRoot} from "react-dom/client";
 
@@ -33,14 +33,8 @@ function App()
                     </Menu>
                 </HeaderCenter>
 
-                {/*<HeaderRight>*/}
-                {/*    <Button active={false} src={"./Ikonki/Konto.png"}/>*/}
-                {/*    <Imput active={false} type={'button'} value={"Zaloguj Się"}/>*/}
-                {/*    <Imput active={false} type={'text'} placeholder={"Wpisz"}/>*/}
-                {/*</HeaderRight>*/}
-
                 <HeaderRight>
-                    <Button active={false} src={"./Ikonki/Style.png"}/>
+                    {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
                     <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"} onClick={WindowLogIn} width={0}/>
                 </HeaderRight>
             </Header>
@@ -61,17 +55,7 @@ function App()
                         {/*<div type={"tag"}>[Tag 1] [Tag 2]</div>*/}
                     </MainTitle>
 
-                    {/*<InfoFrame design={1}>*/}
-                    {/*    <div title={"TTRPG"}*/}
-                    {/*         describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>*/}
-                    {/*    <div title={"TTRPG"} src={"./Grafiki/Logo.png"}*/}
-                    {/*         describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>*/}
-                    {/*    <div title={"TTRPG"} src={"./Grafiki/Logo.png"}/>*/}
-                    {/*</InfoFrame>*/}
-
-                    {/*<InfoFrame>*/}
-                    {/*    <div title={"Logo Strony"} src={"./Grafiki/Logo.png"} describe={"Platforma do gier TTRPG"}/>*/}
-                    {/*</InfoFrame>*/}
+                    <RoomBar title={"Nazwa"} description={"Opis"} src={"Obraz"} alt={"ObrazAlt"} />
                 </MainArticle>
             </Main>
 

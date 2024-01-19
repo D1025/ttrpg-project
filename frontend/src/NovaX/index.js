@@ -16,10 +16,14 @@ export {default as MainArticle} from './Main/MainArticle/MainArticle.js';
 export {default as MainPanel} from './Main/MainPanel/MainPanel.js';
 export {default as MainTitle} from './Main/MainTitle/MainTitle.js';
 
-// Ramka Obiektów.
+// Frame.
 export {default as InfoFrame} from './Frame/InfoFrame/InfoFrame.js';
 
-// Przyciski.
+// Bar.
+export {default as RoomBar} from './Bar/RoomBar/RoomBar.js';
+// export {default as EpisodeBar} from './Bar/EpisodeBar [A]/EpisodeBar.js';
+
+// Button.
 export {default as Button} from './Button/Button/Button.js';
 export {default as ButtonChoice} from './Button/ButtonChoice/ButtonChoice.js';
 export {default as ButtonLogo} from './Button/ButtonLogo/ButtonLogo';

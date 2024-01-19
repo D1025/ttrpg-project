@@ -8,16 +8,19 @@
     --Motyw-Oznaczenia: rgba(169, 169, 169, 1.0);
 
     --Tło-Dodatkowe: url("/public/Grafiki/TłoDodatkowe/TOPanime.jpg");
+    --Tło-Strony: url("https://cdn.openart.ai/stable_diffusion/9527cd1e77a614a32dd167420d1f1c0e535b5673_2000x2000.webp");
+    --Kolor-Dodatkowy: rgba(87, 159, 100, 0.95);
     /*--Tło-Strony: url("https://www.wallpaperup.com/uploads/wallpapers/2014/11/09/511448/4f484aafdd7ee86d3e479462ef7760f7.jpg");*/
     /*--Kolor-Dodatkowy: rgba(205, 197, 135, 0.95);*/
-    --Tło-Strony: url("/public/Grafiki/Tło/CzerwonyLas.jpg");
-    --Kolor-Dodatkowy: rgba(148, 5, 48, 0.8);
+    /*--Tło-Strony: url("/public/Grafiki/Tło/CzerwonyLas.jpg");*/
+    /*--Kolor-Dodatkowy: rgba(148, 5, 48, 0.8);*/
 
     --Animacja: background-color 0.05s ease-in-out, color 0.0s ease-in-out;
     --Blur: blur(2.5vw);
 
-    --Radius-III: 2.0vw;
-    --Radius-II: 1.3vw;
+    --Radius-IV: 1.5vw;
+    --Radius-III: 1.3vw;
+    --Radius-II: 1.0vw;
     --Radius-I: 0.7vw;
 
     --Przycisk-Wysokość: 2.4vw;
