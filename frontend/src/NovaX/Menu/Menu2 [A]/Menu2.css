@@ -1,0 +1,122 @@
+/* Menu. */
+Nav.Menu2
+{
+    font-weight: bold;
+    list-style: none;
+    margin: 0.0vw;
+    padding: 0.0vw;
+    display: flex;
+    user-select: none;
+    z-index: 5;
+}
+
+/* . */
+Nav.Menu2 > Li
+{
+    width: var(--Przycisk-Szerokość-I);
+    height: var(--Przycisk-Wysokość);
+    font-size: 1.0rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Kolor-Dodatkowy);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-I);
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    display: flex;
+    cursor: pointer;
+    transition: var(--Animacja);
+}
+
+/* . */
+Nav.Menu2 > Li a
+{
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.6vw;
+    padding-bottom: 0.6vw;
+    display: flex;
+}
+
+/* . */
+Nav.Menu2 Li:hover
+{
+    background-color: var(--Motyw-Ciemny);
+}
+
+/* . */
+Nav.Menu2 Li:active
+{
+    background-color: var(--Motyw);
+}
+
+/* . */
+Nav.Menu2 > Li > Nav
+{
+    width: calc( var(--Przycisk-Szerokość-I) + 0.5vw );
+    background-color: var(--Motyw);
+    border-radius: 0.0vw 0.0vw var(--Radius-II) var(--Radius-II);
+    list-style: none;
+    margin: 0.0vw;
+    padding: 0.2vw 0.0vw 0.2vw 0.0vw;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -0.25vw;
+    cursor: default;
+}
+
+/* . */
+Nav.Menu2 > Li:hover > Nav
+{
+    display: block;
+}
+
+/* . */
+Nav.Menu2 > Li > Nav > Li
+{
+    width: 90%;
+    font-size: 0.9rem;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: var(--Kolor-Dodatkowy);
+    border-radius: var(--Radius-I);
+    margin-top: 0.4vw;
+    margin-bottom: 0.4vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    cursor: pointer;
+    transition: var(--Animacja);
+}
+
+/* . */
+Nav.Menu2 > Li > Nav > Li a
+{
+    width: 100%;
+    padding-top: 0.6vw;
+    padding-bottom: 0.6vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    display: flex;
+}
+
+/* Blokada Klikania Li. */
+Li.Li-Nieklikalny
+{
+    width: var(--Przycisk-Szerokość-I);
+    min-height: var(--Przycisk-Wysokość);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+}
+/* Po Najechaniu i Kliknięciu. */
+Li.Li-Nieklikalny:hover, Li.Li-Nieklikalny:active
+{
+    background-color: var(--Motyw-Ciemny)!important;
+}

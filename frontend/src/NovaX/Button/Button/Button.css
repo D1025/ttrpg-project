@@ -1,0 +1,125 @@
+/* Małe Przyciski, Pole trzymające mały przycisk. */
+/* Design 1 [Kwadrat]. */
+Div.Button-D1
+{
+    min-width: 0.0vw!important;
+    width: var(--Przycisk-Wysokość);
+    height: var(--Przycisk-Wysokość);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--Kolor-Dodatkowy);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-I);
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    display: flex;
+    cursor: pointer;
+    transition: var(--Animacja);
+}
+/* Przycisk po najechaniu. */
+Div.Button-D1:hover
+{
+    background-color: var(--Motyw-Czarny)!important;
+}
+/* Przycisk po kliknięciu. */
+Div.Button-D1:active
+{
+    background-color: var(--Motyw)!important;
+}
+/* Wygląd obrazka w przycisku. */
+Div.Button-D1 > Img
+{
+    max-width: 65%;
+    max-height: 65%;
+}
+
+
+/* Design 2 [Szeroki]. */
+Div.Button-D2
+{
+    height: var(--Przycisk-Wysokość);
+    width: max-content!important;
+    font-size: 1.0rem;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: var(--Kolor-Dodatkowy);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-I);
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    padding-left: 0.25vw;
+    padding-right: 0.25vw;
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    transition: var(--Animacja);
+}
+
+    /* Po Najechaniu. */
+    Div.Button-D2:hover
+    {
+        background-color: var(--Motyw-Czarny)!important;
+    }
+    /* Po Kliknięciu. */
+    Div.Button-D2:active
+    {
+        background-color: var(--Motyw)!important;
+    }
+    /* Wygląd obrazka w przycisku. */
+    Div.Button-D2 > Img
+    {
+        max-width: 65%;
+        max-height: 65%;
+        margin-left: 0.25vw;
+        margin-right: 0.25vw;
+    }
+    /* Wygląd tytułu w przycisku. */
+    Div.Button-D2 > Div
+    {
+        margin-left: 0.25vw;
+        margin-right: 0.25vw;
+    }
+
+
+/* Width 0. */
+Div.Button-W0
+{
+    min-width: 0;
+}
+/* Width 1. */
+Div.Button-W1
+{
+    min-width: calc(var(--Przycisk-Szerokość-I) - var(--Przycisk-Odstep) - var(--Przycisk-Odstep));
+}
+/* Width 2. */
+Div.Button-W2
+{
+    min-width: calc(var(--Przycisk-Szerokość-II) - var(--Przycisk-Odstep) - var(--Przycisk-Odstep));
+}
+/* Width 3. */
+Div.Button-W3
+{
+    min-width: calc(var(--Przycisk-Szerokość-III) - var(--Przycisk-Odstep) - var(--Przycisk-Odstep));
+}
+
+
+/* Margines dolny jeśli przycisk jest w menu pionowym. */
+Div.Button-BMargin
+{
+    margin-bottom: 0.3vw;
+}
+    /* Jeśli jest ostatni to styl niedziała. */
+    Div.Button-BMargin:last-of-type
+    {
+        margin-bottom: 0.0vw!important;
+    }
+
+
+/* Aktywny. */
+Div.Button-Active
+{
+    background-color: var(--Motyw-Ciemny);
+}

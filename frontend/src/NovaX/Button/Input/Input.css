@@ -1,0 +1,75 @@
+/* Nadpisany: Input do Klikania. */
+Input.Input[type="submit"], Input.Input[type="button"]
+{
+    min-width: var(--Przycisk-Szerokość-I);
+    width: 0.0vw;
+    height: var(--Przycisk-Wysokość);
+    align-items: center;
+    text-align: center;
+    font-size: 1.0rem;
+    font-weight: bold;
+    color: inherit;
+    justify-content: center;
+    background-color: var(--Kolor-Dodatkowy);
+    border-radius: var(--Radius-I);
+    border: 0.0vw;
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    cursor: pointer;
+    user-select: none;
+    transition: var(--Animacja);
+}
+/* Wygląd Przycisku po Najechaniu. */
+Input.Input[type="submit"]:hover, Input.Input[type="button"]:hover
+{
+    background-color: var(--Motyw-Czarny)!important;
+}
+/* Wygląd Przycisku po Aktywacji. */
+Input.Input[type="submit"]:active, Input.Input[type="button"]:active
+{
+    background-color: var(--Motyw)!important;
+}
+
+
+/* Nadpisany: Input do Wyszukiwania. */
+Input.Input[type="text"], Input.Input[type="password"]
+{
+    min-width: var(--Przycisk-Szerokość-I);
+    width: 0;
+    height: var(--Przycisk-Wysokość);
+    color: inherit;
+    font-size: 1.0rem;
+    font-weight: bold;
+    background-color: var(--Motyw);
+    border: 0.2vw solid var(--Kolor-Dodatkowy);
+    border-radius: var(--Radius-I);
+    box-sizing: border-box;
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    cursor: pointer;
+    transition: var(--Animacja);
+}
+/* Wygląd Podczas Wpisywania i po Wpisaniu. */
+Input.Input[type="text"]:focus, Input.Input[type="text"]:valid:not(:placeholder-shown),
+Input.Input[type="password"]:focus, Input.Input[type="password"]:valid:not(:placeholder-shown)
+{
+    background-color: var(--Motyw-Ciemny);
+    cursor: text;
+}
+/* Nadpisanie Placecholder. */
+Input.Input[type="text"]::placeholder, Input.Input[type="password"]::placeholder
+{
+    color: white;
+    opacity: 0.6;
+}
+
+
+/* Aktywny. */
+Input[type="Submit"].Input-Active, Input[type="Button"].Input-Active,Input[type="text"].Input-Active, Input[type="password"].Input-Active
+{
+    background-color: var(--Motyw-Ciemny)!important;
+}
