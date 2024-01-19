@@ -1,16 +1,16 @@
 import React, {createRoot} from 'react-dom/client';
-import {WindowModul, Imput} from "../../index";
+import {WindowModul, Input} from "../../index";
 
 const WindowTest = () =>
 {
     // Przykładowy Moduł.
     const renderZawartosc = (zamknij) => (
         <div>
-            <Imput type={"text"} placeholder={"dsad"}/><br/>
-            <Imput type={"password"}/><br/>
+            <Input type={"text"} placeholder={"dsad"}/><br/>
+            <Input type={"password"}/><br/>
 
-            <Imput type={"submit"} value={"Zaloguj Się"}/>
-            <Imput type={"submit"} value={"Zamknij"} onClick={zamknij}/>
+            <Input type={"submit"} value={"Zaloguj Się"}/>
+            <Input type={"submit"} value={"Zamknij"} onClick={zamknij}/>
         </div>
     );
 

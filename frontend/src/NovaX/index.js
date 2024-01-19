@@ -23,7 +23,7 @@ export {default as InfoFrame} from './Frame/InfoFrame/InfoFrame.js';
 export {default as Button} from './Button/Button/Button.js';
 export {default as ButtonChoice} from './Button/ButtonChoice/ButtonChoice.js';
 export {default as ButtonLogo} from './Button/ButtonLogo/ButtonLogo';
-export {default as Imput} from './Button/Input/Input.js';
+export {default as Input} from './Button/Input/Input.js';
 
 // Funkcion.
 export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';

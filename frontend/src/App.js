@@ -10,7 +10,7 @@ import {
     Button,
     ButtonLogo,
     WindowTest,
-    Imput,
+    Input,
     Main,
     MainArticle,
     MainPanel,
