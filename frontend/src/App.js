@@ -2,20 +2,12 @@ import './App.css';
 import {
     setTittle,
     Menu,
-    Header,
-    HeaderLeft,
-    HeaderCenter,
-    HeaderRight,
+    Header, HeaderLeft, HeaderCenter, HeaderRight,
     InfoFrame,
-    Button,
-    ButtonLogo,
-    WindowTest,
-    Input,
-    Main,
-    MainArticle,
-    MainPanel,
-    MainTitle
+    Button, ButtonLogo, Input,
+    Main, MainArticle, MainPanel, MainTitle, WindowTest,
 } from "./NovaX";
+import React, {createRoot} from "react-dom/client";
 
 
 function App()
