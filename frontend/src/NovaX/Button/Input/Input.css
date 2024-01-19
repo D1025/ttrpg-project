@@ -11,6 +11,7 @@ Input.Input[type="submit"], Input.Input[type="button"]
     color: inherit;
     justify-content: center;
     background-color: var(--Kolor-Dodatkowy);
+    backdrop-filter: var(--Blur);
     border-radius: var(--Radius-I);
     border: 0.0vw;
     margin-left: var(--Przycisk-Odstep);
@@ -43,6 +44,7 @@ Input.Input[type="text"], Input.Input[type="password"]
     font-size: 1.0rem;
     font-weight: bold;
     background-color: var(--Motyw);
+    backdrop-filter: var(--Blur);
     border: 0.2vw solid var(--Kolor-Dodatkowy);
     border-radius: var(--Radius-I);
     box-sizing: border-box;

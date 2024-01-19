@@ -1,20 +1,21 @@
 import React, {createRoot} from 'react-dom/client';
-import {WindowModul} from "../../index";
+import {WindowModul, Imput} from "../../index";
 
 const WindowTest = () =>
 {
     // Przykładowy Moduł.
     const renderZawartosc = (zamknij) => (
         <div>
-            <p>Test Modulu!</p>
-            <button onClick={zamknij}>Zamknij</button>
+            <Imput type={"text"} placeholder={"dsad"}/><br/>
+            <Imput type={"password"}/><br/>
+
+            <Imput type={"submit"} value={"Zaloguj Się"}/>
+            <Imput type={"submit"} value={"Zamknij"} onClick={zamknij}/>
         </div>
     );
 
-    const container = document.getElementById("test");
-
     // Sprawdź, czy już istnieje root
-    const root = createRoot(container);
+    const root = createRoot(document.getElementById("test"));
 
     // Użyj root.render zamiast createRoot, jeśli root już istnieje
     root.render(<WindowModul zawartosc={renderZawartosc}/>);
