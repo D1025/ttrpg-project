@@ -1,12 +1,6 @@
 package com.ttrpg.project.service;
 
-import java.security.Key;
 import java.time.LocalDateTime;
-import java.util.Date;
-
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Service;
 
 import com.ttrpg.project.configuration.ProjectProperties;
@@ -16,11 +10,6 @@ import com.ttrpg.project.model.Users;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-
-import javax.crypto.spec.SecretKeySpec;
-import javax.xml.bind.DatatypeConverter;
-
-import static javax.crypto.Cipher.SECRET_KEY;
 
 @Service
 @RequiredArgsConstructor
