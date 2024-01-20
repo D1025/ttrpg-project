@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="poprawa" />
+    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="poprawa">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +22,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SHOW_RECENT_BRANCHES" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -37,8 +43,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.TtrpgApplication.executor": "Debug",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "3-Stroktora",
+    "git-widget-placeholder": "Rebasing main",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/adria/WebstormProjects/ttrpg-project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -60,6 +67,7 @@
       <workItem from="1697828120238" duration="776000" />
       <workItem from="1698586791643" duration="792000" />
       <workItem from="1698587596099" duration="737000" />
+      <workItem from="1705764428922" duration="3570000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <option name="closed" value="true" />

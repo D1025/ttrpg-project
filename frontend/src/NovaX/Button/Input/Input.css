@@ -89,7 +89,7 @@ input.Input[type="checkbox"]
     input.Input[type="checkbox"] + label
     {
         position: relative;
-        padding-left: 1.0vw; /* Dla dodatkowej przestrzeni po lewej stronie */
+        padding-left: 1.2vw; /* Dla dodatkowej przestrzeni po lewej stronie */
         cursor: pointer;
     }
 
@@ -100,8 +100,8 @@ input.Input[type="checkbox"]
         position: absolute;
         left: 0;
         top: 0.25vw;
-        width: 0.8vw; /* Szerokość niestandardowego checkboxa */
-        height: 0.8vw; /* Wysokość niestandardowego checkboxa */
+        width: 0.9vw; /* Szerokość niestandardowego checkboxa */
+        height: 0.9vw; /* Wysokość niestandardowego checkboxa */
         background-color: var(--Motyw);
         border-radius: 0.3vw;
     }
@@ -111,17 +111,7 @@ input.Input[type="checkbox"]
     {
         background-color: var(--Kolor-Dodatkowy);
         background-image: url("/public/Ikonki/Zaznaczenie.png");
-        background-size: 90%;
+        background-size: 80%;
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center center;
     }
-
-
-
-
-
-
-
-
-
-

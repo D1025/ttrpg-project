@@ -1,7 +1,7 @@
 import React from 'react';
 import './Input.css';
 
-const Input = ({type, active=false, title, placeholder, value, autoFocus, required, disabled, ...rest}) =>
+const Input = ({type, active=false, title, placeholder, value, autoFocus, disabled, ...rest}) =>
 {
     let klasy = "Input";
 
@@ -14,7 +14,6 @@ const Input = ({type, active=false, title, placeholder, value, autoFocus, requir
         <input
             {...rest}
             autoFocus={autoFocus}
-            required={required}
             placeholder={placeholder}
             disabled={disabled}
             value={value}
