@@ -1,3 +1,4 @@
+import {useState} from "react";
 import './App.css';
 import {
     setTittle,
@@ -7,9 +8,6 @@ import {
     Button, ButtonLogo, Input,
     Main, MainArticle, MainPanel, MainTitle, WindowLogIn, RoomBar
 } from "./NovaX";
-import React, {createRoot} from "react-dom/client";
-import {useState} from "react";
-
 
 function App()
 {
@@ -19,6 +17,7 @@ function App()
     // Logowanie.
     const [showLogin, setShowLogin] = useState(false);
     const toggleShowLogin = () => {
+        console.log('Toggle login view');
         setShowLogin(prevShowLogin => !prevShowLogin);
     };
 

@@ -1,61 +1,107 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import bcrypt from 'bcryptjs';
 import {Input, Label, Button} from "../../index";
 import './WindowLogIn.css';
 
-const WindowLogIn = ({onClose}) =>
+const OknoLogowania = ({onClose}) =>
 {
-    const [isLoginView, setIsLoginView] = useState(true); // Logowanie/Rejestracja
+    const [czyLogRejestr, ustawCzyLogRejestr] = useState(true);
+
     // Logowanie.
-    const [email, setEmail] = useState('');
-    const [haslo, setHaslo] = useState('');
+    const [email, ustawEmail] = useState('');
+    const [haslo, ustawHaslo] = useState('');
+    const pobierzEmail = (event) => // Email.
+    {
+        ustawEmail(event.target.value);
+    };
+    const pobierzHaslo = (event) => // Haslo.
+    {
+        ustawHaslo(event.target.value);
+    };
 
     // Rejestracja.
-    const [nazwa1, setNazwe1] = useState('');
-    const [email1, setEmail1] = useState('');
-    const [haslo1, setHaslo1] = useState('');
+    const [nazwaRejestracja, ustawNazweRejestracja] = useState('');
+    const [emailRejestracja, ustawEmailRejestracja] = useState('');
+    const [hasloRejestracja, ustawHasloRejestracja] = useState('');
+    const pobierzNazweRejestracja = (event) => // Nazwa.
+    {
+        ustawNazweRejestracja(event.target.value);
+    };
+    const pobierzEmailRejestracja = (event) => // Email.
+    {
+        ustawEmailRejestracja(event.target.value);
+    };
+    const pobierzHasloRejestracja = (event) => // Haslo.
+    {
+        ustawHasloRejestracja(event.target.value);
+    };
 
     // Wspólne.
-    const [checkbox, setcheckbox] = useState(false);
-    const [logowanieStatus, setLogowanieStatus] = useState(false);
-    const [bladWykonania, setBladWykonania] = useState('');
+    const [zaznaczCheckbox, ustawCheckbox] = useState(false);
+    const [statusLogowania, ustawStatusLogowania] = useState(false);
+    const [blad, ustawBlad] = useState('');
 
-    // Pobieranie danych z inputów.
-    const pobierzEmail = (event) =>
+    // Usuwanie powiadomienia błędu jak zmienimy pole Logowanie/Rejestracja.
+    useEffect(() => {
+        if (blad) {
+            ustawBlad('');
+        }
+    }, [czyLogRejestr]);
+
+    const pobierzCheckbox = (event) =>
     {
-        setEmail(event.target.value);
-    };
-    const pobierzHaslo = (event) =>
-    {
-        setHaslo(event.target.value);
-    };
-    const pobierzCheckbox = (event) => {
-        setcheckbox(event.target.checked);
-    };
-    const pobierzNazwe = (event) =>
-    {
-        setNazwe1(event.target.value);
+        ustawCheckbox(event.target.checked);
     };
 
-    // Wykonywanie Logowania.
-    const submitLogin = async(event) =>
+    // Przesyłanie Logowania.
+    const przeslijLogowanie = async(event) =>
     {
         event.preventDefault();
-        const hashedPassword = bcrypt.hashSync(haslo, 50);
+
+        try
+        {
+            const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: bcrypt(haslo, 50),
+                    rememberMe: zaznaczCheckbox
+                })
+            });
+
+            if(!odpowiedz.ok)
+            {
+                throw new Error(`Błąd sieciowy: status ${odpowiedz.status}`);
+            }
+
+            const dane = await odpowiedz.json();
+            // Dane Zwrotne.
+            console.log(dane);
+            ustawStatusLogowania(true); // Stan logowania na true.
+        }
+        catch(blad)
+        {
+            ustawBlad(`Błąd logowania: ${blad.message}`);
+            ustawStatusLogowania(false); // Stan logowania na false.
+        }
     };
-    // Wykonywanie Rejestracji.
-    const submitRegister = async(event) =>
+
+    // Przesyłanie Rejestracji.
+    const przeslijRejestracje = async(event) =>
     {
         event.preventDefault();
-        // Implementacja rejestracji
+        // TODO: Implementacja rejestracji.
     };
 
     return (
         <div className={"WindowModul"}>
             <div>
                 <div className={"WindowChoice"}>
-                    <Button title={"Logowanie"} active={isLoginView} onClick={() => setIsLoginView(true)}/>
-                    <Button title={"Rejestracja"} active={!isLoginView} onClick={() => setIsLoginView(false)}/>
+                    <Button title={"Logowanie"} active={czyLogRejestr} onClick={() => ustawCzyLogRejestr(true)}/>
+                    <Button title={"Rejestracja"} active={!czyLogRejestr} onClick={() => ustawCzyLogRejestr(false)}/>
                 </div>
 
                 <div className={"WindowLogIn"}>
@@ -64,52 +110,56 @@ const WindowLogIn = ({onClose}) =>
                     </div>
 
                     <div className={"WindowLogIn-Main"}>
-                        {isLoginView ? (
-                            // Formularz logowania.
-                            <form onSubmit={submitLogin}>
+                        {czyLogRejestr ? (
+                            // Logowanie.
+                            <form onSubmit={przeslijLogowanie}>
                                 <div>
                                     <img src={"./Grafiki/Logo.png"} alt={""}/>
 
-                                    <Input type={"text"} name={"email"} placeholder={"Email"} onChange={pobierzEmail} required/>
-                                    <Input type={"password"} name={"password"} placeholder={"Hasło"} onChange={pobierzHaslo} required/>
+                                    <Input type={"text"} name={"email"} placeholder={"Email"} onChange={pobierzEmail}
+                                           required/>
+                                    <Input type={"password"} name={"password"} placeholder={"Hasło"}
+                                           onChange={pobierzHaslo} required/>
 
                                     <div className={"WindowLogIn-Checkbox"}>
                                         <Input id={"rememberMe"} type={"checkbox"} onChange={pobierzCheckbox} required/>
                                         <Label htmlFor={"rememberMe"}>Zapamiętaj mnie</Label>
                                     </div>
 
-                                    <Input type={"submit"} value={"Zaloguj Się"}/>
+                                    <Input type={"submit"} value={"Zaloguj się"}/>
                                 </div>
                             </form>
                         ) : (
-                            // Formularz rejestracji
-                            <form onSubmit={submitRegister}>
+                            // Rejestracja.
+                            <form onSubmit={przeslijRejestracje}>
                                 <div>
                                     <img src={"./Grafiki/Logo.png"} alt={""}/>
 
-                                    <Input type={"text"} name={"name"} placeholder={"Nazwa"} onChange={pobierzNazwe} required/>
-                                    <Input type={"text"} name={"email"} placeholder={"Email"} onChange={pobierzEmail} required/>
-                                    <Input type={"password"} name={"password"} placeholder={"Hasło"} onChange={pobierzHaslo} required/>
+                                    <Input type={"text"} name={"name"} placeholder={"Nazwa"}
+                                           onChange={pobierzNazweRejestracja} required/>
+                                    <Input type={"text"} name={"email"} placeholder={"Email"}
+                                           onChange={pobierzEmailRejestracja} required/>
+                                    <Input type={"password"} name={"password"} placeholder={"Hasło"}
+                                           onChange={pobierzHasloRejestracja} required/>
 
                                     <div className={"WindowLogIn-Checkbox"}>
                                         <Input id={"regulamin"} type={"checkbox"} onChange={pobierzCheckbox} required/>
                                         <Label htmlFor={"regulamin"}>Regulamin</Label>
                                     </div>
 
-                                    <Input type={"submit"} value={"Zarejestruj Się"}/>
+                                    <Input type={"submit"} value={"Zarejestruj się"}/>
                                 </div>
                             </form>
                         )}
                     </div>
 
                     <div className={"WindowLogIn-Bottom"}>
-                        {bladWykonania}
+                        {blad}
                     </div>
-
                 </div>
             </div>
         </div>
     );
 }
 
-export default WindowLogIn;
+export default OknoLogowania;

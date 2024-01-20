@@ -108,12 +108,14 @@ Div.WindowLogIn > Div.WindowLogIn-Main
 /* Dolna część pola logowania. */
 Div.WindowLogIn > Div.WindowLogIn-Bottom
 {
-    width: 100%;
+    max-width: 100%;
     min-height: 3.0vw;
+    text-align: center;
     color: var(--Kolor-Dodatkowy);
     font-size: 0.95rem;
     font-weight: bold;
-    margin-top: 1.0vw;
+    padding-left: 1.0vw;
+    padding-right: 1.0vw;
     justify-content: center;
     display: flex;
 }
