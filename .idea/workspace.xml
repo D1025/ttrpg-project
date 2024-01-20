@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="workspace">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/dto/LoginData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/database/0.0.1/20240120_02.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/TtrpgApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/TtrpgApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/model/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/model/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/database/0.0.1/11122023_01.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/database/0.0.1/29102023_01.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/database/0.0.1/20240120_01.sql" afterDir="false" />
-    </list>
+    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="feat: added login and register endpoint" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -225,7 +212,7 @@
       <workItem from="1698670464123" duration="461000" />
       <workItem from="1699283485118" duration="1801000" />
       <workItem from="1700909757588" duration="614000" />
-      <workItem from="1705739785569" duration="2917000" />
+      <workItem from="1705739785569" duration="3185000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <option name="closed" value="true" />
@@ -299,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699287504389</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat: added login and register endpoint">
+      <option name="closed" value="true" />
+      <created>1705743219283</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1705743219284</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,17 +320,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value=":)" />
     <MESSAGE value="poprawa" />
-    <option name="LAST_COMMIT_MESSAGE" value="poprawa" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/LoginServiceImpl.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="feat: added login and register endpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added login and register endpoint" />
   </component>
 </project>
