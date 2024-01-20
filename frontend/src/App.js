@@ -24,7 +24,7 @@ function App()
     // Aplikacja.
     return (
         <>
-            <Header design={2}>
+            <Header design={2} src={"./Grafiki/TłoDodatkowe/TOPanime.jpg"}>
                 <HeaderLeft>
                     <ButtonLogo title={"TTRPG"} src={"./Grafiki/Logo.png"}/>
                 </HeaderLeft>

@@ -54,7 +54,6 @@ Div.Header-D2
 {
     width: var(--Szerokosc);
     min-height: var(--MinWysokosc);
-    background-image: none!important;
     font-size: 1.0rem;
     margin: 1.0vw auto 1.5vw auto;
     display: flex;
