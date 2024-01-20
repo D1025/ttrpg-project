@@ -1,0 +1,86 @@
+/* Root. */
+:root
+{
+    --Motyw: rgba(51, 51, 51, 1.0);
+    --Motyw-Ciemny: rgb(38, 38, 38, 0.8);
+    --Motyw-Czarny: rgba(0, 0, 0, 0.4);
+    --Motyw-Przezroczysty: rgba(51, 51, 51, 0.8);
+    --Motyw-Oznaczenia: rgba(169, 169, 169, 1.0);
+
+    --Tło-Dodatkowe: url("/public/Grafiki/TłoDodatkowe/TOPanime.jpg");
+    /*--Tło-Strony: url("https://www.wallpaperup.com/uploads/wallpapers/2014/11/09/511448/4f484aafdd7ee86d3e479462ef7760f7.jpg");*/
+    /*--Kolor-Dodatkowy: rgba(205, 197, 135, 0.95);*/
+    --Tło-Strony: url("/public/Grafiki/Tło/CzerwonyLas.jpg");
+    --Kolor-Dodatkowy: rgba(148, 5, 48, 0.8);
+
+    --Animacja: background-color 0.05s ease-in-out, color 0.0s ease-in-out;
+    --Blur: blur(2.5vw);
+
+    --Radius-III: 2.0vw;
+    --Radius-II: 1.3vw;
+    --Radius-I: 0.7vw;
+
+    --Przycisk-Wysokość: 2.4vw;
+    --Przycisk-Szerokość-III: 12.0vw;
+    --Przycisk-Szerokość-II: 11.0vw;
+    --Przycisk-Szerokość-I: 10.0vw;
+    --Przycisk-Odstep: 0.15vw;
+}
+
+/* Wartości HTML. */
+Html
+{
+    font-family: Verdana;
+    font-size: 1.01vw;
+    scroll-behavior: smooth;
+
+    /* Scrollbar w Firefox. */
+    scrollbar-color: var(--Kolor-Dodatkowy) rgba(0,0,0,0);
+}
+/* Scrollbar w Chromium. */
+::-webkit-scrollbar
+{
+    width: 0.5vw;
+    height: 0.5vw;
+}
+/* Scrollbar w Chromium. */
+::-webkit-scrollbar-thumb
+{
+    background-color: var(--Kolor-Dodatkowy);
+}
+/* Scrollbar w Chromium. */
+::-webkit-scrollbar-track
+{
+    background-color: var(--Motyw);
+}
+
+/* Właści widocznej strony. */
+Body
+{
+    color: white;
+    background-image: var(--Tło-Strony);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: var(--Motyw);
+    margin: 0.0vw;
+    padding: 0.0vw;
+}
+
+/* Ogólny link. */
+A
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Domyślny Kolor. */
+Div.Tło-Kolorowe
+{
+    background-color: var(--Kolor-Dodatkowy)!important;
+}
+/* Ciemny Kolor. */
+Div.Tło-Ciemne
+{
+    background-color: var(--Motyw-Ciemny)!important;
+}

@@ -1,0 +1,112 @@
+/* Główny kontener. */
+.XMenu
+{
+    font-weight: bold;
+    list-style: none;
+    margin: 0.0vw;
+    padding: 0.0vw;
+    display: flex;
+    user-select: none;
+    z-index: 5;
+}
+
+/* Element listy. */
+.XMenu > Li
+{
+    width: var(--Przycisk-Szerokość-I);
+    height: var(--Przycisk-Wysokość);
+    font-size: 1.0rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Kolor-Dodatkowy);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-I);
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    display: flex;
+    cursor: pointer;
+    transition: var(--Animacja);
+}
+
+/* Nadpisanie wyglądu linku. */
+/*.XMenu > Li a*/
+/*{*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    text-align: center;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    display: flex;*/
+/*}*/
+
+/* Wygląd po najechaniu na Li. */
+.XMenu Li:hover
+{
+    background-color: var(--Motyw-Ciemny);
+}
+
+/* Wygląd po Kliknięciu na Li. */
+.XMenu Li:active
+{
+    background-color: var(--Motyw);
+}
+
+/* Wygląd rozwiniętego elementu menu [Ukryte]. */
+.XMenu > Li > *
+{
+    width: calc( var(--Przycisk-Szerokość-I) + 0.5vw );
+    background-color: var(--Motyw);
+    border-radius: 0.0vw 0.0vw var(--Radius-II) var(--Radius-II);
+    list-style: none;
+    margin: 0.0vw;
+    padding: 0.2vw 0.0vw 0.2vw 0.0vw;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -0.25vw;
+    cursor: default;
+}
+
+/* Uwidacznianie elementu menu po najechaniu. */
+.XMenu > Li:hover > *
+{
+    display: block;
+}
+
+/* Wygląd Li wewnątrz rozwiniętego menu. */
+.XMenu > Li > * > Li
+{
+    width: 90%;
+    font-size: 0.9rem;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: var(--Kolor-Dodatkowy);
+    border-radius: var(--Radius-I);
+    margin-top: 0.4vw;
+    margin-bottom: 0.4vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    cursor: pointer;
+    transition: var(--Animacja);
+}
+
+/* Nadpisanie wyglądu linku w Li. */
+/*.XMenu > Li > * > Li a*/
+/*{*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    text-align: center;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    display: flex;*/
+/*}*/
+
+
+/* Zapobiega niepotrzebnemu miganiu. */
+Li.XMenu-Nieklikalny:hover
+{
+    background-color: var(--Motyw-Ciemny)!important;
+}
