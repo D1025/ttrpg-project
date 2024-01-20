@@ -1,7 +1,12 @@
 package com.ttrpg.project.service;
 
+import java.security.Key;
 import java.time.LocalDateTime;
+import java.util.Date;
 
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Service;
 
 import com.ttrpg.project.configuration.ProjectProperties;
@@ -11,6 +16,11 @@ import com.ttrpg.project.model.Users;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+
+import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
+
+import static javax.crypto.Cipher.SECRET_KEY;
 
 @Service
 @RequiredArgsConstructor
@@ -22,16 +32,40 @@ public class LoginServiceImpl implements LoginService {
     @Override
     @Transactional
     public Users login(String email, String password, boolean rememberMe) {
-        //TODO implement remember me
         Users user = findUserByEmailAdress(email);
         if (user.getPassword().equals(password)) {
-            user.setToken("TODO generate token");
+            user.setToken(generateToken(user));
             user.setTokenExpirationTime(LocalDateTime.now().plusHours(projectProperties.getExpirationTime()));
             usersRepository.save(user);
             return user;
         }
 
         return null;
+    }
+
+    private String generateToken(Users user) {
+        //generate random token based on user data
+//        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+//        long nowMillis = System.currentTimeMillis();
+//        Date now = new Date(nowMillis);
+//
+//        byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary("secret key variable");
+//        Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
+//
+//        JwtBuilder builder = Jwts.builder().setId(user.getId().toString())
+//                .setIssuedAt(now)
+//                .setSubject(user.getEmail())
+//                .setIssuer("TODO")
+//                .signWith(signatureAlgorithm, signingKey);
+//
+//        if (projectProperties.getExpirationTime() >= 0) {
+//            long expMillis = nowMillis + projectProperties.getExpirationTime();
+//            Date exp = new Date(expMillis);
+//            builder.setExpiration(exp);
+//        }
+//
+//        return builder.compact();
+        return "FANCY TOKEN HERE";
     }
     
     @Override

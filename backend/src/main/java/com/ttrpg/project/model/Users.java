@@ -39,11 +39,11 @@ public class Users extends Model {
     @Column(name = "token")
     private String token;
 
-    @Column(name = "refresh_token")
-    private String refreshToken;
-
-    @Column(name = "refresh_token_expiration_time")
-    private LocalDateTime refreshTokenExpirationTime;
+//    @Column(name = "refresh_token")
+//    private String refreshToken;
+//
+//    @Column(name = "refresh_token_expiration_time")
+//    private LocalDateTime refreshTokenExpirationTime;
 
     @Column(name = "token_expiration_time")
     private LocalDateTime tokenExpirationTime;
