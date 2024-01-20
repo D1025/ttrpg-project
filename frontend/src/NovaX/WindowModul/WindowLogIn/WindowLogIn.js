@@ -20,30 +20,32 @@ const OknoLogowania = ({onClose}) =>
     };
 
     // Rejestracja.
-    const [nazwaRejestracja, ustawNazweRejestracja] = useState('');
-    const [emailRejestracja, ustawEmailRejestracja] = useState('');
-    const [hasloRejestracja, ustawHasloRejestracja] = useState('');
-    const pobierzNazweRejestracja = (event) => // Nazwa.
+    const [nazwa, ustawNazwe] = useState('');
+    const [haslo2, ustawHaslo2] = useState('');
+    const pobierzNazwe = (event) => // Nazwa.
     {
-        ustawNazweRejestracja(event.target.value);
+        ustawNazwe(event.target.value);
     };
-    const pobierzEmailRejestracja = (event) => // Email.
+    const pobierzHaslo2 = (event) => // Haslo2.
     {
-        ustawEmailRejestracja(event.target.value);
-    };
-    const pobierzHasloRejestracja = (event) => // Haslo.
-    {
-        ustawHasloRejestracja(event.target.value);
+        ustawHaslo2(event.target.value);
     };
 
     // Wspólne.
-    const [zaznaczCheckbox, ustawCheckbox] = useState(false);
+    const [Checkbox, ustawCheckbox] = useState(false);
     const [statusLogowania, ustawStatusLogowania] = useState(false);
     const [blad, ustawBlad] = useState('');
 
     // Usuwanie powiadomienia błędu jak zmienimy pole Logowanie/Rejestracja.
-    useEffect(() => {
-        if (blad) {
+    useEffect(() =>
+    {
+        ustawEmail('');
+        ustawHaslo('');
+        ustawNazwe('');
+        ustawHaslo2('');
+
+        if(blad)
+        {
             ustawBlad('');
         }
     }, [czyLogRejestr]);
@@ -67,8 +69,8 @@ const OknoLogowania = ({onClose}) =>
                 },
                 body: JSON.stringify({
                     email: email,
-                    password: bcrypt(haslo, 50),
-                    rememberMe: zaznaczCheckbox
+                    password: bcrypt.hashSync(haslo, 10),
+                    rememberMe: Checkbox
                 })
             });
 
@@ -116,10 +118,8 @@ const OknoLogowania = ({onClose}) =>
                                 <div>
                                     <img src={"./Grafiki/Logo.png"} alt={""}/>
 
-                                    <Input type={"text"} name={"email"} placeholder={"Email"} onChange={pobierzEmail}
-                                           required/>
-                                    <Input type={"password"} name={"password"} placeholder={"Hasło"}
-                                           onChange={pobierzHaslo} required/>
+                                    <Input type={"text"} placeholder={"Email"} value={email} onChange={pobierzEmail} required/>
+                                    <Input type={"password"} placeholder={"Hasło"} value={haslo} onChange={pobierzHaslo} required/>
 
                                     <div className={"WindowLogIn-Checkbox"}>
                                         <Input id={"rememberMe"} type={"checkbox"} onChange={pobierzCheckbox} required/>
@@ -135,12 +135,14 @@ const OknoLogowania = ({onClose}) =>
                                 <div>
                                     <img src={"./Grafiki/Logo.png"} alt={""}/>
 
-                                    <Input type={"text"} name={"name"} placeholder={"Nazwa"}
-                                           onChange={pobierzNazweRejestracja} required/>
-                                    <Input type={"text"} name={"email"} placeholder={"Email"}
-                                           onChange={pobierzEmailRejestracja} required/>
-                                    <Input type={"password"} name={"password"} placeholder={"Hasło"}
-                                           onChange={pobierzHasloRejestracja} required/>
+                                    <Input type={"text"} placeholder={"Nazwa"} value={nazwa} onChange={pobierzNazwe}
+                                           required/>
+                                    <Input type={"text"} placeholder={"Email"} value={email} onChange={pobierzEmail}
+                                           required/>
+                                    <Input type={"password"} placeholder={"Hasło"} value={haslo} onChange={pobierzHaslo}
+                                           required/>
+                                    <Input type={"password"} placeholder={"Powtórz Hasło"} value={haslo2} onChange={pobierzHaslo2}
+                                           required/>
 
                                     <div className={"WindowLogIn-Checkbox"}>
                                         <Input id={"regulamin"} type={"checkbox"} onChange={pobierzCheckbox} required/>
