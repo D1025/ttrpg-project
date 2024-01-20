@@ -39,10 +39,18 @@ const OknoLogowania = ({onClose}) =>
     // Usuwanie powiadomienia błędu jak zmienimy pole Logowanie/Rejestracja.
     useEffect(() =>
     {
-        ustawEmail('');
-        ustawHaslo('');
-        ustawNazwe('');
-        ustawHaslo2('');
+        if(!czyLogRejestr)
+        {
+            ustawEmail('');
+            ustawHaslo('');
+        }
+        else
+        {
+            ustawEmail('');
+            ustawHaslo('');
+            ustawNazwe('');
+            ustawHaslo2('');
+        }
 
         if(blad)
         {
@@ -69,7 +77,7 @@ const OknoLogowania = ({onClose}) =>
                 },
                 body: JSON.stringify({
                     email: email,
-                    password: bcrypt.hashSync(haslo, 10),
+                    password: bcrypt.hash(haslo, 12), //bcrypt.hashSync(haslo, 50)
                     rememberMe: Checkbox
                 })
             });
