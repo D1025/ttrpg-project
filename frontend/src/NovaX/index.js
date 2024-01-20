@@ -28,11 +28,11 @@ export {default as Button} from './Button/Button/Button.js';
 export {default as ButtonChoice} from './Button/ButtonChoice/ButtonChoice.js';
 export {default as ButtonLogo} from './Button/ButtonLogo/ButtonLogo';
 export {default as Input} from './Button/Input/Input.js';
+export {default as Label} from './Button/Label/Label.js';
 
 // Funkcion.
 export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';
 export {default as LogIn} from './Funkcion/LogIn/LogIn.js';
 
 // Modul.
-export {default as WindowModul} from './WindowModul/WindowModul/WindowModul.js';
 export {default as WindowLogIn} from './WindowModul/WindowLogIn/WindowLogIn.js';

@@ -22,15 +22,17 @@ Input.Input[type="submit"], Input.Input[type="button"]
     user-select: none;
     transition: var(--Animacja);
 }
+
 /* Wygląd Przycisku po Najechaniu. */
 Input.Input[type="submit"]:hover, Input.Input[type="button"]:hover
 {
-    background-color: var(--Motyw-Czarny)!important;
+    background-color: var(--Motyw-Czarny) !important;
 }
+
 /* Wygląd Przycisku po Aktywacji. */
 Input.Input[type="submit"]:active, Input.Input[type="button"]:active
 {
-    background-color: var(--Motyw)!important;
+    background-color: var(--Motyw) !important;
 }
 
 
@@ -55,6 +57,7 @@ Input.Input[type="text"], Input.Input[type="password"]
     cursor: pointer;
     transition: var(--Animacja);
 }
+
 /* Wygląd Podczas Wpisywania i po Wpisaniu. */
 Input.Input[type="text"]:focus, Input.Input[type="text"]:valid:not(:placeholder-shown),
 Input.Input[type="password"]:focus, Input.Input[type="password"]:valid:not(:placeholder-shown)
@@ -62,6 +65,7 @@ Input.Input[type="password"]:focus, Input.Input[type="password"]:valid:not(:plac
     background-color: var(--Motyw-Ciemny);
     cursor: text;
 }
+
 /* Nadpisanie Placecholder. */
 Input.Input[type="text"]::placeholder, Input.Input[type="password"]::placeholder
 {
@@ -69,9 +73,55 @@ Input.Input[type="text"]::placeholder, Input.Input[type="password"]::placeholder
     opacity: 0.6;
 }
 
-
 /* Aktywny. */
-Input[type="Submit"].Input-Active, Input[type="Button"].Input-Active,Input[type="text"].Input-Active, Input[type="password"].Input-Active
+Input[type="Submit"].Input-Active, Input[type="Button"].Input-Active, Input[type="text"].Input-Active, Input[type="password"].Input-Active
 {
-    background-color: var(--Motyw-Ciemny)!important;
+    background-color: var(--Motyw-Ciemny) !important;
 }
+
+
+/* Ukryj oryginalny checkbox. */
+input.Input[type="checkbox"]
+{
+    display: none;
+}
+    /* Stylizacja niestandardowego znacznika. */
+    input.Input[type="checkbox"] + label
+    {
+        position: relative;
+        padding-left: 1.0vw; /* Dla dodatkowej przestrzeni po lewej stronie */
+        cursor: pointer;
+    }
+
+    /* Podstawowe wartości Checkbox'a. */
+    input.Input[type="checkbox"] + label::before
+    {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.25vw;
+        width: 0.8vw; /* Szerokość niestandardowego checkboxa */
+        height: 0.8vw; /* Wysokość niestandardowego checkboxa */
+        background-color: var(--Motyw);
+        border-radius: 0.3vw;
+    }
+
+    /* Zaznaczony. */
+    input.Input[type="checkbox"]:checked + label::before
+    {
+        background-color: var(--Kolor-Dodatkowy);
+        background-image: url("/public/Ikonki/Zaznaczenie.png");
+        background-size: 90%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+
+
+
+
+
+
+
+
+

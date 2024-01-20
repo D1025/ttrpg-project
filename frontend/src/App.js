@@ -8,11 +8,21 @@ import {
     Main, MainArticle, MainPanel, MainTitle, WindowLogIn, RoomBar
 } from "./NovaX";
 import React, {createRoot} from "react-dom/client";
+import {useState} from "react";
 
 
 function App()
 {
+    // Tittle.
     setTittle("./Grafiki/Logo.png", "TTRPG");
+
+    // Logowanie.
+    const [showLogin, setShowLogin] = useState(false);
+    const toggleShowLogin = () => {
+        setShowLogin(prevShowLogin => !prevShowLogin);
+    };
+
+    // Aplikacja.
     return (
         <>
             <Header design={3}>
@@ -35,7 +45,8 @@ function App()
 
                 <HeaderRight>
                     {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
-                    <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"} onClick={WindowLogIn} width={1}/>
+                    <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"} onClick={toggleShowLogin}
+                            width={1}/>
                 </HeaderRight>
             </Header>
 
@@ -55,14 +66,18 @@ function App()
                         {/*<div type={"tag"}>[Tag 1] [Tag 2]</div>*/}
                     </MainTitle>
 
-                    <RoomBar title={"Kocie Zabawy"} description={"Gramy w kotki ze znajomymi a smoki chcą zjeść nasze kotki :)"} src={"https://i.pinimg.com/originals/0d/72/f3/0d72f35db2305ef238e1fbc1d1151719.jpg"}/>
+                    <RoomBar title={"Kocie Zabawy"}
+                             description={"Gramy w kotki ze znajomymi a smoki chcą zjeść nasze kotki :)"}
+                             src={"https://i.pinimg.com/originals/0d/72/f3/0d72f35db2305ef238e1fbc1d1151719.jpg"}/>
                     <RoomBar title={"Poległe Kotki"}/>
-                    <RoomBar title={"Smoki Wojny"} description={"To ekscytująca gra fabularna, gdzie gracze wcielają się w bohaterów stawiających czoła potężnym smokom i ich hordom, aby przywrócić równowagę w świecie pogrążonym w chaosie wojennym. Walka, intrygi i niebezpieczeństwa czekają na każdym kroku, a losy świata zależą od sprytu i odwagi graczy.\"\n"} src={"https://i.pinimg.com/originals/db/9d/14/db9d149cdcef8f864bb3a9a8e7d93121.jpg"}/>
+                    <RoomBar title={"Smoki Wojny"}
+                             description={"To ekscytująca gra fabularna, gdzie gracze wcielają się w bohaterów stawiających czoła potężnym smokom i ich hordom, aby przywrócić równowagę w świecie pogrążonym w chaosie wojennym. Walka, intrygi i niebezpieczeństwa czekają na każdym kroku, a losy świata zależą od sprytu i odwagi graczy.\"\n"}
+                             src={"https://i.pinimg.com/originals/db/9d/14/db9d149cdcef8f864bb3a9a8e7d93121.jpg"}/>
                 </MainArticle>
             </Main>
 
             <div id={"test"}/>
-            {/*<WindowLogIn></WindowLogIn>*/}
+            {showLogin && <WindowLogIn onClose={toggleShowLogin}/>}
         </>
     );
 }

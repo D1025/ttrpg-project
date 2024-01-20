@@ -1,20 +1,13 @@
-import bcrypt from 'bcryptjs';
-
-async function LogIn(server, method, email, password, rememberMe)
+async function LogIn(server, method, email, hashedPassword, rememberMe)
 {
     try
     {
-        // Haszowanie hasła.
-        const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-
-        // Plik JASON.
         const requestData = {
             email: email,
             password: hashedPassword,
             rememberMe: rememberMe
         };
 
-        // Wysłanie danych [Fetch API].
         const response = await fetch(server, {
             method: method,
             headers: {
@@ -23,30 +16,29 @@ async function LogIn(server, method, email, password, rememberMe)
             body: JSON.stringify(requestData)
         });
 
-        // Sprawdzenie, czy odpowiedź od serwera jest w formacie JSON.
-        if(response.ok)
+        if(!response.ok)
         {
-            const responseData = await response.json();
+            // Jeśli odpowiedź nie jest ok, rzuć błąd
+            throw new Error('Błąd serwera.');
+        }
+        const responseData = await response.json();
 
-            // Sprawdzanie czy pole succes ma odp. true.
-            if(responseData.success)
-            {
-                // Zapisanie danych logowania w bezpiecznym miejscu (np. Context API, Local Storage, itp.)
-                // Tutaj umieść kod do zapisania danych logowania w bezpiecznym miejscu
-            }
-            else
-            {
-                console.error('Logowanie nieudane. Błędne dane.');
-            }
+        if(responseData.success)
+        {
+            // Jeśli logowanie się powiodło, zwróć dane
+            return responseData;
         }
         else
         {
-            console.error('Błąd podczas wysyłania danych na serwer.');
+            // Jeśli logowanie się nie powiodło, rzuć błąd
+            throw new Error('Błędne dane logowania.');
         }
+
     }
     catch(error)
     {
-        console.error('Wystąpił błąd:', error);
+        console.error('Wystąpił błąd:', error.message);
+        throw error;
     }
 }
 

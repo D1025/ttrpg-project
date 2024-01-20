@@ -1,33 +1,89 @@
-import React, {createRoot} from 'react-dom/client';
-import {WindowModul, Input, Button} from "../../index";
+import React, {useState} from 'react';
+import bcrypt from 'bcryptjs';
+import {Input, Label, Button, LogIn} from "../../index";
 import './WindowLogIn.css';
 
-const WindowLogIn = () =>
+const WindowLogIn = ({onClose}) =>
 {
-    // Przykładowy Moduł.
-    const renderZawartosc = (zamknij) => (
-        <div className={"WindowLogIn"}>
-            <div className={"WindowLogIn-Top"}>
-                <Button src={"./Ikonki/Wyłącz.png"} onClick={zamknij}/>
-            </div>
+    const [email, setEmail] = useState('');
+    const [haslo, setHaslo] = useState('');
+    const [loginFailed, setLoginFailed] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
-            <div className={"WindowLogIn-Main"}>
-                <form method={"post"} onSubmit={(event) => {event.preventDefault()}}>
-                    <img src={"./Grafiki/Logo.png"} alt={""}/>
-                    <Input type={"text"} placeholder={"Email"}/><br/>
-                    <Input type={"password"} placeholder={"Hasło"}/><br/>
-                    <Input type={"submit"} value={"Zaloguj Się"}/>
-                </form>
-            </div>
+    const pobierzEmail = (event) =>
+    {
+        setEmail(event.target.value);
+    };
 
-            <div className={"WindowLogIn-Bottom"}>
-                Logowanie Nieudane
+    const pobierzHaslo = (event) =>
+    {
+        setHaslo(event.target.value);
+    };
+
+    const pobierzRememberMe = (event) =>
+    {
+        setHaslo(event.target.value);
+    };
+
+    const submit = async(event) =>
+    {
+        event.preventDefault();
+        // Haszowanie hasła.
+        const hashedPassword = bcrypt.hashSync(haslo, 10);
+
+        try
+        {
+            const serverURL = 'https://example.com/login';
+            const method = 'POST';
+
+            const response = await LogIn(serverURL, method, email, hashedPassword, false);
+            console.log("Logowanie udane", response);
+            onClose();
+        }
+        catch(error)
+        {
+            setLoginFailed(true);
+            setErrorMessage(error.message || 'Błąd podczas logowania');
+        }
+    };
+
+    return (
+        <div className={"WindowModul"}>
+            <div>
+                <div className={"WindowChoice"}>
+                    <Button title={"Logowanie"} active={true}/>
+                    <Button title={"Rejestracja"}/>
+                </div>
+
+                <div className={"WindowLogIn"}>
+                    <div className={"WindowLogIn-Top"}>
+                        <Button src={"./Ikonki/Wyłącz.png"} onClick={onClose}/>
+                    </div>
+
+                    <div className={"WindowLogIn-Main"}>
+                        <form onSubmit={submit}>
+                            <img src={"./Grafiki/Logo.png"} alt={""}/>
+                            <Input type={"text"} name={"email"} placeholder={"Email"} value={email}
+                                   onChange={pobierzEmail}/><br/>
+                            <Input type={"password"} name={"password"} placeholder={"Hasło"} value={haslo}
+                                   onChange={pobierzHaslo}/><br/>
+                            <div className={"WindowLogIn-Checkbox"}>
+                                <Input id={"rememberMe"} type={"checkbox"}/>
+                                <Label htmlFor={"rememberMe"}>Zapamiętaj mnie</Label>
+                            </div>
+                            <Input type={"submit"} value={"Zaloguj Się"}/>
+                        </form>
+                    </div>
+
+                    {loginFailed && (
+                        <div className={"WindowLogIn-Bottom"}>
+                            {errorMessage}
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
-
-    const root = createRoot(document.getElementById("test"));
-    root.render(<WindowModul zawartosc={renderZawartosc}/>);
 }
 
 export default WindowLogIn;
