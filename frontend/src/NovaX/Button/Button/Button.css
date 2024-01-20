@@ -20,7 +20,7 @@ Div.Button-D1
 /* Przycisk po najechaniu. */
 Div.Button-D1:hover
 {
-    background-color: var(--Motyw-Czarny)!important;
+    background-color: var(--Motyw-Ciemny)!important;
 }
 /* Przycisk po kliknięciu. */
 Div.Button-D1:active
@@ -61,7 +61,7 @@ Div.Button-D2
     /* Po Najechaniu. */
     Div.Button-D2:hover
     {
-        background-color: var(--Motyw-Czarny)!important;
+        background-color: var(--Motyw-Ciemny)!important;
     }
     /* Po Kliknięciu. */
     Div.Button-D2:active
@@ -121,5 +121,5 @@ Div.Button-BMargin
 /* Aktywny. */
 Div.Button-Active
 {
-    background-color: var(--Motyw-Ciemny);
+    background-color: var(--Motyw-Czarny);
 }
