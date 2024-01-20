@@ -1,14 +1,21 @@
 package com.ttrpg.project.model;
 
-import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.sql.Timestamp;
-import java.util.List;
 
 
 @Entity
@@ -32,8 +39,14 @@ public class Users extends Model {
     @Column(name = "token")
     private String token;
 
+//    @Column(name = "refresh_token")
+//    private String refreshToken;
+//
+//    @Column(name = "refresh_token_expiration_time")
+//    private LocalDateTime refreshTokenExpirationTime;
+
     @Column(name = "token_expiration_time")
-    private Timestamp tokenExpirationTime;
+    private LocalDateTime tokenExpirationTime;
 
     @Column(name = "admin", nullable = false)
     private boolean admin;
