@@ -5,7 +5,7 @@ import './WindowLogIn.css';
 
 const OknoLogowania = ({onClose}) =>
 {
-    const [czyLogRejestr, ustawCzyLogRejestr] = useState(true);
+    const [LogNaRegjestracje, ustawLogNaRegjestracje] = useState(true);
 
     // Statusy.
     const [nazwa, ustawNazwe] = useState('');
@@ -46,7 +46,7 @@ const OknoLogowania = ({onClose}) =>
     // Usuwanie wartości input [Logowanie/Rejestracja].
     useEffect(() =>
     {
-        if(!czyLogRejestr)
+        if(!LogNaRegjestracje)
         {
             ustawEmail('');
             ustawHaslo('');
@@ -63,7 +63,7 @@ const OknoLogowania = ({onClose}) =>
         {
             ustawBlad('');
         }
-    }, [czyLogRejestr]);
+    }, [LogNaRegjestracje]);
 
     // Przesyłanie Logowania.
     const przeslijLogowanie = async(event) =>
@@ -112,8 +112,8 @@ const OknoLogowania = ({onClose}) =>
         <div className={"WindowModul"}>
             <div>
                 <div className={"WindowChoice"}>
-                    <Button title={"Logowanie"} active={czyLogRejestr} onClick={() => ustawCzyLogRejestr(true)}/>
-                    <Button title={"Rejestracja"} active={!czyLogRejestr} onClick={() => ustawCzyLogRejestr(false)}/>
+                    <Button title={"Logowanie"} active={LogNaRegjestracje} onClick={() => ustawLogNaRegjestracje(true)}/>
+                    <Button title={"Rejestracja"} active={!LogNaRegjestracje} onClick={() => ustawLogNaRegjestracje(false)}/>
                 </div>
 
                 <div className={"WindowLogIn"}>
@@ -122,7 +122,7 @@ const OknoLogowania = ({onClose}) =>
                     </div>
 
                     <div className={"WindowLogIn-Main"}>
-                        {czyLogRejestr ? (
+                        {LogNaRegjestracje ? (
                             // Logowanie.
                             <form onSubmit={przeslijLogowanie}>
                                 <div>

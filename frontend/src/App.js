@@ -4,8 +4,7 @@ import {
     setTittle,
     Menu,
     Header, HeaderLeft, HeaderCenter, HeaderRight,
-    InfoFrame,
-    Button, ButtonLogo, Input,
+    Button, ButtonLogo,
     Main, MainArticle, MainPanel, MainTitle, WindowLogIn, RoomBar
 } from "./NovaX";
 
