@@ -7,9 +7,14 @@ const OknoLogowania = ({onClose}) =>
 {
     const [czyLogRejestr, ustawCzyLogRejestr] = useState(true);
 
-    // Logowanie.
+    // Statusy.
+    const [nazwa, ustawNazwe] = useState('');
     const [email, ustawEmail] = useState('');
     const [haslo, ustawHaslo] = useState('');
+    const [haslo2, ustawHaslo2] = useState('');
+    const [Checkbox, ustawCheckbox] = useState(false);
+
+    // Logowanie.
     const pobierzEmail = (event) => // Email.
     {
         ustawEmail(event.target.value);
@@ -20,8 +25,6 @@ const OknoLogowania = ({onClose}) =>
     };
 
     // Rejestracja.
-    const [nazwa, ustawNazwe] = useState('');
-    const [haslo2, ustawHaslo2] = useState('');
     const pobierzNazwe = (event) => // Nazwa.
     {
         ustawNazwe(event.target.value);
@@ -32,11 +35,15 @@ const OknoLogowania = ({onClose}) =>
     };
 
     // Wspólne.
-    const [Checkbox, ustawCheckbox] = useState(false);
+    const pobierzCheckbox = (event) =>
+    {
+        ustawCheckbox(event.target.checked);
+    };
+
     const [statusLogowania, ustawStatusLogowania] = useState(false);
     const [blad, ustawBlad] = useState('');
 
-    // Usuwanie powiadomienia błędu jak zmienimy pole Logowanie/Rejestracja.
+    // Usuwanie wartości input [Logowanie/Rejestracja].
     useEffect(() =>
     {
         if(!czyLogRejestr)
@@ -57,11 +64,6 @@ const OknoLogowania = ({onClose}) =>
             ustawBlad('');
         }
     }, [czyLogRejestr]);
-
-    const pobierzCheckbox = (event) =>
-    {
-        ustawCheckbox(event.target.checked);
-    };
 
     // Przesyłanie Logowania.
     const przeslijLogowanie = async(event) =>
