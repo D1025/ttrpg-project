@@ -83,16 +83,19 @@ Input[type="Submit"].Input-Active, Input[type="Button"].Input-Active, Input[type
 /* Ukryj oryginalny checkbox. */
 input.Input[type="checkbox"]
 {
-    width: 0;
-    height: 0;
-    /*visibility: hidden;*/
+    position: absolute;
+    opacity: 0;
+    width: 0.9vw;
+    height: 0.9vw;
+    margin: 0;
 }
     /* Stylizacja niestandardowego znacznika. */
     input.Input[type="checkbox"] + label
     {
         position: relative;
-        padding-left: 0.8vw; /* Dla dodatkowej przestrzeni po lewej stronie */
+        padding-left: 1.25vw;
         cursor: pointer;
+        line-height: 0.9vw;
     }
 
     /* Podstawowe wartości Checkbox'a. */
@@ -100,12 +103,13 @@ input.Input[type="checkbox"]
     {
         content: "";
         position: absolute;
-        left: -0.5vw;
-        top: 0.25vw;
-        width: 0.9vw; /* Szerokość niestandardowego checkboxa */
-        height: 0.9vw; /* Wysokość niestandardowego checkboxa */
+        left: 0.1vw;
+        top: 0.1vw;
+        width: 0.9vw;
+        height: 0.9vw;
         background-color: var(--Motyw);
         border-radius: 0.3vw;
+        box-sizing: border-box;
     }
 
     /* Zaznaczony. */
