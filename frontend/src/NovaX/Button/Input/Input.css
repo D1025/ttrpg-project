@@ -104,7 +104,7 @@ input.Input[type="checkbox"]
         content: "";
         position: absolute;
         left: 0.15vw;
-        top: 0.08vw;
+        top: 0.07vw;
         width: 0.9vw;
         height: 0.9vw;
         background-color: var(--Motyw);
