@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="poprawa">
-      <change afterPath="$PROJECT_DIR$/frontend/public/Ikonki/Inne/Wyłącz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/Ikonki/Zamknij.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/NovaX/Windows/Modul/Modul.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/NovaX/Windows/Modul/Modul.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/Ikonki/Wyłącz.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/WindowModul/WindowLogIn/WindowLogIn.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Windows/ModulLogIn/ModulLogIn.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/WindowModul/WindowLogIn/WindowLogIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Windows/ModulLogIn/ModulLogIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +88,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Spring Boot.TtrpgApplication">
+  <component name="RunManager" selected="npm.start">
     <configuration name="TtrpgApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ttrpg.backend.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ttrpg.project.TtrpgApplication" />
@@ -133,6 +125,7 @@
       <workItem from="1705928688906" duration="5484000" />
       <workItem from="1705935043829" duration="1815000" />
       <workItem from="1705948475830" duration="21000" />
+      <workItem from="1705958998348" duration="223000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <option name="closed" value="true" />
@@ -222,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705930786798</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="poprawa">
+      <option name="closed" value="true" />
+      <created>1705959023688</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705959023688</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,16 +250,5 @@
     <MESSAGE value=":)" />
     <MESSAGE value="poprawa" />
     <option name="LAST_COMMIT_MESSAGE" value="poprawa" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/LoginServiceImpl.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

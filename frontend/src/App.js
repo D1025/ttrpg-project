@@ -20,7 +20,6 @@ function App()
     const [showLogin, setShowLogin] = useState(false);
     const toggleShowLogin = () =>
     {
-        console.log('Toggle login view');
         setShowLogin(prevShowLogin => !prevShowLogin);
     };
 
