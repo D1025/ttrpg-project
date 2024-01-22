@@ -168,7 +168,7 @@ const OknoLogowania = ({onClose}) =>
                                            required/>
 
                                     <div className={"ModulLogIn-Checkbox"}>
-                                        <Input id={"regulamin"} type={"checkbox"} required/>
+                                        <Input id={"regulamin"} type={"checkbox"}/>
                                         <Label htmlFor={"regulamin"}>Zapamiętaj email</Label>
                                     </div>
 
