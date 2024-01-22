@@ -16,7 +16,7 @@ function App()
     // Statusy.
     const [lobby, ustawLobby] = useState(false);
 
-    // Logowanie.
+    // Logowanie/Rejestracja.
     const [showLogin, setShowLogin] = useState(false);
     const toggleShowLogin = () =>
     {
