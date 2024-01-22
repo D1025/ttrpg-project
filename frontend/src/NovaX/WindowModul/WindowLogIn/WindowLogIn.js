@@ -39,12 +39,7 @@ const OknoLogowania = ({onClose}) =>
     // Usuwanie wartości input [Logowanie/Rejestracja].
     useEffect(() =>
     {
-        if(!LogowanieCzyRejestracja)
-        {
-            ustawEmail('');
-            ustawHaslo('');
-        }
-        else
+        if(!LogowanieCzyRejestracja || LogowanieCzyRejestracja)
         {
             ustawEmail('');
             ustawHaslo('');
