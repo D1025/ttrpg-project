@@ -12,7 +12,6 @@ const OknoLogowania = ({onClose}) =>
     const [email, ustawEmail] = useState('');
     const [haslo, ustawHaslo] = useState('');
     const [haslo2, ustawHaslo2] = useState('');
-    const [Checkbox, ustawCheckbox] = useState(false);
 
     // Logowanie.
     const pobierzEmail = (event) => // Email.
@@ -32,12 +31,6 @@ const OknoLogowania = ({onClose}) =>
     const pobierzHaslo2 = (event) => // Haslo2.
     {
         ustawHaslo2(event.target.value);
-    };
-
-    // Wspólne.
-    const pobierzCheckbox = (event) =>
-    {
-        ustawCheckbox(event.target.checked);
     };
 
     const [statusLogowania, ustawStatusLogowania] = useState(false);
@@ -80,7 +73,6 @@ const OknoLogowania = ({onClose}) =>
                 body: JSON.stringify({
                     email: email,
                     password: bcrypt.hash(haslo, 12), //bcrypt.hashSync(haslo, 50)
-                    rememberMe: Checkbox
                 })
             });
 
@@ -131,11 +123,6 @@ const OknoLogowania = ({onClose}) =>
                                     <Input type={"text"} placeholder={"Email"} value={email} onChange={pobierzEmail} required/>
                                     <Input type={"password"} placeholder={"Hasło"} value={haslo} onChange={pobierzHaslo} required/>
 
-                                    <div className={"WindowLogIn-Checkbox"}>
-                                        <Input id={"rememberMe"} type={"checkbox"} onChange={pobierzCheckbox} required/>
-                                        <Label htmlFor={"rememberMe"}>Zapamiętaj mnie</Label>
-                                    </div>
-
                                     <Input type={"submit"} value={"Zaloguj się"}/>
                                 </div>
                             </form>
@@ -155,7 +142,7 @@ const OknoLogowania = ({onClose}) =>
                                            required/>
 
                                     <div className={"WindowLogIn-Checkbox"}>
-                                        <Input id={"regulamin"} type={"checkbox"} onChange={pobierzCheckbox} required/>
+                                        <Input id={"regulamin"} type={"checkbox"} required/>
                                         <Label htmlFor={"regulamin"}>Regulamin</Label>
                                     </div>
 
