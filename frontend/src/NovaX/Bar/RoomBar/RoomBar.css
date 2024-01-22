@@ -1,0 +1,64 @@
+/* RoomBar. */
+Div.RoomBar
+{
+    text-align: left;
+    background-color: var(--Motyw-Ciemny);
+    border-radius: var(--Radius-II);
+    border-left: 0.3vw solid var(--Kolor-Dodatkowy);
+    border-right: 0.3vw solid var(--Kolor-Dodatkowy);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 28%;
+    margin-bottom: 0.5vw;
+    display: flex;
+}
+    /* Ostatni tego typu bez marginesu. */
+    Div.RoomBar:last-of-type
+    {
+        margin-bottom: 0;
+    }
+
+/* Pole trzymające Nazwę i opis. */
+Div.RoomBar > Div.RoomBar-Main
+{
+    align-items: center;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    padding-top: 0.25vw;
+    padding-bottom: 0.25vw;
+    display: grid;
+    flex: 3;
+}
+    /* Nazwa. */
+    Div.RoomBar > Div.RoomBar-Main > Div.RoomBar-Title
+    {
+        width: 100%;
+        height: max-content;
+        font-weight: bold;
+        color: var(--Kolor-Dodatkowy);
+        font-size: 1.1rem;
+        padding-top: 0.25vw;
+        padding-bottom: 0.25vw;
+    }
+
+    /* Opis. */
+    Div.RoomBar > Div.RoomBar-Main > Div.RoomBar-Description
+    {
+        width: 100%;
+        height: max-content;
+        padding-top: 0.25vw;
+        padding-bottom: 0.25vw;
+    }
+
+/* Pole opcji. */
+Div.RoomBar-Option
+{
+    justify-content: right;
+    text-align: center;
+    align-items: center;
+    padding-right: 1.0vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    display: flex;
+    flex: 1;
+}
