@@ -33,5 +33,6 @@ export {default as Label} from './Button/Label/Label.js';
 // Funkcion.
 export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';
 
-// Modul.
-export {default as WindowLogIn} from './WindowModul/WindowLogIn/WindowLogIn.js';
+// Windows.
+export {default as Modul} from './Windows/Modul/Modul.js';
+export {default as ModulLogIn} from './Windows/ModulLogIn/ModulLogIn.js';

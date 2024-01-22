@@ -5,7 +5,7 @@ import {
     Menu,
     Header, HeaderLeft, HeaderCenter, HeaderRight,
     Button, ButtonLogo,
-    Main, MainArticle, MainPanel, MainTitle, WindowLogIn, RoomBar
+    Main, MainArticle, MainPanel, MainTitle, ModulLogIn, RoomBar
 } from "./NovaX";
 
 function App()
@@ -91,7 +91,7 @@ function App()
             </Main>
 
             <div id={"test"}/>
-            {showLogin && <WindowLogIn onClose={toggleShowLogin}/>}
+            {showLogin && <ModulLogIn onClose={toggleShowLogin}/>}
         </>
     );
 }

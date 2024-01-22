@@ -1,0 +1,17 @@
+Div.Modul
+{
+    justify-content: center;
+    align-items: center;
+    background-image: var(--Tło-Strony);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: var(--Motyw-Przezroczysty);
+    display: grid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}

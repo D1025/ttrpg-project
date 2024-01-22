@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import SHA256 from 'crypto-js/sha256';
-import {Input, Label, Button} from "../../index";
-import './WindowLogIn.css';
+import {Input, Label, Button, Modul} from "../../index";
+import './ModulLogIn.css';
 
 const OknoLogowania = ({onClose}) =>
 {
@@ -141,21 +141,21 @@ const OknoLogowania = ({onClose}) =>
     };
 
     return (
-        <div className={"WindowModul"}>
+        <Modul>
             <div>
-                <div className={"WindowChoice"}>
+                <div className={"ModulLogIn-Choice"}>
                     <Button title={"Logowanie"} active={LogowanieCzyRejestracja}
                             onClick={() => ustawLogowanieCzyRejestracja(true)}/>
                     <Button title={"Rejestracja"} active={!LogowanieCzyRejestracja}
                             onClick={() => ustawLogowanieCzyRejestracja(false)}/>
                 </div>
 
-                <div className={"WindowLogIn"}>
-                    <div className={"WindowLogIn-Top"}>
-                        <Button src={"./Ikonki/Wyłącz.png"} onClick={onClose}/>
+                <div className={"ModulLogIn"}>
+                    <div className={"ModulLogIn-Top"}>
+                        <Button src={"./Ikonki/Zamknij.png"} onClick={onClose}/>
                     </div>
 
-                    <div className={"WindowLogIn-Main"}>
+                    <div className={"ModulLogIn-Main"}>
                         {LogowanieCzyRejestracja ? (
                             // Logowanie.
                             <form onSubmit={przeslijLogowanie}>
@@ -166,6 +166,11 @@ const OknoLogowania = ({onClose}) =>
                                            required/>
                                     <Input type={"password"} placeholder={"Hasło"} value={haslo} onChange={pobierzHaslo}
                                            required/>
+
+                                    <div className={"ModulLogIn-Checkbox"}>
+                                        <Input id={"regulamin"} type={"checkbox"} required/>
+                                        <Label htmlFor={"regulamin"}>Zapamiętaj email</Label>
+                                    </div>
 
                                     <Input type={"submit"} value={"Zaloguj się"}/>
                                 </div>
@@ -186,7 +191,7 @@ const OknoLogowania = ({onClose}) =>
                                            onChange={pobierzHaslo2}
                                            required/>
 
-                                    <div className={"WindowLogIn-Checkbox"}>
+                                    <div className={"ModulLogIn-Checkbox"}>
                                         <Input id={"regulamin"} type={"checkbox"} required/>
                                         <Label htmlFor={"regulamin"}>Regulamin</Label>
                                     </div>
@@ -197,12 +202,12 @@ const OknoLogowania = ({onClose}) =>
                         )}
                     </div>
 
-                    <div className={"WindowLogIn-Bottom"}>
+                    <div className={"ModulLogIn-Bottom"}>
                         {blad}
                     </div>
                 </div>
             </div>
-        </div>
+        </Modul>
     );
 }
 
