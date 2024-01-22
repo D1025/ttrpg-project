@@ -5,7 +5,7 @@ import './WindowLogIn.css';
 
 const OknoLogowania = ({onClose}) =>
 {
-    const [LogNaRegjestracje, ustawLogNaRegjestracje] = useState(true);
+    const [LogowanieCzyRejestracja, ustawLogowanieCzyRejestracja] = useState(true);
 
     // Statusy.
     const [nazwa, ustawNazwe] = useState('');
@@ -39,11 +39,12 @@ const OknoLogowania = ({onClose}) =>
     // Usuwanie wartości input [Logowanie/Rejestracja].
     useEffect(() =>
     {
-        if(!LogNaRegjestracje)
+        if(!LogowanieCzyRejestracja)
         {
             ustawEmail('');
             ustawHaslo('');
-        } else
+        }
+        else
         {
             ustawEmail('');
             ustawHaslo('');
@@ -55,7 +56,7 @@ const OknoLogowania = ({onClose}) =>
         {
             ustawBlad('');
         }
-    }, [LogNaRegjestracje]);
+    }, [LogowanieCzyRejestracja]);
 
     // Przesyłanie Logowania.
     const przeslijLogowanie = async(event) =>
@@ -64,6 +65,8 @@ const OknoLogowania = ({onClose}) =>
 
         try
         {
+            const hasloZahashowane = await bcrypt.hash(haslo, 10);
+
             const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/login', {
                 method: 'POST',
                 headers: {
@@ -71,49 +74,85 @@ const OknoLogowania = ({onClose}) =>
                 },
                 body: JSON.stringify({
                     email: email,
-                    password: haslo, //bcrypt.hash(haslo, 12)
+                    password: hasloZahashowane,
+                    rememberMe: true
                 })
             });
 
             if(!odpowiedz.ok)
             {
-                throw new Error("" + odpowiedz.status);
+                // Pobieranie szczegółowego opisu błędu, jeśli jest dostępny
+                const errorText = await odpowiedz.text();
+                throw new Error(errorText || `Błąd serwera: status ${odpowiedz.status}`);
             }
 
             const dane = await odpowiedz.json();
-            // Dane Zwrotne.
-            console.log(dane);
-            ustawStatusLogowania(true); // Stan logowania na true.
-        } catch(blad)
+            console.log("Dane zwrotne:", dane);
+            ustawStatusLogowania(true); // Stan logowania na true
+        }
+        catch(blad)
         {
+            console.error('Błąd podczas logowania:', blad);
             ustawBlad(`Błąd logowania: ${blad.message}`);
-            ustawStatusLogowania(false); // Stan logowania na false.
+            ustawStatusLogowania(false); // Stan logowania na false
         }
     };
+
 
     // Przesyłanie Rejestracji.
     const przeslijRejestracje = async(event) =>
     {
         event.preventDefault();
 
-        if(haslo === haslo2)
-        {
-            ;
-        } else
+        if(haslo !== haslo2)
         {
             ustawBlad(`Hasła nie pokrywają się`);
+            return;
         }
-        // TODO: Implementacja rejestracji.
+
+        try
+        {
+            // Asynchroniczne haszowanie hasła
+            const hasloZahashowane = await bcrypt.hash(haslo, 10);
+
+            const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: hasloZahashowane,
+                    nickname: nazwa
+                })
+            });
+
+            if(!odpowiedz.ok)
+            {
+                throw new Error(`Błąd sieciowy: status ${odpowiedz.status}`);
+            }
+
+            const dane = await odpowiedz.json();
+            console.log(dane);
+            // Tutaj możesz zaimplementować odpowiednią logikę po pomyślnej rejestracji
+            ustawStatusLogowania(true);
+        }
+        catch
+            (blad)
+        {
+            ustawBlad(`Błąd rejestracji: ${blad.message}`);
+            ustawStatusLogowania(false);
+        }
     };
 
     return (
         <div className={"WindowModul"}>
             <div>
                 <div className={"WindowChoice"}>
-                    <Button title={"Logowanie"} active={LogNaRegjestracje}
-                            onClick={() => ustawLogNaRegjestracje(true)}/>
-                    <Button title={"Rejestracja"} active={!LogNaRegjestracje}
-                            onClick={() => ustawLogNaRegjestracje(false)}/>
+                    <Button title={"Logowanie"} active={LogowanieCzyRejestracja}
+                            onClick={() => ustawLogowanieCzyRejestracja(true)}/>
+                    <Button title={"Rejestracja"} active={!LogowanieCzyRejestracja}
+                            onClick={() => ustawLogowanieCzyRejestracja(false)}/>
                 </div>
 
                 <div className={"WindowLogIn"}>
@@ -122,7 +161,7 @@ const OknoLogowania = ({onClose}) =>
                     </div>
 
                     <div className={"WindowLogIn-Main"}>
-                        {LogNaRegjestracje ? (
+                        {LogowanieCzyRejestracja ? (
                             // Logowanie.
                             <form onSubmit={przeslijLogowanie}>
                                 <div>
