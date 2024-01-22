@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="docker">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/controller/RoomController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/dto/room/CreateRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/dto/room/RoomReturnDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/mapper/RoomMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/RoomsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/RoomsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/ttrpg/project/service/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="feat: endpoint create" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +50,7 @@
     <branch-grouping />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="3-Stroktora" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -84,11 +70,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build ttrpg project.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.TtrpgApplication.executor": "Debug",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "16-endpoint-pokoi",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -214,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705756493585</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: endpoint create">
+      <option name="closed" value="true" />
+      <created>1705762304792</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705762304792</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +239,7 @@
     <MESSAGE value=":)" />
     <MESSAGE value="poprawa" />
     <MESSAGE value="docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="docker" />
+    <MESSAGE value="feat: endpoint create" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: endpoint create" />
   </component>
 </project>
