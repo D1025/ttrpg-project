@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import bcrypt from 'bcryptjs';
+import SHA256 from 'crypto-js/sha256';
 import {Input, Label, Button} from "../../index";
 import './WindowLogIn.css';
 
@@ -65,7 +65,7 @@ const OknoLogowania = ({onClose}) =>
 
         try
         {
-            const hasloZahashowane = await bcrypt.hash(haslo, 10);
+            const hasloZahashowane = await SHA256(haslo).toString();
 
             const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/login', {
                 method: 'POST',
@@ -113,7 +113,7 @@ const OknoLogowania = ({onClose}) =>
         try
         {
             // Asynchroniczne haszowanie hasła
-            const hasloZahashowane = await bcrypt.hash(haslo, 10);
+            const hasloZahashowane = await SHA256(haslo).toString();
 
             const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/register', {
                 method: 'POST',
