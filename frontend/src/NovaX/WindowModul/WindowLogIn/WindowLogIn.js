@@ -43,8 +43,7 @@ const OknoLogowania = ({onClose}) =>
         {
             ustawEmail('');
             ustawHaslo('');
-        }
-        else
+        } else
         {
             ustawEmail('');
             ustawHaslo('');
@@ -72,21 +71,20 @@ const OknoLogowania = ({onClose}) =>
                 },
                 body: JSON.stringify({
                     email: email,
-                    password: bcrypt.hash(haslo, 12), //bcrypt.hashSync(haslo, 50)
+                    password: haslo, //bcrypt.hash(haslo, 12)
                 })
             });
 
             if(!odpowiedz.ok)
             {
-                throw new Error(`Błąd sieciowy: status ${odpowiedz.status}`);
+                throw new Error("" + odpowiedz.status);
             }
 
             const dane = await odpowiedz.json();
             // Dane Zwrotne.
             console.log(dane);
             ustawStatusLogowania(true); // Stan logowania na true.
-        }
-        catch(blad)
+        } catch(blad)
         {
             ustawBlad(`Błąd logowania: ${blad.message}`);
             ustawStatusLogowania(false); // Stan logowania na false.
@@ -97,6 +95,14 @@ const OknoLogowania = ({onClose}) =>
     const przeslijRejestracje = async(event) =>
     {
         event.preventDefault();
+
+        if(haslo === haslo2)
+        {
+            ;
+        } else
+        {
+            ustawBlad(`Hasła nie pokrywają się`);
+        }
         // TODO: Implementacja rejestracji.
     };
 
@@ -104,8 +110,10 @@ const OknoLogowania = ({onClose}) =>
         <div className={"WindowModul"}>
             <div>
                 <div className={"WindowChoice"}>
-                    <Button title={"Logowanie"} active={LogNaRegjestracje} onClick={() => ustawLogNaRegjestracje(true)}/>
-                    <Button title={"Rejestracja"} active={!LogNaRegjestracje} onClick={() => ustawLogNaRegjestracje(false)}/>
+                    <Button title={"Logowanie"} active={LogNaRegjestracje}
+                            onClick={() => ustawLogNaRegjestracje(true)}/>
+                    <Button title={"Rejestracja"} active={!LogNaRegjestracje}
+                            onClick={() => ustawLogNaRegjestracje(false)}/>
                 </div>
 
                 <div className={"WindowLogIn"}>
@@ -120,8 +128,10 @@ const OknoLogowania = ({onClose}) =>
                                 <div>
                                     <img src={"./Grafiki/Logo.png"} alt={""}/>
 
-                                    <Input type={"text"} placeholder={"Email"} value={email} onChange={pobierzEmail} required/>
-                                    <Input type={"password"} placeholder={"Hasło"} value={haslo} onChange={pobierzHaslo} required/>
+                                    <Input type={"text"} placeholder={"Email"} value={email} onChange={pobierzEmail}
+                                           required/>
+                                    <Input type={"password"} placeholder={"Hasło"} value={haslo} onChange={pobierzHaslo}
+                                           required/>
 
                                     <Input type={"submit"} value={"Zaloguj się"}/>
                                 </div>
@@ -138,7 +148,8 @@ const OknoLogowania = ({onClose}) =>
                                            required/>
                                     <Input type={"password"} placeholder={"Hasło"} value={haslo} onChange={pobierzHaslo}
                                            required/>
-                                    <Input type={"password"} placeholder={"Powtórz Hasło"} value={haslo2} onChange={pobierzHaslo2}
+                                    <Input type={"password"} placeholder={"Powtórz Hasło"} value={haslo2}
+                                           onChange={pobierzHaslo2}
                                            required/>
 
                                     <div className={"WindowLogIn-Checkbox"}>
