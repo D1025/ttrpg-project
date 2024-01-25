@@ -1,6 +1,14 @@
 package com.ttrpg.project.service;
 
 import java.time.LocalDateTime;
+import java.util.Date;
+
+import com.ttrpg.project.dto.UserReturnDTO;
+import com.ttrpg.project.exceptions.MessageException;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.ttrpg.project.configuration.ProjectProperties;
@@ -20,16 +28,19 @@ public class LoginServiceImpl implements LoginService {
     
     @Override
     @Transactional
-    public Users login(String email, String password, boolean rememberMe) {
+    public UserReturnDTO login(String email, String password, boolean rememberMe) {
         Users user = findUserByEmailAdress(email);
+        if (user == null) {
+            throw new MessageException("Nie znaleziono użytkownika");
+        }
         if (user.getPassword().equals(password)) {
             user.setToken(generateToken(user));
             user.setTokenExpirationTime(LocalDateTime.now().plusHours(projectProperties.getExpirationTime()));
             usersRepository.save(user);
-            return user;
+            return new UserReturnDTO(user.getEmail(), user.getNickname(), user.getToken(), user.isAdmin(), user.getAvatar());
         }
 
-        return null;
+        throw new MessageException("Blędne hasło");
     }
 
     private String generateToken(Users user) {
@@ -69,17 +80,18 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public Users register(PartialUsers registerForm) {
+    public HttpStatus register(PartialUsers registerForm) {
         if (isEmailValid(registerForm.email()) && !usersRepository.existsByEmail(registerForm.email())) {
             Users user = new Users();
             user.setEmail(registerForm.email());
             user.setPassword(registerForm.password());
             user.setNickname(registerForm.nickname());
             user.setAdmin(false);
-            return usersRepository.save(user);
+            usersRepository.save(user);
+            return HttpStatus.OK;
         }
 
-        throw new RuntimeException("Email is not valid or already exists");
+        throw new MessageException("Email jest niepoprawny lub zajęty");
     }
 
     private boolean isEmailValid(String email) {

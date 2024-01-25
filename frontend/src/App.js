@@ -1,92 +1,82 @@
+import {useState} from "react";
 import './App.css';
 import {
     setTittle,
-    XMenu,
-    XHeader,
-    XHeaderLeft,
-    XHeaderCenter,
-    XHeaderRight,
-    XRObiekt,
-    XButton,
-    XButtonLogo,
-    ModulTest,
-    XImput,
-    XMain,
-    XMainMain,
-    XMainPanel,
-    XMainTitle
+    Menu,
+    Header, HeaderLeft, HeaderCenter, HeaderRight,
+    InfoFrame,
+    Button, ButtonLogo, Input,
+    Main, MainArticle, MainPanel, MainTitle, WindowLogIn, RoomBar
 } from "./NovaX";
 
 function App()
 {
+    // Tittle.
     setTittle("./Grafiki/Logo.png", "TTRPG");
+
+    // Logowanie.
+    const [showLogin, setShowLogin] = useState(false);
+    const toggleShowLogin = () => {
+        console.log('Toggle login view');
+        setShowLogin(prevShowLogin => !prevShowLogin);
+    };
+
+    // Aplikacja.
     return (
         <>
-            <XHeader design={3}>
-                <XHeaderLeft>
-                    <XButtonLogo title={"TTRPG"} src={"./Grafiki/Logo.png"}/>
-                </XHeaderLeft>
+            <Header design={3}>
+                <HeaderLeft>
+                    <ButtonLogo title={"TTRPG"} src={"./Grafiki/Logo.png"}/>
+                </HeaderLeft>
 
-                <XHeaderCenter>
-                    {/*<XButton active={false} title={"Cosiek 1"}/>*/}
-                    {/*<XButton active={false} title={"Cosiek 2"}/>*/}
-                    {/*<XButton active={false} title={"Cosiek 2"}/>*/}
-
-                    <XMenu tag="nav">
+                <HeaderCenter>
+                    <Menu tag="nav">
                         <li>Pokoje</li>
                         <li>
                             Strona
-                            <XMenu>
+                            <Menu>
                                 <li>Wiadomości</li>
                                 <li>O Nas</li>
-                            </XMenu>
+                            </Menu>
                         </li>
-                    </XMenu>
+                    </Menu>
+                </HeaderCenter>
 
-                </XHeaderCenter>
+                <HeaderRight>
+                    {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
+                    <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"} onClick={toggleShowLogin}
+                            width={1}/>
+                </HeaderRight>
+            </Header>
 
-                {/*<XHeaderRight>*/}
-                {/*    <XButton active={false} src={"./Ikonki/Konto.png"}/>*/}
-                {/*    <XImput active={false} type={'button'} value={"Zaloguj Się"}/>*/}
-                {/*    <XImput active={false} type={'text'} placeholder={"Wpisz"}/>*/}
-                {/*</XHeaderRight>*/}
+            <Main design={2}>
+                {/* Nawigacja Main. */}
+                <MainPanel>
+                    <Button title={"Publiczne"} width={2} active={true}/>
+                    <Button title={"Prywatne"} width={2}/>
+                </MainPanel>
 
-                <XHeaderRight>
-                    <XButton active={false} src={"./Ikonki/Style.png"}/>
-                    <XButton active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"} onClick={ModulTest}/>
-                </XHeaderRight>
-            </XHeader>
-
-            <XMain design={2}>
-                <XMainMain>
-                    <XMainTitle title={"Pokoje"} tag={"h2"}>
+                {/* Artykuły Maina. */}
+                <MainArticle>
+                    <MainTitle title={"Pokoje Publiczne"} tag={"h2"}>
                         <div type={"option"}>
-                            <XButton src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={1}/>
+                            <Button src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={0}/>
                         </div>
                         {/*<div type={"tag"}>[Tag 1] [Tag 2]</div>*/}
-                        {/*<div type={"tag"}>2</div>*/}
-                    </XMainTitle>
+                    </MainTitle>
 
-                    <XRObiekt design={1}>
-                        <div title={"TTRPG"}
-                             describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
-                        <div title={"TTRPG"} src={"./Grafiki/Logo.png"}
-                             describe={"W krainie wyobraźni, w grze stołowej, Gdzie bohaterowie walczą,cby zwyciężyć zło. RPG nas uczy, jak tworzyć światy, Gdzie każdy może być kim chce, w tej grze bratniej."}/>
-                        <div title={"TTRPG"} src={"./Grafiki/Logo.png"}/>
-                    </XRObiekt>
-
-                    <XRObiekt>
-                        <div title={"Logo Strony"} src={"./Grafiki/Logo.png"} describe={"Platforma do gier TTRPG"}/>
-                    </XRObiekt>
-                </XMainMain>
-
-                <XMainPanel>
-                    <XButton title={"Publiczne"} width={3} active={true}/>
-                    <XButton title={"Prywatne"} width={3}/>
-                </XMainPanel>
-            </XMain>
+                    <RoomBar title={"Kocie Zabawy"}
+                             description={"Gramy w kotki ze znajomymi a smoki chcą zjeść nasze kotki :)"}
+                             src={"https://i.pinimg.com/originals/0d/72/f3/0d72f35db2305ef238e1fbc1d1151719.jpg"}/>
+                    <RoomBar title={"Poległe Kotki"}/>
+                    <RoomBar title={"Smoki Wojny"}
+                             description={"To ekscytująca gra fabularna, gdzie gracze wcielają się w bohaterów stawiających czoła potężnym smokom i ich hordom, aby przywrócić równowagę w świecie pogrążonym w chaosie wojennym. Walka, intrygi i niebezpieczeństwa czekają na każdym kroku, a losy świata zależą od sprytu i odwagi graczy.\"\n"}
+                             src={"https://i.pinimg.com/originals/db/9d/14/db9d149cdcef8f864bb3a9a8e7d93121.jpg"}/>
+                </MainArticle>
+            </Main>
 
             <div id={"test"}/>
+            {showLogin && <WindowLogIn onClose={toggleShowLogin}/>}
         </>
     );
 }

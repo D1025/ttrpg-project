@@ -1,0 +1,99 @@
+/* Pole Loga. */
+/* Design 1. */
+A.ButtonLogo-D1
+{
+    height: 2.8vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: var(--Radius-I);
+    padding-top: 0.15vw ;
+    padding-bottom: 0.15vw;
+    padding-left: 0.25vw;
+    padding-right: 0.25vw;
+    display: flex;
+    cursor: pointer;
+    transform: var(--Animacja);
+    user-select: none;
+}
+
+/* Po najechaniu. */
+A.ButtonLogo-D1:hover
+{
+    background-color: var(--Motyw-Ciemny)!important;
+}
+
+/* Po kliknięciu. */
+A.ButtonLogo-D1:active
+{
+    background-color: var(--Motyw)!important;
+}
+
+    /* Wygląd Zdjęcia w Przycisku. */
+    A.ButtonLogo-D1 > Img
+    {
+        height: 90%;
+    }
+
+    /* Wygląd Nazwy w Przycisku. */
+    A.ButtonLogo-D1 > Div
+    {
+        font-weight: bold;
+        font-size: 1.05rem;
+        margin-left: 0.25vw;
+    }
+        /* Wygląd Nazwy w Przycisku. */
+        A.ButtonLogo-D1 > *:first-child
+        {
+            margin-left: 0.0vw!important;
+        }
+
+
+/* Design 2. */
+A.ButtonLogo-D2
+{
+    height: 2.8vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: var(--Radius-I);
+    padding-top: 0.15vw ;
+    padding-bottom: 0.15vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    display: flex;
+    cursor: pointer;
+    transform: var(--Animacja);
+    user-select: none;
+}
+
+/* Po najechaniu. */
+A.ButtonLogo-D2:hover
+{
+    background-color: var(--Motyw-Ciemny)!important;
+}
+
+/* Po kliknięciu. */
+A.ButtonLogo-D2:active
+{
+    background-color: var(--Motyw)!important;
+}
+
+/* Wygląd Zdjęcia w Przycisku. */
+A.ButtonLogo-D2 > Img
+{
+    height: 85%;
+}
+
+/* Wygląd Nazwy w Przycisku. */
+A.ButtonLogo-D2 > Div
+{
+    font-weight: bold;
+    font-size: 1.05rem;
+    margin-left: 0.5vw;
+}
+/* Wygląd Nazwy w Przycisku. */
+A.ButtonLogo-D2 > *:first-child
+{
+    margin-left: 0.0vw!important;
+}
