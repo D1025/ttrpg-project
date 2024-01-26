@@ -131,7 +131,6 @@ const OknoLogowania = ({onClose}) =>
                 // Zapisuje dane logowania.
                 const dane = await odpowiedz.json();
                 StorageSave('loginData', dane);
-                console.log(dane);
                 onClose();
             }
         }
