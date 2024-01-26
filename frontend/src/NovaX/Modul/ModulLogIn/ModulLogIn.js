@@ -3,7 +3,7 @@ import SHA256 from 'crypto-js/sha256';
 import
 {
     Input, Label, Button, Modul,
-    StorageSave, StorageLoad, StorageFind, StorageRemove
+    StorageSave, StorageLoad, StorageFind, StorageRemove, PageReload
 } from "../../index";
 import './ModulLogIn.css';
 import localStorageRemove from "../../Funkcion/LocalStorage/StorageRemove";
@@ -131,6 +131,7 @@ const OknoLogowania = ({onClose}) =>
                 const dane = await odpowiedz.json();
                 StorageSave('loginData', dane);
                 console.log(dane);
+                PageReload();
                 onClose();
             }
         }

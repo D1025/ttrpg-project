@@ -27,11 +27,15 @@ export {default as RoomBar} from './Bar/RoomBar/RoomBar.js';
 export {default as Button} from './Button/Button/Button.js';
 export {default as ButtonChoice} from './Button/ButtonChoice/ButtonChoice.js';
 export {default as ButtonLogo} from './Button/ButtonLogo/ButtonLogo';
+export {default as ButtonAccount} from './Button/ButtonAccount/ButtonAccount.js';
+
+// Form.
 export {default as Input} from './Form/Input/Input.js';
 export {default as Label} from './Form/Label/Label.js';
 
 // Funkcion.
 export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';
+export {default as PageReload} from './Funkcion/PageReload/PageReload.js';
     // LocalStorage.
     export {default as StorageSave} from './Funkcion/LocalStorage/StorageSave.js';
     export {default as StorageLoad} from './Funkcion/LocalStorage/StorageLoad.js';

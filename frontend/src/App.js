@@ -1,11 +1,12 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import './App.css';
 import {
     setTittle,
     Menu,
     Header, HeaderLeft, HeaderCenter, HeaderRight,
-    Button, ButtonLogo,
-    Main, MainArticle, MainPanel, MainTitle, ModulLogIn, RoomBar
+    Button, ButtonLogo, ButtonAccount,
+    Main, MainArticle, MainPanel, MainTitle, ModulLogIn, RoomBar,
+    StorageFind, StorageLoad, StorageRemove, PageReload
 } from "./NovaX";
 
 function App()
@@ -16,6 +17,24 @@ function App()
     // Statusy.
     const [lobby, ustawLobby] = useState(false); // Lista pokoi publiczne albo prywatne.
     const [isLogIn, ustawIsLogIn] = useState(false); // Czy jest zalogowany.
+    const [daneLogIn, ustawDaneLogIn] = useState(''); // Dane logowania.
+
+    useEffect(() =>
+    {
+        const loginData = StorageLoad('loginData');
+        // Jeśli dane logowania istnieją.
+        if(loginData)
+        {
+            ustawIsLogIn(true);
+            ustawDaneLogIn(loginData);
+        }
+        else
+        {
+            ustawDaneLogIn('');
+            ustawIsLogIn(false);
+        }
+    }, []);
+
 
     // Logowanie/Rejestracja.
     const [showLogin, setShowLogin] = useState(false);
@@ -48,8 +67,19 @@ function App()
 
                 <HeaderRight>
                     {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
-                    <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"} onClick={toggleShowLogin}
-                            width={1}/>
+                    {isLogIn === true ? (
+                        <>
+                            <ButtonAccount design={1} title={"Xeno"}></ButtonAccount>
+                            <Button active={false} title={"Wyloguj Się"} onClick={() =>
+                            {
+                                StorageRemove('loginData');
+                                PageReload();
+                            }} width={1}/>
+                        </>
+                    ) : (
+                        <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
+                                onClick={toggleShowLogin} width={1}/>
+                    )}
                 </HeaderRight>
             </Header>
 
@@ -58,42 +88,41 @@ function App()
             <Main design={2}>
                 {/* Nawigacja Main'a. */}
                 {isLogIn === true &&
-                (
-                <MainPanel>
-                    <Button title={"Publiczne"} width={2} active={!lobby} onClick={() => ustawLobby(false)}/>
-                    <Button title={"Prywatne"} width={2} active={lobby} onClick={() => ustawLobby(true)}/>
-                </MainPanel>
-                )}
+                    (
+                        <MainPanel>
+                            <Button title={"Publiczne"} width={2} active={!lobby} onClick={() => ustawLobby(false)}/>
+                            <Button title={"Prywatne"} width={2} active={lobby} onClick={() => ustawLobby(true)}/>
+                        </MainPanel>
+                    )}
 
                 {/* Artykuły Maina. */}
-                {lobby === false ? (
-                    <MainArticle>
-                        <MainTitle title={"Pokoje Publiczne"} tag={"h2"}>
+                <MainArticle>
+                    <MainTitle title={lobby === false ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
+                        {isLogIn === true && (
                             <div type={"option"}>
-                                <Button src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={0}/>
+                                <Button src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={1}/>
                             </div>
-                            {/*<div type={"tag"}>[Tag 1] [Tag 2]</div>*/}
-                        </MainTitle>
+                        )}
+                        {/*<div type={"tag"}>[Tag 1] [Tag 2]</div>*/}
+                    </MainTitle>
 
-                        <RoomBar title={"Kocie Zabawy"}
-                                 description={"Gramy w kotki ze znajomymi a smoki chcą zjeść nasze kotki :)"}
-                                 src={"https://i.pinimg.com/originals/0d/72/f3/0d72f35db2305ef238e1fbc1d1151719.jpg"}/>
-                        <RoomBar title={"Poległe Kotki"}/>
-                        <RoomBar title={"Smoki Wojny"}
-                                 description={"To ekscytująca gra fabularna, gdzie gracze wcielają się w bohaterów stawiających czoła potężnym smokom i ich hordom, aby przywrócić równowagę w świecie pogrążonym w chaosie wojennym. Walka, intrygi i niebezpieczeństwa czekają na każdym kroku, a losy świata zależą od sprytu i odwagi graczy.\"\n"}
-                                 src={"https://i.pinimg.com/originals/db/9d/14/db9d149cdcef8f864bb3a9a8e7d93121.jpg"}/>
-                    </MainArticle>
-                ) : (
-                    <MainArticle>
-                        <MainTitle title={"Pokoje Prywatne"} tag={"h2"}>
-                            <div type={"option"}>
-                                <Button src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={0}/>
-                            </div>
-                            {/*<div type={"tag"}>[Tag 1] [Tag 2]</div>*/}
-                        </MainTitle>
-                        Pokoje Prywatne
-                    </MainArticle>
-                )}
+                    {lobby === false ? (
+                        <>
+                            <RoomBar title={"Kocie Zabawy"}
+                                     description={"Gramy w kotki ze znajomymi a smoki chcą zjeść nasze kotki :)"}
+                                     src={"https://i.pinimg.com/originals/0d/72/f3/0d72f35db2305ef238e1fbc1d1151719.jpg"}/>
+                            <RoomBar title={"Smoki Wojny"}
+                                     description={"To ekscytująca gra fabularna, gdzie gracze wcielają się w bohaterów stawiających czoła potężnym smokom i ich hordom, aby przywrócić równowagę w świecie pogrążonym w chaosie wojennym. Walka, intrygi i niebezpieczeństwa czekają na każdym kroku, a losy świata zależą od sprytu i odwagi graczy.\"\n"}
+                                     src={"https://i.pinimg.com/originals/db/9d/14/db9d149cdcef8f864bb3a9a8e7d93121.jpg"}/>
+                        </>
+                    ) : (
+                        <>
+                            <RoomBar title={"Poległe Kotki"}/>
+                        </>
+                    )}
+                </MainArticle>
+
+
             </Main>
 
             <div id={"test"}/>
