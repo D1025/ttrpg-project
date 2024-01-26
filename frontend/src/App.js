@@ -1,12 +1,13 @@
 import {useEffect, useState} from "react";
 import './App.css';
 import {
-    setTittle,
-    Menu,
+    Menu, Menu2,
     Header, HeaderLeft, HeaderCenter, HeaderRight,
     Button, ButtonLogo, ButtonAccount,
-    Main, MainArticle, MainPanel, MainTitle, ModulLogIn, RoomBar,
-    StorageFind, StorageLoad, StorageRemove, PageReload, Menu2
+    Main, MainArticle, MainPanel, MainTitle,
+    ModulLogIn,
+    RoomBar,
+    StorageLoad, StorageRemove, PageReload, setTittle
 } from "./NovaX";
 
 function App()
@@ -15,10 +16,26 @@ function App()
     setTittle("./Grafiki/Logo.png", "TTRPG");
 
     // Statusy.
-    const [lobby, ustawLobby] = useState(false); // Lista pokoi publiczne albo prywatne.
+    const [lobby, ustawLobby] = useState(false); // Pokoje Publiczne/Prywatne.
     const [isLogIn, ustawIsLogIn] = useState(false); // Czy jest zalogowany.
-    const [daneLogIn, ustawDaneLogIn] = useState(''); // Dane logowania.
+    const [daneUzytkownika, ustawDaneUzytkownika] = useState(''); // Dane zalogowanego użytkownika.
 
+    // Odświeżanie.
+    const [odswiez, setOdswiez] = useState(false);
+    const Odswiez = () =>
+    {
+        setOdswiez(prev => !prev);
+    };
+
+    // Formularz Logowanie/Rejestracja.
+    const [showLogin, setShowLogin] = useState(false);
+    const toggleShowLogin = () =>
+    {
+        setShowLogin(prevShowLogin => !prevShowLogin);
+        Odswiez();
+    };
+
+    // Po każdym odświeżeniu spawdzamy czy dane logowania nadal są poprawne.
     useEffect(() =>
     {
         const loginData = StorageLoad('loginData');
@@ -26,22 +43,15 @@ function App()
         if(loginData)
         {
             ustawIsLogIn(true);
-            ustawDaneLogIn(loginData);
+            ustawDaneUzytkownika(loginData);
         }
         else
         {
-            ustawDaneLogIn('');
+            ustawDaneUzytkownika('');
             ustawIsLogIn(false);
         }
-    }, []);
+    }, [odswiez]);
 
-
-    // Logowanie/Rejestracja.
-    const [showLogin, setShowLogin] = useState(false);
-    const toggleShowLogin = () =>
-    {
-        setShowLogin(prevShowLogin => !prevShowLogin);
-    };
 
     // Aplikacja.
     return (
@@ -72,19 +82,17 @@ function App()
                     {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
                     {isLogIn === true ? (
                         <Menu2>
-                            <li><ButtonAccount design={1} width={2} title={"Xeno"}></ButtonAccount>
+                            <li><ButtonAccount design={1} width={2} title={daneUzytkownika.nickname}
+                                               userTitle={daneUzytkownika.admin === true && "[Admin]"}
+                                               src={daneUzytkownika.avatar}></ButtonAccount>
                                 <Menu2>
-                                    <li>
-                                        <Button active={false} width={0} title={"Panel Admina"}/>
-                                    </li>
-                                    <li>
-                                        <Button active={false} width={0} title={"Ustawienia"}/>
-                                    </li>
+                                    <li><Button active={false} width={0} title={"Konto"}/></li>
+                                    <li><Button active={false} width={0} title={"Panel"}/></li>
                                     <li>
                                         <Button active={false} title={"Wyloguj Się"} onClick={() =>
                                         {
                                             StorageRemove('loginData');
-                                            PageReload();
+                                            Odswiez();
                                         }} width={0}/>
                                     </li>
                                 </Menu2>

@@ -1,6 +1,6 @@
 import './ButtonAccount.css';
 
-const ButtonAccount = ({design = 1, title, src, alt = "", width=1, ...rest}) =>
+const ButtonAccount = ({design = 1, title, userTitle, src, alt = "", width=1, ...rest}) =>
 {
     let klasy = "";
     if(design > 0) klasy = "ButtonAccount-D" + design;
@@ -11,11 +11,12 @@ const ButtonAccount = ({design = 1, title, src, alt = "", width=1, ...rest}) =>
             {design === 1 && (
                 <>
                     <div className={"ButtonAccount-Title"}>
-                        {title}
+                        <div>{title}</div>
+                        {userTitle && (<div>{userTitle}</div>)}
                     </div>
 
                     <div className={"ButtonAccount-Img"}>
-                        <img src={src} alt={alt}/>
+                        {src && (<img src={src} alt={alt}/>)}
                     </div>
                 </>
             )}
@@ -23,11 +24,12 @@ const ButtonAccount = ({design = 1, title, src, alt = "", width=1, ...rest}) =>
             {design === 2 && (
                 <>
                     <div className={"ButtonAccount-Img"}>
-                        <img src={src} alt={alt}/>
+                        {src && (<img src={src} alt={alt}/>)}
                     </div>
 
                     <div className={"ButtonAccount-Title"}>
-                        {title}
+                        <div>{title}</div>
+                        {userTitle && (<div>{userTitle}</div>)}
                     </div>
                 </>
             )}

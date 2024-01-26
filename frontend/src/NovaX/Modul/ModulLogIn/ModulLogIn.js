@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import SHA256 from 'crypto-js/sha256';
 import
 {
-    Input, Label, Button, Modul,
-    StorageSave, StorageLoad, StorageFind, StorageRemove, PageReload
+    Modul,
+    Input, Label,
+    Button,
+    StorageSave, StorageLoad, StorageRemove, PageReload
 } from "../../index";
 import './ModulLogIn.css';
-import localStorageRemove from "../../Funkcion/LocalStorage/StorageRemove";
 
 const OknoLogowania = ({onClose}) =>
 {
@@ -57,12 +58,12 @@ const OknoLogowania = ({onClose}) =>
         }
         else if(LogowanieCzyRejestracja)
         {
+            const ZapisanyEmail = StorageLoad('loginEmail')
             // Wstawianie hasła, jeśli zostało zapisane.
-            if(StorageFind('loginEmail') === true)
+            if(ZapisanyEmail)
             {
-                const statusStorage = StorageLoad('loginEmail');
-                ustawCheckbox(statusStorage.checkboxZaznaczony);
-                ustawEmail(statusStorage.email);
+                ustawCheckbox(ZapisanyEmail.checkboxZaznaczony);
+                ustawEmail(ZapisanyEmail.email);
             }
             else
             {
@@ -77,7 +78,7 @@ const OknoLogowania = ({onClose}) =>
         }
     }, [LogowanieCzyRejestracja]);
 
-    // Przesyłanie Logowania.
+    // Logowanie.
     const przeslijLogowanie = async(event) =>
     {
         event.preventDefault();
@@ -131,7 +132,6 @@ const OknoLogowania = ({onClose}) =>
                 const dane = await odpowiedz.json();
                 StorageSave('loginData', dane);
                 console.log(dane);
-                PageReload();
                 onClose();
             }
         }
@@ -142,7 +142,7 @@ const OknoLogowania = ({onClose}) =>
     };
 
 
-    // Przesyłanie Rejestracji.
+    // Rejestracja.
     const przeslijRejestracje = async(event) =>
     {
         event.preventDefault();

@@ -25,6 +25,20 @@ Div.ButtonAccount-D1 > Div.ButtonAccount-Title
     margin-left: auto;
 }
 
+/* . */
+Div.ButtonAccount-D1 > Div.ButtonAccount-Title > Div:nth-child(1)
+{
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* . */
+Div.ButtonAccount-D1 > Div.ButtonAccount-Title > Div:nth-child(2)
+{
+    font-weight: normal;
+    font-size: 0.6rem;
+}
+
 /* Miejsce na Avatar. */
 Div.ButtonAccount-D1 > Div.ButtonAccount-Img
 {
@@ -45,16 +59,16 @@ Div.ButtonAccount-D1 > Div.ButtonAccount-Img
         max-height: 100%;
         border-radius: inherit;
     }
-    /* Przycisk z img jest transparentny. */
-    Div.ButtonAccount-D1:hover Div.ButtonAccount-Img, Div.ButtonAccount-D1:active Div.ButtonAccount-Img
-    {
-        background-color: transparent;
-    }
-    /* Przycisk po kliknięciu. */
-    Div.ButtonAccount-D1:active
-    {
-        background-color: var(--Motyw)!important;
-    }
+    /*!* Przycisk z img jest transparentny. *!*/
+    /*Div.ButtonAccount-D1:hover Div.ButtonAccount-Img, Div.ButtonAccount-D1:active Div.ButtonAccount-Img*/
+    /*{*/
+    /*    background-color: transparent;*/
+    /*}*/
+    /*!* Przycisk po kliknięciu. *!*/
+    /*Div.ButtonAccount-D1:active*/
+    /*{*/
+    /*    background-color: var(--Motyw)!important;*/
+    /*}*/
 
 
 /* Design 2. */
@@ -102,16 +116,16 @@ Div.ButtonAccount-D2 > Div.ButtonAccount-Img
         max-width: 100%;
         max-height: 100%;
     }
-    /* Przycisk z img jest transparentny. */
-    Div.ButtonAccount-D2:hover Div.ButtonAccount-Img, Div.ButtonAccount-D2:active Div.ButtonAccount-Img
-    {
-        background-color: transparent;
-    }
-    /* Przycisk po kliknięciu. */
-    Div.ButtonAccount-D2:active
-    {
-        background-color: var(--Motyw)!important;
-    }
+    /*!* Przycisk z img jest transparentny. *!*/
+    /*Div.ButtonAccount-D2:hover Div.ButtonAccount-Img, Div.ButtonAccount-D2:active Div.ButtonAccount-Img*/
+    /*{*/
+    /*    background-color: transparent;*/
+    /*}*/
+    /*!* Przycisk po kliknięciu. *!*/
+    /*Div.ButtonAccount-D2:active*/
+    /*{*/
+    /*    background-color: var(--Motyw)!important;*/
+    /*}*/
 
 
 /* Szerokość 1. */

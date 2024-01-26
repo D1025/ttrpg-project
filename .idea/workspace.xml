@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="Przycisk konta">
+    <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="poprawki i dokończenie Menu2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Bar/RoomBar/RoomBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Bar/RoomBar/RoomBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Button/Button/Button.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Button/Button/Button.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Button/ButtonAccount/ButtonAccount.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Button/ButtonAccount/ButtonAccount.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Button/ButtonAccount/ButtonAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Button/ButtonAccount/ButtonAccount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Button/ButtonLogo/ButtonLogo.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Button/ButtonLogo/ButtonLogo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Menu/Menu/Menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Menu/Menu/Menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Menu/Menu2 [A]/Menu2.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Menu/Menu2/Menu2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Menu/Menu2 [A]/Menu2.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Menu/Menu2/Menu2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Modul/ModulLogIn/ModulLogIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Modul/ModulLogIn/ModulLogIn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Root.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Root.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +99,7 @@
     "nodejs_package_manager_path": "npm",
     "npm.start.executor": "Run",
     "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\adria\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -256,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706295528668</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="poprawki i dokończenie Menu2">
+      <option name="closed" value="true" />
+      <created>1706299559604</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1706299559604</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,6 +286,7 @@
     <MESSAGE value=":)" />
     <MESSAGE value="poprawa" />
     <MESSAGE value="Przycisk konta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Przycisk konta" />
+    <MESSAGE value="poprawki i dokończenie Menu2" />
+    <option name="LAST_COMMIT_MESSAGE" value="poprawki i dokończenie Menu2" />
   </component>
 </project>
