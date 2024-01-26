@@ -1,6 +1,5 @@
 package com.ttrpg.project.service;
 
-import java.security.Key;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -19,11 +18,6 @@ import com.ttrpg.project.model.Users;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-
-import javax.crypto.spec.SecretKeySpec;
-import javax.xml.bind.DatatypeConverter;
-
-import static javax.crypto.Cipher.SECRET_KEY;
 
 @Service
 @RequiredArgsConstructor
