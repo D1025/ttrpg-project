@@ -7,7 +7,7 @@ import {
     Main, MainArticle, MainPanel, MainTitle,
     ModulLogIn,
     RoomBar,
-    StorageLoad, StorageRemove, PageReload, setTittle
+    StorageLoad, StorageRemove, setTittle
 } from "./NovaX";
 
 function App()

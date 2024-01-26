@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="poprawki logowania">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Modul/ModulLogIn/ModulLogIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Modul/ModulLogIn/ModulLogIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Funkcion/LocalStorage/StorageFind.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Funkcion/PageReload/PageReload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706302843756</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="poprawki logowania">
+      <option name="closed" value="true" />
+      <created>1706302936306</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1706302936306</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

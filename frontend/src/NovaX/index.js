@@ -35,11 +35,9 @@ export {default as Label} from './Form/Label/Label.js';
 
 // Funkcion.
 export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';
-export {default as PageReload} from './Funkcion/PageReload/PageReload.js';
     // LocalStorage.
     export {default as StorageSave} from './Funkcion/LocalStorage/StorageSave.js';
     export {default as StorageLoad} from './Funkcion/LocalStorage/StorageLoad.js';
-    export {default as StorageFind} from './Funkcion/LocalStorage/StorageFind.js';
     export {default as StorageRemove} from './Funkcion/LocalStorage/StorageRemove.js';
 
 // Modul.
