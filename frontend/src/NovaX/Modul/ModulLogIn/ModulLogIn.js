@@ -1,19 +1,27 @@
 import React, {useState, useEffect} from 'react';
 import SHA256 from 'crypto-js/sha256';
-import {Input, Label, Button, Modul} from "../../index";
+import
+{
+    Input, Label, Button, Modul,
+    StorageSave, StorageLoad, StorageFind, StorageRemove
+} from "../../index";
 import './ModulLogIn.css';
+import localStorageRemove from "../../Funkcion/LocalStorage/StorageRemove";
 
 const OknoLogowania = ({onClose}) =>
 {
+    // Status okna czyLogowanie, czyRejestracja.
     const [LogowanieCzyRejestracja, ustawLogowanieCzyRejestracja] = useState(true);
 
-    // Statusy.
+    // Statusy Logowanie/Rejestracji.
     const [nazwa, ustawNazwe] = useState('');
     const [email, ustawEmail] = useState('');
     const [haslo, ustawHaslo] = useState('');
     const [haslo2, ustawHaslo2] = useState('');
+    const [powiadomienie, ustawPowiadomienie] = useState(''); // Powiadomienia.
+    const [checkbox, ustawCheckbox] = useState(false); // Zapamiętaj mnie.
 
-    // Logowanie.
+    // Do logowanie.
     const pobierzEmail = (event) => // Email.
     {
         ustawEmail(event.target.value);
@@ -22,8 +30,7 @@ const OknoLogowania = ({onClose}) =>
     {
         ustawHaslo(event.target.value);
     };
-
-    // Rejestracja.
+    // Dodatkowe do rejestracji.
     const pobierzNazwe = (event) => // Nazwa.
     {
         ustawNazwe(event.target.value);
@@ -32,24 +39,41 @@ const OknoLogowania = ({onClose}) =>
     {
         ustawHaslo2(event.target.value);
     };
-
-    const [statusLogowania, ustawStatusLogowania] = useState(false);
-    const [blad, ustawBlad] = useState('');
+    // Zapamiętaj email.
+    const pobierzCheckbox = (event) => // Checkbox.
+    {
+        ustawCheckbox(event.target.checked);
+    };
 
     // Usuwanie wartości input [Logowanie/Rejestracja].
     useEffect(() =>
     {
-        if(!LogowanieCzyRejestracja || LogowanieCzyRejestracja)
+        if(!LogowanieCzyRejestracja)
         {
             ustawEmail('');
             ustawHaslo('');
             ustawNazwe('');
             ustawHaslo2('');
         }
-
-        if(blad)
+        else if(LogowanieCzyRejestracja)
         {
-            ustawBlad('');
+            // Wstawianie hasła, jeśli zostało zapisane.
+            if(StorageFind('loginEmail') === true)
+            {
+                const statusStorage = StorageLoad('loginEmail');
+                ustawCheckbox(statusStorage.checkboxZaznaczony);
+                ustawEmail(statusStorage.email);
+            }
+            else
+            {
+                ustawEmail('');
+            }
+            ustawHaslo('');
+        }
+
+        if(powiadomienie)
+        {
+            ustawPowiadomienie('');
         }
     }, [LogowanieCzyRejestracja]);
 
@@ -70,26 +94,49 @@ const OknoLogowania = ({onClose}) =>
                 body: JSON.stringify({
                     email: email,
                     password: hasloZahashowane,
-                    rememberMe: true
                 })
             });
 
+            // Reagowanie na odpowiedź.
             if(!odpowiedz.ok)
             {
-                // Pobieranie szczegółowego opisu błędu, jeśli jest dostępny
-                const errorText = await odpowiedz.text();
-                throw new Error(errorText || `Błąd serwera: status ${odpowiedz.status}`);
+                if(odpowiedz.status === 400)
+                {
+                    const blad = await odpowiedz.json();
+                    ustawPowiadomienie(`${blad.message}`);
+                }
+                else
+                {
+                    ustawPowiadomienie(`Błąd: ${odpowiedz.status}`);
+                }
             }
+            else
+            {
+                // Zapisuje email na przyszłość.
+                if(checkbox === true)
+                {
+                    const zapamietajEmail = {
+                        checkboxZaznaczony: checkbox,
+                        email: email
+                    };
 
-            const dane = await odpowiedz.json();
-            console.log("Dane zwrotne:", dane);
-            ustawStatusLogowania(true); // Stan logowania na true
+                    StorageSave('loginEmail', zapamietajEmail);
+                }
+                else
+                {
+                    StorageRemove('loginEmail');
+                }
+
+                // Zapisuje dane logowania.
+                const dane = await odpowiedz.json();
+                StorageSave('loginData', dane);
+                console.log(dane);
+                onClose();
+            }
         }
         catch(blad)
         {
-            console.error('Błąd podczas logowania:', blad);
-            ustawBlad(`Błąd logowania: ${blad.message}`);
-            ustawStatusLogowania(false); // Stan logowania na false
+            ustawPowiadomienie(`Nieoczekiwany błąd: ${blad}`);
         }
     };
 
@@ -101,15 +148,15 @@ const OknoLogowania = ({onClose}) =>
 
         if(haslo !== haslo2)
         {
-            ustawBlad(`Hasła nie pokrywają się`);
+            ustawPowiadomienie(`Hasła nie pokrywają się`);
             return;
         }
 
+        // Asynchroniczne haszowanie hasła
+        const hasloZahashowane = await SHA256(haslo).toString();
+
         try
         {
-            // Asynchroniczne haszowanie hasła
-            const hasloZahashowane = await SHA256(haslo).toString();
-
             const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/register', {
                 method: 'POST',
                 headers: {
@@ -122,27 +169,35 @@ const OknoLogowania = ({onClose}) =>
                 })
             });
 
+            // Reagowanie na odpowiedź.
             if(!odpowiedz.ok)
             {
-                throw new Error(`Błąd sieciowy: status ${odpowiedz.status}`);
+                if(odpowiedz.status === 400)
+                {
+                    const blad = await odpowiedz.json();
+                    ustawPowiadomienie(`${blad.message}`);
+                }
+                else
+                {
+                    ustawPowiadomienie(`Błąd: ${odpowiedz.status}`);
+                }
             }
-
-            const dane = await odpowiedz.json();
-            console.log(dane);
-            // Tutaj możesz zaimplementować odpowiednią logikę po pomyślnej rejestracji
-            ustawStatusLogowania(true);
+            else
+            {
+                ustawPowiadomienie(`Rejestracja udana`);
+            }
         }
-        catch
-            (blad)
+        catch(blad)
         {
-            ustawBlad(`Błąd rejestracji: ${blad.message}`);
-            ustawStatusLogowania(false);
+            ustawPowiadomienie(`Nieoczekiwany błąd: ${blad}`);
         }
     };
+
 
     return (
         <Modul>
             <div>
+                {/* Pole wyboru Rejestracja/Logowanie. */}
                 <div className={"ModulLogIn-Choice"}>
                     <Button title={"Logowanie"} active={LogowanieCzyRejestracja}
                             onClick={() => ustawLogowanieCzyRejestracja(true)}/>
@@ -168,7 +223,8 @@ const OknoLogowania = ({onClose}) =>
                                            required/>
 
                                     <div className={"ModulLogIn-Checkbox"}>
-                                        <Input id={"regulamin"} type={"checkbox"}/>
+                                        <Input id={"regulamin"} type={"checkbox"} checked={checkbox}
+                                               onChange={pobierzCheckbox}/>
                                         <Label htmlFor={"regulamin"}>Zapamiętaj email</Label>
                                     </div>
 
@@ -203,7 +259,7 @@ const OknoLogowania = ({onClose}) =>
                     </div>
 
                     <div className={"ModulLogIn-Bottom"}>
-                        {blad}
+                        {powiadomienie}
                     </div>
                 </div>
             </div>

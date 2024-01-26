@@ -14,7 +14,8 @@ function App()
     setTittle("./Grafiki/Logo.png", "TTRPG");
 
     // Statusy.
-    const [lobby, ustawLobby] = useState(false);
+    const [lobby, ustawLobby] = useState(false); // Lista pokoi publiczne albo prywatne.
+    const [isLogIn, ustawIsLogIn] = useState(false); // Czy jest zalogowany.
 
     // Logowanie/Rejestracja.
     const [showLogin, setShowLogin] = useState(false);
@@ -26,6 +27,7 @@ function App()
     // Aplikacja.
     return (
         <>
+            {/* Nagłłówek Strony. */}
             <Header design={2} src={"./Grafiki/TłoDodatkowe/TOPanime.jpg"}>
                 <HeaderLeft>
                     <ButtonLogo title={"TTRPG"} src={"./Grafiki/Logo.png"}/>
@@ -51,12 +53,17 @@ function App()
                 </HeaderRight>
             </Header>
 
+
+            {/* Main Strony. */}
             <Main design={2}>
-                {/* Nawigacja Main. */}
+                {/* Nawigacja Main'a. */}
+                {isLogIn === true &&
+                (
                 <MainPanel>
                     <Button title={"Publiczne"} width={2} active={!lobby} onClick={() => ustawLobby(false)}/>
                     <Button title={"Prywatne"} width={2} active={lobby} onClick={() => ustawLobby(true)}/>
                 </MainPanel>
+                )}
 
                 {/* Artykuły Maina. */}
                 {lobby === false ? (
