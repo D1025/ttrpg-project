@@ -7,6 +7,7 @@ Div.ButtonAccount-D1
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-size: 0.95rem;
     background-color: var(--Motyw-Ciemny);
     border-radius: var(--Radius-I);
     margin-left: var(--Przycisk-Odstep);
@@ -21,7 +22,6 @@ Div.ButtonAccount-D1
 Div.ButtonAccount-D1 > Div.ButtonAccount-Title
 {
     font-weight: bold;
-    font-size: 1.0rem;
     margin-left: auto;
 }
 
@@ -43,6 +43,7 @@ Div.ButtonAccount-D1 > Div.ButtonAccount-Img
     {
         max-width: 100%;
         max-height: 100%;
+        border-radius: inherit;
     }
     /* Przycisk z img jest transparentny. */
     Div.ButtonAccount-D1:hover Div.ButtonAccount-Img, Div.ButtonAccount-D1:active Div.ButtonAccount-Img
@@ -113,11 +114,28 @@ Div.ButtonAccount-D2 > Div.ButtonAccount-Img
     }
 
 
+/* Szerokość 1. */
+Div.ButtonAccount-W1
+{
+    min-width: 0.0vw!important;
+}
 
+/* Szerokość 1. */
+Div.ButtonAccount-W1
+{
+    min-width: var(--Przycisk-Szerokość-I)!important;
+}
 
+/* Szerokość 2. */
+Div.ButtonAccount-W2
+{
+    min-width: var(--Przycisk-Szerokość-II)!important;
+}
 
-
-
-
+/* Szerokość 3. */
+Div.ButtonAccount-W3
+{
+    min-width: var(--Przycisk-Szerokość-III)!important;
+}
 
 

@@ -6,7 +6,7 @@ import {
     Header, HeaderLeft, HeaderCenter, HeaderRight,
     Button, ButtonLogo, ButtonAccount,
     Main, MainArticle, MainPanel, MainTitle, ModulLogIn, RoomBar,
-    StorageFind, StorageLoad, StorageRemove, PageReload
+    StorageFind, StorageLoad, StorageRemove, PageReload, Menu2
 } from "./NovaX";
 
 function App()
@@ -48,10 +48,12 @@ function App()
         <>
             {/* Nagłłówek Strony. */}
             <Header design={2} src={"./Grafiki/TłoDodatkowe/TOPanime.jpg"}>
+                {/* Lewy Nagłówek z logo. */}
                 <HeaderLeft>
                     <ButtonLogo title={"TTRPG"} src={"./Grafiki/Logo.png"}/>
                 </HeaderLeft>
 
+                {/* Środkowy nagłówek z menu. */}
                 <HeaderCenter>
                     <Menu tag="nav">
                         <li>Pokoje</li>
@@ -65,17 +67,29 @@ function App()
                     </Menu>
                 </HeaderCenter>
 
+                {/* Prawy nagłówek z opcjami. */}
                 <HeaderRight>
                     {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
                     {isLogIn === true ? (
-                        <>
-                            <ButtonAccount design={1} title={"Xeno"}></ButtonAccount>
-                            <Button active={false} title={"Wyloguj Się"} onClick={() =>
-                            {
-                                StorageRemove('loginData');
-                                PageReload();
-                            }} width={1}/>
-                        </>
+                        <Menu2>
+                            <li><ButtonAccount design={1} width={2} title={"Xeno"}></ButtonAccount>
+                                <Menu2>
+                                    <li>
+                                        <Button active={false} width={0} title={"Panel Admina"}/>
+                                    </li>
+                                    <li>
+                                        <Button active={false} width={0} title={"Ustawienia"}/>
+                                    </li>
+                                    <li>
+                                        <Button active={false} title={"Wyloguj Się"} onClick={() =>
+                                        {
+                                            StorageRemove('loginData');
+                                            PageReload();
+                                        }} width={0}/>
+                                    </li>
+                                </Menu2>
+                            </li>
+                        </Menu2>
                     ) : (
                         <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
                                 onClick={toggleShowLogin} width={1}/>

@@ -8,7 +8,7 @@ export {default as HeaderRight} from './Header/HeaderRight/XHeaderRight.js';
 
 // Menu.
 export {default as Menu} from './Menu/Menu/Menu.js';
-// export { default as Menu2 } from './Menu/Menu2 [A]/XMenu2.js';
+export { default as Menu2 } from './Menu/Menu2/Menu2.js';
 
 // Main.
 export {default as Main} from './Main/Main/Main.js';

@@ -1,12 +1,13 @@
 import './ButtonAccount.css';
 
-const ButtonAccount = ({design = 1, title, src, alt = "", ...rest}) =>
+const ButtonAccount = ({design = 1, title, src, alt = "", width=1, ...rest}) =>
 {
     let klasy = "";
     if(design > 0) klasy = "ButtonAccount-D" + design;
+    if(width>-1) klasy += " ButtonAccount-W" + width;
 
     return (
-        <div className={klasy}>
+        <div {...rest} className={klasy}>
             {design === 1 && (
                 <>
                     <div className={"ButtonAccount-Title"}>

@@ -15,7 +15,7 @@
 {
     width: var(--Przycisk-Szerokość-I);
     height: var(--Przycisk-Wysokość);
-    font-size: 1.0rem;
+    font-size: 0.95rem;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -55,7 +55,7 @@
 /* Wygląd rozwiniętego elementu menu [Ukryte]. */
 .Menu > Li > *
 {
-    width: calc( var(--Przycisk-Szerokość-I) + 0.5vw );
+    width: 100%;
     background-color: var(--Motyw);
     border-radius: 0.0vw 0.0vw var(--Radius-III) var(--Radius-III);
     list-style: none;
@@ -64,7 +64,7 @@
     display: none;
     position: absolute;
     top: 100%;
-    left: -0.25vw;
+    left: 0.0vw;
     cursor: default;
 }
 
