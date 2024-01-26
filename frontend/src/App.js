@@ -22,7 +22,7 @@ function App()
 
     // Odświeżanie.
     const [odswiez, setOdswiez] = useState(false);
-    const Odswiez = () =>
+    const wymusOdswiezenie = () =>
     {
         setOdswiez(prev => !prev);
     };
@@ -32,7 +32,7 @@ function App()
     const toggleShowLogin = () =>
     {
         setShowLogin(prevShowLogin => !prevShowLogin);
-        Odswiez();
+        wymusOdswiezenie();
     };
 
     // Po każdym odświeżeniu spawdzamy czy dane logowania nadal są poprawne.
@@ -92,7 +92,7 @@ function App()
                                         <Button active={false} title={"Wyloguj Się"} onClick={() =>
                                         {
                                             StorageRemove('loginData');
-                                            Odswiez();
+                                            wymusOdswiezenie();
                                         }} width={0}/>
                                     </li>
                                 </Menu2>
