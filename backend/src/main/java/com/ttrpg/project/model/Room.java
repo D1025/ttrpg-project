@@ -42,7 +42,7 @@ public class Room extends Model {
     private Users owner;
 
     @Column(name = "private", nullable = false)
-    private boolean isPrivate;
+    private boolean privateRoom;
 
     @ManyToMany(mappedBy = "joinedRooms", fetch = FetchType.LAZY)
     private List<Users> users;
