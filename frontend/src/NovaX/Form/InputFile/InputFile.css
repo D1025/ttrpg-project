@@ -1,0 +1,38 @@
+/* Styl dla niestandardowego przycisku, który zastąpi input[type="file"] */
+Label.FileInput
+{
+    min-width: var(--Przycisk-Szerokość-II);
+    width: max-content;
+    height: var(--Przycisk-Wysokość);
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Kolor-Dodatkowy);
+    backdrop-filter: var(--Blur);
+    background-position: 95% center;
+    background-size: auto 50%;
+    background-repeat: no-repeat;
+    border-radius: var(--Radius-I);
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    transition: var(--Animacja);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Input typu File */
+Label.FileInput > Input[type="file"]
+{
+    display: none;
+}
+
+/* Wygląd aktywny. */
+Label.FileInput-Active
+{
+    background-color: var(--Motyw-Ciemny);
+}

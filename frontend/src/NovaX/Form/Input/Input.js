@@ -1,15 +1,7 @@
-import React from 'react';
 import './Input.css';
 
-const Input = ({type, active=false, title, placeholder, value, autoFocus, disabled, ...rest}) =>
+const Input = ({type, active = false, placeholder, value, autoFocus, disabled, ...rest}) =>
 {
-    let klasy = "Input";
-
-    if(active === true)
-    {
-        klasy += " Input-Active";
-    }
-
     return (
         <input
             {...rest}
@@ -18,8 +10,7 @@ const Input = ({type, active=false, title, placeholder, value, autoFocus, disabl
             disabled={disabled}
             value={value}
             type={type}
-            name={title}
-            className={klasy}
+            className={!active ? "Input" : "Input Input-Active"}
         />
     );
 }

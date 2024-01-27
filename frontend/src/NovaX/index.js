@@ -31,6 +31,7 @@ export {default as ButtonAccount} from './Button/ButtonAccount/ButtonAccount.js'
 
 // Form.
 export {default as Input} from './Form/Input/Input.js';
+export {default as InputFile} from './Form/InputFile/InputFile.js';
 export {default as Label} from './Form/Label/Label.js';
 export {default as Select} from './Form/Select/Select.js';
 export {default as Textarea} from './Form/Textarea/Textarea.js';
