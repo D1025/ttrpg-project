@@ -8,4 +8,5 @@ public interface UserService {
 
     Users getUserById(UUID id);
 
+    Users getUserByToken(String token);
 }

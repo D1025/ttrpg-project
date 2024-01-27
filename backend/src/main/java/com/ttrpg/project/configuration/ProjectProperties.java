@@ -12,4 +12,6 @@ import lombok.Getter;
 @Setter
 public class ProjectProperties {
     private Integer expirationTime;
+
+    private String secretKey;
 }

@@ -14,4 +14,6 @@ public interface LoginService {
     boolean validateToken(String token);
 
     Users findUserByEmailAdress(String email);
+
+    HttpStatus logout(String token);
 }
