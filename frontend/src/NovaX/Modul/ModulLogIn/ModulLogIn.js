@@ -5,7 +5,7 @@ import
     Modul,
     Input, Label,
     Button,
-    StorageSave, StorageLoad, StorageRemove, PageReload
+    StorageSave, StorageLoad, StorageRemove
 } from "../../index";
 import './ModulLogIn.css';
 
@@ -62,7 +62,7 @@ const OknoLogowania = ({onClose}) =>
             // Wstawianie hasła, jeśli zostało zapisane.
             if(ZapisanyEmail)
             {
-                ustawCheckbox(ZapisanyEmail.checkboxZaznaczony);
+                ustawCheckbox(ZapisanyEmail.checkboxChecked);
                 ustawEmail(ZapisanyEmail.email);
             }
             else
@@ -117,7 +117,7 @@ const OknoLogowania = ({onClose}) =>
                 if(checkbox === true)
                 {
                     const zapamietajEmail = {
-                        checkboxZaznaczony: checkbox,
+                        checkboxChecked: checkbox,
                         email: email
                     };
 
