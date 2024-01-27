@@ -64,19 +64,3 @@
 {
     width: 100%!important;
 }
-
-/* Blokada Klikania Li. */
-Li.Li-Nieklikalny
-{
-    width: var(--Przycisk-Szerokość-I);
-    min-height: var(--Przycisk-Wysokość);
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    display: flex;
-}
-/* Po Najechaniu i Kliknięciu. */
-Li.Li-Nieklikalny:hover, Li.Li-Nieklikalny:active
-{
-    background-color: var(--Motyw-Ciemny)!important;
-}

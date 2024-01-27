@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="40f728c4-bcfd-4602-bb3a-ab9a560a2d05" name="Changes" comment="poprawki">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/NovaX/Menu/Menu2/Menu2.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/NovaX/Menu/Menu2/Menu2.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +142,8 @@
       <workItem from="1705935043829" duration="1815000" />
       <workItem from="1705948475830" duration="21000" />
       <workItem from="1705958998348" duration="223000" />
+      <workItem from="1706307809077" duration="755000" />
+      <workItem from="1706349898557" duration="113000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <option name="closed" value="true" />
