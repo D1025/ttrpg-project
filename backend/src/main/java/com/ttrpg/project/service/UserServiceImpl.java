@@ -18,4 +18,9 @@ public class UserServiceImpl implements UserService {
     public Users getUserById(UUID id) {
         return userRepository.findById(id).orElseThrow();
     }
+
+    @Override
+    public Users getUserByToken(String token) {
+        return (Users) userRepository.findByToken(token).orElseThrow();
+    }
 }
