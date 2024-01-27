@@ -15,10 +15,8 @@ function App()
     // Tittle.
     setTittle("./Grafiki/Logo.png", "TTRPG");
 
-    // Statusy.
-    const [lobby, ustawLobby] = useState(false); // Pokoje Publiczne/Prywatne.
-    const [isLogIn, ustawIsLogIn] = useState(false); // Czy jest zalogowany.
-    const [daneUzytkownika, ustawDaneUzytkownika] = useState(''); // Dane zalogowanego użytkownika.
+    // Lobby Publiczne/Prywatne.
+    const [lobby, ustawLobby] = useState(false);
 
     // Odświeżanie.
     const [odswiez, setOdswiez] = useState(false);
@@ -27,14 +25,43 @@ function App()
         setOdswiez(prev => !prev);
     };
 
-    // Formularz Logowanie/Rejestracja.
-    const [showLogin, setShowLogin] = useState(false);
-    const toggleShowLogin = () =>
-    {
-        setShowLogin(prevShowLogin => !prevShowLogin);
-        wymusOdswiezenie();
-    };
 
+    // Status Zalogowaniay.
+    const [isLogIn, ustawIsLogIn] = useState(false); // Czy zalogowany.
+    const [daneUzytkownika, ustawDaneUzytkownika] = useState(''); // Dane zalogowanego.
+    // Wylogowywanie.
+    const LogOut = async() =>
+    {
+        try
+        {
+            const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': daneUzytkownika.token
+                }
+            });
+
+            // Reagowanie na odpowiedź.
+            if(!odpowiedz.ok)
+            {
+                // Przetwarzanie błędu odpowiedzi serwera
+                const blad = await odpowiedz.text();
+                console.error(`Nieoczekiwany błąd: ${blad}`);
+            }
+            else
+            {
+                // Pomyślne wylogowanie
+                StorageRemove('loginData');
+                wymusOdswiezenie();
+            }
+        }
+        catch(blad)
+        {
+            // Obsługa błędów związanych z siecią lub żądaniem
+            console.error(`Nieoczekiwany błąd: ${blad}`);
+        }
+    }
     // Po każdym odświeżeniu spawdzamy czy dane logowania nadal są poprawne.
     useEffect(() =>
     {
@@ -52,6 +79,14 @@ function App()
         }
     }, [odswiez]);
 
+
+    // Formularz Logowanie/Rejestracja.
+    const [showLogin, setShowLogin] = useState(false);
+    const toggleShowLogin = () =>
+    {
+        setShowLogin(prevShowLogin => !prevShowLogin);
+        wymusOdswiezenie();
+    };
 
     // Aplikacja.
     return (
@@ -89,11 +124,7 @@ function App()
                                     <li><Button active={false} width={0} title={"Konto"}/></li>
                                     <li><Button active={false} width={0} title={"Panel"}/></li>
                                     <li>
-                                        <Button active={false} title={"Wyloguj Się"} onClick={() =>
-                                        {
-                                            StorageRemove('loginData');
-                                            wymusOdswiezenie();
-                                        }} width={0}/>
+                                        <Button active={false} title={"Wyloguj Się"} onClick={LogOut} width={0}/>
                                     </li>
                                 </Menu2>
                             </li>
