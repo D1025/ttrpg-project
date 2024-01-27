@@ -43,13 +43,7 @@ function App()
             });
 
             // Reagowanie na odpowiedź.
-            if(!odpowiedz.ok)
-            {
-                // Przetwarzanie błędu odpowiedzi serwera
-                const blad = await odpowiedz.text();
-                console.error(`Nieoczekiwany błąd: ${blad}`);
-            }
-            else
+            if(odpowiedz.ok)
             {
                 // Pomyślne wylogowanie
                 StorageRemove('loginData');

@@ -46,27 +46,64 @@ Div.ModulCreateRoom Div.ModulCreateRoom-Main
     margin-top: 1.0vw;
     display: flex;
 }
-    /* Pole trzymając wszystkie sekcje. */
-    Div.ModulCreateRoom Div.ModulCreateRoom-Main > Div
+    /* Pole centrójące . */
+    Div.MCR-Main-Center
     {
         width: 27vw;
         text-align: left;
     }
 
-        /* Seckej. */
-        Div.ModulCreateRoom Div.ModulCreateRoom-Main > Div > Div
+        Div.MCR-Main-Flex
         {
-            margin-bottom: 0.3vw;
+            display: flex;
         }
+
+            Div.MCR-Main-Flex-Left
+            {}
+                /* Seckej. */
+                Div.MCR-Main-Section
+                {
+                    width: min-content;
+                    margin-bottom: 0.3vw;
+                }
+
+            Div.MCR-Main-Flex-Right
+            {
+                width:100%;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+            }
+
+                Div.MCR-Main-Flex-Right > Img
+                {
+                    max-width: 15vw;
+                    border-radius: var(--Radius-II);
+                }
 
 /* Dolna część pola logowania. */
 Div.ModulCreateRoom Div.ModulCreateRoom-Bottom
 {
-    height: 3.5vw;
+    min-height: 4.0vw;
     justify-content: center;
     text-align: center;
-    align-items: end;
-    margin-bottom: 1.0vw;
-    padding-right: 1.0vw;
+    align-items: center;
+    padding-bottom: 0.5vw;
     display: flex;
 }
+    /* Przycisk wysłania. */
+    Div.ModulCreateRoom Div.ModulCreateRoom-Bottom > Div > Div:nth-child(1)
+    {
+        padding-top: 0.5vw;
+        padding-bottom: 0.25vw;
+    }
+
+    /* Powiadomienie. */
+    Div.ModulCreateRoom Div.ModulCreateRoom-Bottom > Div > Div:nth-child(2)
+    {
+        color: var(--Kolor-Dodatkowy);
+        font-weight: bold;
+        padding-top: 0.25vw;
+        padding-bottom: 0.25vw;
+    }
