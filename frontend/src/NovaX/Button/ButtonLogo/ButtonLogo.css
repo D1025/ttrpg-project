@@ -6,7 +6,7 @@ A.ButtonLogo-D1
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     border-radius: var(--Radius-I);
     padding-top: 0.15vw ;
     padding-bottom: 0.15vw;
@@ -56,7 +56,7 @@ A.ButtonLogo-D2
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     border-radius: var(--Radius-I);
     padding-top: 0.15vw ;
     padding-bottom: 0.15vw;

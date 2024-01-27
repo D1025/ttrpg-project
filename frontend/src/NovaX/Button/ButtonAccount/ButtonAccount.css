@@ -7,7 +7,7 @@ Div.ButtonAccount-D1
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     background-color: var(--Motyw-Ciemny);
     border-radius: var(--Radius-I);
     margin-left: var(--Przycisk-Odstep);

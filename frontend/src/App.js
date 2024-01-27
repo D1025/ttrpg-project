@@ -5,7 +5,7 @@ import {
     Header, HeaderLeft, HeaderCenter, HeaderRight,
     Button, ButtonLogo, ButtonAccount,
     Main, MainArticle, MainPanel, MainTitle,
-    ModulLogIn,
+    ModulLogIn, ModulCreateRoom,
     RoomBar,
     StorageLoad, StorageRemove, setTittle
 } from "./NovaX";
@@ -87,6 +87,12 @@ function App()
         setShowLogin(prevShowLogin => !prevShowLogin);
         wymusOdswiezenie();
     };
+    // Formularz Logowanie/Rejestracja.
+    const [showCreateRoom, setCreateRoom] = useState(false);
+    const togglCreateRoom = () =>
+    {
+        setCreateRoom(prevShowLogin => !prevShowLogin);
+    };
 
     // Aplikacja.
     return (
@@ -153,7 +159,7 @@ function App()
                     <MainTitle title={lobby === false ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
                         {isLogIn === true && (
                             <div type={"option"}>
-                                <Button src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={1}/>
+                                <Button src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={1} onClick={togglCreateRoom}/>
                             </div>
                         )}
                         {/*<div type={"tag"}>[Tag 1] [Tag 2]</div>*/}
@@ -180,6 +186,7 @@ function App()
 
             <div id={"test"}/>
             {showLogin && <ModulLogIn onClose={toggleShowLogin}/>}
+            {showCreateRoom && <ModulCreateRoom onClose={togglCreateRoom}/>}
         </>
     );
 }

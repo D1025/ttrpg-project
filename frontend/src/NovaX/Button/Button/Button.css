@@ -40,7 +40,7 @@ Div.Button-D2
 {
     height: var(--Przycisk-Wysokość);
     width: max-content!important;
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     font-weight: bold;
     align-items: center;
     text-align: center;

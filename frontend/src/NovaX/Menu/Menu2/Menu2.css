@@ -45,7 +45,6 @@
 .Menu2 > Li > *:not(div) > Li
 {
     width: 92%;
-    font-size: 0.9rem;
     align-items: center;
     text-align: center;
     justify-content: center;

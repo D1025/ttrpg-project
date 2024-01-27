@@ -15,7 +15,7 @@
 {
     width: var(--Przycisk-Szerokość-I);
     height: var(--Przycisk-Wysokość);
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -28,17 +28,6 @@
     cursor: pointer;
     transition: var(--Animacja);
 }
-
-/* Nadpisanie wyglądu linku. */
-/*.Menu > Li a*/
-/*{*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    text-align: center;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    display: flex;*/
-/*}*/
 
 /* Wygląd po najechaniu na Li. */
 .Menu Li:hover
@@ -78,7 +67,7 @@
 .Menu > Li > * > Li
 {
     width: 90%;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -92,17 +81,6 @@
     cursor: pointer;
     transition: var(--Animacja);
 }
-
-/* Nadpisanie wyglądu linku w Li. */
-/*.Menu > Li > * > Li a*/
-/*{*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    text-align: center;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    display: flex;*/
-/*}*/
 
 
 /* Zapobiega niepotrzebnemu miganiu. */

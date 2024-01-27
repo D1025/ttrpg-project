@@ -32,6 +32,8 @@ export {default as ButtonAccount} from './Button/ButtonAccount/ButtonAccount.js'
 // Form.
 export {default as Input} from './Form/Input/Input.js';
 export {default as Label} from './Form/Label/Label.js';
+export {default as Select} from './Form/Select/Select.js';
+export {default as Textarea} from './Form/Textarea/Textarea.js';
 
 // Funkcion.
 export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';
@@ -42,4 +44,5 @@ export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';
 
 // Modul.
 export {default as Modul} from './Modul/Modul/Modul.js';
-export {default as ModulLogIn} from './Modul/ModulLogIn/ModulLogIn.js';
+    export {default as ModulLogIn} from './Modul/ModulLogIn/ModulLogIn.js';
+    export {default as ModulCreateRoom} from './Modul/ModulCreateRoom/ModulCreateRoom.js';

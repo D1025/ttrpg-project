@@ -1,7 +1,7 @@
 /* Nadpisany: Input do Klikania. */
 Input.Input[type="submit"], Input.Input[type="button"]
 {
-    min-width: var(--Przycisk-Szerokość-I);
+    min-width: var(--Przycisk-Szerokość-II);
     width: 0.0vw;
     height: var(--Przycisk-Wysokość);
     align-items: center;
@@ -39,7 +39,7 @@ Input.Input[type="submit"]:active, Input.Input[type="button"]:active
 /* Nadpisany: Input do Wyszukiwania. */
 Input.Input[type="text"], Input.Input[type="password"]
 {
-    min-width: var(--Przycisk-Szerokość-I);
+    min-width: var(--Przycisk-Szerokość-II);
     width: 0;
     height: var(--Przycisk-Wysokość);
     color: inherit;

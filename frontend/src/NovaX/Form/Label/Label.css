@@ -1,5 +1,21 @@
 /* Label. */
-Label.Label
+/* Design 1. */
+Label.Label-D1
 {
     user-select: none;
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    margin-bottom: 0.1vw;
+    display: inline-block;
+}
+
+/* Design 2. */
+Label.Label-D2
+{
+    font-weight: bold;
+    user-select: none;
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    margin-bottom: 0.1vw;
+    display: inline-block;
 }

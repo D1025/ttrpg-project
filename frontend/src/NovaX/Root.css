@@ -23,7 +23,7 @@
     --Radius-II: 1.0vw;
     --Radius-I: 0.7vw;
 
-    --Przycisk-Wysokość: 2.4vw;
+    --Przycisk-Wysokość: 2.45vw;
     --Przycisk-Szerokość-III: 12.0vw;
     --Przycisk-Szerokość-II: 11.0vw;
     --Przycisk-Szerokość-I: 10.0vw;
@@ -34,7 +34,7 @@
 Html
 {
     font-family: Verdana, serif;
-    font-size: 1.01vw;
+    font-size: 1.0vw;
     scroll-behavior: smooth;
 
     /* Scrollbar w Firefox. */

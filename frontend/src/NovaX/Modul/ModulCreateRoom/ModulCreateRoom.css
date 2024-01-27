@@ -1,0 +1,60 @@
+/* ModulCreateRoom. */
+Div.ModulCreateRoom
+{
+    width: 35.0vw;
+    background-color: var(--Motyw-Przezroczysty);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-IV);
+}
+
+/* Górna część pola logowania. */
+Div.ModulCreateRoom  Div.ModulCreateRoom-Top
+{
+    height: 3.5vw;
+    justify-content: right;
+    text-align: center;
+    align-items: end;
+    margin-bottom: 1.0vw;
+    padding-right: 1.0vw;
+    display: flex;
+}
+
+/* Główna część pola logowania. */
+Div.ModulCreateRoom Div.ModulCreateRoom-Main
+{
+    /*min-height: 14.0vw;*/
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 1.0vw;
+    display: flex;
+}
+    /* Pole trzymając wszystkie sekcje. */
+    Div.ModulCreateRoom Div.ModulCreateRoom-Main > Div
+    {
+        width: 27vw;
+        text-align: left;
+    }
+
+        /* Seckej. */
+        Div.ModulCreateRoom Div.ModulCreateRoom-Main > Div > Div
+        {
+            margin-bottom: 0.3vw;
+        }
+        Div.ModulCreateRoom Div.ModulCreateRoom-Main > Div > Div.Small
+        {
+            margin-bottom: 0.3vw;
+            display: inline-table;
+        }
+
+/* Dolna część pola logowania. */
+Div.ModulCreateRoom Div.ModulCreateRoom-Bottom
+{
+    height: 3.5vw;
+    justify-content: center;
+    text-align: center;
+    align-items: end;
+    margin-bottom: 1.0vw;
+    padding-right: 1.0vw;
+    display: flex;
+}
