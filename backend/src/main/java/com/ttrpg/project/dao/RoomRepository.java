@@ -11,4 +11,6 @@ import com.ttrpg.project.model.Room;
 @Repository
 public interface RoomRepository extends JpaRepository<Room, UUID> {
     List<Room> findAllByPrivateRoomIs(boolean privateRoom);
+
+    List<Room> findAllByPrivateRoomIsAndOwnerId(boolean privateRoom, UUID ownerId);
 }

@@ -44,28 +44,14 @@ public class LoginServiceImpl implements LoginService {
     }
 
     private String generateToken(Users user) {
-        //generate random token based on user data
-//        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
-//        long nowMillis = System.currentTimeMillis();
-//        Date now = new Date(nowMillis);
-//
-//        byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary("secret key variable");
-//        Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
-//
-//        JwtBuilder builder = Jwts.builder().setId(user.getId().toString())
-//                .setIssuedAt(now)
-//                .setSubject(user.getEmail())
-//                .setIssuer("TODO")
-//                .signWith(signatureAlgorithm, signingKey);
-//
-//        if (projectProperties.getExpirationTime() >= 0) {
-//            long expMillis = nowMillis + projectProperties.getExpirationTime();
-//            Date exp = new Date(expMillis);
-//            builder.setExpiration(exp);
-//        }
-//
-//        return builder.compact();
-        return "FANCY TOKEN HERE";
+        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+        JwtBuilder builder = Jwts.builder()
+                .setIssuedAt(new Date())
+                .setSubject(user.getEmail())
+                .setIssuer("ttrpg")
+                .signWith(signatureAlgorithm, projectProperties.getSecretKey());
+
+        return builder.compact();
     }
     
     @Override
@@ -96,5 +82,15 @@ public class LoginServiceImpl implements LoginService {
 
     private boolean isEmailValid(String email) {
         return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
+    }
+
+    @Override
+    @Transactional
+    public HttpStatus logout(String token) {
+        Users user = (Users) usersRepository.findByToken(token).orElseThrow(() -> new RuntimeException("User not found"));
+        user.setToken(null);
+        user.setTokenExpirationTime(null);
+        usersRepository.save(user);
+        return HttpStatus.OK;
     }
 }

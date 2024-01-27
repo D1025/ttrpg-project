@@ -17,4 +17,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleGenericException(Exception ex) {
         return new ResponseEntity<>("Wystąpił błąd: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(AuthorizationException.class)
+    public ResponseEntity<ExceptionDTO> handleAuthorizationException(AuthorizationException ex) {
+        ExceptionDTO exceptionDTO = new ExceptionDTO(ex.getClass().getSimpleName(), ex.getMessage());
+        return new ResponseEntity<>(exceptionDTO, HttpStatus.UNAUTHORIZED);
+    }
 }

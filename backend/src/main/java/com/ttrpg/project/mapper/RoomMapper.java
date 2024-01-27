@@ -13,10 +13,12 @@ public interface RoomMapper {
     @Mapping(target = "ownerId", source = "owner.id")
     @Mapping(target = "ownerNickname", source = "owner.nickname")
     @Mapping(target = "ownerAvatar", source = "owner.avatar")
+    @Mapping(target = "isPrivate", source = "privateRoom")
     RoomReturnDTO roomToRoomReturnDTO(Room room);
 
     @Mapping(target = "ownerId", source = "owner.id")
     @Mapping(target = "ownerNickname", source = "owner.nickname")
     @Mapping(target = "ownerAvatar", source = "owner.avatar")
+    @Mapping(target = "isPrivate", source = "privateRoom")
     List<RoomReturnDTO> roomsToRoomReturnDTOs(List<Room> rooms);
 }
