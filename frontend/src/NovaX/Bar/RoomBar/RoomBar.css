@@ -36,7 +36,7 @@ Div.RoomBar > Div.RoomBar-Main
         height: max-content;
         font-weight: bold;
         color: var(--Kolor-Dodatkowy);
-        font-size: 1.1rem;
+        font-size: 1.06rem;
         padding-top: 0.25vw;
         padding-bottom: 0.25vw;
     }
@@ -46,6 +46,7 @@ Div.RoomBar > Div.RoomBar-Main
     {
         width: 100%;
         height: max-content;
+        font-size: 0.96rem;
         padding-top: 0.25vw;
         padding-bottom: 0.25vw;
     }

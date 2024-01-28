@@ -2,6 +2,7 @@ package com.ttrpg.project.service;
 
 import com.ttrpg.project.dao.RoomRepository;
 import com.ttrpg.project.dto.room.CreateRoom;
+import com.ttrpg.project.dto.room.EditRoom;
 import com.ttrpg.project.dto.room.GetRroomDTO;
 import com.ttrpg.project.dto.room.RoomReturnDTO;
 import com.ttrpg.project.exceptions.MessageException;
@@ -54,5 +55,17 @@ public class RoomsServiceImpl implements RoomsService {
         } else {
             throw new MessageException("Invalid status");
         }
+    }
+
+    @Override
+    @Transactional
+    public RoomReturnDTO modifyRoom(EditRoom editRoom, UUID id) {
+        Room room = roomRepository.findById(id).orElseThrow(() -> new MessageException("Room not found"));
+        room.setName(editRoom.name());
+        room.setDescription(editRoom.description());
+        room.setImage(editRoom.image());
+        room.setPrivateRoom(editRoom.isPrivate());
+        roomRepository.save(room);
+        return roomMapper.roomToRoomReturnDTO(room);
     }
 }

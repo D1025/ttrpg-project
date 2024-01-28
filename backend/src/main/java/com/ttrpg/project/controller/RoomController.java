@@ -1,6 +1,7 @@
 package com.ttrpg.project.controller;
 
 import com.ttrpg.project.dto.room.CreateRoom;
+import com.ttrpg.project.dto.room.EditRoom;
 import com.ttrpg.project.dto.room.GetRroomDTO;
 import com.ttrpg.project.dto.room.RoomReturnDTO;
 import com.ttrpg.project.service.JwtAuthorization;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,5 +32,12 @@ public class RoomController {
     public ResponseEntity<List<RoomReturnDTO>> getAllRooms(@RequestBody GetRroomDTO roomDTO, @RequestHeader(name = "Authorization", required = false) String authorizationHeader) {
         return ResponseEntity.ok(roomsService.getAllRooms(roomDTO, authorizationHeader));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<RoomReturnDTO> modifyRoom(@RequestBody EditRoom editRoom, @PathVariable UUID id, @RequestHeader(name = "Authorization", required = false) String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        return ResponseEntity.ok(roomsService.modifyRoom(editRoom, id));
+    }
+
 
 }

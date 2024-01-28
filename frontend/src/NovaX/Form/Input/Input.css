@@ -1,7 +1,7 @@
 /* Nadpisany: Input do Klikania. */
 Input.Input[type="submit"], Input.Input[type="button"]
 {
-    min-width: var(--Przycisk-Szerokość-I);
+    min-width: var(--Przycisk-Szerokość-II);
     width: 0.0vw;
     height: var(--Przycisk-Wysokość);
     align-items: center;
@@ -39,7 +39,7 @@ Input.Input[type="submit"]:active, Input.Input[type="button"]:active
 /* Nadpisany: Input do Wyszukiwania. */
 Input.Input[type="text"], Input.Input[type="password"]
 {
-    min-width: var(--Przycisk-Szerokość-I);
+    min-width: var(--Przycisk-Szerokość-II);
     width: 0;
     height: var(--Przycisk-Wysokość);
     color: inherit;
@@ -83,37 +83,42 @@ Input[type="Submit"].Input-Active, Input[type="Button"].Input-Active, Input[type
 /* Ukryj oryginalny checkbox. */
 input.Input[type="checkbox"]
 {
-    width: 0;
-    height: 0;
-    /*visibility: hidden;*/
+    position: absolute;
+    opacity: 0;
+    width: 0.9vw;
+    height: 0.9vw;
+    margin: 0;
 }
-    /* Stylizacja niestandardowego znacznika. */
-    input.Input[type="checkbox"] + label
-    {
-        position: relative;
-        padding-left: 0.8vw; /* Dla dodatkowej przestrzeni po lewej stronie */
-        cursor: pointer;
-    }
 
-    /* Podstawowe wartości Checkbox'a. */
-    input.Input[type="checkbox"] + label::before
-    {
-        content: "";
-        position: absolute;
-        left: -0.5vw;
-        top: 0.25vw;
-        width: 0.9vw; /* Szerokość niestandardowego checkboxa */
-        height: 0.9vw; /* Wysokość niestandardowego checkboxa */
-        background-color: var(--Motyw);
-        border-radius: 0.3vw;
-    }
+/* Stylizacja niestandardowego znacznika. */
+input.Input[type="checkbox"] + label
+{
+    position: relative;
+    padding-left: 1.25vw;
+    cursor: pointer;
+    line-height: 0.9vw;
+}
 
-    /* Zaznaczony. */
-    input.Input[type="checkbox"]:checked + label::before
-    {
-        background-color: var(--Kolor-Dodatkowy);
-        background-image: url("/public/Ikonki/Zaznaczenie.png");
-        background-size: 80%;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
+/* Podstawowe wartości Checkbox'a. */
+input.Input[type="checkbox"] + label::before
+{
+    content: "";
+    position: absolute;
+    left: 0.15vw;
+    top: 0.07vw;
+    width: 0.9vw;
+    height: 0.9vw;
+    background-color: var(--Motyw);
+    border-radius: 0.3vw;
+    box-sizing: border-box;
+}
+
+/* Zaznaczony. */
+input.Input[type="checkbox"]:checked + label::before
+{
+    background-color: var(--Kolor-Dodatkowy);
+    background-image: url("/public/Ikonki/Zaznaczenie.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

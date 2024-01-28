@@ -1,23 +1,5 @@
-/* Nadpisany Modul. */
-.WindowModul
-{
-    justify-content: center;
-    align-items: center;
-    background-image: var(--Tło-Strony);
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: var(--Motyw);
-    display: grid;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-}
-
-Div.WindowChoice
+/* Pole zmiany trybu. Z logowania na Rejestrację i na opak. */
+Div.ModulLogIn-Choice
 {
     justify-content: center;
     align-items: center;
@@ -27,9 +9,8 @@ Div.WindowChoice
     display: flex;
 }
 
-
-/* Okienko logowania. */
-Div.WindowLogIn
+/* Modół logowania. */
+Div.ModulLogIn
 {
     width: 23.0vw;
     min-height: 25.0vw;
@@ -40,7 +21,7 @@ Div.WindowLogIn
 }
 
 /* Górna część pola logowania. */
-Div.WindowLogIn > Div.WindowLogIn-Top
+Div.ModulLogIn > Div.ModulLogIn-Top
 {
     height: 3.5vw;
     justify-content: right;
@@ -50,9 +31,8 @@ Div.WindowLogIn > Div.WindowLogIn-Top
     display: flex;
 }
 
-
 /* Główna część pola logowania. */
-Div.WindowLogIn > Div.WindowLogIn-Main
+Div.ModulLogIn > Div.ModulLogIn-Main
 {
     min-height: 14.0vw;
     justify-content: center;
@@ -62,13 +42,14 @@ Div.WindowLogIn > Div.WindowLogIn-Main
     display: flex;
 }
     /* Pole z hasłem iemailem. */
-    Div.WindowLogIn > Div.WindowLogIn-Main Form > Div
+    Div.ModulLogIn > Div.ModulLogIn-Main > Form > Div
     {
         width: min-content;
         text-align: center;
     }
+
     /* Nadpisane inputy. */
-    Div.WindowLogIn > Div.WindowLogIn-Main Form > Div > Input
+    Div.ModulLogIn > Div.ModulLogIn-Main > Form Input
     {
         width: 13.0vw;
         height: 2.5vw;
@@ -76,25 +57,16 @@ Div.WindowLogIn > Div.WindowLogIn-Main
         margin-bottom: 0.5vw;
     }
 
-    /* . */
-    Div.WindowLogIn > Div.WindowLogIn-Main Form > Div > Div.WindowLogIn-Checkbox
+    /* Pole trzymający checkbox. */
+    Div.ModulLogIn > Div.ModulLogIn-Main > Form Div.ModulLogIn-Checkbox
     {
         font-size: 0.9rem;
-        text-align: center;
-        align-items: center;
         margin-bottom: 0.5vw;
         display: flex;
     }
 
-    /* . */
-    Div.WindowLogIn > Div.WindowLogIn-Main Form > Div > Div.WindowLogIn-Checkbox > Input[type="checkbox"]
-    {
-        font-size: 1.05rem;
-        margin-right: 0.2vw;
-        margin-left: 0.2vw;
-    }
     /* Logo w konie logowania. */
-    Div.WindowLogIn > Div.WindowLogIn-Main Form > Div > Img
+    Div.ModulLogIn > Div.ModulLogIn-Main > Form Img
     {
         width: 5.0vw;
         height: 5.0vw;
@@ -104,9 +76,8 @@ Div.WindowLogIn > Div.WindowLogIn-Main
         display: block;
     }
 
-
 /* Dolna część pola logowania. */
-Div.WindowLogIn > Div.WindowLogIn-Bottom
+Div.ModulLogIn > Div.ModulLogIn-Bottom
 {
     max-width: 100%;
     min-height: 3.0vw;
@@ -119,8 +90,3 @@ Div.WindowLogIn > Div.WindowLogIn-Bottom
     justify-content: center;
     display: flex;
 }
-
-
-
-
-

@@ -1,0 +1,37 @@
+/* Select. */
+Select.Select
+{
+    /* Wusuwanie strzałki z przeglądarek. */
+    -webkit-appearance: none; /* WebKit i Blink. */
+    -moz-appearance: none; /* Firefox. */
+    appearance: none; /* Pozostałe przeglądarki. */
+
+    /* Twoje style */
+    width: var(--Przycisk-Szerokość-II);
+    height: var(--Przycisk-Wysokość);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.0rem;
+    font-weight: bold;
+    background-color: var(--Motyw-Ciemny);
+    border: 0.2vw solid;
+    border-color: var(--Kolor-Dodatkowy);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-I);
+    margin-left: var(--Przycisk-Odstep);
+    margin-right: var(--Przycisk-Odstep);
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    cursor: pointer;
+
+    /* Własna Strzałka. */
+    background-image: url('/public/Ikonki/Strzałka_Dół.png');
+    background-position: right 0.6vw center;
+    background-repeat: no-repeat;
+    background-size: 1.0vw;
+}
+
+/* Option. */
+Select.Select Option
+{
+    /*background-color: var(--Motyw);*/
+}

@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.JdbcType;
+import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 import java.util.List;
 
@@ -28,6 +30,7 @@ public class Room extends Model {
     private String description;
 
     @Column(name = "image")
+    @JdbcType(VarbinaryJdbcType.class)
     private byte[] image;
 
     @Column(name = "system", nullable = false)
