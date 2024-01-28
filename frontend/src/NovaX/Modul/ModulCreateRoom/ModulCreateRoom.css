@@ -53,11 +53,13 @@ Div.ModulCreateRoom Div.ModulCreateRoom-Main
         text-align: left;
     }
 
+        /* Trzyma opcje po lewej a obrazek po prawej. */
         Div.MCR-Main-Flex
         {
             display: flex;
         }
 
+            /* Lewe menu z opciami. */
             Div.MCR-Main-Flex-Left
             {}
                 /* Seckej. */
@@ -67,6 +69,7 @@ Div.ModulCreateRoom Div.ModulCreateRoom-Main
                     margin-bottom: 0.3vw;
                 }
 
+            /* Prawe menu z obrazkiem. */
             Div.MCR-Main-Flex-Right
             {
                 width:100%;
@@ -76,9 +79,33 @@ Div.ModulCreateRoom Div.ModulCreateRoom-Main
                 display: flex;
             }
 
+                /* Miesce na obrazek. */
+                Div.MCR-Main-Flex-Right > Div.Fake-Img
+                {
+                    width: 14.5vw;
+                    min-height: 8vw;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    background-color: var(--Motyw-Ciemny);
+                    border-radius: var(--Radius-II);
+                    border: 0.1vw solid var(--Motyw-Ciemny);
+                    display: grid;
+                }
+
+                    /* Ikonka obrazka. */
+                    Div.MCR-Main-Flex-Right > Div.Fake-Img > Img
+                    {
+                        max-width: 3.5vw;
+                    }
+
+                /* Ustawiony obrazek obrazek. */
                 Div.MCR-Main-Flex-Right > Img
                 {
-                    max-width: 15vw;
+                    max-width: 14.5vw;
+                    max-height: 10vw;
+                    background-color: var(--Motyw-Ciemny);
+                    border: 0.2vw solid var(--Motyw);
                     border-radius: var(--Radius-II);
                 }
 

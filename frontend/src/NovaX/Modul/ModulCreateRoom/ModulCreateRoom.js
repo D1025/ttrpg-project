@@ -22,18 +22,21 @@ const ModulCreateRoom = ({onClose}) =>
     {
         ustawOpis(event.target.value);
     };
-    const pobierzObraz = (event) =>
+    const pobierzObraz = (event) => // Obraz.
     {
-        const file = event.target.files[0];
-        if(file)
+        if(event === '' || !event.target.files[0])
         {
-            const reader = new FileReader();
-            reader.onloadend = () =>
-            {
-                ustawObraz(reader.result); // Zapisuje obraz jako Base64.
-            };
-            reader.readAsDataURL(file);
+            ustawObraz('');
+            return;
         }
+
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () =>
+        {
+            ustawObraz(reader.result);  // Zapisuje obraz jako Base64
+        };
+        reader.readAsDataURL(file);
     };
 
 
@@ -117,8 +120,7 @@ const ModulCreateRoom = ({onClose}) =>
 
                                     <div className={"MCR-Main-Section"}>
                                         <Label design={2}>Publiczne:</Label><br/>
-                                        <Select id="typ" value={typ} onChange={pobierzTyp}>
-                                            <option value="" disabled>-</option>
+                                        <Select id="typ" value={typ} onChange={pobierzTyp} required>
                                             <option value="false">Tak</option>
                                             <option value="true">Nie</option>
                                         </Select>
@@ -130,11 +132,16 @@ const ModulCreateRoom = ({onClose}) =>
                                                    accept={"image/jpeg, image/jpg, image/png, image/gif, image/webp"}/>
                                     </div>
                                 </div>
-                                {obraz && (
-                                    <div className={"MCR-Main-Flex-Right"}>
+                                {/* Podgląd obrazka. */}
+                                <div className={"MCR-Main-Flex-Right"}>
+                                    {obraz ?
                                         <img src={obraz} alt={""}/>
-                                    </div>
-                                )}
+                                     :
+                                        <div className={"Fake-Img"}>
+                                            <img src={"./Ikonki/Obraz.png"} alt={""}/>
+                                        </div>
+                                    }
+                                </div>
                             </div>
                             <Label design={2}>Opis:</Label><br/>
                             <Textarea type={"text"} placeholder={"Opis"} onChange={pobierzOpis}/>

@@ -17,6 +17,8 @@
 
     --Animacja: background-color 0.05s ease-in-out, color 0.0s ease-in-out;
     --Blur: blur(2.5vw);
+    --Kolor-Negatywny: rgba(180, 40, 40, 1);
+    --Kolor-Pozytywny: rgba(0, 105, 0, 1);
 
     --Radius-IV: 1.5vw;
     --Radius-III: 1.3vw;

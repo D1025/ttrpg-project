@@ -12,8 +12,9 @@ Select.Select
     color: rgba(255, 255, 255, 0.6);
     font-size: 1.0rem;
     font-weight: bold;
-    border: 0.2vw solid var(--Kolor-Dodatkowy);
-    background-color: var(--Motyw);
+    background-color: var(--Motyw-Ciemny);
+    border: 0.2vw solid;
+    border-color: var(--Kolor-Dodatkowy);
     backdrop-filter: var(--Blur);
     border-radius: var(--Radius-I);
     margin-left: var(--Przycisk-Odstep);
@@ -32,6 +33,5 @@ Select.Select
 /* Option. */
 Select.Select Option
 {
-    background-color: var(--Motyw);
-    border-radius: var(--Radius-IV);
+    /*background-color: var(--Motyw);*/
 }

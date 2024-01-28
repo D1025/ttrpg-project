@@ -11,7 +11,7 @@ Label.FileInput
     align-items: center;
     background-color: var(--Kolor-Dodatkowy);
     backdrop-filter: var(--Blur);
-    background-position: 95% center;
+    background-position: 94% center;
     background-size: auto 50%;
     background-repeat: no-repeat;
     border-radius: var(--Radius-I);
@@ -24,6 +24,17 @@ Label.FileInput
     overflow: hidden;
     position: relative;
 }
+    /* Wygląd Inputu po najechaniu. */
+    Label.FileInput:hover, Label.FileInput:hover
+    {
+        background-color: var(--Motyw-Czarny) !important;
+    }
+
+    /* Wygląd Inputu po aktywacji. */
+    Label.FileInput:active, Label.FileInput:active
+    {
+        background-color: var(--Motyw) !important;
+    }
 
 /* Input typu File */
 Label.FileInput > Input[type="file"]
@@ -34,5 +45,12 @@ Label.FileInput > Input[type="file"]
 /* Wygląd aktywny. */
 Label.FileInput-Active
 {
+    min-width: calc(var(--Przycisk-Szerokość-II) - var(--Przycisk-Wysokość) - 2 * var(--Przycisk-Odstep));
     background-color: var(--Motyw-Ciemny);
+}
+
+/* Nadpisanie Koloru przycisku obok. */
+Label.FileInput-Active + Div
+{
+    background-color: var(--Kolor-Negatywny)!important;
 }

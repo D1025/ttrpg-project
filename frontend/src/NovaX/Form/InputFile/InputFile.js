@@ -1,76 +1,101 @@
 import React, {useState} from 'react';
 import './InputFile.css';
+import {Button} from "../../index";
 
-const InputFile = ({accept, onChange, ...rest}) =>
+const InputFile = ({title = 'Wybierz Plik', accept, onChange, ...rest}) =>
 {
-    // Statusy.
-    const [nazwaPliku, ustawNazwaPliku] = useState('Wybierz Plik');
-    const [poprawnyFormat, ustawPoprawnyFormat] = useState(true);
+    // Stan komponentu.
+    const [nazwaPliku, ustawNazwePliku] = useState(title);
+    const [formatPoprawny, ustawFormatPoprawny] = useState(true);
+    const [elementInputuPliku, ustawElementInputuPliku] = useState(null);
 
-    // Działanie typu = File.
-    const czyObrazWybrany = (e) =>
+    // Obsługa wyboru pliku.
+    const obsluzWyborPliku = (event) =>
     {
-        // Wykonanie zewnętrznych onchange.
-        if (onChange)
-        {
-            onChange(e);
-        }
-
-        const wybranyPlik = e.target.files[0];
+        const wybranyPlik = event.target.files[0];
 
         if(wybranyPlik)
         {
-            const fileName = wybranyPlik.name;
-            const fileExtension = `.${fileName.split('.').pop().toLowerCase()}`;
+            const nazwaWybranegoPliku = wybranyPlik.name;
+            const rozszerzeniePliku = `.${nazwaWybranegoPliku.split('.').pop().toLowerCase()}`;
 
-            // Przygotowanie akceptowanych formatów do sprawdzenia.
-            const acceptedFormats = accept.split(',').map(format => `.${format.split('/').pop()}`);
+            const akceptowaneFormaty = accept.split(',').map(format => `.${format.split('/').pop()}`);
 
-            if(!acceptedFormats.includes(fileExtension))
+            if(!akceptowaneFormaty.includes(rozszerzeniePliku))
             {
-                ustawNazwaPliku('Zły format');
-                ustawPoprawnyFormat(false);
+                ustawNazwePliku('Zły format');
+                ustawFormatPoprawny(false);
+                event.target.value = '';
+                if(onChange)
+                {
+                    onChange('');
+                }
             }
             else
             {
-                ustawNazwaPliku(fileName);
-                ustawPoprawnyFormat(true);
+                ustawNazwePliku(nazwaWybranegoPliku);
+                ustawFormatPoprawny(true);
+                ustawElementInputuPliku(event.target);
+                if(onChange)
+                {
+                    onChange(event);
+                }
             }
         }
         else
         {
-            ustawNazwaPliku('Brak pliku wybranego');
-            ustawPoprawnyFormat(false);
+            ustawNazwePliku('Brak pliku wybranego');
+            ustawFormatPoprawny(false);
+            if(onChange)
+            {
+                onChange(event);
+            }
         }
     };
 
-    let klasy = "FileInput";
-    let style = null;
-
-    // Jeśli wszystko poprawne zmień wygląd.
-    if(poprawnyFormat && nazwaPliku !== 'Wybierz Plik')
+    // Usuwanie wybranego pliku.
+    const usunWybranyPlik = () =>
     {
-        klasy += " FileInput-Active";
-        style = {backgroundImage: "url('./Ikonki/Zaznaczenie.png')", ...rest.style};
+        ustawNazwePliku(title);
+        ustawFormatPoprawny(true);
+        if(elementInputuPliku)
+        {
+            elementInputuPliku.value = '';
+        }
+        if(onChange)
+        {
+            onChange('');
+        }
+    };
+
+    let klasyInputu = "FileInput";
+    let styl = null;
+
+    if(formatPoprawny && nazwaPliku !== title)
+    {
+        klasyInputu += " FileInput-Active";
+        styl = {backgroundImage: "url('./Ikonki/Zaznaczenie.png')", ...rest.style};
     }
 
-    // Wyświetla nazwę pliku.
-    const displayNazwaPliku = poprawnyFormat && nazwaPliku !== 'Wybierz Plik' && nazwaPliku.length > 8
-        ? nazwaPliku.slice(0, 8) + "..."
-        : nazwaPliku;
+    const wyswietlanaNazwaPliku = formatPoprawny && nazwaPliku !== title && nazwaPliku.length > 8
+        ? nazwaPliku.slice(0, 8) + "..." : nazwaPliku;
 
     return (
-        <label className={klasy} style={style}>
-            <input
-                type={"file"}
-                onChange={czyObrazWybrany}
-                accept={accept}
-                {...rest}
-            />
-            <span>{displayNazwaPliku}</span>
-        </label>
+        <div style={{display: "flex"}}>
+            <label className={klasyInputu} style={styl}>
+                <input
+                    type="file"
+                    onChange={obsluzWyborPliku}
+                    accept={accept}
+                    {...rest}
+                />
+                <span>{wyswietlanaNazwaPliku}</span>
+            </label>
+            {formatPoprawny && nazwaPliku !== title && (
+                <Button src={"./Ikonki/Kosz.png"} onClick={usunWybranyPlik}/>
+            )}
+        </div>
     );
-
 };
 
 export default InputFile;
