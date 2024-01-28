@@ -7,8 +7,9 @@ import {
     Main, MainArticle, MainPanel, MainTitle,
     ModulLogIn, ModulCreateRoom,
     RoomBar,
-    StorageLoad, StorageRemove, setTittle
+    StorageLoad, StorageRemove, setTittle, StorageSave
 } from "./NovaX";
+import SHA256 from "crypto-js/sha256";
 
 function App()
 {
@@ -81,12 +82,79 @@ function App()
         setShowLogin(prevShowLogin => !prevShowLogin);
         wymusOdswiezenie();
     };
-    // Formularz Logowanie/Rejestracja.
+    // Formularz CreateRoom.
     const [showCreateRoom, setCreateRoom] = useState(false);
     const togglCreateRoom = () =>
     {
         setCreateRoom(prevShowLogin => !prevShowLogin);
+        wymusOdswiezenie();
     };
+
+
+
+
+
+    // Załaój pokoje.
+    // const [pokoje, setPokoje] = useState([]);
+    //
+    // const ladujPokoje = async({publiczny = true}) =>
+    // {
+    //     try
+    //     {
+    //         const odpowiedz = await fetch('http://localhost:8086/api/v1/room', {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': daneUzytkownika.token
+    //             },
+    //             body: JSON.stringify({
+    //                 status: (publiczny === true ? 'PUBLIC' : 'PRIVATE'),
+    //                 password: daneUzytkownika.token,
+    //             })
+    //         });
+    //
+    //         if(!odpowiedz.ok)
+    //         {
+    //             if(odpowiedz.status === 400)
+    //             {
+    //                 const blad = await odpowiedz.json();
+    //                 console.log(`${blad.message}`);
+    //             }
+    //             else
+    //             {
+    //                 console.log(`Błąd: ${odpowiedz.status}`);
+    //             }
+    //             return []; // Zwraca pustą tablicę w przypadku błędu
+    //         }
+    //         else
+    //         {
+    //             const dane = await odpowiedz.json();
+    //             console.log(dane)
+    //             return dane; // Zwraca dane pokoju
+    //         }
+    //     }
+    //     catch(blad)
+    //     {
+    //         console.log(`Nieoczekiwany błąd: ${blad}`);
+    //         return []; // Zwraca pustą tablicę w przypadku wyjątku
+    //     }
+    // };
+    //
+    // useEffect(() =>
+    // {
+    //     const pobierzPokoje = async() =>
+    //     {
+    //         const danePokoju = await ladujPokoje({publiczny: !lobby});
+    //         setPokoje(danePokoju);
+    //     };
+    //
+    //     pobierzPokoje();
+    // }, [lobby]);
+
+
+
+
+
 
     // Aplikacja.
     return (
@@ -153,7 +221,8 @@ function App()
                     <MainTitle title={lobby === false ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
                         {isLogIn === true && (
                             <div type={"option"}>
-                                <Button src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={1} onClick={togglCreateRoom}/>
+                                <Button src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={1}
+                                        onClick={togglCreateRoom}/>
                             </div>
                         )}
                         {/*<div type={"tag"}>[Tag 1] [Tag 2]</div>*/}
@@ -161,12 +230,13 @@ function App()
 
                     {lobby === false ? (
                         <>
-                            <RoomBar title={"Kocie Zabawy"}
-                                     description={"Gramy w kotki ze znajomymi a smoki chcą zjeść nasze kotki :)"}
-                                     src={"https://i.pinimg.com/originals/0d/72/f3/0d72f35db2305ef238e1fbc1d1151719.jpg"}/>
-                            <RoomBar title={"Smoki Wojny"}
-                                     description={"To ekscytująca gra fabularna, gdzie gracze wcielają się w bohaterów stawiających czoła potężnym smokom i ich hordom, aby przywrócić równowagę w świecie pogrążonym w chaosie wojennym. Walka, intrygi i niebezpieczeństwa czekają na każdym kroku, a losy świata zależą od sprytu i odwagi graczy.\"\n"}
-                                     src={"https://i.pinimg.com/originals/db/9d/14/db9d149cdcef8f864bb3a9a8e7d93121.jpg"}/>
+                            {/*{pokoje}*/}
+                            {/*<RoomBar title={"Kocie Zabawy"}*/}
+                            {/*         description={"Gramy w kotki ze znajomymi a smoki chcą zjeść nasze kotki :)"}*/}
+                            {/*         src={"https://i.pinimg.com/originals/0d/72/f3/0d72f35db2305ef238e1fbc1d1151719.jpg"}/>*/}
+                            {/*<RoomBar title={"Smoki Wojny"}*/}
+                            {/*         description={"To ekscytująca gra fabularna, gdzie gracze wcielają się w bohaterów stawiających czoła potężnym smokom i ich hordom, aby przywrócić równowagę w świecie pogrążonym w chaosie wojennym. Walka, intrygi i niebezpieczeństwa czekają na każdym kroku, a losy świata zależą od sprytu i odwagi graczy.\"\n"}*/}
+                            {/*         src={"https://i.pinimg.com/originals/db/9d/14/db9d149cdcef8f864bb3a9a8e7d93121.jpg"}/>*/}
                         </>
                     ) : (
                         <>
