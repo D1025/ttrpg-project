@@ -95,61 +95,61 @@ function App()
 
 
     // Załaój pokoje.
-    // const [pokoje, setPokoje] = useState([]);
-    //
-    // const ladujPokoje = async({publiczny = true}) =>
-    // {
-    //     try
-    //     {
-    //         const odpowiedz = await fetch('http://localhost:8086/api/v1/room', {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Authorization': daneUzytkownika.token
-    //             },
-    //             body: JSON.stringify({
-    //                 status: (publiczny === true ? 'PUBLIC' : 'PRIVATE'),
-    //                 password: daneUzytkownika.token,
-    //             })
-    //         });
-    //
-    //         if(!odpowiedz.ok)
-    //         {
-    //             if(odpowiedz.status === 400)
-    //             {
-    //                 const blad = await odpowiedz.json();
-    //                 console.log(`${blad.message}`);
-    //             }
-    //             else
-    //             {
-    //                 console.log(`Błąd: ${odpowiedz.status}`);
-    //             }
-    //             return []; // Zwraca pustą tablicę w przypadku błędu
-    //         }
-    //         else
-    //         {
-    //             const dane = await odpowiedz.json();
-    //             console.log(dane)
-    //             return dane; // Zwraca dane pokoju
-    //         }
-    //     }
-    //     catch(blad)
-    //     {
-    //         console.log(`Nieoczekiwany błąd: ${blad}`);
-    //         return []; // Zwraca pustą tablicę w przypadku wyjątku
-    //     }
-    // };
-    //
-    // useEffect(() =>
-    // {
-    //     const pobierzPokoje = async() =>
-    //     {
-    //         const danePokoju = await ladujPokoje({publiczny: !lobby});
-    //         setPokoje(danePokoju);
-    //     };
-    //
-    //     pobierzPokoje();
-    // }, [lobby]);
+    const [pokoje, setPokoje] = useState([]);
+
+    const ladujPokoje = async({publiczny = true}) =>
+    {
+        try
+        {
+            const odpowiedz = await fetch('http://localhost:8086/api/v1/room', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': daneUzytkownika.token,
+                    'status': (publiczny === true ? 'PUBLIC' : 'PRIVATE'),
+                    'userId': daneUzytkownika.id,
+                },
+                // body: JSON.stringify({})
+            });
+
+            if(!odpowiedz.ok)
+            {
+                if(odpowiedz.status === 400)
+                {
+                    const blad = await odpowiedz.json();
+                    console.log(`${blad.message}`);
+                }
+                else
+                {
+                    console.log(`Błąd: ${odpowiedz.status}`);
+                }
+                return []; // Zwraca pustą tablicę w przypadku błędu
+            }
+            else
+            {
+                const dane = await odpowiedz.json();
+                console.log(dane)
+                return dane; // Zwraca dane pokoju
+            }
+        }
+        catch(blad)
+        {
+            console.log(`Nieoczekiwany błąd: ${blad}`);
+            return []; // Zwraca pustą tablicę w przypadku wyjątku
+        }
+    };
+
+    useEffect(() =>
+    {
+        const pobierzPokoje = async() =>
+        {
+            console.log("jest")
+            const danePokoju = await ladujPokoje({publiczny: !lobby});
+            setPokoje(danePokoju);
+        };
+
+        pobierzPokoje();
+    }, [lobby]);
 
 
 
@@ -190,9 +190,10 @@ function App()
                                                src={daneUzytkownika.avatar}></ButtonAccount>
                                 <Menu2>
                                     <li><Button active={false} width={0} title={"Konto"}/></li>
-                                    <li><Button active={false} width={0} title={"Panel"}/></li>
+                                    {daneUzytkownika.admin === true && (
+                                        <li><Button active={false} width={0} title={"Panel"}/></li>)}
                                     <li>
-                                        <Button active={false} title={"Wyloguj Się"} onClick={LogOut} width={0}/>
+                                    <Button active={false} title={"Wyloguj Się"} onClick={LogOut} width={0}/>
                                     </li>
                                 </Menu2>
                             </li>
@@ -230,7 +231,7 @@ function App()
 
                     {lobby === false ? (
                         <>
-                            {/*{pokoje}*/}
+                            {pokoje}
                             {/*<RoomBar title={"Kocie Zabawy"}*/}
                             {/*         description={"Gramy w kotki ze znajomymi a smoki chcą zjeść nasze kotki :)"}*/}
                             {/*         src={"https://i.pinimg.com/originals/0d/72/f3/0d72f35db2305ef238e1fbc1d1151719.jpg"}/>*/}
