@@ -13,6 +13,7 @@ import com.ttrpg.project.exceptions.MessageException;
 import com.ttrpg.project.mapper.RoomMapper;
 import com.ttrpg.project.model.Room;
 import com.ttrpg.project.model.Users;
+import com.ttrpg.project.model.enums.Status;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -49,11 +50,7 @@ public class RoomsServiceImpl implements RoomsService {
         } else if (status == Status.PRIVATE ) {
             jwtAuthorization.authorize(authorizationHeader);
             Users user = userService.getUserByToken(authorizationHeader);
-            if (roomDTO.userId() != null) {
-                return roomMapper.roomsToRoomReturnDTOs(roomRepository.findAllByPrivateRoomIsAndOwnerId(true, user.getId()));
-            } else {
-                throw new MessageException("Invalid user id");
-            }
+            return roomMapper.roomsToRoomReturnDTOs(roomRepository.findAllByPrivateRoomIsAndOwnerId(true, user.getId()));
         } else {
             throw new MessageException("Invalid status");
         }

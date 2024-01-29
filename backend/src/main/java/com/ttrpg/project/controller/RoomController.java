@@ -19,6 +19,7 @@ import com.ttrpg.project.dto.room.EditRoom;
 import com.ttrpg.project.dto.room.RoomReturnDTO;
 import com.ttrpg.project.service.JwtAuthorization;
 import com.ttrpg.project.service.RoomsService;
+import com.ttrpg.project.model.enums.Status;
 
 import lombok.RequiredArgsConstructor;
 

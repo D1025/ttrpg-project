@@ -6,6 +6,7 @@ import java.util.UUID;
 import com.ttrpg.project.dto.room.CreateRoom;
 import com.ttrpg.project.dto.room.EditRoom;
 import com.ttrpg.project.dto.room.RoomReturnDTO;
+import com.ttrpg.project.model.enums.Status;
 
 public interface RoomsService {
 
