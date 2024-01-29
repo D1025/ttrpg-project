@@ -16,6 +16,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.JdbcType;
+import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 
 @Entity
@@ -52,6 +54,7 @@ public class Users extends Model {
     private boolean admin;
 
     @Column(name = "avatar")
+    @JdbcType(VarbinaryJdbcType.class)
     private byte[] avatar;
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
