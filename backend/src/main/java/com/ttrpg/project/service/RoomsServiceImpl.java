@@ -64,6 +64,7 @@ public class RoomsServiceImpl implements RoomsService {
         room.setDescription(editRoom.description());
         room.setImage(editRoom.image());
         room.setPrivateRoom(editRoom.isPrivate());
+        room.setImageExtension(editRoom.imageExtension());
         roomRepository.save(room);
         return roomMapper.roomToRoomReturnDTO(room);
     }
