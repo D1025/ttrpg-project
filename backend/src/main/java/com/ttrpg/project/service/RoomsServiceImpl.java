@@ -35,6 +35,7 @@ public class RoomsServiceImpl implements RoomsService {
         roomEntity.setName(room.name());
         roomEntity.setDescription(room.description());
         roomEntity.setImage(room.image());
+        roomEntity.setImageExtension(room.extension());
         roomEntity.setSystem(room.system());
         roomEntity.setPrivateRoom(room.isPrivate());
         roomEntity.setInvitationLink(UUID.randomUUID().toString());
