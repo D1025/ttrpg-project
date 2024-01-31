@@ -2,7 +2,7 @@ package com.ttrpg.project.dto;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Builder
@@ -10,9 +10,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ChatMessage {
-    private String content;
+public class JoinChat {
     private UUID userId;
+    private List<PublicUserReturnDTO> users;
+    private List<ChatMessage> messages;
     private MessageType type;
-    private LocalDateTime time;
 }

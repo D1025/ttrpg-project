@@ -2,7 +2,9 @@ package com.ttrpg.project.service;
 
 import com.ttrpg.project.dao.UsersRepository;
 import com.ttrpg.project.dto.EditUser;
+import com.ttrpg.project.dto.PublicUserReturnDTO;
 import com.ttrpg.project.dto.UserReturnDTO;
+import com.ttrpg.project.exceptions.MessageException;
 import com.ttrpg.project.mapper.UserMapper;
 import com.ttrpg.project.model.Users;
 import jakarta.transaction.Transactional;
@@ -31,8 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserReturnDTO> getAllUsers() {
-        return userMapper.usersToUserReturnDTOs(userRepository.findAll());
+    public List<PublicUserReturnDTO> getAllUsers() {
+        return userMapper.usersToPublicUserReturnDTOs(userRepository.findAll());
     }
 
     @Override
@@ -48,5 +50,10 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new RuntimeException("You are not authorized to edit this user");
         }
+    }
+
+    @Override
+    public Users findById(UUID userId) {
+        return userRepository.findById(userId).orElseThrow(() -> new MessageException("User not found"));
     }
 }
