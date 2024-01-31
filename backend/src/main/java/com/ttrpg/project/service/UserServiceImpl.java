@@ -42,6 +42,7 @@ public class UserServiceImpl implements UserService {
         if (user.getToken().equals(token) || user.isAdmin()) {
             user.setNickname(editUser.nickname());
             user.setAvatar(editUser.avatar());
+            user.setAvatarExtension(editUser.avatarExtension());
             userRepository.save(user);
             return userMapper.userToUserReturnDTO(user);
         } else {

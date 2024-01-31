@@ -33,6 +33,9 @@ public class Room extends Model {
     @JdbcType(VarbinaryJdbcType.class)
     private byte[] image;
 
+    @Column(name = "image_extension")
+    private String imageExtension;
+
     @Column(name = "system", nullable = false)
     @Enumerated(EnumType.STRING)
     private Systems system;

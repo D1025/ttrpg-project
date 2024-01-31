@@ -5,5 +5,5 @@ import com.ttrpg.project.utils.Base64ToByteArrayDeserializer;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
-public record EditRoom(String name, String description, @JsonDeserialize(using = Base64ToByteArrayDeserializer.class) @JdbcType(VarbinaryJdbcType.class) byte[] image, boolean isPrivate) {
+public record EditRoom(String name, String description, @JsonDeserialize(using = Base64ToByteArrayDeserializer.class) @JdbcType(VarbinaryJdbcType.class) byte[] image, String imageExtension, boolean isPrivate) {
 }
