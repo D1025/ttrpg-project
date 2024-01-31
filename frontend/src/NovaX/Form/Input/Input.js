@@ -1,6 +1,6 @@
 import './Input.css';
 
-const Input = ({type, active = false, placeholder, value, autoFocus, disabled, ...rest}) =>
+const Input = ({className, type, active = false, placeholder, value, autoFocus, disabled, ...rest}) =>
 {
     return (
         <input
@@ -10,7 +10,7 @@ const Input = ({type, active = false, placeholder, value, autoFocus, disabled, .
             disabled={disabled}
             value={value}
             type={type}
-            className={!active ? "Input" : "Input Input-Active"}
+            className={(!active ? "Input" : "Input Input-Active") + " " + className}
         />
     );
 }

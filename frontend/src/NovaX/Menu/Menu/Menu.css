@@ -42,7 +42,7 @@
 }
 
 /* Wygląd rozwiniętego elementu menu [Ukryte]. */
-.Menu > Li > *
+.Menu > Li > *:not(a)
 {
     width: 100%;
     background-color: var(--Motyw);
@@ -58,13 +58,13 @@
 }
 
 /* Uwidacznianie elementu menu po najechaniu. */
-.Menu > Li:hover > *
+.Menu > Li:hover > *:not(a)
 {
     display: block;
 }
 
 /* Wygląd Li wewnątrz rozwiniętego menu. */
-.Menu > Li > * > Li
+.Menu > Li > *:not(a) > Li
 {
     width: 90%;
     font-size: 0.95rem;

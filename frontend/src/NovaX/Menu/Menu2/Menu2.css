@@ -5,6 +5,7 @@
     list-style: none;
     margin: 0.0vw;
     padding: 0.0vw;
+    display: flex;
     user-select: none;
     z-index: 5;
 }
@@ -20,7 +21,7 @@
 }
 
 /* Początek menu rozwijanego. */
-.Menu2 > Li > *:not(div)
+.Menu2 > Li > *:not(div,a)
 {
     width: 100%;
     background-color: var(--Motyw);
@@ -36,13 +37,13 @@
 }
 
 /* Uwidacznianie rozwiniętego menu po najechaniu. */
-.Menu2 > Li:hover > *:not(div)
+.Menu2 > Li:hover > *:not(div,a)
 {
     display: block;
 }
 
 /* Miejsce na przycisk w menu rozwijanym. */
-.Menu2 > Li > *:not(div) > Li
+.Menu2 > Li > *:not(div,a) > Li
 {
     width: 92%;
     align-items: center;
@@ -59,7 +60,7 @@
 }
 
 /* Wymuszenie szerokości na elementach menu rozwijanego. */
-.Menu2 > Li > *:not(div) > Li > *
+.Menu2 > Li > *:not(div,a) > Li > *
 {
     width: 100%!important;
 }

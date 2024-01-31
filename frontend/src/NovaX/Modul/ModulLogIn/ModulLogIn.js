@@ -207,7 +207,7 @@ const OknoLogowania = ({onClose}) =>
 
                 <div className={"ModulLogIn"}>
                     <div className={"ModulLogIn-Top"}>
-                        <Button src={"./Ikonki/Zamknij.png"} onClick={onClose}/>
+                        <Button src={"/Ikonki/Zamknij.png"} onClick={onClose}/>
                     </div>
 
                     <div className={"ModulLogIn-Main"}>
@@ -215,7 +215,7 @@ const OknoLogowania = ({onClose}) =>
                             // Logowanie.
                             <form onSubmit={przeslijLogowanie}>
                                 <div>
-                                    <img src={"./Grafiki/Logo.png"} alt={""}/>
+                                    <img src={"/Grafiki/Logo.png"} alt={""}/>
 
                                     <Input type={"text"} placeholder={"Email"} value={email} onChange={pobierzEmail}
                                            required/>
@@ -235,7 +235,7 @@ const OknoLogowania = ({onClose}) =>
                             // Rejestracja.
                             <form onSubmit={przeslijRejestracje}>
                                 <div>
-                                    <img src={"./Grafiki/Logo.png"} alt={""}/>
+                                    <img src={"/Grafiki/Logo.png"} alt={""}/>
 
                                     <Input type={"text"} placeholder={"Nazwa"} value={nazwa} onChange={pobierzNazwe}
                                            required/>
