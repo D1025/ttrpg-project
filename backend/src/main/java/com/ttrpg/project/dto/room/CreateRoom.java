@@ -9,7 +9,7 @@ import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 import java.util.UUID;
 
-public record CreateRoom(@NotNull String name, String description, @JsonDeserialize(using = Base64ToByteArrayDeserializer.class) @JdbcType(VarbinaryJdbcType.class) byte[] image, @NotNull Systems
+public record CreateRoom(@NotNull String name, String description, @JsonDeserialize(using = Base64ToByteArrayDeserializer.class) @JdbcType(VarbinaryJdbcType.class) byte[] image, String extension, @NotNull Systems
         system, boolean isPrivate, @NotNull UUID ownerId) {
 }
 

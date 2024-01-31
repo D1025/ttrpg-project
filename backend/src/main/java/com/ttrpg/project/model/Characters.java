@@ -35,6 +35,9 @@ public class Characters extends Model {
     @JdbcType(VarbinaryJdbcType.class)
     private byte[] avatar;
 
+    @Column(name = "avatar_extension", nullable = false)
+    private String avatarExtension;
+
     @Column(name = "data", nullable = false)
     private String data;
 }
