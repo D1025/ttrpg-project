@@ -1,6 +1,7 @@
 package com.ttrpg.project.controller;
 
 import com.ttrpg.project.dto.EditUser;
+import com.ttrpg.project.dto.PublicUserReturnDTO;
 import com.ttrpg.project.dto.UserReturnDTO;
 import com.ttrpg.project.service.JwtAuthorization;
 import com.ttrpg.project.service.UserService;
@@ -20,7 +21,7 @@ public class UserController {
 
     private final UserService userService;
     @GetMapping
-    public ResponseEntity<List<UserReturnDTO>> getAllUsers(@RequestHeader(name = "Authorization", required = false) String authorizationHeader) {
+    public ResponseEntity<List<PublicUserReturnDTO>> getAllUsers(@RequestHeader(name = "Authorization", required = false) String authorizationHeader) {
         jwtAuthorization.authorize(authorizationHeader);
         return ResponseEntity.ok(userService.getAllUsers());
     }

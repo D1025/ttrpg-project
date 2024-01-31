@@ -1,6 +1,7 @@
 package com.ttrpg.project.service;
 
 import com.ttrpg.project.dto.EditUser;
+import com.ttrpg.project.dto.PublicUserReturnDTO;
 import com.ttrpg.project.dto.UserReturnDTO;
 import com.ttrpg.project.model.Users;
 
@@ -13,7 +14,9 @@ public interface UserService {
 
     Users getUserByToken(String token);
 
-    List<UserReturnDTO> getAllUsers();
+    List<PublicUserReturnDTO> getAllUsers();
 
     UserReturnDTO editUser(UUID id, EditUser editUser, String token);
+
+    Users findById(UUID userId);
 }
