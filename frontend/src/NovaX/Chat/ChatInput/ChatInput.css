@@ -1,0 +1,9 @@
+/* . */
+Input.ChatInput
+{
+    width: 50.0vw!important;
+    height: 3.0vw!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    display: block;
+}

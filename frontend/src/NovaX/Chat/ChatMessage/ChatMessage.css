@@ -1,0 +1,116 @@
+/* Wiadomość na czacie. */
+/* Design 1. */
+Div.ChatMessage-D1
+{
+    align-items: center;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: var(--Radius-II);
+    margin-left: 1.0vw;
+    margin-right: 1.0vw;
+    margin-bottom: 0.5vw;
+    display: flex;
+    transition: var(--Animacja);
+}
+/* Usuwanie maeginesu z ostatniego. */
+Div.ChatMessage-D1:last-of-type
+{
+    margin-bottom: 0.0vw;
+}
+
+    /* . */
+    Div.ChatMessage-D1 > Div.ChatText-Avatar
+    {
+        width: var(--Przycisk-Wysokość);
+        height: var(--Przycisk-Wysokość);
+        background-color: var(--Kolor-Dodatkowy);
+        background-image: url("/public/Ikonki/Konto.png");
+        background-size: 65%;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: var(--Radius-I);
+        margin-right: 0.25vw;
+        color: blue;
+    }
+
+        /* . */
+        Div.ChatText-Avatar > Img
+        {
+            width: var(--Przycisk-Wysokość);
+            max-height: var(--Przycisk-Wysokość);
+        }
+
+    /* . */
+    Div.ChatMessage-D1 > Div.ChatText-NickName
+    {
+        color: inherit;
+        font-size: 1.0rem;
+        font-weight: bold;
+        margin-right: 0.2vw;
+    }
+
+    /* . */
+    Div.ChatMessage-D1 > Div.ChatText-Message
+    {
+        color: rgba(150, 150, 150, 0.8);
+    }
+
+
+/* Design 2. */
+Div.ChatMessage-D2
+{
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Motyw-Ciemny);
+    border-radius: var(--Radius-II);
+    margin-left: 1.0vw;
+    margin-right: 1.0vw;
+    margin-bottom: 0.5vw;
+    padding-top: 1.0vw;
+    padding-bottom: 1.0vw;
+    display: flex;
+    transition: var(--Animacja);
+}
+/* Usuwanie maeginesu z ostatniego. */
+Div.ChatMessage-D2:last-of-type
+{
+    margin-bottom: 0.0vw;
+}
+
+/* . */
+Div.ChatMessage-D2 > Div.ChatText-Avatar
+{
+    width: var(--Przycisk-Wysokość);
+    height: var(--Przycisk-Wysokość);
+    background-color: var(--Kolor-Dodatkowy);
+    background-image: url("/public/Ikonki/Konto.png");
+    background-size: 65%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: var(--Radius-I);
+    margin-right: 0.25vw;
+    color: blue;
+}
+
+/* . */
+Div.ChatText-Avatar > Img
+{
+    width: var(--Przycisk-Wysokość);
+    max-height: var(--Przycisk-Wysokość);
+}
+
+/* . */
+Div.ChatMessage-D2 > Div.ChatText-NickName
+{
+    color: var(--Kolor-Dodatkowy);
+    font-size: 1.0rem;
+    font-weight: bold;
+    margin-right: 0.3vw;
+}
+
+/* . */
+Div.ChatMessage-D2 > Div.ChatText-Message
+{
+    font-size: 1.0rem;
+    font-weight: bold;
+    color: rgba(150, 150, 150, 0.8);
+}
