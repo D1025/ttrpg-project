@@ -10,10 +10,10 @@ import
     StorageLoad, StorageRemove, setTittle
 } from "../../NovaX";
 
-const HomePage = () =>
+const AdminPanel = () =>
 {
     // Tittle.
-    setTittle("../Grafiki/Logo.png", "TTRPG | Lobby");
+    setTittle("../Grafiki/Logo.png", "TTRPG | Panel");
 
     // Lobby Publiczne/Prywatne.
     const [lobby, ustawLobby] = useState(false);
@@ -64,18 +64,11 @@ const HomePage = () =>
         setShowLogin(prevShowLogin => !prevShowLogin);
         wymusOdswiezenie();
     };
-    // Formularz CreateRoom.
-    const [showCreateRoom, setCreateRoom] = useState(false);
-    const togglCreateRoom = () =>
-    {
-        setCreateRoom(prevShowLogin => !prevShowLogin);
-        wymusOdswiezenie();
-    };
 
 
     // Załaój pokoje.
-    const [pokoje, setPokoje] = useState([]);
-    const ladujPokoje = useCallback(async({publiczny = true}) =>
+    const [uzytkownicy, ustawUzytkownicy] = useState([]);
+    const ladujUzytkownicy = useCallback(async({publiczny = true}) =>
     {
         try
         {
@@ -112,15 +105,13 @@ const HomePage = () =>
                         description={pokoj.description && pokoj.description}
                         title={pokoj.name && pokoj.name}
                     >
-                        {isLogIn === true && (
-                            <a href={`/Gra?id=${pokoj.id}`}>
-                                <Button src={"./Ikonki/Play.png"}/>
-                            </a>
-                        )}
+                        <a href={`/Gra?id=${pokoj.id}`}>
+                            <Button src={"./Ikonki/Play.png"}/>
+                        </a>
                     </RoomBar>
                 ));
 
-                setPokoje(zrenderowanePokoje);
+                ustawUzytkownicy(zrenderowanePokoje);
             }
         }
         catch(blad)
@@ -144,7 +135,7 @@ const HomePage = () =>
             ustawDaneUzytkownika('');
             ustawIsLogIn(false);
         }
-        ladujPokoje({publiczny: !lobby});
+        ladujUzytkownicy({publiczny: !lobby});
     }, [odswiez, lobby]);
 
     // Aplikacja.
@@ -161,26 +152,7 @@ const HomePage = () =>
                 <HeaderCenter>
                     <Menu2 tag="nav">
                         <li>
-                            <a href={"/"}>
-                                <Button title={"Pokoje"} width={2}/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href={""}>
-                                <Button title={"O Nas"} width={2}/>
-                            </a>
-                            <Menu2>
-                                <li>
-                                    <a href={""}>
-                                        <Button title={"Wiadomości"} style={{width:"100%"}}/>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={""}>
-                                        <Button title={"Regulamin"} style={{width:"100%"}}/>
-                                    </a>
-                                </li>
-                            </Menu2>
+                            <Button title={"Użytkownicy"} width={2} active={false}/>
                         </li>
                     </Menu2>
                 </HeaderCenter>
@@ -199,14 +171,10 @@ const HomePage = () =>
                                             <Button active={false} title={"Konto"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
-                                    {daneUzytkownika.admin === true && (
-                                        <li>
-                                            <a href={"/Panel"}>
-                                                <Button active={false} title={"Panel"} style={{width: "100%"}}/>
-                                            </a>
-                                        </li>)}
                                     <li>
-                                        <Button active={false} title={"Wyloguj Się"} onClick={LogOut} width={0}/>
+                                        <a href={"/"}>
+                                            <Button active={false} title={"Wyjdź"} style={{width: "100%"}}/>
+                                        </a>
                                     </li>
                                 </Menu2>
                             </li>
@@ -221,52 +189,15 @@ const HomePage = () =>
 
             {/* Home Strony. */}
             <Main design={2}>
-                {/* Nawigacja Home'a. */}
-                {isLogIn === true &&
-                    (
-                        <MainPanel>
-                            <Button title={"Publiczne"} width={2} active={!lobby} onClick={() => ustawLobby(false)}/>
-                            <Button title={"Prywatne"} width={2} active={lobby} onClick={() => ustawLobby(true)}/>
-                        </MainPanel>
-                    )}
 
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <MainTitle title={lobby === false ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
-                        {isLogIn === true && (
-                            <div type={"option"}>
-                                <Button src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={1}
-                                        onClick={togglCreateRoom}/>
-                            </div>
-                        )}
-                        {/*<div type={"tag"}>[Tag 1] [Tag 2]</div>*/}
-                    </MainTitle>
-
-                    {lobby === false ? (
-                        <>
-                            {pokoje}
-                            {/*<RoomBar title={"Kocie Zabawy"}*/}
-                            {/*         description={"Gramy w kotki ze znajomymi a smoki chcą zjeść nasze kotki :)"}*/}
-                            {/*         src={"https://i.pinimg.com/originals/0d/72/f3/0d72f35db2305ef238e1fbc1d1151719.jpg"}/>*/}
-                            {/*<RoomBar title={"Smoki Wojny"}*/}
-                            {/*         description={"To ekscytująca gra fabularna, gdzie gracze wcielają się w bohaterów stawiających czoła potężnym smokom i ich hordom, aby przywrócić równowagę w świecie pogrążonym w chaosie wojennym. Walka, intrygi i niebezpieczeństwa czekają na każdym kroku, a losy świata zależą od sprytu i odwagi graczy.\"\n"}*/}
-                            {/*         src={"https://i.pinimg.com/originals/db/9d/14/db9d149cdcef8f864bb3a9a8e7d93121.jpg"}/>*/}
-                        </>
-                    ) : (
-                        <>
-                            {pokoje}
-                            {/*<RoomBar title={"Poległe Kotki"}/>*/}
-                        </>
-                    )}
+                    <MainTitle title={"Uzytkownicy"} tag={"h2"}/>
+                    {uzytkownicy}
                 </MainArticle>
-
-
             </Main>
-
-            {showLogin && <ModulLogIn onClose={toggleShowLogin}/>}
-            {showCreateRoom && <ModulCreateRoom onClose={togglCreateRoom}/>}
         </>
     );
 }
 
-export default HomePage;
+export default AdminPanel;
