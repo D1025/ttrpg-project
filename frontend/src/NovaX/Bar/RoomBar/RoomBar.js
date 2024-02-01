@@ -3,7 +3,8 @@ import {Button} from "../../index";
 
 const RoomBar = ({children, src, description, title, ...rest}) =>
 {
-    let style = src && {backgroundImage: `linear-gradient(to right, var(--Motyw-Ciemny), transparent 190%), url("${src}")`, ...rest.style};
+    let style = src ? {backgroundImage: `linear-gradient(to right, var(--Motyw-Ciemny), transparent 190%), url("${src}")`, ...rest.style} : null;
+    console.log(style)
 
     return (
         <div {...rest} className={"RoomBar"} style={style}>

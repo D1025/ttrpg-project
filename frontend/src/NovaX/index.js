@@ -49,7 +49,7 @@ export {default as Modul} from './Modul/Modul/Modul.js';
     export {default as ModulCreateRoom} from './Modul/ModulCreateRoom/ModulCreateRoom.js';
 
 // ChatBox.
-export {default as Chat} from './Chat/ChatBox/ChatBox.js';
+export {default as ChatBox} from './Chat/ChatBox/ChatBox.js';
 export {default as ChatMessage} from './Chat/ChatMessage/ChatMessage.js';
 export {default as ChatInput} from './Chat/ChatInput/ChatInput.js';
 export {default as ModulChat} from './Chat/ModulChat/ModulChat.js';

@@ -145,7 +145,7 @@ const HomePage = () =>
             ustawIsLogIn(false);
         }
         ladujPokoje({publiczny: !lobby});
-    }, [odswiez, lobby]);
+    }, [odswiez, lobby,pokoje]);
 
     // Aplikacja.
     return (

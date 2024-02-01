@@ -1,62 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { Chat, ChatInput } from "../../index";
+import {ChatBox, ChatInput, StorageSave, StorageLoad} from "../../index";
+import React, {useEffect, useState} from "react";
+import ChatMessage from "../ChatMessage/ChatMessage";
 
-const ModulChat = ({ roomId, userId }) => {
-    const [ws, setWs] = useState(null);
-    const [connected, setConnected] = useState(false);
-    const [messages, setMessages] = useState([]);
+const ModulChat = ({roomId, userId}) => {
+    const [wiadomosci, ustawWiadomosci] = useState([]);
+    const [wyslijWiadomosc, ustawWyslijWiadomosc] = useState("");
+    const loginData = StorageLoad('loginData');
 
+    // Ładowanie wiadomości przy montowaniu komponentu
     useEffect(() => {
-        // Inicjalizacja połączenia WebSocket
-        const websocket = new WebSocket(`ws://localhost:8086/ws`);
+        const zaladowaneWiadomosci = StorageLoad(roomId) || []; // Ładuje zapisane wiadomości lub pusty array, jeśli nic nie znajdzie
+        ustawWiadomosci(zaladowaneWiadomosci); // Ustawia stan wiadomości na załadowane dane
+    }, [roomId]); // Efekt zależny od zmian roomId, aby ponownie ładować przy zmianie pokoju
 
-        websocket.onopen = () => {
-            console.log('WebSocket Connected');
-            setConnected(true);
-            // Dołącz do pokoju (wymaga obsługi po stronie serwera)
-            websocket.send(JSON.stringify({ action: 'join', roomId, userId }));
-        };
-
-        websocket.onmessage = (event) => {
-            const message = JSON.parse(event.data);
-            if (message.roomId === roomId) {
-                // Aktualizacja stanu wiadomości
-                setMessages(prev => [...prev, message.content]);
-            }
-        };
-
-        websocket.onclose = () => {
-            console.log('WebSocket Disconnected');
-            setConnected(false);
-        };
-
-        setWs(websocket);
-
-        // Czyszczenie przy odmontowywaniu komponentu
-        return () => {
-            websocket.close();
-        };
-    }, [roomId, userId]);
-
-    const sendMessage = (content) => {
-        if (content && roomId && userId && ws && connected) {
-            const chatMessage = { roomId, userId, content, type: 'CHAT' };
-            ws.send(JSON.stringify(chatMessage));
+    const dodajWiadomosc = (e) => {
+        if (e.key === 'Enter' && wyslijWiadomosc.trim()) {
+            const nowaWiadomosc = {
+                userId: userId,
+                content: wyslijWiadomosc,
+                timestamp: new Date().toISOString() // Zmiana na ISOString dla lepszej kompatybilności
+            };
+            const aktualizowaneWiadomosci = [...wiadomosci, nowaWiadomosc];
+            ustawWiadomosci(aktualizowaneWiadomosci);
+            StorageSave(roomId, aktualizowaneWiadomosci); // Zapis do localStorage
+            ustawWyslijWiadomosc(""); // Reset pola wprowadzania
         }
     };
 
-    // Przykład użycia `sendMessage`
-    // Można by było przekazać `sendMessage` do komponentu `ChatInput` jako prop
-    // aby umożliwić wysyłanie wiadomości z tego komponentu.
+    const ustawWiadomoscMi = (event) => {
+        ustawWyslijWiadomosc(event.target.value);
+    };
 
     return (
         <>
-            <Chat>
-                {messages.map((msg, index) => (
-                    <div key={index}>{msg}</div>
+            <ChatBox>
+                {wiadomosci.map((msg, index) => (
+                    <ChatMessage key={index} title={loginData.nickname} text={msg.content}/>
                 ))}
-            </Chat>
-            <ChatInput onSend={sendMessage} />
+            </ChatBox>
+            <ChatInput value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc}/>
         </>
     );
 };
