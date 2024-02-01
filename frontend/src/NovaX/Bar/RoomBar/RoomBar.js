@@ -1,7 +1,7 @@
 import './RoomBar.css';
 import {Button} from "../../index";
 
-const RoomBar = ({src, description, play = "./Ikonki/Play.png", title, ...rest}) =>
+const RoomBar = ({children, src, description, title, ...rest}) =>
 {
     let style = src ? {backgroundImage: `linear-gradient(to right, var(--Motyw-Ciemny), transparent 190%), url("${src}")`, ...rest.style} : null;
 
@@ -21,9 +21,11 @@ const RoomBar = ({src, description, play = "./Ikonki/Play.png", title, ...rest})
                 )}
             </div>
 
-            <div className={"RoomBar-Option"}>
-                <Button src={play}/>
-            </div>
+            {children && (
+                <div className={"RoomBar-Option"}>
+                    {children}
+                </div>
+            )}
         </div>
     );
 }

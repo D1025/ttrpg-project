@@ -111,7 +111,11 @@ const HomePage = () =>
                         src={pokoj.image && (`data:image/${pokoj.imageExtension};base64,${pokoj.image}`)}
                         description={pokoj.description && pokoj.description}
                         title={pokoj.name && pokoj.name}
-                    />
+                    >
+                        <a href={`/Gra?=${pokoj.id}`}>
+                            <Button src={"./Ikonki/Play.png"}/>
+                        </a>
+                    </RoomBar>
                 ));
 
                 setPokoje(zrenderowanePokoje);

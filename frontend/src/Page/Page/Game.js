@@ -4,7 +4,7 @@ import {
     Header, HeaderRight,
     Button, ButtonAccount,
     StorageLoad, setTittle,
-    Chat, ChatInput, ChatMessage
+    Chat, ChatInput, ChatMessage, ModulChat
 } from "../../NovaX";
 
 const Game = () =>
@@ -90,9 +90,10 @@ const Game = () =>
 
             {/* ChatBox. */}
             <Chat>
-                <ChatMessage title={"Xeno"} src={daneUzytkownika.avatar} text={"Siema"} design={1}/>
-                <ChatMessage title={"Patric"} src={""} text={"Elo"} design={1}/>
-                <ChatMessage title={"Patric"} src={""} text={"Wyrzuca 12 oczeek"} design={2}/>
+                {/*<ModulChat roomId={}/>*/}
+                {/*<ChatMessage title={"Xeno"} src={daneUzytkownika.avatar} text={"Siema"} design={1}/>*/}
+                {/*<ChatMessage title={"Patric"} src={""} text={"Elo"} design={1}/>*/}
+                {/*<ChatMessage title={"Patric"} src={""} text={"Wyrzuca 12 oczeek"} design={2}/>*/}
             </Chat>
             <ChatInput/>
         </>
