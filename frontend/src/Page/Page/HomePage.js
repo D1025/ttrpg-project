@@ -108,7 +108,7 @@ const HomePage = () =>
                 const zrenderowanePokoje = dane.map(pokoj => (
                     <RoomBar
                         key={pokoj.id}
-                        src={pokoj.image && (`data:image/jpeg;base64,${pokoj.image}`)}
+                        src={pokoj.image && (`data:image/${pokoj.imageExtension};base64,${pokoj.image}`)}
                         description={pokoj.description && pokoj.description}
                         title={pokoj.name && pokoj.name}
                     />

@@ -75,7 +75,7 @@ const Game = () =>
                                         </li>)}
                                     <li>
                                         <a href={"/"}>
-                                            <Button active={false} title={"Wyjdź z Gry"} style={{width: "100%"}}/>
+                                            <Button active={false} title={"Wyjdź"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
                                 </Menu2>

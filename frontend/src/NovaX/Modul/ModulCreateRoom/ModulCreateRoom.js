@@ -9,6 +9,7 @@ const ModulCreateRoom = ({onClose}) =>
     const [typ, ustawTyp] = useState("");
     const [opis, ustawOpis] = useState("");
     const [obraz, ustawObraz] = useState("");
+    const [obrazRozszezenie, ustawObrazRozszezenie] = useState("");
     // Pobieranie z formulaża.
     const pobierzNazwa = (event) => // Nazwa.
     {
@@ -22,19 +23,25 @@ const ModulCreateRoom = ({onClose}) =>
     {
         ustawOpis(event.target.value);
     };
-    const pobierzObraz = (event) => // Obraz.
+    const pobierzObraz = (event) =>
     {
         if(event === '' || !event.target.files[0])
         {
             ustawObraz('');
+            ustawObrazRozszezenie('');
             return;
         }
 
+        // Odczytywanie rozszeżenia.
         const file = event.target.files[0];
+        const rozszerzeniePliku = file.name.split('.').pop().toLowerCase();
+
+        // Odczytywanie pliku.
         const reader = new FileReader();
         reader.onloadend = () =>
         {
-            ustawObraz(reader.result);  // Zapisuje obraz jako Base64
+            ustawObraz(reader.result);
+            ustawObrazRozszezenie(rozszerzeniePliku);
         };
         reader.readAsDataURL(file);
     };
@@ -60,6 +67,7 @@ const ModulCreateRoom = ({onClose}) =>
                     description: opis,
                     system: 'COHORS_CTHULHU',
                     image: obraz,
+                    extension: obrazRozszezenie,
                     isPrivate: typ,
                     ownerId: loginData.id
                 })
@@ -136,7 +144,7 @@ const ModulCreateRoom = ({onClose}) =>
                                 <div className={"MCR-Main-Flex-Right"}>
                                     {obraz ?
                                         <img src={obraz} alt={""}/>
-                                     :
+                                        :
                                         <div className={"Fake-Img"}>
                                             <img src={"./Ikonki/Obraz.png"} alt={""}/>
                                         </div>
