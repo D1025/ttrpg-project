@@ -112,7 +112,7 @@ const HomePage = () =>
                         description={pokoj.description && pokoj.description}
                         title={pokoj.name && pokoj.name}
                     >
-                        <a href={`/Gra?=${pokoj.id}`}>
+                        <a href={`/Gra?id=${pokoj.id}`}>
                             <Button src={"./Ikonki/Play.png"}/>
                         </a>
                     </RoomBar>

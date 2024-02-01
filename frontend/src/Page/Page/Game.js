@@ -4,13 +4,16 @@ import {
     Header, HeaderRight,
     Button, ButtonAccount,
     StorageLoad, setTittle,
-    Chat, ChatInput, ChatMessage, ModulChat
+    ModulChat
 } from "../../NovaX";
+import {useParams} from "react-router-dom";
 
 const Game = () =>
 {
     // Tittle.
     setTittle("./Grafiki/Logo.png", "TTRPG | Gra");
+    const urlParams = new URLSearchParams(window.location.search);
+    const idParam = urlParams.get('id');
 
     // Odświeżanie.
     const [odswiez, setOdswiez] = useState(false);
@@ -88,14 +91,7 @@ const Game = () =>
                 </HeaderRight>
             </Header>
 
-            {/* ChatBox. */}
-            <Chat>
-                {/*<ModulChat roomId={}/>*/}
-                {/*<ChatMessage title={"Xeno"} src={daneUzytkownika.avatar} text={"Siema"} design={1}/>*/}
-                {/*<ChatMessage title={"Patric"} src={""} text={"Elo"} design={1}/>*/}
-                {/*<ChatMessage title={"Patric"} src={""} text={"Wyrzuca 12 oczeek"} design={2}/>*/}
-            </Chat>
-            <ChatInput/>
+            <ModulChat roomId={idParam} userId={daneUzytkownika.id}/>
         </>
     );
 }
