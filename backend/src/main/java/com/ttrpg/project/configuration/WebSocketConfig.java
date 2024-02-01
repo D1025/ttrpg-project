@@ -21,7 +21,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/spring-boot-tutorial")
                 .withSockJS();
-        registry.addEndpoint("/ws").setAllowedOrigins("http://localhost:3000", "http://localhost:3000/Gra");
+        registry.addEndpoint("/ws").setAllowedOrigins("*");
     }
 
 }

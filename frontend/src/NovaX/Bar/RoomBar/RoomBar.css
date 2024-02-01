@@ -54,6 +54,7 @@ Div.RoomBar > Div.RoomBar-Main
 /* Pole opcji. */
 Div.RoomBar-Option
 {
+    min-height: var(--Przycisk-Wysokość)!important;
     justify-content: right;
     text-align: center;
     align-items: center;
