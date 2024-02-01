@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import com.ttrpg.project.configuration.ProjectProperties;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+@SpringBootApplication()
 @EnableConfigurationProperties(ProjectProperties.class)
 @EnableJpaAuditing
 public class TtrpgApplication {
