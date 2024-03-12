@@ -61,9 +61,11 @@ public class Room extends Model {
     private boolean privateRoom;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_room",
+    @JoinTable(
+            name = "room_users",
             joinColumns = @JoinColumn(name = "room_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private List<Users> users;
 
     @OneToMany(mappedBy = "room", fetch = FetchType.LAZY)

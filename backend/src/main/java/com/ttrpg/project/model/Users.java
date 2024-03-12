@@ -59,7 +59,7 @@ public class Users extends Model {
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Room> ownedRooms;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_room",
             joinColumns = @JoinColumn(name = "user_id"),
