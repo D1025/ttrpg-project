@@ -8,7 +8,6 @@ const ModulChat = ({roomId, userId}) => {
     const [wiadomosci, ustawWiadomosci] = useState([]);
     const [wyslijWiadomosc, ustawWyslijWiadomosc] = useState("");
     const [receivedMessages, setReceivedMessages] = useState([]);
-    const [isMessagesLoaded, setIsMessagesLoaded] = useState(false);
     const [userLeft, setUserLeft] = useState("");
     const [userJoined, setUserJoined] = useState("");
     const [initialActiveUsers, setInitialActiveUsers] = useState([]);
@@ -58,7 +57,6 @@ const ModulChat = ({roomId, userId}) => {
             stompClient.disconnect();
         }
         setStompClient(undefined);
-        setIsMessagesLoaded(false);
         setTimeout(() => {
             connect();
         }, 5000);
