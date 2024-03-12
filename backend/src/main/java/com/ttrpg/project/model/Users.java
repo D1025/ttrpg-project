@@ -3,6 +3,9 @@ package com.ttrpg.project.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.hibernate.annotations.JdbcType;
+import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,8 +19,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.JdbcType;
-import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 
 @Entity
@@ -58,9 +59,9 @@ public class Users extends Model {
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Room> ownedRooms;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "User_room",
+            name = "user_room",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "room_id")
     )

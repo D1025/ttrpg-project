@@ -1,5 +1,12 @@
 package com.ttrpg.project.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
 import com.ttrpg.project.dao.MessagesRepository;
 import com.ttrpg.project.dao.RoomRepository;
 import com.ttrpg.project.dto.ChatMessage;
@@ -11,24 +18,20 @@ import com.ttrpg.project.mapper.UserMapper;
 import com.ttrpg.project.model.Messages;
 import com.ttrpg.project.model.Room;
 import com.ttrpg.project.model.Users;
+
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class ChatServiceImpl implements ChatService{
+public class ChatServiceImpl implements ChatService {
 
     private final RoomRepository roomRepository;
     private final UserService userService;
     private final UserMapper userMapper;
     private final MessagesRepository messagesRepository;
     private final MessagesMapper messagesMapper;
+    private final ActiveUsersService activeUsersService;
 
     Random rand = new Random();
 
@@ -46,7 +49,9 @@ public class ChatServiceImpl implements ChatService{
             room.setUsers(users);
             roomRepository.save(room);
         }
-        return new JoinChat(userId, userMapper.usersToPublicUserReturnDTOs(users), messagesMapper.messagesToChatMessages(room.getMessages()), MessageType.JOIN);
+        activeUsersService.save(userId, roomId);
+        List<UUID> listOfActiveUsers = activeUsersService.getActiveUsersIdByRoomId(roomId);
+        return new JoinChat(userId, userMapper.usersToPublicUserReturnDTOs(users), listOfActiveUsers, messagesMapper.messagesToChatMessages(room.getMessages()), MessageType.JOIN);
     }
 
     @Override
@@ -70,5 +75,12 @@ public class ChatServiceImpl implements ChatService{
         } else {
             throw new MessageException("Message type not found");
         }
+    }
+
+    @Override
+    @Transactional
+    public ChatMessage leaveChat(UUID userId) {
+        activeUsersService.deleteByUserId(userId);
+        return new ChatMessage("", userId, MessageType.LEAVE, LocalDateTime.now());
     }
 }

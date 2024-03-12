@@ -1,29 +1,153 @@
-import {ChatBox, ChatInput, StorageSave, StorageLoad} from "../../index";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
+import SockJs from "sockjs-client";
+import Stomp from "stompjs";
+import { ChatBox, ChatInput, StorageLoad } from "../../index";
 import ChatMessage from "../ChatMessage/ChatMessage";
 
 const ModulChat = ({roomId, userId}) => {
     const [wiadomosci, ustawWiadomosci] = useState([]);
     const [wyslijWiadomosc, ustawWyslijWiadomosc] = useState("");
+    const [receivedMessages, setReceivedMessages] = useState([]);
+    const [isMessagesLoaded, setIsMessagesLoaded] = useState(false);
+    const [userLeft, setUserLeft] = useState("");
+    const [userJoined, setUserJoined] = useState("");
+    const [initialActiveUsers, setInitialActiveUsers] = useState([]);
+    const [activeUsers, setActiveUsers] = useState([]);
+    const [usersInRoom, setUsersInRoom] = useState([]);
+    const [loadInitialMessages, setLoadInitialMessages] = useState(true);
     const loginData = StorageLoad('loginData');
 
-    // Ładowanie wiadomości przy montowaniu komponentu
-    useEffect(() => {
-        const zaladowaneWiadomosci = StorageLoad(roomId) || []; // Ładuje zapisane wiadomości lub pusty array, jeśli nic nie znajdzie
-        ustawWiadomosci(zaladowaneWiadomosci); // Ustawia stan wiadomości na załadowane dane
-    }, [roomId]); // Efekt zależny od zmian roomId, aby ponownie ładować przy zmianie pokoju
+    const [stompClient, setStompClient] = useState(undefined);
+    const [connected, setConnected] = useState(false);
 
+    const connect = () => {
+        const socket = new SockJs('http://localhost:8086/ws');
+        const temp = Stomp.over(socket);
+        setStompClient(temp);
+
+        const headers = {
+            'Authorization': 'Bearer ' + loginData.token
+        }
+
+        temp.connect(headers, onConnected, onError);
+    }
+
+    const onConnected = () => {
+        setConnected(true);
+    }
+
+    useEffect(() => {
+        connect()
+    }, []);
+
+    //SUBSKRYBCJA
+    useEffect(() => {
+        if (connected && stompClient) {
+            const subscribtion = stompClient.subscribe(`/topic/rooms/${roomId}`, onMessageReceived);
+            stompClient.send(`/app/chat/${roomId}/addUser`, {}, JSON.stringify({id: userId}));
+            return () => {
+                subscribtion.unsubscribe();
+            }
+        }
+    }, [connected, stompClient]);
+
+
+    const onError = (error) => {
+        setConnected(false);
+        if (stompClient) {
+            stompClient.disconnect();
+        }
+        setStompClient(undefined);
+        setIsMessagesLoaded(false);
+        setTimeout(() => {
+            connect();
+        }, 5000);
+    }
+
+    //Ładowanie wiadomości z serwera
+    useEffect(() => {
+        if (loadInitialMessages && receivedMessages !== undefined && receivedMessages.length > 0) {
+            ustawWiadomosci(receivedMessages);
+            setLoadInitialMessages(false);
+        } else if (receivedMessages.length === 1) {
+            ustawWiadomosci([...wiadomosci, ...receivedMessages]);
+        }
+    }, [receivedMessages]);
+
+    //Ktoś wyszedł z pokoju
+    useEffect(() => {
+        if (userLeft !== "") {
+            let temp = activeUsers.filter(user => user !== userLeft);
+            setActiveUsers(temp);
+            console.log("USER LEFT:", getUserNameById(userLeft));
+        }
+    }, [userLeft]);
+
+    //Ktoś wszedł do pokoju
+    useEffect(() => {
+        if (userJoined !== "") {
+            console.log("USER JOINED:", getUserNameById(userJoined));
+        }
+    }, [userJoined]);
+
+    //Inicjalizowanie użytkowników w pokoju
+    useEffect(() => {
+        if (initialActiveUsers.length > 0) {
+            setActiveUsers(initialActiveUsers);
+        }
+    }, [initialActiveUsers]);
+
+    useEffect(() => {
+        console.log("ACTIVE USERS:", activeUsers);
+    }, [activeUsers]);
+
+
+    //WYSYŁANIE WIADOMOŚCI
+    const sendMessage = (msg) => {
+        if (stompClient)
+        stompClient.send(`/app/chat/${roomId}/sendMessage`, {}, JSON.stringify({content: msg, userId: userId, type: "CHAT"}));
+    }
+
+    let onMessageReceived = (msg) => {
+        const message = JSON.parse(msg.body);
+        if (message.type === "CHAT") {
+            const nowaWiadomosc = {
+                userId: message.userId,
+                content: message.content,
+                timestamp: new Date().toISOString()
+            };
+        setReceivedMessages([nowaWiadomosc]);
+
+        }
+        if (message.type === "JOIN") {
+            setUserJoined(message.userId);
+            setInitialActiveUsers(message.activeUsers)
+            const users = message.users;
+            setUsersInRoom(users);
+            const messages = message.messages;
+            if (messages === null) {
+                return;
+            }
+            let noweWiadomosci = messages.map(msg => {
+                return {
+                    userId: msg.userId,
+                    content: msg.content,
+                    timestamp: msg.time
+                }
+            });
+            noweWiadomosci.sort((a, b) => {
+                return new Date(a.timestamp) - new Date(b.timestamp);
+            });
+            setReceivedMessages(noweWiadomosci);
+        }
+        if (message.type === "LEAVE") {
+            setUserLeft(message.userId);
+        }
+    }
     const dodajWiadomosc = (e) => {
         if (e.key === 'Enter' && wyslijWiadomosc.trim()) {
-            const nowaWiadomosc = {
-                userId: userId,
-                content: wyslijWiadomosc,
-                timestamp: new Date().toISOString() // Zmiana na ISOString dla lepszej kompatybilności
-            };
-            const aktualizowaneWiadomosci = [...wiadomosci, nowaWiadomosc];
-            ustawWiadomosci(aktualizowaneWiadomosci);
-            StorageSave(roomId, aktualizowaneWiadomosci); // Zapis do localStorage
-            ustawWyslijWiadomosc(""); // Reset pola wprowadzania
+            sendMessage(wyslijWiadomosc);
+            ustawWyslijWiadomosc("");
         }
     };
 
@@ -31,11 +155,16 @@ const ModulChat = ({roomId, userId}) => {
         ustawWyslijWiadomosc(event.target.value);
     };
 
+    //funckja zwracająca nazwę użytkownika na podstawie id
+    const getUserNameById = (id) => {
+        const user = usersInRoom.find(user => user.id === id);
+        return user ? user.nickname : "Unknown";
+    }
     return (
         <>
             <ChatBox>
                 {wiadomosci.map((msg, index) => (
-                    <ChatMessage key={index} title={loginData.nickname} text={msg.content}/>
+                    <ChatMessage key={index} title={getUserNameById(msg.userId)} text={msg.content} timestamp={msg.timestamp}/>
                 ))}
             </ChatBox>
             <ChatInput value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc}/>

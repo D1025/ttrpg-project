@@ -10,4 +10,6 @@ public interface ChatService {
     JoinChat joinChat(UUID userId, UUID roomId);
 
     ChatMessage sendMessage(UUID roomId, ChatMessage chatMessage);
+
+    ChatMessage leaveChat(UUID userId);
 }

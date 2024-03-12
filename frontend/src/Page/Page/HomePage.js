@@ -30,7 +30,7 @@ const HomePage = () =>
     const [isLogIn, ustawIsLogIn] = useState(false); // Czy zalogowany.
     const [daneUzytkownika, ustawDaneUzytkownika] = useState(''); // Dane zalogowanego.
     // Wylogowywanie.
-    const LogOut = async() =>
+    const LogOut = useCallback(async() =>
     {
         try
         {
@@ -47,7 +47,8 @@ const HomePage = () =>
             {
                 // Pomyślne wylogowanie
                 StorageRemove('loginData');
-                wymusOdswiezenie();
+                ustawIsLogIn(false);
+                ustawDaneUzytkownika('');
             }
         }
         catch(blad)
@@ -55,21 +56,20 @@ const HomePage = () =>
             // Obsługa błędów związanych z siecią lub żądaniem
             console.error(`Nieoczekiwany błąd: ${blad}`);
         }
-    }
+    }, [daneUzytkownika.token, wymusOdswiezenie]);
+
 
     // Formularz Logowanie/Rejestracja.
     const [showLogin, setShowLogin] = useState(false);
     const toggleShowLogin = () =>
     {
-        setShowLogin(prevShowLogin => !prevShowLogin);
-        wymusOdswiezenie();
+        setShowLogin(!showLogin);
     };
     // Formularz CreateRoom.
     const [showCreateRoom, setCreateRoom] = useState(false);
     const togglCreateRoom = () =>
     {
-        setCreateRoom(prevShowLogin => !prevShowLogin);
-        wymusOdswiezenie();
+        setCreateRoom(!showCreateRoom);
     };
 
 
@@ -145,7 +145,7 @@ const HomePage = () =>
             ustawIsLogIn(false);
         }
         ladujPokoje({publiczny: !lobby});
-    }, [odswiez, lobby,pokoje]);
+    }, [lobby, ladujPokoje, showCreateRoom, showLogin]);
 
     // Aplikacja.
     return (
