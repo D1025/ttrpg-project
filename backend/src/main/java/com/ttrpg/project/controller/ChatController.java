@@ -1,25 +1,21 @@
 package com.ttrpg.project.controller;
 
-import com.ttrpg.project.dto.ChatMessage;
-import com.ttrpg.project.dto.JoinChat;
-import com.ttrpg.project.service.ChatService;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
+import java.util.UUID;
+
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.UUID;
+import com.ttrpg.project.dto.ChatMessage;
+import com.ttrpg.project.dto.JoinChat;
+import com.ttrpg.project.service.ChatService;
+
+import lombok.RequiredArgsConstructor;
 
 
-class UserMessage {
-    public UUID userId;
-}
+record UserId (UUID id) {}
 
 
 @Controller
@@ -37,9 +33,9 @@ public class ChatController {
 
     @MessageMapping("/chat/{roomId}/addUser")
     @SendTo("/topic/rooms/{roomId}")
-    public JoinChat addUser(@DestinationVariable UUID roomId, UserMessage user, SimpMessageHeaderAccessor headerAccessor) {
+    public JoinChat addUser(@DestinationVariable UUID roomId, UserId user, SimpMessageHeaderAccessor headerAccessor) throws Exception {
         headerAccessor.getSessionAttributes().put("room_id", roomId);
 
-        return chatService.joinChat(user.userId, roomId);
+        return chatService.joinChat(user.id(), roomId);
     }
 }

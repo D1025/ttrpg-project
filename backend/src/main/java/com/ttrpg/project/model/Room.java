@@ -1,18 +1,28 @@
 package com.ttrpg.project.model;
 
-import jakarta.persistence.*;
+import java.util.List;
+
+import org.hibernate.annotations.JdbcType;
+import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 import com.ttrpg.project.model.enums.Systems;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.JdbcType;
-import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
-
-import java.util.List;
 
 @Entity
 @Getter
@@ -50,7 +60,10 @@ public class Room extends Model {
     @Column(name = "private", nullable = false)
     private boolean privateRoom;
 
-    @ManyToMany(mappedBy = "joinedRooms", fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_room",
+            joinColumns = @JoinColumn(name = "room_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<Users> users;
 
     @OneToMany(mappedBy = "room", fetch = FetchType.LAZY)

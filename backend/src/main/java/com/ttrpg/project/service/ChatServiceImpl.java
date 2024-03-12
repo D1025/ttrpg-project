@@ -1,5 +1,12 @@
 package com.ttrpg.project.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
 import com.ttrpg.project.dao.MessagesRepository;
 import com.ttrpg.project.dao.RoomRepository;
 import com.ttrpg.project.dto.ChatMessage;
@@ -11,14 +18,9 @@ import com.ttrpg.project.mapper.UserMapper;
 import com.ttrpg.project.model.Messages;
 import com.ttrpg.project.model.Room;
 import com.ttrpg.project.model.Users;
+
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
