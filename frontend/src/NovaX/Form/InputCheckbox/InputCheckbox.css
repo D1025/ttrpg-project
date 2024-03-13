@@ -1,0 +1,71 @@
+/* Główne pole tzrmające CheckBox. */
+Div.InputCheckbox
+{
+    display: inline-flex;
+}
+
+
+/* Ukryj oryginalny checkbox. */
+Div.InputCheckbox > Input[type="checkbox"]
+{
+    width: 0.0vw;
+    height: 0.0vw;
+    margin: 0;
+    position: absolute;
+    opacity: 0;
+}
+
+/* Stylizacja niestandardowego znacznika. */
+Div.InputCheckbox > Input[type="checkbox"] + Label
+{
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+}
+    /* Podstawowe wartości Checkbox'a. */
+    Div.InputCheckbox > Input[type="checkbox"] + Label::before
+    {
+        content: "";
+        width: 0.95vw;
+        height: 0.95vw;
+        background-color: var(--Motyw);
+        border-radius: 0.35vw;
+        box-sizing: border-box;
+        margin-right: 0.2vw;
+        transition: var(--Animacja);
+        box-shadow: var(--Przycisk-Cienie);
+    }
+
+    /* Zaznaczony. */
+    Div.InputCheckbox > Input[type="checkbox"]:checked + Label::before
+    {
+        background-color: var(--Kolor-Dodatkowy);
+        background-image: url("/public/Ikonki/Ptaszek 2.png");
+        background-size: 90%;
+        background-repeat: no-repeat;
+        background-position: center 80%;
+    }
+
+
+/* margines Lewy i Prawy. */
+Div.InputCheckbox-MarginLeftRight
+{
+    margin-left: var(--Przycisk-Odstep-X);
+    margin-right: var(--Przycisk-Odstep-X);
+}
+
+/* Margines Dolny. */
+Div.InputCheckbox-MarginBottom
+{
+    margin-bottom: var(--Przycisk-Odstep-Y);
+}
+    /* Usunięcie dolnego dla ostatniego i jedynego. */
+    Div.InputCheckbox-MarginBottom:last-of-type,
+    Div.InputCheckbox-MarginBottom:only-of-type
+    {
+        margin-bottom: 0.0vw;
+    }

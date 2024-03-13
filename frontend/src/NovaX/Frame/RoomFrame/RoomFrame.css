@@ -1,0 +1,68 @@
+/* RoomFrame. */
+Div.RoomFrame
+{
+    width: 55.5vw;
+    text-align: left;
+    background-color: var(--Motyw-Ciemny);
+    border-radius: var(--Radius-2);
+    border-left: 0.3vw solid var(--Kolor-Dodatkowy);
+    border-right: 0.3vw solid var(--Kolor-Dodatkowy);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0.5vw;
+    display: flex;
+    overflow: hidden;
+}
+    /* Ostatni i jedyny tego typu bez marginesu. */
+    Div.RoomFrame:last-of-type,
+    Div.RoomFrame:only-of-type
+    {
+        margin-bottom: 0.0vw;
+    }
+
+/* Pole trzymające Nazwę i opis. */
+Div.RoomFrame > Div.RoomFrame-Main
+{
+    align-items: center;
+    padding: 1.0vw;
+    display: grid;
+    flex: 3;
+}
+    /* Nazwa. */
+    Div.RoomFrame > Div.RoomFrame-Main > Div.RoomFrame-Title
+    {
+        width: 100%;
+        height: max-content;
+        color: var(--Kolor-Dodatkowy);
+        font-weight: bold;
+        font-size: 1.1rem;
+        padding-bottom: 0.4vw;
+    }
+        /* . */
+        Div.RoomFrame > Div.RoomFrame-Main > Div.RoomFrame-Title:only-of-type
+        {
+            padding-bottom: 0.0vw;
+        }
+
+    /* Opis. */
+    Div.RoomFrame > Div.RoomFrame-Main > Div.RoomFrame-Description
+    {
+        width: 100%;
+        height: max-content;
+        font-size: 0.95rem;
+    }
+
+/* Pole opcji. */
+Div.RoomFrame-Option
+{
+    min-height: var(--Przycisk-Wysokość)!important;
+    justify-content: right;
+    text-align: center;
+    align-items: center;
+    padding: 1.0vw;
+    display: flex;
+    flex: 1;
+}

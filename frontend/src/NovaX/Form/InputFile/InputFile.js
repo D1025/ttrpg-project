@@ -2,7 +2,19 @@ import React, {useState} from 'react';
 import './InputFile.css';
 import {Button} from "../../index";
 
-const InputFile = ({title = 'Wybierz Plik', accept, onChange, ...rest}) =>
+// Input File.
+const InputFile = ({
+                       title = 'Wybierz Plik',
+                       srcTrashCan = "./Ikonki/Kosz.png",
+                       srcChecked = './Ikonki/Ptaszek 2.png',
+                       accept,
+                       onChange,
+                       marginBottom = false,
+                       marginLeftRight = true,
+                       width = 2,
+                       className,
+                       ...rest
+                   }) =>
 {
     // Stan komponentu.
     const [nazwaPliku, ustawNazwePliku] = useState(title);
@@ -19,13 +31,21 @@ const InputFile = ({title = 'Wybierz Plik', accept, onChange, ...rest}) =>
             const nazwaWybranegoPliku = wybranyPlik.name;
             const rozszerzeniePliku = `.${nazwaWybranegoPliku.split('.').pop().toLowerCase()}`;
 
-            const akceptowaneFormaty = accept.split(',').map(format => `.${format.split('/').pop()}`);
+            // Domyślnie akceptuj wszystko, jeśli nie podano `accept`
+            const akceptujeWszystko = !accept;
+            let akceptowanyFormat = true; // Zakładamy, że format jest akceptowany
 
-            if(!akceptowaneFormaty.includes(rozszerzeniePliku))
+            if(!akceptujeWszystko)
+            {
+                const akceptowaneFormaty = accept.split(',').map(format => `.${format.split('/').pop()}`);
+                akceptowanyFormat = akceptowaneFormaty.includes(rozszerzeniePliku);
+            }
+
+            if(!akceptowanyFormat)
             {
                 ustawNazwePliku('Zły format');
                 ustawFormatPoprawny(false);
-                event.target.value = '';
+                event.target.value = ''; // Resetuj pole wyboru pliku
                 if(onChange)
                 {
                     onChange('');
@@ -53,6 +73,7 @@ const InputFile = ({title = 'Wybierz Plik', accept, onChange, ...rest}) =>
         }
     };
 
+
     // Usuwanie wybranego pliku.
     const usunWybranyPlik = () =>
     {
@@ -68,23 +89,52 @@ const InputFile = ({title = 'Wybierz Plik', accept, onChange, ...rest}) =>
         }
     };
 
-    let klasyInputu = "FileInput";
-    let styl = null;
 
+    // Decyduje o wyglądzie [Boxa trzymającego].
+    const classBuilderBox = () =>
+    {
+        let classList = ['InputFile-Box'];
+
+        // Dodawanie klasy na podstawie wartości.
+        if(marginBottom === true) classList.push('InputFile-MarginBottom');
+        if(width > 0) classList.push(`Width-${width}`);
+        if(marginLeftRight === true) classList.push('InputFile-MarginLeftRight');
+        if(className) classList.push(className);
+
+        return classList.join(' ');
+    };
+    // Przypisanie listy klas w postaci 'String'.
+    const myClassBox = classBuilderBox();
+
+
+    // Decyduje o wyglądzie [Środka].
+    const classBuilder = () =>
+    {
+        let classList = ['InputFile'];
+
+        // Dodawanie klasy na podstawie wartości.
+        if(formatPoprawny && nazwaPliku !== title) classList.push('InputFile-Active');
+
+        return classList.join(' ');
+    };
+    // Przypisanie listy klas w postaci 'String'.
+    const myClass = classBuilder();
+    let myStyle = {...rest.style};
     if(formatPoprawny && nazwaPliku !== title)
     {
-        klasyInputu += " FileInput-Active";
-        styl = {backgroundImage: "url('./Ikonki/Zaznaczenie.png')", ...rest.style};
+        myStyle = {backgroundImage: `url('${srcChecked}')`, ...rest.style};
     }
 
-    const wyswietlanaNazwaPliku = formatPoprawny && nazwaPliku !== title && nazwaPliku.length > 8
-        ? nazwaPliku.slice(0, 8) + "..." : nazwaPliku;
+    let skrocone = 6; // Mówi o ile skrócić tekst.
+    const wyswietlanaNazwaPliku = formatPoprawny && nazwaPliku !== title && nazwaPliku.length > skrocone ? nazwaPliku.slice(0, skrocone) + "..." : nazwaPliku; // Skraca tekst.
 
+
+    // Return.
     return (
-        <div style={{display: "flex"}}>
-            <label className={klasyInputu} style={styl}>
+        <div className={myClassBox}>
+            <label className={myClass} style={myStyle}>
                 <input
-                    type="file"
+                    type={"file"}
                     onChange={obsluzWyborPliku}
                     accept={accept}
                     {...rest}
@@ -92,7 +142,7 @@ const InputFile = ({title = 'Wybierz Plik', accept, onChange, ...rest}) =>
                 <span>{wyswietlanaNazwaPliku}</span>
             </label>
             {formatPoprawny && nazwaPliku !== title && (
-                <Button src={"./Ikonki/Kosz.png"} onClick={usunWybranyPlik}/>
+                <Button src={srcTrashCan} onClick={usunWybranyPlik}/>
             )}
         </div>
     );

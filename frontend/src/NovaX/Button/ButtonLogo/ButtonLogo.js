@@ -1,15 +1,34 @@
 import './ButtonLogo.css';
 import React from "react";
 
-const ButtonLogo = ({src, alt = "", title, fontSize, href, ...rest}) =>
+// Button Logo.
+const ButtonLogo = ({src, alt = "", title, className, href, ...rest}) =>
 {
-    let klasa = "ButtonLogo-D1";
-    if(title) klasa="ButtonLogo-D2"
+    // Decyduje o wyglądzie.
+    const classBuilder = () =>
+    {
+        let classList = [];
 
+        // Tworzenie listy klas.
+        classList.push(title ? 'ButtonLogo-D2' : 'ButtonLogo-D1');
+        if(className) classList.push(className);
+
+        return classList.join(' ');
+    };
+
+    // Przypisanie listy klas w postaci 'String'.
+    const myClass = classBuilder();
+
+
+    // Return.
     return (
-        <a {...rest} href={href} className={klasa}>
-            {src && <img src={src} alt={alt}/>}
-            {title && <div style={{fontSize: fontSize}}>{title}</div>}
+        <a {...rest} href={href} className={myClass}>
+            {
+                src && <img src={src} alt={alt}/>
+            }
+            {
+                title && <div>{title}</div>
+            }
         </a>
     );
 }

@@ -1,7 +1,6 @@
 /* Nadpisany: Input do Klikania. */
 Input.Input[type="submit"], Input.Input[type="button"]
 {
-    min-width: var(--Przycisk-Szerokość-II);
     width: 0.0vw;
     height: var(--Przycisk-Wysokość);
     align-items: center;
@@ -12,35 +11,32 @@ Input.Input[type="submit"], Input.Input[type="button"]
     justify-content: center;
     background-color: var(--Kolor-Dodatkowy);
     backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-I);
+    border-radius: var(--Radius-1);
     border: 0.0vw;
-    margin-left: var(--Przycisk-Odstep);
-    margin-right: var(--Przycisk-Odstep);
     padding-left: 0.5vw;
     padding-right: 0.5vw;
     cursor: pointer;
     user-select: none;
     transition: var(--Animacja);
+    box-shadow: var(--Przycisk-Cienie);
 }
+    /* Wygląd Przycisku po Najechaniu. */
+    Input.Input[type="submit"]:hover, Input.Input[type="button"]:hover
+    {
+        background-color: var(--Motyw-Czarny) !important;
+    }
 
-/* Wygląd Przycisku po Najechaniu. */
-Input.Input[type="submit"]:hover, Input.Input[type="button"]:hover
-{
-    background-color: var(--Motyw-Czarny) !important;
-}
-
-/* Wygląd Przycisku po Aktywacji. */
-Input.Input[type="submit"]:active, Input.Input[type="button"]:active
-{
-    background-color: var(--Motyw) !important;
-}
+    /* Wygląd Przycisku po Aktywacji. */
+    Input.Input[type="submit"]:active, Input.Input[type="button"]:active
+    {
+        background-color: var(--Motyw) !important;
+    }
 
 
 /* Nadpisany: Input do Wyszukiwania. */
 Input.Input[type="text"], Input.Input[type="password"]
 {
-    min-width: var(--Przycisk-Szerokość-II);
-    width: 0;
+    width: 0.0vw;
     height: var(--Przycisk-Wysokość);
     color: inherit;
     font-size: 1.0rem;
@@ -48,30 +44,29 @@ Input.Input[type="text"], Input.Input[type="password"]
     background-color: var(--Motyw);
     backdrop-filter: var(--Blur);
     border: 0.2vw solid var(--Kolor-Dodatkowy);
-    border-radius: var(--Radius-I);
+    border-radius: var(--Radius-1);
     box-sizing: border-box;
-    margin-left: var(--Przycisk-Odstep);
-    margin-right: var(--Przycisk-Odstep);
     padding-left: 0.5vw;
     padding-right: 0.5vw;
     cursor: pointer;
     transition: var(--Animacja);
+    box-shadow: var(--Przycisk-Cienie);
 }
+    /* Wygląd Podczas Wpisywania i po Wpisaniu. */
+    Input.Input[type="text"]:focus, Input.Input[type="text"]:valid:not(:placeholder-shown),
+    Input.Input[type="password"]:focus, Input.Input[type="password"]:valid:not(:placeholder-shown)
+    {
+        background-color: var(--Motyw-Ciemny);
+        cursor: text;
+    }
 
-/* Wygląd Podczas Wpisywania i po Wpisaniu. */
-Input.Input[type="text"]:focus, Input.Input[type="text"]:valid:not(:placeholder-shown),
-Input.Input[type="password"]:focus, Input.Input[type="password"]:valid:not(:placeholder-shown)
-{
-    background-color: var(--Motyw-Ciemny);
-    cursor: text;
-}
+    /* Nadpisanie Placecholder. */
+    Input.Input[type="text"]::placeholder, Input.Input[type="password"]::placeholder
+    {
+        color: white;
+        opacity: 0.6;
+    }
 
-/* Nadpisanie Placecholder. */
-Input.Input[type="text"]::placeholder, Input.Input[type="password"]::placeholder
-{
-    color: white;
-    opacity: 0.6;
-}
 
 /* Aktywny. */
 Input[type="Submit"].Input-Active, Input[type="Button"].Input-Active, Input[type="text"].Input-Active, Input[type="password"].Input-Active
@@ -79,46 +74,21 @@ Input[type="Submit"].Input-Active, Input[type="Button"].Input-Active, Input[type
     background-color: var(--Motyw-Ciemny) !important;
 }
 
-
-/* Ukryj oryginalny checkbox. */
-input.Input[type="checkbox"]
+/* Margin Left Right. */
+Input.Input-MarginLeftRight
 {
-    position: absolute;
-    opacity: 0;
-    width: 0.9vw;
-    height: 0.9vw;
-    margin: 0;
+    margin-left: var(--Przycisk-Odstep-X);
+    margin-right: var(--Przycisk-Odstep-X);
 }
 
-/* Stylizacja niestandardowego znacznika. */
-input.Input[type="checkbox"] + label
+/* Margin Bottom. */
+Input.Input-MarginBottom
 {
-    position: relative;
-    padding-left: 1.25vw;
-    cursor: pointer;
-    line-height: 0.9vw;
+    margin-bottom: var(--Przycisk-Odstep-Y);
 }
-
-/* Podstawowe wartości Checkbox'a. */
-input.Input[type="checkbox"] + label::before
-{
-    content: "";
-    position: absolute;
-    left: 0.15vw;
-    top: 0.07vw;
-    width: 0.9vw;
-    height: 0.9vw;
-    background-color: var(--Motyw);
-    border-radius: 0.3vw;
-    box-sizing: border-box;
-}
-
-/* Zaznaczony. */
-input.Input[type="checkbox"]:checked + label::before
-{
-    background-color: var(--Kolor-Dodatkowy);
-    background-image: url("/public/Ikonki/Zaznaczenie.png");
-    background-size: 80%;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
+    /* Kiedy ostatni albo jedyny. */
+    Input.Input-MarginBottom:last-of-type,
+    Input.Input-MarginBottom:only-of-type
+    {
+        margin-bottom: 0.0vw;
+    }

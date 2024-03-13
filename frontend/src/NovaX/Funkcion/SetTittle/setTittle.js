@@ -1,11 +1,11 @@
-function setTittle(newFavicon, newTittle)
+const setTittle = (newIcon, newTittle) =>
 {
     document.title = newTittle;
 
-    const linkFavicon = document.querySelector("link[rel~='icon']");
-    if(linkFavicon)
+    if(newIcon === true)
     {
-        linkFavicon.href = newFavicon;
+        const linkFavicon = document.querySelector("link[rel~='icon']");
+        linkFavicon.href = newIcon;
     }
 }
 

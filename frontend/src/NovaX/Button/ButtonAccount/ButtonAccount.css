@@ -1,46 +1,44 @@
 /* ButtonAccount. */
-/* Design 1. */
-Div.ButtonAccount-D1
+Div.ButtonAccount
 {
-    min-width: var(--Przycisk-Szerokość-I);
+    width: max-content;
     height: var(--Przycisk-Wysokość);
     justify-content: center;
     align-items: center;
     text-align: center;
     font-size: 1.0rem;
     background-color: var(--Motyw-Ciemny);
-    border-radius: var(--Radius-I);
-    margin-left: var(--Przycisk-Odstep);
-    margin-right: var(--Przycisk-Odstep);
-    display: flex;
+    border-radius: var(--Radius-1);
+    display: inline-flex;
     cursor: pointer;
     user-select: none;
     transition: var(--Animacja);
 }
 
 /* Nickname. */
-Div.ButtonAccount-D1 > Div.ButtonAccount-Title
+Div.ButtonAccount > Div.ButtonAccount-Title
 {
     font-weight: bold;
     margin-left: auto;
+    margin-right: auto;
 }
 
 /* . */
-Div.ButtonAccount-D1 > Div.ButtonAccount-Title > Div:nth-child(1)
+Div.ButtonAccount > Div.ButtonAccount-Title > Div:nth-child(1)
 {
     font-weight: bold;
     font-size: 0.95rem;
 }
 
 /* . */
-Div.ButtonAccount-D1 > Div.ButtonAccount-Title > Div:nth-child(2)
+Div.ButtonAccount > Div.ButtonAccount-Title > Div:nth-child(2)
 {
     font-weight: normal;
     font-size: 0.6rem;
 }
 
 /* Miejsce na Avatar. */
-Div.ButtonAccount-D1 > Div.ButtonAccount-Img
+Div.ButtonAccount > Div.ButtonAccount-Img
 {
     width: var(--Przycisk-Wysokość);
     height: var(--Przycisk-Wysokość);
@@ -49,107 +47,21 @@ Div.ButtonAccount-D1 > Div.ButtonAccount-Img
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--Kolor-Dodatkowy);
-    border-radius: var(--Radius-I);
-    margin-left: auto;
+    border-radius: var(--Radius-1);
+    box-shadow: var(--Przycisk-Cienie);
 }
     /* Wygląd Img. */
-    Div.ButtonAccount-D1 > Div.ButtonAccount-Img > Img
+    Div.ButtonAccount > Div.ButtonAccount-Img > Img
     {
         max-width: 100%;
         max-height: 100%;
         border-radius: inherit;
     }
-    /*!* Przycisk z img jest transparentny. *!*/
-    /*Div.ButtonAccount-D1:hover Div.ButtonAccount-Img, Div.ButtonAccount-D1:active Div.ButtonAccount-Img*/
-    /*{*/
-    /*    background-color: transparent;*/
-    /*}*/
-    /*!* Przycisk po kliknięciu. *!*/
-    /*Div.ButtonAccount-D1:active*/
-    /*{*/
-    /*    background-color: var(--Motyw)!important;*/
-    /*}*/
 
 
-/* Design 2. */
-Div.ButtonAccount-D2
+/* Margines lewy i prawy. */
+Div.ButtonAccount-MarginLeftRight
 {
-    min-width: var(--Przycisk-Szerokość-I);
-    height: var(--Przycisk-Wysokość);
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: var(--Motyw-Ciemny);
-    border-radius: var(--Radius-I);
-    margin-left: var(--Przycisk-Odstep);
-    margin-right: var(--Przycisk-Odstep);
-    display: flex;
-    cursor: pointer;
-    user-select: none;
-    transition: var(--Animacja);
+    margin-left: var(--Przycisk-Odstep-X);
+    margin-right: var(--Przycisk-Odstep-X);
 }
-
-/* Nickname. */
-Div.ButtonAccount-D2 > Div.ButtonAccount-Title
-{
-    font-weight: bold;
-    font-size: 1.0rem;
-    margin-right: auto;
-}
-
-/* Miejsce na Avatar. */
-Div.ButtonAccount-D2 > Div.ButtonAccount-Img
-{
-    width: var(--Przycisk-Wysokość);
-    height: var(--Przycisk-Wysokość);
-    background-image: url("/public/Ikonki/Konto.png");
-    background-size: 65%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: var(--Kolor-Dodatkowy);
-    border-radius: var(--Radius-I);
-    margin-right: auto;
-}
-    /* Wygląd Img. */
-    Div.ButtonAccount-D2 > Div.ButtonAccount-Img > Img
-    {
-        max-width: 100%;
-        max-height: 100%;
-    }
-    /*!* Przycisk z img jest transparentny. *!*/
-    /*Div.ButtonAccount-D2:hover Div.ButtonAccount-Img, Div.ButtonAccount-D2:active Div.ButtonAccount-Img*/
-    /*{*/
-    /*    background-color: transparent;*/
-    /*}*/
-    /*!* Przycisk po kliknięciu. *!*/
-    /*Div.ButtonAccount-D2:active*/
-    /*{*/
-    /*    background-color: var(--Motyw)!important;*/
-    /*}*/
-
-
-/* Szerokość 1. */
-Div.ButtonAccount-W1
-{
-    min-width: 0.0vw!important;
-}
-
-/* Szerokość 1. */
-Div.ButtonAccount-W1
-{
-    min-width: var(--Przycisk-Szerokość-I)!important;
-}
-
-/* Szerokość 2. */
-Div.ButtonAccount-W2
-{
-    min-width: var(--Przycisk-Szerokość-II)!important;
-}
-
-/* Szerokość 3. */
-Div.ButtonAccount-W3
-{
-    min-width: var(--Przycisk-Szerokość-III)!important;
-}
-
-

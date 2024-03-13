@@ -1,0 +1,42 @@
+/* Pole Czatu. */
+Div.Chat-Box
+{
+    width: 45.0vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Okienko Czatu. */
+Div.Chat
+{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Motyw-Przezroczysty);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-4);
+    margin-bottom: 0.5vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    display: flex;
+}
+    /* Pole z wiadomościami. */
+    Div.Chat > Div
+    {
+        width: 100%;
+        min-height: 20vw;
+        max-height: 32vw;
+        overflow-y: auto;
+    }
+
+
+/* Pole pobierające wiadomości. */
+Input.ChatInput
+{
+    width: 100%!important;
+    height: 3.0vw!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    border-radius: var(--Radius-3)!important;
+    display: block;
+}

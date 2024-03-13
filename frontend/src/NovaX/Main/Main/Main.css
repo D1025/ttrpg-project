@@ -2,7 +2,6 @@
 /* Design 1. */
 Main.Main-D1
 {
-    text-align: center;
     margin-top: 2.0vw;
     margin-bottom: 1.0vw;
     display: flex;
@@ -16,79 +15,75 @@ Main.Main-D1
     }
 
 /* Pole dla Artykułów. */
-Main.Main-D1 > Div
+Main.Main-D1 > Div.ArticleArea
 {
     width: min-content;
+    align-self: flex-start;
     margin-left: auto;
 }
     /* Artykół main'a. */
-    Main.Main-D1 > Div > Article.MainArticle
+    Main.Main-D1 > Div.ArticleArea > Article.MainArticle
     {
         width: 56vw;
         background-color: var(--Motyw-Przezroczysty);
         backdrop-filter: var(--Blur);
-        border-radius: var(--Radius-IV);
+        border-radius: var(--Radius-4);
         margin-bottom: 1.0vw;
         padding-top: 1.5vw;
         padding-bottom: 1.5vw;
         padding-left: 2.0vw;
         padding-right: 2.0vw;
-        display: inline-table;
     }
-    /* Artykół main'a. */
-    Main.Main-D1 > Div > Article.MainArticle:last-of-type
+    /* Ostatni artykół main'a. */
+    Main.Main-D1 > Div.ArticleArea > Article.MainArticle:last-of-type
     {
         margin-bottom: 0.0vw;
     }
 
-/* Panel boczny Maina. */
-Main.Main-D1 > Div.MainPanel
+/* Pole dla Paneli. */
+Main.Main-D1 > Div.PanelArea
 {
-    width: 13.0vw;
-    height: max-content;
-    text-align: center;
-    justify-content: center;
-    background-color: var(--Motyw-Przezroczysty);
-    backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-IV);
-    margin-left: 0.5vw;
+    width: min-content;
+    align-self: flex-start;
     margin-right: auto;
-    padding-top: 1.5vw;
-    padding-bottom: 1.5vw;
-    padding-left: 1.0vw;
-    padding-right: 1.0vw;
-    display: inline-grid;
 }
 
-    /* Nagłówek panela bocznego. */
-    Main.Main-D1 > Div.MainPanel > Div.MainPanel-Title
+    /* Panel boczny Maina. */
+    Main.Main-D1 > Div.PanelArea > Div.MainPanel
     {
-        font-size: 1.35rem;
-        font-weight: bold;
+        width: 13.0vw;
+        text-align: center;
+        justify-content: center;
+        background-color: var(--Motyw-Przezroczysty);
+        backdrop-filter: var(--Blur);
+        border-radius: var(--Radius-4);
+        margin-left: 0.5vw;
         margin-bottom: 0.5vw;
+        padding-top: 1.5vw;
+        padding-bottom: 1.5vw;
+        padding-left: 1.0vw;
+        padding-right: 1.0vw;
+        display: grid;
+    }
+    /* Usunięcie marginesu dolnego u ostatniego panela. */
+    Main.Main-D1 > Div.PanelArea > Div.MainPanel:last-of-type
+    {
+        margin-bottom: 0.0vw;
     }
 
-    /* Hr oddzielający w panelu bocznym. */
-    Main.Main-D1 > Div.MainPanel > Hr
-    {
-        height: 0.2vw;
-        width: var(--Przycisk-Szerokość-III);
-        background-color: var(--Kolor-Dodatkowy);
-        border: 0.0vw solid;
-        border-radius: var(--Radius-I);
-        margin-top: 0.5vw;
-        margin-bottom: 0.5vw;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0;
-    }
+        /* Nagłówek panela bocznego. */
+        Main.Main-D1 > Div.PanelArea > Div.MainPanel > Div.MainPanel-Title
+        {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5vw;
+        }
 
 
 /* Design 2. */
 Main.Main-D2
 {
     width: max-content;
-    text-align: center;
     margin-top: 2.0vw;
     margin-bottom: 1.0vw;
     margin-left: auto;
@@ -96,74 +91,74 @@ Main.Main-D2
 }
 
 /* Pole dla Artykułów. */
-Main.Main-D2 > Div
+Main.Main-D2 > Div.ArticleArea
 {
     width: min-content;
 }
     /* Artykół main'a. */
-    Main.Main-D2 > Div > Article.MainArticle
+    Main.Main-D2 > Div.ArticleArea > Article.MainArticle
     {
         width: 56vw;
         background-color: var(--Motyw-Przezroczysty);
         backdrop-filter: var(--Blur);
-        border-radius: var(--Radius-IV);
+        border-radius: var(--Radius-4);
         margin-bottom: 1.0vw;
         padding-top: 1.5vw;
         padding-bottom: 1.5vw;
         padding-left: 2.0vw;
         padding-right: 2.0vw;
-        display: inline-table;
     }
-    /* Artykół main'a. */
-    Main.Main-D2 > Div > Article.MainArticle:last-of-type
+    /* Ostatni artykół main'a. */
+    Main.Main-D2 > Div.ArticleArea > Article.MainArticle:last-of-type
     {
         margin-bottom: 0.0vw;
     }
 
-/* Panel boczny Maina. */
-Main.Main-D2 > Div.MainPanel
+/* Pole dla Paneli. */
+Main.Main-D2 > Div.PanelArea
 {
-    text-align: center;
-    justify-content: left;
-    background-color: var(--Motyw-Przezroczysty);
-    backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-III);
     margin-bottom: 0.5vw;
-    padding-top: 1.0vw;
-    padding-bottom: 1.0vw;
-    padding-left: 1.0vw;
-    padding-right: 1.0vw;
     display: flex;
 }
 
-/* Nagłówek panela bocznego. */
-Main.Main-D2 > Div.MainPanel > Div.MainPanel-Title
-{
-    font-size: 1.35rem;
-    font-weight: bold;
-    margin-bottom: 0.5vw;
-}
+    /* Panel boczny Maina. */
+    Main.Main-D2 > Div.PanelArea > Div.MainPanel
+    {
+        text-align: center;
+        justify-content: left;
+        align-items: center;
+        background-color: var(--Motyw-Przezroczysty);
+        backdrop-filter: var(--Blur);
+        border-radius: var(--Radius-3);
+        margin-right: 0.5vw;
+        padding-top: 1.0vw;
+        padding-bottom: 1.0vw;
+        padding-left: 1.0vw;
+        padding-right: 1.0vw;
+        display: flex;
+    }
+        /* Usunięcie marginesu prawego dla ostatniego Panela. */
+        Main.Main-D2 > Div.PanelArea > Div.MainPanel:last-of-type
+        {
+            margin-right: 0.0vw;
+        }
 
-/* Hr oddzielający w panelu bocznym. */
-Main.Main-D2 > Div.MainPanel > Hr
-{
-    height: 0.2vw;
-    width: var(--Przycisk-Szerokość-III);
-    background-color: var(--Kolor-Dodatkowy);
-    border: 0.0vw solid;
-    border-radius: var(--Radius-I);
-    margin-top: 0.5vw;
-    margin-bottom: 0.5vw;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
-}
+        /* Nagłówek panela bocznego. */
+        Main.Main-D2 > Div.PanelArea > Div.MainPanel > Div.MainPanel-Title
+        {
+            font-size: 1.1rem;
+            font-weight: bold;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-right: 0.25vw;
+            display: flex;
+        }
 
 
-/* Design 1. */
+/* Design 3. */
 Main.Main-D3
 {
-    text-align: center;
     margin-top: 2.0vw;
     margin-bottom: 1.0vw;
     display: flex;
@@ -177,69 +172,67 @@ Main.Main-D3 > Div:only-of-type
 }
 
 /* Pole dla Artykułów. */
-Main.Main-D3 > Div
+Main.Main-D3 > Div.ArticleArea
 {
     width: min-content;
+    align-self: flex-start;
     margin-right: auto;
 }
     /* Artykół main'a. */
-    Main.Main-D3 > Div > Article.MainArticle
+    Main.Main-D3 > Div.ArticleArea > Article.MainArticle
     {
         width: 56vw;
         background-color: var(--Motyw-Przezroczysty);
         backdrop-filter: var(--Blur);
-        border-radius: var(--Radius-IV);
+        border-radius: var(--Radius-4);
         margin-bottom: 1.0vw;
         padding-top: 1.5vw;
         padding-bottom: 1.5vw;
         padding-left: 2.0vw;
         padding-right: 2.0vw;
-        display: inline-table;
     }
-    /* Artykół main'a. */
-    Main.Main-D3 > Div > Article.MainArticle:last-of-type
+    /* Ostatni artykół main'a. */
+    Main.Main-D3 > Div.ArticleArea > Article.MainArticle:last-of-type
     {
         margin-bottom: 0.0vw;
     }
 
-/* Panel boczny Maina. */
-Main.Main-D3 > Div.MainPanel
+/* Pole dla Paneli. */
+Main.Main-D3 > Div.PanelArea
 {
-    width: 13.0vw;
-    height: max-content;
-    text-align: center;
-    justify-content: center;
-    background-color: var(--Motyw-Przezroczysty);
-    backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-IV);
-    margin-right: 0.5vw;
+    width: min-content;
+    align-self: flex-start;
     margin-left: auto;
-    padding-top: 1.5vw;
-    padding-bottom: 1.5vw;
-    padding-left: 1.0vw;
-    padding-right: 1.0vw;
-    display: inline-grid;
 }
 
-/* Nagłówek panela bocznego. */
-Main.Main-D3 > Div.MainPanel > Div.MainPanel-Title
-{
-    font-size: 1.35rem;
-    font-weight: bold;
-    margin-bottom: 0.5vw;
-}
+    /* Panel boczny Maina. */
+    Main.Main-D3 > Div.PanelArea > Div.MainPanel
+    {
+        width: 13.0vw;
+        height: max-content;
+        text-align: center;
+        justify-content: center;
+        background-color: var(--Motyw-Przezroczysty);
+        backdrop-filter: var(--Blur);
+        border-radius: var(--Radius-4);
+        margin-right: 0.5vw;
+        margin-bottom: 0.5vw;
+        padding-top: 1.5vw;
+        padding-bottom: 1.5vw;
+        padding-left: 1.0vw;
+        padding-right: 1.0vw;
+        display: grid;
+    }
+    /* . */
+    Main.Main-D3 > Div.PanelArea > Div.MainPanel:last-of-type
+    {
+        margin-bottom: 0.0vw;
+    }
 
-/* Hr oddzielający w panelu bocznym. */
-Main.Main-D3 > Div.MainPanel > Hr
-{
-    height: 0.2vw;
-    width: var(--Przycisk-Szerokość-III);
-    background-color: var(--Kolor-Dodatkowy);
-    border: 0.0vw solid;
-    border-radius: var(--Radius-I);
-    margin-top: 0.5vw;
-    margin-bottom: 0.5vw;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
-}
+        /* Nagłówek panela bocznego. */
+        Main.Main-D3 > Div.PanelArea > Div.MainPanel > Div.MainPanel-Title
+        {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5vw;
+        }

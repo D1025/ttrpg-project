@@ -1,31 +1,85 @@
 import './ChatMessage.css';
 
-const ChatMessage = ({title, design = 1, src, text, timestamp, ...rest}) =>
+const ChatMessage = ({title, design = 1, src, text, timestamp, className, ...rest}) =>
 {
-    let klasy;
-    if(design > 0) klasy = "ChatMessage-D" + design;
+    // Decyduje o wyglądzie.
+    const classBuilder = () =>
+    {
+        let classList = [];
 
-    return (
-        <div {...rest} className={klasy}>
-            {design===1 && (
-                <div className={"ChatText-Avatar"}>
-                    {src && <img src={src} alt={""}/>}
+        // Tworzenie listy klas.
+        if(design > 0) classList.push(`ChatMessage-D${design}`);
+        if(className) classList.push(className);
+
+        return classList.join(' ');
+    };
+
+    // Przypisanie listy klas w postaci 'String'.
+    const myClass = classBuilder();
+
+    if(design === 1)
+    {
+        return (
+            <div {...rest} className={myClass}>
+                <div className={"ChatMessage-Timestamp"}>
+                    {timestamp}
                 </div>
-            )}
 
-            <div className={"ChatText-NickName"}>
-                {design === 1 ? title + ": " : title}
+                <div className={"ChatMessage-Message"}>
+                    <div>
+                        <div className={"ChatMessage-Avatar"}>
+                            {src && <img src={src} alt={""}/>}
+                        </div>
+                    </div>
+                    <div className={"ChatMessage-NickName"}>
+                        {title + ": "}
+                    </div>
+                    <div className={"ChatMessage-Text"}>
+                        {text}
+                    </div>
+                </div>
             </div>
+        );
+    }
+    else if(design === 2)
+    {
+        return (
+            <div {...rest} className={myClass}>
+                <div className={"ChatMessage-Timestamp"}>
+                    {timestamp}
+                </div>
 
-            <div className={"ChatText-Message"}>
-                {text}
+                <div className={"ChatMessage-Message"}>
+                    <div className={"ChatMessage-Text"}>
+                        {text}
+                    </div>
+                </div>
             </div>
-            {/*TODO: Zrób tu timestampa*/}
-            <div className={"ChatText-Timestamp"}>
-                {timestamp}
+        );
+    }
+    else if(design === 3)
+    {
+        return (
+            <div  {...rest} className={myClass}>
+                <div className={"ChatMessage-Timestamp"}>
+                    {timestamp}
+                </div>
+
+                <div className={"ChatMessage-Message"}>
+                    <div className={"ChatMessage-NickName"}>
+                        {title + ": "}
+                    </div>
+                    <div className={"ChatMessage-Text"}>
+                        {text}
+                    </div>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
+    else
+    {
+        return null;
+    }
 }
 
 export default ChatMessage;

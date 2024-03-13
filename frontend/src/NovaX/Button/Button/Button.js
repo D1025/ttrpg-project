@@ -1,22 +1,63 @@
 import './Button.css';
 
-const Button = ({title, width = 1, marginBottom = false, active = false, src, alt = "", ...rest}) =>
+// Button.
+const Button = ({
+                    title,
+                    width = 1,
+                    href,
+                    className,
+                    marginBottom = false,
+                    marginLeftRight = true,
+                    active = false,
+                    src,
+                    alt = "",
+                    ...rest
+                }) =>
 {
-    let klasy = "Button-D1";
-    if(title) klasy = "Button-D2";
-    if(width >= 0) klasy += " Button-W" + width;
-    if(marginBottom === true) klasy += " Button-BMargin";
-    if(active === true) klasy += " Button-Active";
+    // Decyduje o wyglądzie.
+    const classBuilder = () =>
+    {
+        let classList = [];
 
+        // Tworzenie listy klas.
+        classList.push(title ? 'Button-D2' : 'Button-D1');
+        if(width >= 0 && title) classList.push(`Width-${width}`);
+        if(marginBottom) classList.push('Button-MarginBottom');
+        if(marginLeftRight) classList.push('Button-MarginLeftRight');
+        if(active) classList.push('Button-Active');
+        if(className) classList.push(className);
+
+        return classList.join(' ');
+    };
+
+    // Przypisanie listy klas w postaci 'String'.
+    const myClass = classBuilder();
+
+    // Return.
     return (
-        <div {...rest} className={klasy}>
-            {src && (
-                <img src={src} alt={alt}/>
+        <>
+            {href ? (
+                <div {...rest} className={myClass}>
+                    <a href={href}>
+                        {src && (
+                            <img src={src} alt={alt}/>
+                        )}
+                        {title && (
+                            <div>{title}</div>
+                        )}
+                    </a>
+                </div>
+            ) : (
+                <div {...rest} className={myClass}>
+                    {src && (
+                        <img src={src} alt={alt}/>
+                    )}
+                    {title && (
+                        <div>{title}</div>
+                    )}
+                </div>
             )}
-            {title && (
-                <div>{title}</div>
-            )}
-        </div>
+        </>
     );
 };
 

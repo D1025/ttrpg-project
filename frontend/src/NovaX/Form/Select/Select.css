@@ -7,7 +7,7 @@ Select.Select
     appearance: none; /* Pozostałe przeglądarki. */
 
     /* Twoje style */
-    width: var(--Przycisk-Szerokość-II);
+    width: var(--Przycisk-Szerokość-2);
     height: var(--Przycisk-Wysokość);
     color: rgba(255, 255, 255, 0.6);
     font-size: 1.0rem;
@@ -16,12 +16,14 @@ Select.Select
     border: 0.2vw solid;
     border-color: var(--Kolor-Dodatkowy);
     backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-I);
-    margin-left: var(--Przycisk-Odstep);
-    margin-right: var(--Przycisk-Odstep);
+    border-radius: var(--Radius-1);
+    margin-left: var(--Przycisk-Odstep-X);
+    margin-right: var(--Przycisk-Odstep-X);
     padding-left: 0.5vw;
     padding-right: 0.5vw;
     cursor: pointer;
+    transition: var(--Animacja);
+    box-shadow: var(--Przycisk-Cienie);
 
     /* Własna Strzałka. */
     background-image: url('/public/Ikonki/Strzałka_Dół.png');
@@ -31,7 +33,7 @@ Select.Select
 }
 
 /* Option. */
-Select.Select Option
-{
-    /*background-color: var(--Motyw);*/
-}
+/*Select.Select Option*/
+/*{*/
+/*    background-color: var(--Motyw);*/
+/*}*/

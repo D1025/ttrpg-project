@@ -1,0 +1,82 @@
+/* InputNumber. */
+Div.InputNumber
+{
+    width: 0.0vw;
+    display: inline-flex;
+}
+
+/* Usunięcie domyślnych wartości. */
+Div.InputNumber input[type="number"]::-webkit-inner-spin-button,
+Div.InputNumber input[type="number"]::-webkit-outer-spin-button,
+Div.InputNumber input[type="number"]
+{
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+/* . */
+Div.InputNumber > input[type="number"]
+{
+    width: 100%;
+    height: var(--Przycisk-Wysokość);
+    color: inherit;
+    font-size: 1.0rem;
+    font-weight: bold;
+    background-color: var(--Motyw);
+    backdrop-filter: var(--Blur);
+    border: 0.2vw solid var(--Kolor-Dodatkowy);
+    border-radius: var(--Radius-1);
+    box-sizing: border-box;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    display: inline-flex;
+    cursor: pointer;
+    transition: var(--Animacja);
+    box-shadow: var(--Przycisk-Cienie);
+    flex: 1;
+}
+    /* . */
+    Div.InputNumber > input[type="number"]:focus, Div.InputNumber > input[type="number"]:valid:not(:placeholder-shown)
+    {
+        background-color: var(--Motyw-Ciemny);
+        cursor: text;
+    }
+
+    /* . */
+    Div.InputNumber > input[type="number"]::placeholder
+    {
+        color: white;
+        opacity: 0.6;
+    }
+
+/* . */
+Div.InputNumber > Div:first-of-type
+{
+    margin-left: 0;
+}
+
+/* . */
+Div.InputNumber > Div:last-of-type
+{
+    margin-right: 0;
+}
+
+
+/* Margin Left Right. */
+Div.InputNumber-MarginLeftRight
+{
+    margin-left: var(--Przycisk-Odstep-X);
+    margin-right: var(--Przycisk-Odstep-X);
+}
+
+/* Margin Bottom. */
+Div.InputNumber-MarginBottom
+{
+    margin-bottom: var(--Przycisk-Odstep-Y);
+}
+    /* Kiedy ostatni albo jedyny. */
+    Div.InputNumber-MarginBottom:last-of-type,
+    Div.InputNumber-MarginBottom:only-of-type
+    {
+        margin-bottom: 0.0vw;
+    }

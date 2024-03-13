@@ -6,12 +6,11 @@ A.ButtonLogo-D1
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.0rem;
-    border-radius: var(--Radius-I);
+    border-radius: var(--Radius-1);
     padding-top: 0.15vw ;
     padding-bottom: 0.15vw;
-    padding-left: 0.25vw;
-    padding-right: 0.25vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
     display: flex;
     cursor: pointer;
     transform: var(--Animacja);
@@ -57,7 +56,7 @@ A.ButtonLogo-D2
     align-items: center;
     text-align: center;
     font-size: 1.0rem;
-    border-radius: var(--Radius-I);
+    border-radius: var(--Radius-1);
     padding-top: 0.15vw ;
     padding-bottom: 0.15vw;
     padding-left: 0.5vw;
@@ -80,20 +79,21 @@ A.ButtonLogo-D2:active
     background-color: var(--Motyw)!important;
 }
 
-/* Wygląd Zdjęcia w Przycisku. */
-A.ButtonLogo-D2 > Img
-{
-    height: 85%;
-}
+    /* Wygląd Zdjęcia w Przycisku. */
+    A.ButtonLogo-D2 > Img
+    {
+        max-width: 8vw;
+        height: 95%;
+    }
 
-/* Wygląd Nazwy w Przycisku. */
-A.ButtonLogo-D2 > Div
-{
-    font-weight: bold;
-    margin-left: 0.5vw;
-}
-/* Wygląd Nazwy w Przycisku. */
-A.ButtonLogo-D2 > *:first-child
-{
-    margin-left: 0.0vw!important;
-}
+    /* Wygląd Nazwy w Przycisku. */
+    A.ButtonLogo-D2 > Div
+    {
+        font-weight: bold;
+        margin-left: 0.25vw;
+    }
+        /* Wygląd Nazwy w Przycisku. */
+        A.ButtonLogo-D2 > *:first-child
+        {
+            margin-left: 0.0vw!important;
+        }

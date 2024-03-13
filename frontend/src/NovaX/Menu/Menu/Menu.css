@@ -1,52 +1,67 @@
-/* Główny kontener. */
+/* Menu. */
 .Menu
 {
     font-weight: bold;
     list-style: none;
-    margin: 0.0vw;
+    margin: 0.0vw var(--Przycisk-Odstep-X);
     padding: 0.0vw;
     display: flex;
     user-select: none;
     z-index: 5;
 }
 
+.Menu > Li:last-of-type, .Menu > Li:only-of-type
+{
+    margin: 0.0vw;
+}
+
 /* Element listy. */
 .Menu > Li
 {
-    width: var(--Przycisk-Szerokość-I);
-    height: var(--Przycisk-Wysokość);
+    width: 100%;
+    min-height: var(--Przycisk-Wysokość);
     font-size: 1.0rem;
     text-align: center;
     justify-content: center;
     align-items: center;
     background-color: var(--Kolor-Dodatkowy);
     backdrop-filter: var(--Blur);
-    border-radius: var(--Radius-I);
-    margin-left: var(--Przycisk-Odstep);
-    margin-right: var(--Przycisk-Odstep);
+    border-radius: var(--Radius-1);
+    margin-right: var(--Przycisk-Odstep-X);
     display: flex;
     cursor: pointer;
     transition: var(--Animacja);
+    box-shadow: var(--Przycisk-Cienie);
 }
+    /* Wygląd po najechaniu na Li. */
+    .Menu Li:hover
+    {
+        background-color: var(--Motyw-Ciemny)!important;
+    }
+    /* Wygląd po Kliknięciu na Li. */
+    .Menu Li:active
+    {
+        background-color: var(--Motyw)!important;
+    }
+    /* Wygląd linku w Li. */
+    .Menu Li > A
+    {
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        padding: 0.5vw;
+        display: flex;
+    }
 
-/* Wygląd po najechaniu na Li. */
-.Menu Li:hover
-{
-    background-color: var(--Motyw-Ciemny);
-}
-
-/* Wygląd po Kliknięciu na Li. */
-.Menu Li:active
-{
-    background-color: var(--Motyw);
-}
 
 /* Wygląd rozwiniętego elementu menu [Ukryte]. */
-.Menu > Li > *:not(a)
+.Menu > Li > .Menu
 {
     width: 100%;
     background-color: var(--Motyw);
-    border-radius: 0.0vw 0.0vw var(--Radius-III) var(--Radius-III);
+    border-radius: 0.0vw 0.0vw var(--Radius-3) var(--Radius-3);
     list-style: none;
     margin: 0.0vw;
     padding: 0.2vw 0.0vw 0.2vw 0.0vw;
@@ -56,23 +71,22 @@
     left: 0.0vw;
     cursor: default;
 }
-
-/* Uwidacznianie elementu menu po najechaniu. */
-.Menu > Li:hover > *:not(a)
-{
-    display: block;
-}
+    /* Uwidacznianie elementu menu po najechaniu. */
+    .Menu > Li:hover > .Menu
+    {
+        display: block;
+    }
 
 /* Wygląd Li wewnątrz rozwiniętego menu. */
-.Menu > Li > *:not(a) > Li
+.Menu > Li > .Menu > Li
 {
     width: 90%;
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     align-items: center;
     text-align: center;
     justify-content: center;
     background-color: var(--Kolor-Dodatkowy);
-    border-radius: var(--Radius-I);
+    border-radius: var(--Radius-1);
     margin-top: 0.4vw;
     margin-bottom: 0.4vw;
     margin-left: auto;
@@ -80,6 +94,7 @@
     display: flex;
     cursor: pointer;
     transition: var(--Animacja);
+    box-shadow: var(--Przycisk-Cienie);
 }
 
 
