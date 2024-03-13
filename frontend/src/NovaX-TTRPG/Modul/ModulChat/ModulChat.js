@@ -161,7 +161,7 @@ const ModulChat = ({roomId, userId}) => {
         <>
             <Chat value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc}>
                 {wiadomosci.map((msg, index) => (
-                    <ChatMessage key={index} title={getUserNameById(msg.userId)} text={msg.content} timestamp={msg.timestamp}/>
+                    <ChatMessage key={index} title={getUserNameById(msg.userId)} text={msg.content} timestamp={msg.timestamp} design={msg.userId === loginData.id ? 2 : 1}/>
                 ))}
             </Chat>
             {/*<ChatInput value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc}/>*/}
