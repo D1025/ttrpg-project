@@ -1,8 +1,8 @@
 import React from "react";
 import './Menu.css';
 
-// Prywatny komponent zapewniający spójność prostego menu.
-const XLi_Pomocnicze = ({children}) =>
+// Prywatny komponent zapewniający spójność menu.
+const Li_Pomocnicze = ({children}) =>
 {
     // Czy children zawiera tag/i.
     const czyMaTag = React.Children.toArray(children).some(
@@ -12,6 +12,7 @@ const XLi_Pomocnicze = ({children}) =>
     // Dodaje klasę, kiedy li posiada w sobie jeszcze dodatkowy tag.
     const classNames = czyMaTag ? 'Menu-Disabled' : null;
 
+    // Return.
     return (
         <li className={classNames}>
             {children}
@@ -19,19 +20,37 @@ const XLi_Pomocnicze = ({children}) =>
     );
 };
 
-// Główny komponent prostego menu.
-const Menu = ({children, tag = "ol", ...rest}) =>
+
+// Menu.
+const Menu = ({children, tag = "ul", width=1, className, ...rest}) =>
 {
+    // Customowy tag.
     const TagName = tag;
 
+    // Decyduje o wyglądzie.
+    const classBuilder = () =>
+    {
+        // Dodaje dodatkową klasę przekazaną jako props.
+        let classList = ['Menu'];
+
+        if(width>=0) classList.push(`Width-${width}`)
+        if(className) classList.push(className);
+
+        return classList.join(' ');
+    };
+
+    // Przypisanie listy klas w postaci 'String'
+    const myClass = classBuilder();
+
+    // Return.
     return (
-        <TagName {...rest} className="Menu">
+        <TagName {...rest} className={myClass}>
             {React.Children.map(children, child =>
             {
                 if(React.isValidElement(child) && child.type === 'li')
                 {
-                    // Zamień li na XLi_Pomocnicze
-                    return <XLi_Pomocnicze {...child.props}>{child.props.children}</XLi_Pomocnicze>;
+                    // Zamień li na Li_Pomocnicze
+                    return <Li_Pomocnicze {...child.props}>{child.props.children}</Li_Pomocnicze>;
                 }
                 return child;
             })}

@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import {Game, HomePage, NotFoundPage, AdminPanel} from "./Page";
+import {Game, HomePage, NotFoundPage, AdminPanel} from "./NovaX-TTRPG";
 
 function App()
 {

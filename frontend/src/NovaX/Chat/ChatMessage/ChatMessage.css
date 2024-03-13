@@ -2,23 +2,38 @@
 /* Design 1. */
 Div.ChatMessage-D1
 {
-    align-items: center;
-    background-color: rgba(0,0,0,0.1);
-    border-radius: var(--Radius-II);
     margin-left: 1.0vw;
-    margin-right: 1.0vw;
-    margin-bottom: 0.5vw;
-    display: flex;
-    transition: var(--Animacja);
+    margin-bottom: 0.65vw;
 }
-/* Usuwanie maeginesu z ostatniego. */
-Div.ChatMessage-D1:last-of-type
+    /* Usuwanie maeginesu z ostatniego. */
+    Div.ChatMessage-D1:last-of-type
+    {
+        margin-bottom: 0.0vw;
+    }
+
+/* Czas wysłania wiadomości. */
+Div.ChatMessage-D1 > Div.ChatMessage-Timestamp
 {
-    margin-bottom: 0.0vw;
+    width: min-content;
+    font-size: 0.6rem;
+    font-weight: bold;
+    color: var(--Kolor-Oznaczenia);
+    margin-left: 0.6vw;
+    margin-bottom: 0.1vw;
 }
 
-    /* . */
-    Div.ChatMessage-D1 > Div.ChatText-Avatar
+/* Pole z wiadomością. */
+Div.ChatMessage-D1 > Div.ChatMessage-Message
+{
+    width: max-content;
+    max-width: 80%;
+    background-color: var(--Motyw-Ciemny-Przezroczysty);
+    border-radius: var(--Radius-2);
+    padding: 0.75vw;
+    display: flex;
+}
+    /* Avatar użytkownika pole. */
+    Div.ChatMessage-D1 > Div.ChatMessage-Message > Div > Div.ChatMessage-Avatar
     {
         width: var(--Przycisk-Wysokość);
         height: var(--Przycisk-Wysokość);
@@ -27,90 +42,140 @@ Div.ChatMessage-D1:last-of-type
         background-size: 65%;
         background-position: center;
         background-repeat: no-repeat;
-        border-radius: var(--Radius-I);
+        border-radius: var(--Radius-1);
         margin-right: 0.25vw;
         color: blue;
     }
-
-        /* . */
+        /* Obrazek użytkownika. */
         Div.ChatText-Avatar > Img
         {
             width: var(--Przycisk-Wysokość);
             max-height: var(--Przycisk-Wysokość);
         }
 
-    /* . */
-    Div.ChatMessage-D1 > Div.ChatText-NickName
+    /* Nazwa użytkownika. */
+    Div.ChatMessage-D1 > Div.ChatMessage-Message > Div.ChatMessage-NickName
     {
+        height: var(--Przycisk-Wysokość);
         color: inherit;
+        justify-content: center;
+        align-items: center;
         font-size: 1.0rem;
         font-weight: bold;
         margin-right: 0.2vw;
+        display: flex;
     }
 
-    /* . */
-    Div.ChatMessage-D1 > Div.ChatText-Message
+    /* Wiadomość użytkownika. */
+    Div.ChatMessage-D1 > Div.ChatMessage-Message > Div.ChatMessage-Text
     {
+        justify-content: center;
+        align-items: center;
         color: rgba(150, 150, 150, 0.8);
+        padding-left: 0.25vw;
+        display: flex;
     }
 
 
 /* Design 2. */
 Div.ChatMessage-D2
 {
+    margin-right: 1.0vw;
+    margin-bottom: 0.65vw;
+}
+    /* Usuwanie maeginesu z ostatniego. */
+    Div.ChatMessage-D2:last-of-type
+    {
+        margin-bottom: 0.0vw;
+    }
+
+/* Czas wysłania wiadomości. */
+Div.ChatMessage-D2 > Div.ChatMessage-Timestamp
+{
+    width: min-content;
+    font-size: 0.6rem;
+    font-weight: bold;
+    color: var(--Kolor-Oznaczenia);
+    margin-right: 0.6vw;
+    margin-left: auto;
+    margin-bottom: 0.1vw;
+}
+
+/* Pole z wiadomością. */
+Div.ChatMessage-D2 > Div.ChatMessage-Message
+{
+    width: max-content;
+    max-width: 80%;
+    background-color: var(--Kolor-Dodatkowy);
+    border-radius: var(--Radius-2);
+    margin-left: auto;
+    padding: 0.75vw;
+    display: flex;
+}
+
+    /* Wiadomość użytkownika. */
+    Div.ChatMessage-D2 > Div.ChatMessage-Message > Div.ChatMessage-Text
+    {
+        justify-content: center;
+        align-items: center;
+        color: inherit;
+        padding-left: 0.25vw;
+        display: flex;
+    }
+
+
+/* Design 3. */
+Div.ChatMessage-D3
+{
+    margin-left: 1.0vw;
+    margin-bottom: 0.65vw;
+}
+    /* Usuwanie maeginesu z ostatniego. */
+    Div.ChatMessage-D3:last-of-type
+    {
+        margin-bottom: 0.0vw;
+    }
+
+/* Czas wysłania wiadomości. */
+Div.ChatMessage-D3 > Div.ChatMessage-Timestamp
+{
+    width: min-content;
+    font-size: 0.6rem;
+    font-weight: bold;
+    color: var(--Kolor-Oznaczenia);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.1vw;
+}
+
+/* Pole z wiadomością. */
+Div.ChatMessage-D3 > Div.ChatMessage-Message
+{
     justify-content: center;
     align-items: center;
     background-color: var(--Motyw-Ciemny);
-    border-radius: var(--Radius-II);
+    border-radius: var(--Radius-2);
     margin-left: 1.0vw;
     margin-right: 1.0vw;
     margin-bottom: 0.5vw;
     padding-top: 1.0vw;
     padding-bottom: 1.0vw;
     display: flex;
-    transition: var(--Animacja);
-}
-/* Usuwanie maeginesu z ostatniego. */
-Div.ChatMessage-D2:last-of-type
-{
-    margin-bottom: 0.0vw;
 }
 
-/* . */
-Div.ChatMessage-D2 > Div.ChatText-Avatar
-{
-    width: var(--Przycisk-Wysokość);
-    height: var(--Przycisk-Wysokość);
-    background-color: var(--Kolor-Dodatkowy);
-    background-image: url("/public/Ikonki/Konto.png");
-    background-size: 65%;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: var(--Radius-I);
-    margin-right: 0.25vw;
-    color: blue;
-}
+    /* Nazwa użytkownika. */
+    Div.ChatMessage-D3 > Div.ChatMessage-Message > Div.ChatMessage-NickName
+    {
+        color: var(--Kolor-Dodatkowy);
+        font-size: 1.0rem;
+        font-weight: bold;
+        margin-right: 0.3vw;
+    }
 
-/* . */
-Div.ChatText-Avatar > Img
-{
-    width: var(--Przycisk-Wysokość);
-    max-height: var(--Przycisk-Wysokość);
-}
-
-/* . */
-Div.ChatMessage-D2 > Div.ChatText-NickName
-{
-    color: var(--Kolor-Dodatkowy);
-    font-size: 1.0rem;
-    font-weight: bold;
-    margin-right: 0.3vw;
-}
-
-/* . */
-Div.ChatMessage-D2 > Div.ChatText-Message
-{
-    font-size: 1.0rem;
-    font-weight: bold;
-    color: rgba(150, 150, 150, 0.8);
-}
+    /* Wiadomość użytkownika. */
+    Div.ChatMessage-D3 > Div.ChatMessage-Message > Div.ChatMessage-Text
+    {
+        font-size: 1.0rem;
+        font-weight: bold;
+        color: rgba(150, 150, 150, 0.8);
+    }

@@ -1,12 +1,13 @@
-const StorageRemove = (klucz) =>
+// Storage Remove.
+const StorageRemove = (key) =>
 {
     try
     {
-        localStorage.removeItem(klucz);
+        localStorage.removeItem(key);
     }
-    catch(blad)
+    catch(error)
     {
-        console.error('Błąd podczas usuwania z localStorage:', blad);
+        console.error('Błąd przy usuwaniu z localStorage:', error);
     }
 };
 

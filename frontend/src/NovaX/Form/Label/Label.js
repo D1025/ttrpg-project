@@ -1,12 +1,30 @@
 import './Label.css'
 
-const Label = ({children, design = 1, ...rest}) =>
+// Label.
+const Label = ({children, htmlFor, marginBottom = false, marginLeftRight = true, className, ...rest}) =>
 {
-    let klasy = "";
-    if(design>0) klasy = "Label-D" + design;
+    // Decyduje o wyglądzie.
+    const classBuilder = () =>
+    {
+        let classList = ['Label'];
 
+        // Dodawanie klasy na podstawie wartości.
+        if(marginBottom === true) classList.push('Label-MarginBottom');
+        if(marginLeftRight === true) classList.push('Label-MarginLeftRight');
+        if(className) classList.push(className);
+
+        return classList.join(' ');
+    };
+
+    // Przypisanie listy klas w postaci 'String'.
+    const myClass = classBuilder();
+
+    // Return.
     return (
-        <label {...rest} className={klasy}>
+        <label
+            {...rest}
+            htmlFor={htmlFor}
+            className={myClass}>
             {children}
         </label>
     )

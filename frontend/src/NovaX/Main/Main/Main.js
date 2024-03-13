@@ -2,41 +2,60 @@ import React from 'react';
 import './Main.css';
 import {MainArticle, MainPanel} from "../../index";
 
-const Main = ({children, design = 1, ...rest}) =>
+// Main.
+const Main = ({children, design = 1, className, ...rest}) =>
 {
-    let klasy = "";
-    if(design > 0) klasy = "Main-D" + design;
+    // Decyduje o wyglądzie.
+    const classBuilder = () =>
+    {
+        let classList = [];
 
-    // Dzieli children komponentu na fragmenty listy.
-    const Main = React.Children.toArray(children)
+        // Dodaje dodatkową klasę przekazaną jako props.
+        if(design > 0) classList.push(`Main-D${design}`);
+        if(className) classList.push(className);
+
+        return classList.join(' ');
+    };
+
+    // Przypisanie listy klas w postaci 'String'
+    const myClass = classBuilder();
+
+    // Lysta Artykółów.
+    const Article = React.Children.toArray(children)
         .filter(child => React.isValidElement(child) && child.type === MainArticle);
 
+    // Lista Paneli.
     const Panel = React.Children.toArray(children)
         .filter(child => React.isValidElement(child) && child.type === MainPanel);
 
+    // Return.
     return (
-        <main {...rest} className={klasy}>
+        <main {...rest} className={myClass}>
             {design === 1 ? (
                 <>
-                    <div>
-                        {Main.map((element) => (
-                            element
+                    <div className={"ArticleArea"}>
+                        {Article.map((AllArticle) => (
+                            AllArticle
                         ))}
                     </div>
-                    <>
-                        {Panel[0]}
-                    </>
+                    <div className={"PanelArea"}>
+                        {Panel.map((AllPanels) => (
+                            AllPanels
+                        ))}
+                    </div>
                 </>
             ) : null}
 
             {design === 2 || design === 3 ? (
                 <>
-                    <>
-                        {Panel[0]}
-                    </>
-                    <div>
-                        {Main.map((element) => (
-                            element
+                    <div className={"PanelArea"}>
+                        {Panel.map((AllPanels) => (
+                            AllPanels
+                        ))}
+                    </div>
+                    <div className={"ArticleArea"}>
+                        {Article.map((AllArticle) => (
+                            AllArticle
                         ))}
                     </div>
                 </>

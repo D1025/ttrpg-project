@@ -1,13 +1,18 @@
-const StorageLoad = (klucz) =>
+// Storage Load.
+const StorageLoad = (key) =>
 {
     try
     {
-        const dane = localStorage.getItem(klucz);
-        return dane ? JSON.parse(dane) : null;
+        const data = localStorage.getItem(key);
+
+        // Return.
+        return data ? JSON.parse(data) : null;
     }
-    catch(blad)
+    catch(error)
     {
-        console.error('Błąd podczas odczytywania z localStorage:', blad);
+        console.error('Błąd przy odczytywaniu localStorage:', error);
+
+        // Return.
         return null;
     }
 };

@@ -1,13 +1,13 @@
-const StorageSave = (klucz, wartosc) =>
+const StorageSave = (key, dataJSON) =>
 {
     try
     {
-        const sformatowanaWartosc = JSON.stringify(wartosc);
-        localStorage.setItem(klucz, sformatowanaWartosc);
+        const sformatowanaWartosc = JSON.stringify(dataJSON);
+        localStorage.setItem(key, sformatowanaWartosc);
     }
-    catch(blad)
+    catch(error)
     {
-        console.error('Błąd podczas zapisywania do localStorage:', blad);
+        console.error('Błąd apisywania do localStorage:', error);
     }
 };
 

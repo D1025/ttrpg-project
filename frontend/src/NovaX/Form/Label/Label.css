@@ -1,21 +1,24 @@
 /* Label. */
-/* Design 1. */
-Label.Label-D1
+Label.Label
 {
+    font-size: 0.95rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: inline-flex;
     user-select: none;
-    margin-left: var(--Przycisk-Odstep);
-    margin-right: var(--Przycisk-Odstep);
-    margin-bottom: 0.1vw;
-    display: inline-block;
 }
 
-/* Design 2. */
-Label.Label-D2
+
+/* Dodatkowy margines dolny. */
+Label.Label-MarginBottom
 {
-    font-weight: bold;
-    user-select: none;
-    margin-left: var(--Przycisk-Odstep);
-    margin-right: var(--Przycisk-Odstep);
-    margin-bottom: 0.1vw;
-    display: inline-block;
+    margin-bottom: var(--Przycisk-Odstep-Y);
+}
+
+/* Dodatkowy margines Lewy i Prawy. */
+Label.Label-MarginLeftRight
+{
+    margin-left: var(--Przycisk-Odstep-X);
+    margin-right: var(--Przycisk-Odstep-X);
 }

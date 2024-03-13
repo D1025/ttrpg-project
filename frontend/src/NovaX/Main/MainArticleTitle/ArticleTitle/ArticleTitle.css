@@ -1,0 +1,38 @@
+/* Nagłówek Maina. */
+*.ArticleTitle
+{
+    font-weight: bold;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    display: grid;
+}
+
+/* Pole trzymające opcje i nazwe. */
+*.ArticleTitle > Div
+{
+    display: flex;
+}
+
+    /* Nagłówek Maina. */
+    *.ArticleTitle > Div > Div.ArticleTitle-Title
+    {
+        font-size: 1.85rem;
+    }
+
+    /* Opcje Maina. */
+    *.ArticleTitle > Div > Div.ArticleTitle-Option
+    {
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        display: flex;
+    }
+
+/* Tagi Maina. */
+*.ArticleTitle > Div.ArticleTitle-Tags
+{
+    color: var(--Kolor-Oznaczenia);
+    font-size: 0.9rem;
+    display: inline-table;
+}

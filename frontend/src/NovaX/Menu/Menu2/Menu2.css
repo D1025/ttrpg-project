@@ -15,17 +15,17 @@
 {
     width: max-content;
     height: var(--Przycisk-Wysokość);
-    backdrop-filter: var(--Blur);
-    margin-left: var(--Przycisk-Odstep);
-    margin-right: var(--Przycisk-Odstep);
+    backdrop-filter: blur(0);
+    margin-left: var(--Przycisk-Odstep-X);
+    margin-right: var(--Przycisk-Odstep-X);
 }
 
 /* Początek menu rozwijanego. */
-.Menu2 > Li > *:not(div,a)
+.Menu2 > Li > .Menu2
 {
     width: 100%;
     background-color: var(--Motyw);
-    border-radius: 0 0 var(--Radius-III) var(--Radius-III);
+    border-radius: 0 0 var(--Radius-3) var(--Radius-3);
     list-style: none;
     margin: 0.0vw;
     padding: 0.2vw 0.0vw 0.2vw 0.0vw;
@@ -37,19 +37,25 @@
 }
 
 /* Uwidacznianie rozwiniętego menu po najechaniu. */
-.Menu2 > Li:hover > *:not(div,a)
+.Menu2 > Li:hover > .Menu2
 {
     display: block;
 }
 
+/* Uwidacznianie rozwiniętego menu po najechaniu. */
+.Menu2 > Li:hover
+{
+    background-color: var(--Motyw);
+    border-radius: var(--Radius-1) var(--Radius-1) 0 0;
+}
+
 /* Miejsce na przycisk w menu rozwijanym. */
-.Menu2 > Li > *:not(div,a) > Li
+.Menu2 > Li > .Menu2 > Li
 {
     width: 92%;
     align-items: center;
     text-align: center;
     justify-content: center;
-    border-radius: var(--Radius-I);
     margin-top: 0.4vw;
     margin-bottom: 0.4vw;
     margin-left: auto;
@@ -60,7 +66,7 @@
 }
 
 /* Wymuszenie szerokości na elementach menu rozwijanego. */
-.Menu2 > Li > *:not(div,a) > Li > *
+.Menu2 > Li > .Menu2 > Li > *
 {
     width: 100%!important;
 }
