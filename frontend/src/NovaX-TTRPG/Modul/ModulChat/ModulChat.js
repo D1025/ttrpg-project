@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SockJs from "sockjs-client";
 import Stomp from "stompjs";
 import { Chat, StorageLoad,ChatMessage } from "../../../NovaX";
+import ActiveUsersList from "../../../NewModulesForValidation/ActiveUsersList/ActiveUsersList";
 
 const ModulChat = ({roomId, userId}) => {
     const [wiadomosci, ustawWiadomosci] = useState([]);
@@ -159,12 +160,12 @@ const ModulChat = ({roomId, userId}) => {
     }
     return (
         <>
-            <Chat value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc}>
+            <Chat value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc} inputPlaceholder={"Wpisz wiadomość"}>
                 {wiadomosci.map((msg, index) => (
                     <ChatMessage key={index} title={getUserNameById(msg.userId)} text={msg.content} timestamp={msg.timestamp} design={msg.userId === loginData.id ? 2 : 1}/>
                 ))}
             </Chat>
-            {/*<ChatInput value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc}/>*/}
+            <ActiveUsersList allUsers={usersInRoom} activeUsers={activeUsers} />
         </>
     );
 };
