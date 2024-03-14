@@ -10,3 +10,4 @@ export {default as WindowCreateRoom} from './Window/WindowCreateRoom/WindowCreat
 
 // Modul.
 export {default as ModulChat} from './Modul/ModulChat/ModulChat.js';
+export {default as ModulUserList} from './Modul//ModulUserList/ModulUserList';

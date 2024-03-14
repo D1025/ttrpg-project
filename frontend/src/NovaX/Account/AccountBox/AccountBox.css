@@ -1,0 +1,88 @@
+/* AccountBox. */
+Div.AccountBox
+{
+    width: 6.0vw;
+    background-color: var(--Motyw-Ciemny);
+    border-radius: var(--Radius-2);
+    display: inline-block;
+    margin-right: 0.2vw;
+}
+
+    /* Pole na zdjęcie użytkownika. */
+    Div.AccountBox > Div.AccountBox-Avatar
+    {
+        aspect-ratio: 1 / 1;
+        background-color: var(--Kolor-Dodatkowy);
+        background-image: url("/public/Ikonki/Konto.png");
+        background-size: 65%;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: var(--Radius-1);
+        margin-top: 0.5vw;
+        margin-left: 0.5vw;
+        margin-right: 0.5vw;
+        display: block;
+        overflow: hidden;
+    }
+        /* Zdjęcie użytkownika. */
+        Div.AccountBox > Div.AccountBox-Avatar > Img
+        {
+            max-width: 100%;
+            max-height: 100%;
+            background-color: gray;
+            display: block;
+        }
+
+    /* Pole statusu. */
+    Div.AccountBox > Div.AccountBox-Status
+    {
+        width: 1.5vw;
+        aspect-ratio: 1 / 1;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--Motyw-Ciemny);
+        border-radius: 100%;
+        margin-left: auto;
+        margin-top: -1.0vw;
+        margin-bottom: -0.5vw;
+        display: flex;
+    }
+        /* Określa czy użytkownik jest aktywny. */
+        Div.AccountBox > Div.AccountBox-Status > Div
+        {
+            width: 0.9vw;
+            aspect-ratio: 1 / 1;
+            background-color: var(--Kolor-Negatywny);
+            border-radius: 100%;
+        }
+            /* Status aktywny. */
+            Div.AccountBox > Div.AccountBox-Status > Div.Active
+            {
+                background-color: var(--Kolor-Pozytywny);
+            }
+
+    /* Nazwa użytkownika. */
+    Div.AccountBox > Div.AccountBox-Tittle
+    {
+        width: 100%;
+        font-size: 0.9rem;
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 0.5vw;
+        margin-bottom: 0.5vw;
+        display: block;
+    }
+
+/* . */
+Div.AccountBox > Div.AccountBox-Tittle > Div:nth-child(1)
+{
+    display: block;
+}
+
+/* . */
+Div.AccountBox > Div.AccountBox-Tittle > Div:nth-child(2)
+{
+    font-size: 0.6rem;
+    display: block;
+}

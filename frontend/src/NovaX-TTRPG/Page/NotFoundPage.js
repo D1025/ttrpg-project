@@ -3,7 +3,7 @@ import
 {
     Menu2,
     Header, HeaderRight,
-    Button, ButtonAccount,
+    Button, AccountBar,
     Main, MainArticle, ArticleTitle,
     StorageLoad, setTittle, HeaderLeft, ButtonLogo, HeaderCenter, StorageRemove
 } from "../../NovaX";
@@ -119,9 +119,9 @@ const Game = () =>
                     {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
                     {isLogIn === true ? (
                         <Menu2>
-                            <li><ButtonAccount design={1} width={2} title={daneUzytkownika.nickname}
-                                               userTitle={daneUzytkownika.admin === true && "[Admin]"}
-                                               src={daneUzytkownika.avatar}></ButtonAccount>
+                            <li><AccountBar design={1} width={2} title={daneUzytkownika.nickname}
+                                            userTitle={daneUzytkownika.admin === true && "[Admin]"}
+                                            src={daneUzytkownika.avatar}></AccountBar>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>

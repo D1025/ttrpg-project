@@ -1,5 +1,5 @@
-/* ButtonAccount. */
-Div.ButtonAccount
+/* AccountBar. */
+Div.AccountBar
 {
     width: max-content;
     height: var(--Przycisk-Wysokość);
@@ -12,11 +12,10 @@ Div.ButtonAccount
     display: inline-flex;
     cursor: pointer;
     user-select: none;
-    transition: var(--Animacja);
 }
 
 /* Nickname. */
-Div.ButtonAccount > Div.ButtonAccount-Title
+Div.AccountBar > Div.AccountBar-Title
 {
     font-weight: bold;
     margin-left: auto;
@@ -24,21 +23,21 @@ Div.ButtonAccount > Div.ButtonAccount-Title
 }
 
 /* . */
-Div.ButtonAccount > Div.ButtonAccount-Title > Div:nth-child(1)
+Div.AccountBar > Div.AccountBar-Title > Div:nth-child(1)
 {
     font-weight: bold;
     font-size: 0.95rem;
 }
 
 /* . */
-Div.ButtonAccount > Div.ButtonAccount-Title > Div:nth-child(2)
+Div.AccountBar > Div.AccountBar-Title > Div:nth-child(2)
 {
     font-weight: normal;
     font-size: 0.6rem;
 }
 
 /* Miejsce na Avatar. */
-Div.ButtonAccount > Div.ButtonAccount-Img
+Div.AccountBar > Div.AccountBar-Img
 {
     width: var(--Przycisk-Wysokość);
     height: var(--Przycisk-Wysokość);
@@ -51,7 +50,7 @@ Div.ButtonAccount > Div.ButtonAccount-Img
     box-shadow: var(--Przycisk-Cienie);
 }
     /* Wygląd Img. */
-    Div.ButtonAccount > Div.ButtonAccount-Img > Img
+    Div.AccountBar > Div.AccountBar-Img > Img
     {
         max-width: 100%;
         max-height: 100%;
@@ -60,7 +59,7 @@ Div.ButtonAccount > Div.ButtonAccount-Img
 
 
 /* Margines lewy i prawy. */
-Div.ButtonAccount-MarginLeftRight
+Div.AccountBar-MarginLeftRight
 {
     margin-left: var(--Przycisk-Odstep-X);
     margin-right: var(--Przycisk-Odstep-X);

@@ -24,7 +24,10 @@ export {default as RoomFrame} from './Frame/RoomFrame/RoomFrame.js';            
 // Button.
 export {default as Button} from './Button/Button/Button.js';                                     // Gotowe.
 export {default as ButtonLogo} from './Button/ButtonLogo/ButtonLogo';                            // Gotowe.
-export {default as ButtonAccount} from './Button/ButtonAccount/ButtonAccount.js';                // Gotowe.
+
+// Account.
+export {default as AccountBar} from './Account/AccountBar/AccountBar.js';                        // Gotowe.
+export {default as AccountBox} from './Account/AccountBox/AccountBox.js';                        // Gotowe.
 
 // Form.
 export {default as Input} from './Form/Input/Input.js';                                          // Gotowe.

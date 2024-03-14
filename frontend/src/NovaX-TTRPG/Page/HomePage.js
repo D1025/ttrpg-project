@@ -3,7 +3,7 @@ import
 {
     Menu2,
     Header, HeaderLeft, HeaderCenter, HeaderRight,
-    Button, ButtonLogo, ButtonAccount,
+    Button, ButtonLogo, AccountBar,
     Main, MainArticle, MainPanel, ArticleTitle,
     RoomFrame,
     StorageLoad, StorageRemove, setTittle, ArticleTitleOption
@@ -190,9 +190,9 @@ const HomePage = () =>
                     {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
                     {isLogIn === true ? (
                         <Menu2>
-                            <li><ButtonAccount design={1} width={2} title={daneUzytkownika.nickname}
-                                               userTitle={daneUzytkownika.admin === true && "[Admin]"}
-                                               src={daneUzytkownika.avatar}></ButtonAccount>
+                            <li><AccountBar design={1} width={2} title={daneUzytkownika.nickname}
+                                            userTitle={daneUzytkownika.admin === true && "[Admin]"}
+                                            src={daneUzytkownika.avatar}></AccountBar>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>

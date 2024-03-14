@@ -1,8 +1,8 @@
-import './ButtonAccount.css';
+import './AccountBar.css';
 
 // Button Acount.
-const ButtonAccount = ({
-                           avatarLocation = "right",
+const AccountBar = ({
+                           design = 1,
                            title,
                            userTitle,
                            src,
@@ -16,11 +16,11 @@ const ButtonAccount = ({
     // Decyduje o wyglądzie.
     const classBuilder = () =>
     {
-        let classList = ['ButtonAccount'];
+        let classList = ['AccountBar'];
 
         // Tworzenie listy klas.
-        (width >= 0) ? classList.push(`Width-${width}`) : (classList.push(`ButtonAccount-W1`))
-        if(marginLeftRight) classList.push('ButtonAccount-MarginLeftRight');
+        if(width >= 0) classList.push(`Width-${width}`)
+        if(marginLeftRight) classList.push('AccountBar-MarginLeftRight');
         if(className) classList.push(className);
 
         return classList.join(' ');
@@ -32,30 +32,27 @@ const ButtonAccount = ({
     // Return.
     return (
         <div {...rest} className={myClass}>
-            {/* Nick po lewej. */}
-            {avatarLocation === "left" && (
-                <div className={"ButtonAccount-Img"}>
+            {/* Avatar po lewej. */}
+            {design === 2 && (
+                <div className={"AccountBar-Img"}>
                     {src && (<img src={src} alt={alt}/>)}
                 </div>
             )}
 
             {/* Nazwa i podtytół. */}
-            <div className={"ButtonAccount-Title"}>
+            <div className={"AccountBar-Title"}>
                 <div>{title}</div>
                 {userTitle && (<div>{userTitle}</div>)}
             </div>
 
-            {/* Nick po prawej [Domyślny]. */}
-            {avatarLocation === "none" ? (
-                <></>
-            ) : (
-                <div className={"ButtonAccount-Img"}>
+            {/* Avatar po prawej. */}
+            {design === 1 && (
+                <div className={"AccountBar-Img"}>
                     {src && (<img src={src} alt={alt}/>)}
                 </div>
             )}
         </div>
     )
-        ;
 }
 
-export default ButtonAccount;
+export default AccountBar;
