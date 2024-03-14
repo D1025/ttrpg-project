@@ -3,6 +3,7 @@ import SockJs from "sockjs-client";
 import Stomp from "stompjs";
 import {Chat, StorageLoad, ChatMessage} from "../../../NovaX";
 import {ModulUserList} from "../../index";
+import './ModulChat.css';
 
 const ModulChat = ({roomId, userId}) =>
 {
@@ -196,7 +197,11 @@ const ModulChat = ({roomId, userId}) =>
         return user ? user.nickname : "Unknown";
     }
     return (
-        <>
+        <div className={"ObszarGry"}>
+            <div className={"Gracze"}>
+                <ModulUserList allUsers={usersInRoom} activeUsers={activeUsers}/>
+            </div>
+
             <Chat value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc}
                   inputPlaceholder={"Wyślij wiadomość"}>
                 {wiadomosci.map((msg, index) => (
@@ -204,8 +209,7 @@ const ModulChat = ({roomId, userId}) =>
                                  timestamp={msg.timestamp} design={msg.userId === loginData.id ? 2 : 1}/>
                 ))}
             </Chat>
-            <ModulUserList allUsers={usersInRoom} activeUsers={activeUsers}/>
-        </>
+        </div>
     );
 };
 

@@ -6,7 +6,13 @@ Div.AccountBox
     border-radius: var(--Radius-2);
     display: inline-block;
     margin-right: 0.2vw;
+    margin-bottom: 0.2vw;
 }
+    /* Ostatni nie ma marginesu po prawej. */
+    Div.AccountBox:last-of-type
+    {
+        margin-right: 0.0vw;
+    }
 
     /* Pole na zdjęcie użytkownika. */
     Div.AccountBox > Div.AccountBox-Avatar
