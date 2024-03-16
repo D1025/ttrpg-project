@@ -1,12 +1,22 @@
 import {useCallback, useEffect, useState} from "react";
 import {
     Menu2,
-    Header, HeaderRight,
-    Button, AccountBar,
-    StorageLoad, setTittle, Main, MainArticle, MainPanel, ArticleTitle, ButtonLogo, HeaderLeft, HeaderCenter, RoomFrame,
+    Header,
+    HeaderRight,
+    Button,
+    AccountBar,
+    StorageLoad,
+    setTittle,
+    Main,
+    MainArticle,
+    ArticleTitle,
+    ButtonLogo,
+    HeaderLeft,
+    HeaderCenter,
+    RoomFrame,
+    HrSeparator, InputFile, Label, ArticleTitleOption,
 } from "../../NovaX";
-import {ModulChat} from "../../NovaX-TTRPG";
-import HrSpearator from "../../NovaX/Hr/HrSpearator/HrSpearator";
+import './AccountPage.css';
 
 const GamePage = () =>
 {
@@ -229,10 +239,26 @@ const GamePage = () =>
 
             <Main design={1}>
                 <MainArticle>
-                    <ArticleTitle title={"Konto"}/>
-                    Edycja Konta
-                    <HrSpearator title={"Pokoje"}/>
+                    <ArticleTitle title={"Konto"}>
+                        <ArticleTitleOption>
+                            <Button src={"./Ikonki/Edycja.png"}/>
+                        </ArticleTitleOption>
+                    </ArticleTitle>
 
+                    <div className={"AccountPageBox"}>
+                        <div className={"AccounPagetAvatar"}>
+                            <Button src={"./Ikonki/Edycja.png"}/>
+                            <div className={"AccounPagetAvatar-Box"}>
+                                <img src={""} alt={""}/>
+                            </div>
+                        </div>
+                        <div className={"AccountPageRest"}>
+                            <Label>Nazwa:</Label>
+                            <Label>{daneUzytkownika.nickname}</Label>
+                        </div>
+                    </div>
+
+                    <HrSeparator title={"Pokoje"}/>
                     {pokoje}
 
                 </MainArticle>

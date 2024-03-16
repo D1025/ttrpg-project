@@ -1,8 +1,8 @@
-import './HrSpearator.css';
+import './HrSeparator.css';
 import {Hr} from "../../index";
 
-// Hr Spearator.
-const HrSpearator = ({title, tag = "div", desing = 1, className, ...rest}) =>
+// Hr Separator.
+const HrSeparator = ({title, tag = "div", desing = 1, className, ...rest}) =>
 {
     // Decyduje o wyglądzie.
     const classBuilder = () =>
@@ -34,4 +34,4 @@ const HrSpearator = ({title, tag = "div", desing = 1, className, ...rest}) =>
     );
 }
 
-export default HrSpearator;
+export default HrSeparator;

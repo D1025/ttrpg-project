@@ -40,7 +40,7 @@ export {default as Textarea} from './Form/Textarea/Textarea.js';                
 
 // Hr.
 export {default as Hr} from './Hr/Hr/Hr.js';                                                     // Gotowe.
-export {default as HrSeparator} from './Hr/HrSpearator/HrSpearator.js';                          // Gotowe.
+export {default as HrSeparator} from './Hr/HrSeparator/HrSeparator.js';                          // Gotowe.
 
 // Funkcion.
 export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';                          // Gotowe.

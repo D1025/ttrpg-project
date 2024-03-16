@@ -97,7 +97,7 @@ const InputFile = ({
 
         // Dodawanie klasy na podstawie wartości.
         if(marginBottom === true) classList.push('InputFile-MarginBottom');
-        if(width > 0) classList.push(`Width-${width}`);
+        if(width >= 0) classList.push(`Width-${width}`);
         if(marginLeftRight === true) classList.push('InputFile-MarginLeftRight');
         if(className) classList.push(className);
 
