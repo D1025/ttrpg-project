@@ -7,7 +7,7 @@ import {
 } from "../../NovaX";
 import {ModulChat} from "../../NovaX-TTRPG";
 
-const Game = () =>
+const GamePage = () =>
 {
     // Tittle.
     setTittle("./Grafiki/Logo.png", "TTRPG | Gra");
@@ -95,4 +95,4 @@ const Game = () =>
     );
 }
 
-export default Game;
+export default GamePage;

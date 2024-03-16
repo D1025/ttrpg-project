@@ -35,11 +35,12 @@ export {default as InputFile} from './Form/InputFile/InputFile.js';             
 export {default as InputCheckbox} from './Form/InputCheckbox/InputCheckbox.js';                  // Gotowe.
 export {default as InputNumber} from './Form/InputNumber/InputNumber.js';                        // Gotowe.
 export {default as Label} from './Form/Label/Label.js';                                          // Gotowe.
-export {default as Select} from './Form/Select/Select.js';                                       // TODO: Pre-Release".
-export {default as Textarea} from './Form/Textarea/Textarea.js';                                 // TODO: Pre-Release.
+export {default as Select} from './Form/Select/Select.js';                                       // TODO.
+export {default as Textarea} from './Form/Textarea/Textarea.js';                                 // TODO.
 
 // Hr.
 export {default as Hr} from './Hr/Hr/Hr.js';                                                     // Gotowe.
+export {default as HrSeparator} from './Hr/HrSpearator/HrSpearator.js';                          // Gotowe.
 
 // Funkcion.
 export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';                          // Gotowe.
@@ -55,5 +56,5 @@ export {default as StorageRemove} from './Funkcion/LocalStorage/StorageRemove.js
 export {default as Window} from './Window/Window/Window.js';                                     // Gotowe.
 
 // Chat.
-export {default as Chat} from './Chat/Chat/Chat.js';                                             // TODO: Pre-Release.
+export {default as Chat} from './Chat/Chat/Chat.js';                                             // TODO.
 export {default as ChatMessage} from './Chat/ChatMessage/ChatMessage.js';                        // Gotowe.
