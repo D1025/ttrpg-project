@@ -213,7 +213,7 @@ const GamePage = () =>
                     {isLogIn === true ? (
                         <Menu2>
                             <li><AccountBar design={1} width={2} title={daneUzytkownika.nickname}
-                                            userTitle={daneUzytkownika.admin === true && "[Admin]"}
+                                            subTitle={daneUzytkownika.admin === true && "[Admin]"}
                                             src={daneUzytkownika.avatar}></AccountBar>
                                 <Menu2>
                                     <li>

@@ -120,7 +120,7 @@ const Game = () =>
                     {isLogIn === true ? (
                         <Menu2>
                             <li><AccountBar design={1} width={2} title={daneUzytkownika.nickname}
-                                            userTitle={daneUzytkownika.admin === true && "[Admin]"}
+                                            subTitle={daneUzytkownika.admin === true && "[Admin]"}
                                             src={daneUzytkownika.avatar}></AccountBar>
                                 <Menu2>
                                     <li>
@@ -141,7 +141,7 @@ const Game = () =>
                             </li>
                         </Menu2>
                     ) : (
-                        <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
+                        <Button title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
                                 onClick={toggleShowLogin} width={1}/>
                     )}
                 </HeaderRight>

@@ -40,10 +40,14 @@ Div.AccounPagetAvatar > Div.Button-D1
 /* . */
 Div.AccountPageRest
 {
+    align-items: center;
+    justify-items: left;
+    align-content: center;
     background-color: var(--Motyw-Przezroczysty);
     backdrop-filter: var(--Blur);
     border-radius: var(--Radius-3);
     padding: 0.5vw;
     flex: 1;
+    display: grid;
 }
 
