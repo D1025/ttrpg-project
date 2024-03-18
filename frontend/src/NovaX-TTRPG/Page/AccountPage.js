@@ -14,7 +14,7 @@ import {
     HeaderLeft,
     HeaderCenter,
     RoomFrame,
-    HrSeparator, InputFile, Label, ArticleTitleOption,
+    HrSeparator, Label, AccountInformation
 } from "../../NovaX";
 import './AccountPage.css';
 
@@ -131,7 +131,12 @@ const GamePage = () =>
                     description={pokoj.description && pokoj.description}
                     title={pokoj.name && pokoj.name}
                 >
-                    <span style={{marginRight:'auto', color:'var(--Kolor-Oznaczenia)', fontSize:'0.9rem', fontWeight:'bold'}}>{pokoj.isPrivate === false ? 'Publiczny' : 'Prywatny'}</span>
+                    <span style={{
+                        marginRight: 'auto',
+                        color: 'var(--Kolor-Oznaczenia)',
+                        fontSize: '0.9rem',
+                        fontWeight: 'bold'
+                    }}>{pokoj.isPrivate === false ? 'Publiczny' : 'Prywatny'}</span>
                     <Button src={"./Ikonki/Edycja.png"}/>
                     {isLogIn && (
                         <a href={`/Gra?id=${pokoj.id}`}>
@@ -189,12 +194,12 @@ const GamePage = () =>
                             <Menu2>
                                 <li>
                                     <a href={""}>
-                                        <Button title={"Wiadomości"} style={{width:"100%"}}/>
+                                        <Button title={"Wiadomości"} style={{width: "100%"}}/>
                                     </a>
                                 </li>
                                 <li>
                                     <a href={""}>
-                                        <Button title={"Regulamin"} style={{width:"100%"}}/>
+                                        <Button title={"Regulamin"} style={{width: "100%"}}/>
                                     </a>
                                 </li>
                             </Menu2>
@@ -213,25 +218,25 @@ const GamePage = () =>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>
-                                            <Button active={false} title={"Konto"} style={{width: "100%"}}/>
+                                            <Button title={"Konto"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
                                     {daneUzytkownika.admin === true && (
                                         <li>
                                             <a href={"/Panel"}>
-                                                <Button active={false} title={"Panel"} style={{width: "100%"}}/>
+                                                <Button title={"Panel"} style={{width: "100%"}}/>
                                             </a>
                                         </li>)}
                                     <li>
                                         <a href={"/"}>
-                                            <Button active={false} title={"Wyjdź"} style={{width: "100%"}}/>
+                                            <Button title={"Wyjdź"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
                                 </Menu2>
                             </li>
                         </Menu2>
                     ) : (
-                        <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
+                        <Button title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
                                 onClick={toggleShowLogin} width={1}/>
                     )}
                 </HeaderRight>
@@ -239,11 +244,7 @@ const GamePage = () =>
 
             <Main design={1}>
                 <MainArticle>
-                    <ArticleTitle title={"Konto"}>
-                        <ArticleTitleOption>
-                            <Button src={"./Ikonki/Edycja.png"}/>
-                        </ArticleTitleOption>
-                    </ArticleTitle>
+                    <ArticleTitle title={"Konto"}/>
 
                     <div className={"AccountPageBox"}>
                         <div className={"AccounPagetAvatar"}>
@@ -253,8 +254,12 @@ const GamePage = () =>
                             </div>
                         </div>
                         <div className={"AccountPageRest"}>
-                            <Label>Nazwa:</Label>
-                            <Label>{daneUzytkownika.nickname}</Label>
+                            <AccountInformation dataType={"Nickname"} data={daneUzytkownika.nickname} canEdit={true}
+                                                buttonColorNumber={0} width={4} marginBottom={true}/><br/>
+                            <AccountInformation dataType={"E-mail"} data={daneUzytkownika.email} canEdit={true}
+                                                buttonColorNumber={0} width={4} marginBottom={true}/><br/>
+                            <AccountInformation dataType={"Hasło"} data={'*****'} canEdit={true}
+                                                buttonColorNumber={0} width={4} marginBottom={true}/><br/>
                         </div>
                     </div>
 

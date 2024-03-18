@@ -199,9 +199,9 @@ const OknoLogowania = ({onClose}) =>
             <div>
                 {/* Pole wyboru Rejestracja/Logowanie. */}
                 <div className={"WindowLogIn-Choice"}>
-                    <Button title={"Logowanie"} active={LogowanieCzyRejestracja}
+                    <Button title={"Logowanie"} colorNumber={LogowanieCzyRejestracja===true ? 1 : 0}
                             onClick={() => ustawLogowanieCzyRejestracja(true)}/>
-                    <Button title={"Rejestracja"} active={!LogowanieCzyRejestracja}
+                    <Button title={"Rejestracja"} colorNumber={LogowanieCzyRejestracja!==true ? 1 : 0}
                             onClick={() => ustawLogowanieCzyRejestracja(false)}/>
                 </div>
 

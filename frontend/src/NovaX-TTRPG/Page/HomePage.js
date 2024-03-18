@@ -196,23 +196,23 @@ const HomePage = () =>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>
-                                            <Button active={false} title={"Konto"} style={{width: "100%"}}/>
+                                            <Button title={"Konto"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
                                     {daneUzytkownika.admin === true && (
                                         <li>
                                             <a href={"/Panel"}>
-                                                <Button active={false} title={"Panel"} style={{width: "100%"}}/>
+                                                <Button title={"Panel"} style={{width: "100%"}}/>
                                             </a>
                                         </li>)}
                                     <li>
-                                        <Button active={false} title={"Wyloguj Się"} onClick={LogOut} width={0}/>
+                                        <Button title={"Wyloguj Się"} onClick={LogOut} width={0}/>
                                     </li>
                                 </Menu2>
                             </li>
                         </Menu2>
                     ) : (
-                        <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
+                        <Button title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
                                 onClick={toggleShowLogin} width={1}/>
                     )}
                 </HeaderRight>
@@ -225,8 +225,8 @@ const HomePage = () =>
                 {isLogIn === true &&
                     (
                         <MainPanel>
-                            <Button title={"Publiczne"} width={2} active={!lobby} onClick={() => ustawLobby(false)}/>
-                            <Button title={"Prywatne"} width={2} active={lobby} onClick={() => ustawLobby(true)}/>
+                            <Button title={"Publiczne"} width={2} colorNumber={lobby === false ? 1 : 0} onClick={() => ustawLobby(false)}/>
+                            <Button title={"Prywatne"} width={2} colorNumber={lobby === true ? 1 : 0} onClick={() => ustawLobby(true)}/>
                         </MainPanel>
                     )}
 

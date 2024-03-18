@@ -167,19 +167,19 @@ const AdminPanel = () =>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>
-                                            <Button active={false} title={"Konto"} style={{width: "100%"}}/>
+                                            <Button title={"Konto"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
                                     <li>
                                         <a href={"/"}>
-                                            <Button active={false} title={"Wyjdź"} style={{width: "100%"}}/>
+                                            <Button title={"Wyjdź"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
                                 </Menu2>
                             </li>
                         </Menu2>
                     ) : (
-                        <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
+                        <Button title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
                                 onClick={toggleShowLogin} width={1}/>
                     )}
                 </HeaderRight>

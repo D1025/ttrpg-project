@@ -4,7 +4,7 @@ import './AccountBar.css';
 const AccountBar = ({
                            design = 1,
                            title,
-                           userTitle,
+                           subTitle,
                            src,
                            alt = "",
                            className,
@@ -42,7 +42,7 @@ const AccountBar = ({
             {/* Nazwa i podtytół. */}
             <div className={"AccountBar-Title"}>
                 <div>{title}</div>
-                {userTitle && (<div>{userTitle}</div>)}
+                {subTitle && (<div>{subTitle}</div>)}
             </div>
 
             {/* Avatar po prawej. */}

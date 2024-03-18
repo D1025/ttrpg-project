@@ -8,7 +8,8 @@ const Button = ({
                     className,
                     marginBottom = false,
                     marginLeftRight = true,
-                    active = false,
+                    colorNumber = 0,
+                    active = true,
                     src,
                     alt = "",
                     ...rest
@@ -24,7 +25,8 @@ const Button = ({
         if(width >= 0 && title) classList.push(`Width-${width}`);
         if(marginBottom) classList.push('Button-MarginBottom');
         if(marginLeftRight) classList.push('Button-MarginLeftRight');
-        if(active) classList.push('Button-Active');
+        if(active === false) classList.push('Button-noActive');
+        if(colorNumber > 0  && active !== false) classList.push(`BackgroundColor-${colorNumber}`);
         if(className) classList.push(className);
 
         return classList.join(' ');

@@ -125,17 +125,17 @@ const Game = () =>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>
-                                            <Button active={false} title={"Konto"} style={{width: "100%"}}/>
+                                            <Button title={"Konto"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
                                     {daneUzytkownika.admin === true && (
                                         <li>
                                             <a href={"/Panel"}>
-                                                <Button active={false} title={"Panel"} style={{width: "100%"}}/>
+                                                <Button title={"Panel"} style={{width: "100%"}}/>
                                             </a>
                                         </li>)}
                                     <li>
-                                        <Button active={false} title={"Wyloguj Się"} onClick={LogOut} width={0}/>
+                                        <Button title={"Wyloguj Się"} onClick={LogOut} width={0}/>
                                     </li>
                                 </Menu2>
                             </li>

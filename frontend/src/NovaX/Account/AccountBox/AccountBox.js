@@ -3,8 +3,8 @@ import './AccountBox.css'
 // Account Box.
 const AccountBox = ({
                         title,
-                        tittleLength = 9,
-                        userTitle,
+                        tittleLength = 8,
+                        subTitle,
                         src,
                         alt = "",
                         className,
@@ -50,7 +50,7 @@ const AccountBox = ({
 
             <div className={"AccountBox-Tittle"}>
                 <div>{shortenTitle(title)}</div>
-                <div>{userTitle}</div>
+                <div>{subTitle}</div>
             </div>
         </div>
     );

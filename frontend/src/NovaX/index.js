@@ -28,6 +28,7 @@ export {default as ButtonLogo} from './Button/ButtonLogo/ButtonLogo';           
 // Account.
 export {default as AccountBar} from './Account/AccountBar/AccountBar.js';                        // Gotowe.
 export {default as AccountBox} from './Account/AccountBox/AccountBox.js';                        // Gotowe.
+export {default as AccountInformation} from './Account/AccountInformation/AccountInformation.js';// Gotowe.
 
 // Form.
 export {default as Input} from './Form/Input/Input.js';                                          // Gotowe.
