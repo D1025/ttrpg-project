@@ -264,7 +264,7 @@ const GamePage = () =>
                         </div>
                     </div>
 
-                    <HrSeparator title={"Pokoje"}/>
+                    <HrSeparator title={"Moje Pokoje"}/>
                     {pokoje}
 
                 </MainArticle>
