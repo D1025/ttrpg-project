@@ -119,7 +119,6 @@ const GamePage = () =>
 
             // Przetwarzanie odpowiedzi dla publicznych pokoi
             const danePubliczne = await odpowiedzPubliczne.json();
-            console.log(danePubliczne)
 
             // Przetwarzanie odpowiedzi dla prywatnych pokoi
             const danePrywatne = await odpowiedzPrywatne.json();
