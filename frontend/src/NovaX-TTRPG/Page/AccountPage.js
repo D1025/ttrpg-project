@@ -119,12 +119,14 @@ const GamePage = () =>
 
             // Przetwarzanie odpowiedzi dla publicznych pokoi
             const danePubliczne = await odpowiedzPubliczne.json();
+            console.log(danePubliczne)
 
             // Przetwarzanie odpowiedzi dla prywatnych pokoi
             const danePrywatne = await odpowiedzPrywatne.json();
 
             // Połączenie danych
             const zrenderowanePokoje = [...danePubliczne, ...danePrywatne].map(pokoj => (
+                pokoj.ownerId === daneUzytkownika.id &&
                 <RoomFrame
                     key={pokoj.id}
                     src={pokoj.image && (`data:image/${pokoj.imageExtension};base64,${pokoj.image}`)}
