@@ -13,6 +13,7 @@ const InputNumber = ({
                          width = 2,
                          marginBottom = false,
                          marginLeftRight = true,
+                         arrows = true,
                          className,
                          ...rest
                      }) =>
@@ -77,13 +78,13 @@ const InputNumber = ({
     // Return.
     return (
         <div className={myClass} {...rest}>
-            <Button onClick={prevNumber} src={serLeftArrow}/>
+            {arrows === true && <Button onClick={prevNumber} src={serLeftArrow}/>}
             <input
                 type={"number"}
                 value={number}
                 onChange={handleInputChange}
             />
-            <Button onClick={nextNumber} src={srcRightArrow}/>
+            {arrows === true && <Button onClick={nextNumber} src={srcRightArrow}/>}
         </div>
     );
 }

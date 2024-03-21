@@ -5,10 +5,10 @@ const AccountBox = ({
                         title,
                         tittleLength = 8,
                         subTitle,
+                        active = null,
                         src,
                         alt = "",
                         className,
-                        active = null,
                         ...rest
                     }) =>
 {
@@ -45,7 +45,7 @@ const AccountBox = ({
 
             {active !== null &&
                 (<div className={"AccountBox-Status"}>
-                    <div className={active === true && "Active"}/>
+                    <div className={active === true ? "Active" : undefined}/>
                 </div>)}
 
             <div className={"AccountBox-Tittle"}>

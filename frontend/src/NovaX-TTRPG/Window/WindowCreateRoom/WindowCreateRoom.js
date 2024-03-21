@@ -128,7 +128,7 @@ const WindowCreateRoom = ({onClose}) =>
 
                                     <div className={"MCR-Main-Section"}>
                                         <Label  marginBottom={true}>Publiczne:</Label><br/>
-                                        <Select id="typ" value={typ} onChange={pobierzTyp} required>
+                                        <Select title={"Wybierz..."} id={"typ"} value={typ} onChange={pobierzTyp} required>
                                             <option value="false">Tak</option>
                                             <option value="true">Nie</option>
                                         </Select>
@@ -151,7 +151,7 @@ const WindowCreateRoom = ({onClose}) =>
                                     }
                                 </div>
                             </div>
-                            <Label  marginBottom={true}>Opis:</Label><br/>
+                            <Label marginBottom={true}>Opis:</Label><br/>
                             <Textarea type={"text"} placeholder={"Opis"} onChange={pobierzOpis}/>
 
                         </div>

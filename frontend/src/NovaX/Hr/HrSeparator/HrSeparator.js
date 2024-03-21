@@ -2,7 +2,7 @@ import './HrSeparator.css';
 import {Hr} from "../../index";
 
 // Hr Separator.
-const HrSeparator = ({title, tag = "div", desing = 1, className, ...rest}) =>
+const HrSeparator = ({title, colorNumber = 0,tag = "div", className, ...rest}) =>
 {
     // Decyduje o wyglądzie.
     const classBuilder = () =>
@@ -29,7 +29,7 @@ const HrSeparator = ({title, tag = "div", desing = 1, className, ...rest}) =>
                     {title}
                 </div>
             )}
-            <Hr design={desing}/>
+            <Hr colorNumber={colorNumber}/>
         </NewTag>
     );
 }

@@ -21,7 +21,7 @@ import './AccountPage.css';
 const GamePage = () =>
 {
     // Tittle.
-    setTittle("./Grafiki/Logo.png", "TTRPG | Gra");
+    setTittle("./Grafiki/Logo.png", "TTRPG | Konto");
     const urlParams = new URLSearchParams(window.location.search);
     const idParam = urlParams.get('id');
 
@@ -64,7 +64,6 @@ const GamePage = () =>
 
     // Załaój pokoje.
     const [pokoje, setPokoje] = useState([]);
-    const [lobby, ustawLobby] = useState(false);
     const ladujPokoje = useCallback(async() =>
     {
         try
@@ -165,14 +164,14 @@ const GamePage = () =>
         {
             ustawIsLogIn(true);
             ustawDaneUzytkownika(loginData);
+            ladujPokoje();
         }
         else
         {
             ustawDaneUzytkownika('');
             ustawIsLogIn(false);
         }
-        ladujPokoje();
-    }, [lobby, ladujPokoje, showLogin]);
+    }, [ladujPokoje, showLogin]);
 
     return (
         <>

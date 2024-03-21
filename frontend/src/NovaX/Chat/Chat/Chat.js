@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import './Chat.css';
 import {Input} from "../../index";
 
@@ -19,19 +19,11 @@ const Chat = ({children, className, value, onChange, onKeyDown, inputPlaceholder
     // Przypisanie listy klas w postaci 'String'.
     const myClass = classBuilder();
 
-
-    const listRef = useRef(null);
-
-    useEffect(() => {
-        listRef.current?.lastElementChild?.scrollIntoView()
-    }, [children]);
-
-
     // Return.
     return (
         <div className={"Chat-Box"}>
             <div {...rest.rest} className={myClass}>
-                <div ref={listRef}>
+                <div>
                     {children}
                 </div>
             </div>

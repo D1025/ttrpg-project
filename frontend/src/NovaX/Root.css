@@ -79,10 +79,6 @@
 }
 
 /* Kolory Przycisków. */
-.BackgroundColor-0
-{
-    background-color: var(--Kolor-Dodatkowy)!important;
-}
 .BackgroundColor-1
 {
     background-color: var(--Motyw-Czarny)!important;
