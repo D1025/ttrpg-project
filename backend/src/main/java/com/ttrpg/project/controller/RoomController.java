@@ -4,15 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.ttrpg.project.dto.room.CreateRoom;
 import com.ttrpg.project.dto.room.EditRoom;
@@ -45,9 +37,20 @@ public class RoomController {
 
     @PutMapping("/{id}")
     public ResponseEntity<RoomReturnDTO> modifyRoom(@RequestBody EditRoom editRoom, @PathVariable UUID id, @RequestHeader(name = "Authorization", required = false) String authorizationHeader) {
-        jwtAuthorization.authorize(authorizationHeader);
-        return ResponseEntity.ok(roomsService.modifyRoom(editRoom, id));
+        return ResponseEntity.ok(roomsService.modifyRoom(editRoom, id, authorizationHeader));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteRoom(@PathVariable UUID id, @RequestHeader(name = "Authorization") String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        roomsService.deleteRoom(id, authorizationHeader);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/my")
+    public ResponseEntity<List<RoomReturnDTO>> getMyOwnedRooms(@RequestHeader(name = "Authorization") String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        return ResponseEntity.ok(roomsService.getMyOwnedRooms(authorizationHeader));
+    }
 
 }

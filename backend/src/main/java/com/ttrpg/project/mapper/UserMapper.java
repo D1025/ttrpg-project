@@ -15,4 +15,6 @@ public interface UserMapper {
     List<UserReturnDTO> usersToUserReturnDTOs(List<Users> users);
 
     List<PublicUserReturnDTO> usersToPublicUserReturnDTOs(List<Users> users);
+
+    PublicUserReturnDTO userToPublicUserReturnDTO(Users user);
 }

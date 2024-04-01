@@ -48,6 +48,8 @@ public class Users extends Model {
     @Column(name = "admin", nullable = false)
     private boolean admin;
 
+    @Column(name = "banned", nullable = false)
+    private boolean banned = false;
 
     @Column(name = "avatar")
     @JdbcType(VarbinaryJdbcType.class)

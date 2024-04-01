@@ -38,6 +38,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<PublicUserReturnDTO> getAllUsers(String token) {
+        Users user = getUserByToken(token);
+        if (!user.isAdmin()) {
+            throw new MessageException("Niewystarczające uprawnienia");
+        }
+        return userMapper.usersToPublicUserReturnDTOs(userRepository.findAll());
+    }
+
+    @Override
     @Transactional
     public UserReturnDTO editUser(UUID id, EditUser editUser, String token) {
         Users user = getUserById(id);
@@ -55,5 +64,31 @@ public class UserServiceImpl implements UserService {
     @Override
     public Users findById(UUID userId) {
         return userRepository.findById(userId).orElseThrow(() -> new MessageException("User not found"));
+    }
+
+    @Override
+    @Transactional
+    public PublicUserReturnDTO banUser(String id, String token) {
+        Users user = getUserById(UUID.fromString(id));
+        Users admin = getUserByToken(token);
+        if (!admin.isAdmin()) {
+            throw new MessageException("Niewystarczające uprawnienia");
+        }
+        user.setBanned(true);
+        userRepository.save(user);
+        return userMapper.userToPublicUserReturnDTO(user);
+    }
+
+    @Override
+    @Transactional
+    public PublicUserReturnDTO unbanUser(String id, String token) {
+        Users user = getUserById(UUID.fromString(id));
+        Users admin = getUserByToken(token);
+        if (!admin.isAdmin()) {
+            throw new MessageException("Niewystarczające uprawnienia");
+        }
+        user.setBanned(false);
+        userRepository.save(user);
+        return userMapper.userToPublicUserReturnDTO(user);
     }
 }

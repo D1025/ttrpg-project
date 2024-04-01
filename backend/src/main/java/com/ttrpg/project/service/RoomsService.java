@@ -14,5 +14,11 @@ public interface RoomsService {
 
     List<RoomReturnDTO> getAllRooms(Status status, String authorizationHeader);
 
-    RoomReturnDTO modifyRoom(EditRoom editRoom, UUID id);
+    List<RoomReturnDTO> getAllRooms(String authorizationHeader);
+
+    List<RoomReturnDTO> getMyOwnedRooms(String authorizationHeader);
+
+    RoomReturnDTO modifyRoom(EditRoom editRoom, UUID id, String authorizationHeader);
+
+    void deleteRoom(UUID id, String authorizationHeader);
 }

@@ -16,7 +16,13 @@ public interface UserService {
 
     List<PublicUserReturnDTO> getAllUsers();
 
+    List<PublicUserReturnDTO> getAllUsers(String token);
+
     UserReturnDTO editUser(UUID id, EditUser editUser, String token);
 
     Users findById(UUID userId);
+
+    PublicUserReturnDTO banUser(String id, String token);
+
+    PublicUserReturnDTO unbanUser(String id, String token);
 }
