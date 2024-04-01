@@ -1,0 +1,68 @@
+/* Pole AccountInformation. */
+Div.AccountInformation-Box
+{
+    min-width: 0.0vw;
+    display: inline-flex;
+}
+
+/* Element z danymi. */
+Div.AccountInformation-Box > Div.AccountInformation
+{
+    width: max-content;
+    align-items: center;
+    border-radius: var(--Radius-1);
+    background-color: var(--Motyw-Ciemny-Przezroczysty);
+    margin-right: var(--Przycisk-Odstep-X);
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    padding-top: 0.25vw;
+    padding-bottom: 0.25vw;
+    display: grid;
+    flex: 1;
+}
+    /* Pole trzymające dane i nazwę typu danych. */
+    Div.AccountInformation-Box > Div.AccountInformation > Div
+    {
+        width: max-content;
+    }
+        /* Nazwa typud anych. */
+        Div.AccountInformation-Box > Div.AccountInformation > Div > Div:nth-child(1)
+        {
+            color: var(--Kolor-Oznaczenia);
+            font-size: 0.55rem;
+            font-weight: bold;
+        }
+        /* Typ danych. */
+        Div.AccountInformation-Box > Div.AccountInformation > Div > Div:nth-child(2)
+        {
+            font-size: 0.95rem;
+        }
+
+/* Nadpsianie.button. */
+Div.AccountInformation-Box > Div.Button
+{
+    margin-left: var(--Przycisk-Odstep-X);
+    margin-right: 0.0vw;
+}
+
+
+/* Margin Left Right. */
+Div.AccountInformation-MarginLeftRight
+{
+    margin-left: var(--Przycisk-Odstep-X);
+    margin-right: var(--Przycisk-Odstep-X);
+}
+
+/* Margin Bottom. */
+Div.AccountInformation-MarginBottom
+{
+    margin-bottom: var(--Przycisk-Odstep-Y);
+}
+    /*Kiedy ostatni albo jedyny. */
+    Div.AccountInformation-MarginBottom:last-of-type,
+    Div.AccountInformation-MarginBottom:only-of-type
+    {
+        margin-bottom: 0.0vw;
+    }
+
+

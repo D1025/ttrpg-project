@@ -1,15 +1,15 @@
 import './Hr.css';
 
 // Hr.
-const Hr = ({design = 1, marginBottom = false, className, ...rest}) =>
+const Hr = ({colorNumber = 0, marginBottom = false, className, ...rest}) =>
 {
     // Decyduje o wyglądzie.
     const classBuilder = () =>
     {
-        let classList = [];
+        let classList = ['Hr'];
 
         // Dodawanie dodatkowej klasy przekazanej jako props.
-        if(design > 0) classList.push(`Hr-D${design}`)
+        if(colorNumber > 0) classList.push(`BackgroundColor-${colorNumber}`)
         if(marginBottom) classList.push('Hr-MarginBottom');
         if(className) classList.push(className);
 

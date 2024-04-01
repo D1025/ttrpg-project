@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import SockJs from "sockjs-client";
 import Stomp from "stompjs";
-import { Chat, StorageLoad,ChatMessage } from "../../../NovaX";
-import ActiveUsersList from "../../../NewModulesForValidation/ActiveUsersList/ActiveUsersList";
+import {Chat, StorageLoad, ChatMessage} from "../../../NovaX";
+import {ModulUserList} from "../../index";
+import './ModulChat.css';
 
-const ModulChat = ({roomId, userId}) => {
+const ModulChat = ({roomId, userId}) =>
+{
     const [wiadomosci, ustawWiadomosci] = useState([]);
     const [wyslijWiadomosc, ustawWyslijWiadomosc] = useState("");
     const [receivedMessages, setReceivedMessages] = useState([]);
@@ -19,7 +21,8 @@ const ModulChat = ({roomId, userId}) => {
     const [stompClient, setStompClient] = useState(undefined);
     const [connected, setConnected] = useState(false);
 
-    const connect = () => {
+    const connect = () =>
+    {
         const socket = new SockJs('http://localhost:8086/ws');
         const temp = Stomp.over(socket);
         setStompClient(temp);
@@ -31,50 +34,64 @@ const ModulChat = ({roomId, userId}) => {
         temp.connect(headers, onConnected, onError);
     }
 
-    const onConnected = () => {
+    const onConnected = () =>
+    {
         setConnected(true);
     }
 
-    useEffect(() => {
+    useEffect(() =>
+    {
         connect()
     }, []);
 
     //SUBSKRYBCJA
-    useEffect(() => {
-        if (connected && stompClient) {
+    useEffect(() =>
+    {
+        if(connected && stompClient)
+        {
             const subscribtion = stompClient.subscribe(`/topic/rooms/${roomId}`, onMessageReceived);
             stompClient.send(`/app/chat/${roomId}/addUser`, {}, JSON.stringify({id: userId}));
-            return () => {
+            return () =>
+            {
                 subscribtion.unsubscribe();
             }
         }
     }, [connected, stompClient]);
 
 
-    const onError = (error) => {
+    const onError = (error) =>
+    {
         setConnected(false);
-        if (stompClient) {
+        if(stompClient)
+        {
             stompClient.disconnect();
         }
         setStompClient(undefined);
-        setTimeout(() => {
+        setTimeout(() =>
+        {
             connect();
         }, 5000);
     }
 
     //Ładowanie wiadomości z serwera
-    useEffect(() => {
-        if (loadInitialMessages && receivedMessages !== undefined && receivedMessages.length > 0) {
+    useEffect(() =>
+    {
+        if(loadInitialMessages && receivedMessages !== undefined && receivedMessages.length > 0)
+        {
             ustawWiadomosci(receivedMessages);
             setLoadInitialMessages(false);
-        } else if (receivedMessages.length === 1) {
+        }
+        else if(receivedMessages.length === 1)
+        {
             ustawWiadomosci([...wiadomosci, ...receivedMessages]);
         }
     }, [receivedMessages]);
 
     //Ktoś wyszedł z pokoju
-    useEffect(() => {
-        if (userLeft !== "") {
+    useEffect(() =>
+    {
+        if(userLeft !== "")
+        {
             let temp = activeUsers.filter(user => user !== userLeft);
             setActiveUsers(temp);
             console.log("USER LEFT:", getUserNameById(userLeft));
@@ -82,91 +99,117 @@ const ModulChat = ({roomId, userId}) => {
     }, [userLeft]);
 
     //Ktoś wszedł do pokoju
-    useEffect(() => {
-        if (userJoined !== "") {
+    useEffect(() =>
+    {
+        if(userJoined !== "")
+        {
             console.log("USER JOINED:", getUserNameById(userJoined));
         }
     }, [userJoined]);
 
     //Inicjalizowanie użytkowników w pokoju
-    useEffect(() => {
-        if (initialActiveUsers.length > 0) {
+    useEffect(() =>
+    {
+        if(initialActiveUsers.length > 0)
+        {
             setActiveUsers(initialActiveUsers);
         }
     }, [initialActiveUsers]);
 
-    useEffect(() => {
+    useEffect(() =>
+    {
         console.log("ACTIVE USERS:", activeUsers);
     }, [activeUsers]);
 
 
     //WYSYŁANIE WIADOMOŚCI
-    const sendMessage = (msg) => {
-        if (stompClient)
-        stompClient.send(`/app/chat/${roomId}/sendMessage`, {}, JSON.stringify({content: msg, userId: userId, type: "CHAT"}));
+    const sendMessage = (msg) =>
+    {
+        if(stompClient)
+            stompClient.send(`/app/chat/${roomId}/sendMessage`, {}, JSON.stringify({
+                content: msg,
+                userId: userId,
+                type: "CHAT"
+            }));
     }
 
-    let onMessageReceived = (msg) => {
+    let onMessageReceived = (msg) =>
+    {
         const message = JSON.parse(msg.body);
-        if (message.type === "CHAT") {
+        if(message.type === "CHAT")
+        {
             const nowaWiadomosc = {
                 userId: message.userId,
                 content: message.content,
                 timestamp: new Date().toISOString()
             };
-        setReceivedMessages([nowaWiadomosc]);
+            setReceivedMessages([nowaWiadomosc]);
 
         }
-        if (message.type === "JOIN") {
+        if(message.type === "JOIN")
+        {
             setUserJoined(message.userId);
             setInitialActiveUsers(message.activeUsers)
             const users = message.users;
             setUsersInRoom(users);
             const messages = message.messages;
-            if (messages === null) {
+            if(messages === null)
+            {
                 return;
             }
-            let noweWiadomosci = messages.map(msg => {
+            let noweWiadomosci = messages.map(msg =>
+            {
                 return {
                     userId: msg.userId,
                     content: msg.content,
                     timestamp: msg.time
                 }
             });
-            noweWiadomosci.sort((a, b) => {
+            noweWiadomosci.sort((a, b) =>
+            {
                 return new Date(a.timestamp) - new Date(b.timestamp);
             });
             setReceivedMessages(noweWiadomosci);
         }
-        if (message.type === "LEAVE") {
+        if(message.type === "LEAVE")
+        {
             setUserLeft(message.userId);
         }
     }
-    const dodajWiadomosc = (e) => {
-        if (e.key === 'Enter' && wyslijWiadomosc.trim()) {
+    const dodajWiadomosc = (e) =>
+    {
+        if(e.key === 'Enter' && wyslijWiadomosc.trim())
+        {
             sendMessage(wyslijWiadomosc);
             ustawWyslijWiadomosc("");
         }
     };
 
-    const ustawWiadomoscMi = (event) => {
+    const ustawWiadomoscMi = (event) =>
+    {
         ustawWyslijWiadomosc(event.target.value);
     };
 
     //funckja zwracająca nazwę użytkownika na podstawie id
-    const getUserNameById = (id) => {
+    const getUserNameById = (id) =>
+    {
         const user = usersInRoom.find(user => user.id === id);
         return user ? user.nickname : "Unknown";
     }
     return (
-        <>
-            <Chat value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc} inputPlaceholder={"Wpisz wiadomość"}>
+        <div className={"ObszarGry"}>
+            <div className={"Gracze"}>
+                <ModulUserList allUsers={usersInRoom} activeUsers={activeUsers}/>
+            </div>
+
+            <Chat value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc}
+                  inputPlaceholder={"Wyślij wiadomość"}>
                 {wiadomosci.map((msg, index) => (
-                    <ChatMessage key={index} title={getUserNameById(msg.userId)} text={msg.content} timestamp={msg.timestamp} design={msg.userId === loginData.id ? 2 : 1}/>
+                    <ChatMessage key={index} title={getUserNameById(msg.userId)} text={msg.content}
+                                 timestamp={msg.timestamp} design={msg.userId === loginData.id ? 2 : 1}/>
                 ))}
             </Chat>
-            <ActiveUsersList allUsers={usersInRoom} activeUsers={activeUsers} />
-        </>
+        </div>
     );
 };
 

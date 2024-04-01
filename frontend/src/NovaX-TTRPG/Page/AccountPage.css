@@ -1,0 +1,53 @@
+/* . */
+Div.AccountPageBox
+{
+    width: inherit;
+    display: flex;
+}
+
+/* . */
+Div.AccounPagetAvatar
+{
+    width: 11.5vw;
+    margin-right: 1.0vw;
+    text-align: right;
+}
+Div.AccounPagetAvatar > Div.Button-D1
+{
+    margin-top: 0.5vw;
+    margin-right: 0.5vw;
+}
+    /* . */
+    Div.AccounPagetAvatar > Div.AccounPagetAvatar-Box
+    {
+        margin-top: calc(-1*var(--Przycisk-Wysokość) - 0.5vw);
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background-color: var(--Motyw);
+        background-image: url("/public/Ikonki/Konto.png");
+        background-size: 65%;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: var(--Radius-3);
+    }
+        /* . */
+        Div.AccounPagetAvatar > Div.AccounPagetAvatar-Box > Img
+        {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+/* . */
+Div.AccountPageRest
+{
+    align-items: center;
+    justify-items: left;
+    align-content: center;
+    background-color: var(--Motyw-Przezroczysty);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-3);
+    padding: 0.5vw;
+    flex: 1;
+    display: grid;
+}
+

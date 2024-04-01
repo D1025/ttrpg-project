@@ -1,5 +1,4 @@
 import './ChatMessage.css';
-import dayjs from "dayjs";
 
 const ChatMessage = ({title, design = 1, src, text, timestamp, className, ...rest}) =>
 {
@@ -23,7 +22,7 @@ const ChatMessage = ({title, design = 1, src, text, timestamp, className, ...res
         return (
             <div {...rest} className={myClass}>
                 <div className={"ChatMessage-Timestamp"}>
-                    {dayjs(timestamp).format('HH:mm')}
+                    {timestamp}
                 </div>
 
                 <div className={"ChatMessage-Message"}>
@@ -47,7 +46,7 @@ const ChatMessage = ({title, design = 1, src, text, timestamp, className, ...res
         return (
             <div {...rest} className={myClass}>
                 <div className={"ChatMessage-Timestamp"}>
-                    {dayjs(timestamp).format('HH:mm')}
+                    {timestamp}
                 </div>
 
                 <div className={"ChatMessage-Message"}>
@@ -63,7 +62,7 @@ const ChatMessage = ({title, design = 1, src, text, timestamp, className, ...res
         return (
             <div  {...rest} className={myClass}>
                 <div className={"ChatMessage-Timestamp"}>
-                    {dayjs(timestamp).format('HH:mm')}
+                    {timestamp}
                 </div>
 
                 <div className={"ChatMessage-Message"}>

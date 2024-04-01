@@ -3,7 +3,7 @@ import
 {
     Menu2,
     Header, HeaderRight,
-    Button, ButtonAccount,
+    Button, AccountBar,
     Main, MainArticle, ArticleTitle,
     StorageLoad, setTittle, HeaderLeft, ButtonLogo, HeaderCenter, StorageRemove
 } from "../../NovaX";
@@ -119,29 +119,29 @@ const Game = () =>
                     {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
                     {isLogIn === true ? (
                         <Menu2>
-                            <li><ButtonAccount design={1} width={2} title={daneUzytkownika.nickname}
-                                               userTitle={daneUzytkownika.admin === true && "[Admin]"}
-                                               src={daneUzytkownika.avatar}></ButtonAccount>
+                            <li><AccountBar design={1} width={2} title={daneUzytkownika.nickname}
+                                            subTitle={daneUzytkownika.admin === true && "[Admin]"}
+                                            src={daneUzytkownika.avatar}></AccountBar>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>
-                                            <Button active={false} title={"Konto"} style={{width: "100%"}}/>
+                                            <Button title={"Konto"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
                                     {daneUzytkownika.admin === true && (
                                         <li>
                                             <a href={"/Panel"}>
-                                                <Button active={false} title={"Panel"} style={{width: "100%"}}/>
+                                                <Button title={"Panel"} style={{width: "100%"}}/>
                                             </a>
                                         </li>)}
                                     <li>
-                                        <Button active={false} title={"Wyloguj Się"} onClick={LogOut} width={0}/>
+                                        <Button title={"Wyloguj Się"} onClick={LogOut} width={0}/>
                                     </li>
                                 </Menu2>
                             </li>
                         </Menu2>
                     ) : (
-                        <Button active={false} title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
+                        <Button title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
                                 onClick={toggleShowLogin} width={1}/>
                     )}
                 </HeaderRight>

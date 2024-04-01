@@ -6,6 +6,7 @@ import {Button} from "../../index";
 const InputFile = ({
                        title = 'Wybierz Plik',
                        srcTrashCan = "./Ikonki/Kosz.png",
+                       buttonColorNumber = 4,
                        srcChecked = './Ikonki/Ptaszek 2.png',
                        accept,
                        onChange,
@@ -142,7 +143,7 @@ const InputFile = ({
                 <span>{wyswietlanaNazwaPliku}</span>
             </label>
             {formatPoprawny && nazwaPliku !== title && (
-                <Button src={srcTrashCan} onClick={usunWybranyPlik}/>
+                <Button src={srcTrashCan} onClick={usunWybranyPlik} colorNumber={buttonColorNumber} active={true}/>
             )}
         </div>
     );

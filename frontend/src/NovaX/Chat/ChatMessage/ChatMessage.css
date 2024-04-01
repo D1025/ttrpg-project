@@ -11,16 +11,30 @@ Div.ChatMessage-D1
         margin-bottom: 0.0vw;
     }
 
-/* Czas wysłania wiadomości. */
+/* Niewidoczny czas wysłania wiadomości. */
 Div.ChatMessage-D1 > Div.ChatMessage-Timestamp
 {
-    width: min-content;
-    font-size: 0.6rem;
+    width: max-content;
+    min-width: calc(var(--Przycisk-Wysokość) - 0.4vw);
+    background-color: var(--Motyw-Czarny);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-1);
+    font-size: 0.55rem;
     font-weight: bold;
+    text-align: center;
     color: var(--Kolor-Oznaczenia);
-    margin-left: 0.6vw;
-    margin-bottom: 0.1vw;
+    margin-bottom: -0.5vw;
+    margin-left: 0.75vw;
+    padding: 0.2vw;
+    z-index: 1;
+    position: relative;
+    visibility: visible;
 }
+    /* Widoczny czas wysłania wiadomości. */
+    /*Div.ChatMessage-D1:hover > Div.ChatMessage-Timestamp*/
+    /*{*/
+    /*    visibility: visible;*/
+    /*}*/
 
 /* Pole z wiadomością. */
 Div.ChatMessage-D1 > Div.ChatMessage-Message
@@ -31,6 +45,7 @@ Div.ChatMessage-D1 > Div.ChatMessage-Message
     border-radius: var(--Radius-2);
     padding: 0.75vw;
     display: flex;
+    z-index: 0;
 }
     /* Avatar użytkownika pole. */
     Div.ChatMessage-D1 > Div.ChatMessage-Message > Div > Div.ChatMessage-Avatar
@@ -92,13 +107,19 @@ Div.ChatMessage-D2
 /* Czas wysłania wiadomości. */
 Div.ChatMessage-D2 > Div.ChatMessage-Timestamp
 {
-    width: min-content;
-    font-size: 0.6rem;
+    width: max-content;
+    min-width: calc(var(--Przycisk-Wysokość) - 0.4vw);
+    background-color: var(--Motyw-Czarny);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-1);
+    font-size: 0.55rem;
     font-weight: bold;
+    text-align: center;
     color: var(--Kolor-Oznaczenia);
-    margin-right: 0.6vw;
+    margin-bottom: -0.5vw;
+    margin-right: 0.75vw;
     margin-left: auto;
-    margin-bottom: 0.1vw;
+    padding: 0.2vw;
 }
 
 /* Pole z wiadomością. */
@@ -140,12 +161,15 @@ Div.ChatMessage-D3
 Div.ChatMessage-D3 > Div.ChatMessage-Timestamp
 {
     width: min-content;
-    font-size: 0.6rem;
+    min-width: calc(var(--Przycisk-Wysokość) - 0.4vw);
+    font-size: 0.55rem;
     font-weight: bold;
+    text-align: center;
     color: var(--Kolor-Oznaczenia);
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0.1vw;
+    padding: 0.2vw;
 }
 
 /* Pole z wiadomością. */

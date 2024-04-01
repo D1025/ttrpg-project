@@ -1,7 +1,7 @@
 /* Box trzymający przycisk. */
 Div.InputFile-Box
 {
-    width: var(--Przycisk-Szerokość-2);
+    width: 0.0vw;
     display: inline-flex;
 }
 
@@ -9,7 +9,6 @@ Div.InputFile-Box
 /* Styl dla niestandardowego przycisku, który zastąpi input[type="file"] */
 Label.InputFile
 {
-    /*min-width: var(--Przycisk-Szerokość-II);*/
     height: var(--Przycisk-Wysokość);
     width: 100%;
     font-size: 0.9rem;
@@ -59,7 +58,6 @@ Label.InputFile-Active
     /* Nadpisanie Koloru przycisku obok. */
     Label.InputFile-Active + Div
     {
-        background-color: var(--Kolor-Negatywny)!important;
         margin-left: var(--Przycisk-Odstep-X);
         margin-right: 0;
     }

@@ -1,7 +1,7 @@
 import './Label.css'
 
 // Label.
-const Label = ({children, htmlFor, marginBottom = false, marginLeftRight = true, className, ...rest}) =>
+const Label = ({children, htmlFor, marginBottom = true, marginLeftRight = true, className, ...rest}) =>
 {
     // Decyduje o wyglądzie.
     const classBuilder = () =>

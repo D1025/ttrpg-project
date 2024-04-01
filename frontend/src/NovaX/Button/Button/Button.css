@@ -92,6 +92,15 @@ Div.Button-D2 > A, Div.Button-D1 > A
 }
 
 
+/* Nieaktywny Przycisk. */
+Div.Button-noActive,
+Div.Button-noActive:hover,
+Div.Button-noActive:active
+{
+    background-color: var(--Kolor-Oznaczenia)!important;
+    cursor: unset;
+}
+
 /* Margines dolny. */
 Div.Button-MarginBottom
 {
@@ -108,10 +117,4 @@ Div.Button-MarginLeftRight
 {
     margin-left: var(--Przycisk-Odstep-X);
     margin-right: var(--Przycisk-Odstep-X);
-}
-
-/* Aktywny. */
-Div.Button-Active
-{
-    background-color: var(--Motyw-Czarny);
 }

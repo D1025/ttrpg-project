@@ -20,7 +20,6 @@
     /*--Tło-Menu: url("/public/Grafiki/TłoDodatkowe/AlbumMuzyki1.png");*/
 
     --Tło-Strony: url("https://cdn.openart.ai/stable_diffusion/9527cd1e77a614a32dd167420d1f1c0e535b5673_2000x2000.webp");
-    /*--Tło-Strony: url("https://www.wallpaperup.com/uploads/wallpapers/2014/11/09/511448/4f484aafdd7ee86d3e479462ef7760f7.jpg");*/
 
     --Kolor-Dodatkowy: rgba(87, 159, 100, 0.95);
     /*--Kolor-Dodatkowy: rgba(205, 197, 135, 0.95);*/
@@ -79,6 +78,23 @@
     min-width: var(--Przycisk-Szerokość-4)!important;
 }
 
+/* Kolory Przycisków. */
+.BackgroundColor-1
+{
+    background-color: var(--Motyw-Czarny)!important;
+}
+.BackgroundColor-2
+{
+    background-color: var(--Kolor-Oznaczenia)!important;
+}
+.BackgroundColor-3
+{
+    background-color: var(--Kolor-Pozytywny)!important;
+}.BackgroundColor-4
+{
+    background-color: var(--Kolor-Negatywny)!important;
+}
+
 
 /* Globalne wartości. */
 Html
@@ -90,22 +106,22 @@ Html
     /* Scrollbar w Firefox. */
     scrollbar-color: var(--Kolor-Dodatkowy) rgba(0,0,0,0);
 }
-/* Scrollbar w Chromium. */
-::-webkit-scrollbar
-{
-    width: 0.5vw;
-    height: 0.5vw;
-}
-/* Scrollbar w Chromium. */
-::-webkit-scrollbar-thumb
-{
-    background-color: var(--Kolor-Dodatkowy);
-}
-/* Scrollbar w Chromium. */
-::-webkit-scrollbar-track
-{
-    background-color: var(--Motyw);
-}
+    /* Scrollbar w Chromium. */
+    ::-webkit-scrollbar
+    {
+        width: 0.5vw;
+        height: 0.5vw;
+    }
+    /* Scrollbar w Chromium. */
+    ::-webkit-scrollbar-thumb
+    {
+        background-color: var(--Kolor-Dodatkowy);
+    }
+    /* Scrollbar w Chromium. */
+    ::-webkit-scrollbar-track
+    {
+        background-color: var(--Motyw);
+    }
 
 /* Podstawowe Body. */
 Body

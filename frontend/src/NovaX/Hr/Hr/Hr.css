@@ -1,38 +1,11 @@
 /* Linia oddzielająca Hr. */
-/* Design 1. */
-Hr.Hr-D1
+Hr.Hr
 {
     height: 0.2vw;
     background-color: var(--Kolor-Dodatkowy);
     border: 0.0vw solid;
     border-radius: var(--Radius-1);
-    margin: 0.0vw;
-    margin-top: 0.3vw;
-    margin-bottom: 0.3vw;
-}
-
-/* Design 2. */
-Hr.Hr-D2
-{
-    height: 0.2vw;
-    background-color: var(--Motyw-Ciemny);
-    border: 0.0vw solid;
-    border-radius: var(--Radius-1);
-    margin: 0.0vw;
-    margin-top: 0.3vw;
-    margin-bottom: 0.3vw;
-}
-
-/* Design 3. */
-Hr.Hr-D3
-{
-    height: 0.2vw;
-    background-color: var(--Motyw-Czarny);
-    border: 0.0vw solid;
-    border-radius: var(--Radius-1);
-    margin: 0.0vw;
-    margin-top: 0.3vw;
-    margin-bottom: 0.3vw;
+    margin: 0.3vw 0.0vw;
 }
 
 

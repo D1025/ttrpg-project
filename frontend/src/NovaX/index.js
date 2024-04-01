@@ -14,7 +14,7 @@ export {default as Menu2} from './Menu/Menu2/Menu2.js';                         
 export {default as Main} from './Main/Main/Main.js';                                             // Gotowe.
 export {default as MainArticle} from './Main/MainArticle/MainArticle.js';                        // Gotowe.
 export {default as MainPanel} from './Main/MainPanel/MainPanel.js';                              // Gotowe.
-    export {default as ArticleTitle} from './Main/MainArticleTitle/ArticleTitle/ArticleTitle.js';                   // Gotowe.
+export {default as ArticleTitle} from './Main/MainArticleTitle/ArticleTitle/ArticleTitle.js';                       // Gotowe.
     export {default as ArticleTitleOption} from './Main/MainArticleTitle/ArticleTitleOption/ArticleTitleOption.js'; // Gotowe.
     export {default as ArticleTitleTag} from './Main/MainArticleTitle/ArticleTitleTag/ArticleTitleTag.js';          // Gotowe.
 
@@ -23,8 +23,13 @@ export {default as RoomFrame} from './Frame/RoomFrame/RoomFrame.js';            
 
 // Button.
 export {default as Button} from './Button/Button/Button.js';                                     // Gotowe.
+export {default as ButtonChoice} from './Button/ButtonChoice/ButtonChoice.js';                   // Gotowe.
 export {default as ButtonLogo} from './Button/ButtonLogo/ButtonLogo';                            // Gotowe.
-export {default as ButtonAccount} from './Button/ButtonAccount/ButtonAccount.js';                // Gotowe.
+
+// Account.
+export {default as AccountBar} from './Account/AccountBar/AccountBar.js';                        // Gotowe.
+export {default as AccountBox} from './Account/AccountBox/AccountBox.js';                        // Gotowe.
+export {default as AccountInformation} from './Account/AccountInformation/AccountInformation.js';// Gotowe.
 
 // Form.
 export {default as Input} from './Form/Input/Input.js';                                          // Gotowe.
@@ -32,11 +37,12 @@ export {default as InputFile} from './Form/InputFile/InputFile.js';             
 export {default as InputCheckbox} from './Form/InputCheckbox/InputCheckbox.js';                  // Gotowe.
 export {default as InputNumber} from './Form/InputNumber/InputNumber.js';                        // Gotowe.
 export {default as Label} from './Form/Label/Label.js';                                          // Gotowe.
-export {default as Select} from './Form/Select/Select.js';                                       // TODO: Pre-Release".
-export {default as Textarea} from './Form/Textarea/Textarea.js';                                 // TODO: Pre-Release.
+export {default as Select} from './Form/Select/Select.js';                                       // Gotowe.
+export {default as Textarea} from './Form/Textarea/Textarea.js';                                 // TODO: Dodać podstawowe propy.
 
 // Hr.
 export {default as Hr} from './Hr/Hr/Hr.js';                                                     // Gotowe.
+export {default as HrSeparator} from './Hr/HrSeparator/HrSeparator.js';                          // Gotowe.
 
 // Funkcion.
 export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';                          // Gotowe.
@@ -52,5 +58,5 @@ export {default as StorageRemove} from './Funkcion/LocalStorage/StorageRemove.js
 export {default as Window} from './Window/Window/Window.js';                                     // Gotowe.
 
 // Chat.
-export {default as Chat} from './Chat/Chat/Chat.js';                                             // TODO: Pre-Release.
+export {default as Chat} from './Chat/Chat/Chat.js';                                             // TODO: Dodać przesuwanie na sam dół przy nowych wiadomościach.
 export {default as ChatMessage} from './Chat/ChatMessage/ChatMessage.js';                        // Gotowe.
