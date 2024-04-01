@@ -58,9 +58,24 @@ public class RoomsServiceImpl implements RoomsService {
     }
 
     @Override
+    public List<RoomReturnDTO> getAllRooms(String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        Users user = userService.getUserByToken(authorizationHeader);
+        if (!user.isAdmin()) {
+            throw new MessageException("Niewystarczające uprawnienia");
+        }
+        return roomMapper.roomsToRoomReturnDTOs(roomRepository.findAll());
+    }
+
+    @Override
     @Transactional
-    public RoomReturnDTO modifyRoom(EditRoom editRoom, UUID id) {
+    public RoomReturnDTO modifyRoom(EditRoom editRoom, UUID id, String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        Users user = userService.getUserByToken(authorizationHeader);
         Room room = roomRepository.findById(id).orElseThrow(() -> new MessageException("Room not found"));
+        if (!room.getOwner().getId().equals(user.getId()) && !user.isAdmin()) {
+            throw new MessageException("You are not the owner of this room");
+        }
         room.setName(editRoom.name());
         room.setDescription(editRoom.description());
         room.setImage(editRoom.image());
@@ -68,5 +83,24 @@ public class RoomsServiceImpl implements RoomsService {
         room.setImageExtension(editRoom.imageExtension());
         roomRepository.save(room);
         return roomMapper.roomToRoomReturnDTO(room);
+    }
+
+    @Override
+    public List<RoomReturnDTO> getMyOwnedRooms(String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        Users user = userService.getUserByToken(authorizationHeader);
+        return roomMapper.roomsToRoomReturnDTOs(roomRepository.findAllByOwnerId(user.getId()));
+    }
+
+    @Override
+    @Transactional
+    public void deleteRoom(UUID id, String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        Users user = userService.getUserByToken(authorizationHeader);
+        Room room = roomRepository.findById(id).orElseThrow(() -> new MessageException("Room not found"));
+        if (!room.getOwner().getId().equals(user.getId()) || user.isAdmin()) {
+            throw new MessageException("You are not the owner of this room");
+        }
+        roomRepository.delete(room);
     }
 }
