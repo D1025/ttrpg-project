@@ -4,6 +4,7 @@ import Stomp from "stompjs";
 import {Chat, StorageLoad, ChatMessage} from "../../../NovaX";
 import {ModulUserList} from "../../index";
 import './ModulChat.css';
+import dayjs from "dayjs";
 
 const ModulChat = ({roomId, userId}) =>
 {
@@ -206,7 +207,7 @@ const ModulChat = ({roomId, userId}) =>
                   inputPlaceholder={"Wyślij wiadomość"}>
                 {wiadomosci.map((msg, index) => (
                     <ChatMessage key={index} title={getUserNameById(msg.userId)} text={msg.content}
-                                 timestamp={msg.timestamp} design={msg.userId === loginData.id ? 2 : 1}/>
+                                 timestamp={dayjs(msg.timestamp).format("HH:mm")} design={msg.userId === loginData.id ? 2 : 1}/>
                 ))}
             </Chat>
         </div>

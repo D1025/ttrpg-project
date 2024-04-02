@@ -1,4 +1,4 @@
-import './WindowCreateRoom.css';
+import './WindowRoom.css';
 import {
     Button,
     Input,
@@ -83,11 +83,11 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                     'Authorization': loginData.token
                 },
                 body: JSON.stringify({
-                    name: nazwa !== danePokoju.name && nazwa,
-                    description: opis !== danePokoju.description && opis,
-                    image: obraz !== danePokoju.image && obraz,
-                    imageExtension: obrazRozszezenie !== danePokoju.imageExtension && obrazRozszezenie,
-                    isPrivate: typ !== danePokoju.isPrivate && typ,
+                    name: nazwa !== danePokoju.name ? nazwa : undefined,
+                    description: opis !== danePokoju.description ? opis : undefined,
+                    image: obraz !== danePokoju.image ? obraz : undefined,
+                    imageExtension: obrazRozszezenie !== danePokoju.imageExtension ? obrazRozszezenie : undefined,
+                    isPrivate: typ !== danePokoju.isPrivate ? typ : undefined,
                 })
             });
 

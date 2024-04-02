@@ -1,5 +1,16 @@
-import './WindowCreateRoom.css';
-import {Button, Input, InputFile, Label, Window, Select, StorageLoad, Textarea} from "../../../NovaX";
+import './WindowRoom.css';
+import {
+    Button,
+    Input,
+    InputFile,
+    Label,
+    Window,
+    Select,
+    StorageLoad,
+    Textarea,
+    iconImage,
+    iconClose
+} from "../../../NovaX";
 import React, {useState} from "react";
 
 const WindowCreateRoom = ({onClose}) =>
@@ -10,6 +21,7 @@ const WindowCreateRoom = ({onClose}) =>
     const [opis, ustawOpis] = useState("");
     const [obraz, ustawObraz] = useState("");
     const [obrazRozszezenie, ustawObrazRozszezenie] = useState("");
+
     // Pobieranie z formulaża.
     const pobierzNazwa = (event) => // Nazwa.
     {
@@ -110,7 +122,7 @@ const WindowCreateRoom = ({onClose}) =>
                             Tworzenie Pokoju
                         </div>
                         <div>
-                            <Button src={"./Ikonki/Zamknij.png"} onClick={onClose}/>
+                            <Button src={iconClose} onClick={onClose}/>
                         </div>
                     </div>
 
@@ -123,7 +135,6 @@ const WindowCreateRoom = ({onClose}) =>
                                         <Label  marginBottom={true}>Nazwa:</Label><br/>
                                         <Input type={"text"} placeholder={"Nazwa"} required
                                                onChange={pobierzNazwa}/>
-                                        {/*<img src={obraz} alt={""}/>*/}
                                     </div>
 
                                     <div className={"MCR-Main-Section"}>
@@ -146,7 +157,7 @@ const WindowCreateRoom = ({onClose}) =>
                                         <img src={obraz} alt={""}/>
                                         :
                                         <div className={"Fake-Img"}>
-                                            <img src={"./Ikonki/Obraz.png"} alt={""}/>
+                                            <img src={iconImage} alt={""}/>
                                         </div>
                                     }
                                 </div>
