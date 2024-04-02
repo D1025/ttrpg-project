@@ -76,11 +76,21 @@ public class RoomsServiceImpl implements RoomsService {
         if (!room.getOwner().getId().equals(user.getId()) && !user.isAdmin()) {
             throw new MessageException("You are not the owner of this room");
         }
-        room.setName(editRoom.name());
-        room.setDescription(editRoom.description());
-        room.setImage(editRoom.image());
-        room.setPrivateRoom(editRoom.isPrivate());
-        room.setImageExtension(editRoom.imageExtension());
+        if (editRoom.name() != null) {
+            room.setName(editRoom.name());
+        }
+        if (editRoom.description() != null) {
+            room.setDescription(editRoom.description());
+        }
+        if (editRoom.image() != null) {
+            room.setImage(editRoom.image());
+        }
+        if (editRoom.isPrivate() != null) {
+            room.setPrivateRoom(editRoom.isPrivate());
+        }
+        if (editRoom.imageExtension() != null) {
+            room.setImageExtension(editRoom.imageExtension());
+        }
         roomRepository.save(room);
         return roomMapper.roomToRoomReturnDTO(room);
     }

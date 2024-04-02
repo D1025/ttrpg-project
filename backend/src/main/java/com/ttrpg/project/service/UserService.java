@@ -1,6 +1,7 @@
 package com.ttrpg.project.service;
 
 import com.ttrpg.project.dto.EditUser;
+import com.ttrpg.project.dto.EditUserPassword;
 import com.ttrpg.project.dto.PublicUserReturnDTO;
 import com.ttrpg.project.dto.UserReturnDTO;
 import com.ttrpg.project.model.Users;
@@ -25,4 +26,6 @@ public interface UserService {
     PublicUserReturnDTO banUser(String id, String token);
 
     PublicUserReturnDTO unbanUser(String id, String token);
+
+    UserReturnDTO editUserPassword(UUID id, EditUserPassword editUser, String token);
 }

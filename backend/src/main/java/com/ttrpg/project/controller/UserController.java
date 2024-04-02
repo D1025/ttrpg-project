@@ -8,6 +8,8 @@ import com.ttrpg.project.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.ttrpg.project.dto.EditUserPassword;
+
 
 import java.util.List;
 import java.util.UUID;
@@ -31,4 +33,11 @@ public class UserController {
         jwtAuthorization.authorize(authorizationHeader);
         return ResponseEntity.ok(userService.editUser(id, editUser, authorizationHeader));
     }
+
+    @PutMapping("/{id}/password")
+    public ResponseEntity<UserReturnDTO> editUserPassword(@RequestHeader(name = "Authorization", required = false) String authorizationHeader, @PathVariable UUID id, @RequestBody EditUserPassword passwords) {
+        jwtAuthorization.authorize(authorizationHeader);
+        return ResponseEntity.ok(userService.editUserPassword(id, passwords, authorizationHeader));
+    }
+
 }

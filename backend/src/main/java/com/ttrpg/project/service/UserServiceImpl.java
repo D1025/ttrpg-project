@@ -3,6 +3,7 @@ package com.ttrpg.project.service;
 import com.ttrpg.project.dao.UsersRepository;
 import com.ttrpg.project.dto.EditUser;
 import com.ttrpg.project.dto.PublicUserReturnDTO;
+import com.ttrpg.project.dto.EditUserPassword;
 import com.ttrpg.project.dto.UserReturnDTO;
 import com.ttrpg.project.exceptions.MessageException;
 import com.ttrpg.project.mapper.UserMapper;
@@ -51,9 +52,18 @@ public class UserServiceImpl implements UserService {
     public UserReturnDTO editUser(UUID id, EditUser editUser, String token) {
         Users user = getUserById(id);
         if (user.getToken().equals(token) || user.isAdmin()) {
-            user.setNickname(editUser.nickname());
-            user.setAvatar(editUser.avatar());
-            user.setAvatarExtension(editUser.avatarExtension());
+            if (editUser.nickname() != null) {
+                user.setNickname(editUser.nickname());
+            }
+            if (editUser.avatar() != null) {
+                user.setAvatar(editUser.avatar());
+            }
+            if (editUser.avatarExtension() != null) {
+                user.setAvatarExtension(editUser.avatarExtension());
+            }
+            if (editUser.email() != null) {
+                user.setEmail(editUser.email());
+            }
             userRepository.save(user);
             return userMapper.userToUserReturnDTO(user);
         } else {
@@ -90,5 +100,20 @@ public class UserServiceImpl implements UserService {
         user.setBanned(false);
         userRepository.save(user);
         return userMapper.userToPublicUserReturnDTO(user);
+    }
+
+    @Override
+    @Transactional
+    public UserReturnDTO editUserPassword(UUID id, EditUserPassword editUser, String token) {
+        Users user = getUserById(id);
+        if (user.getToken().equals(token)) {
+            if (editUser.password() != null && editUser.newPassword() != null && editUser.password().equals(user.getPassword())){
+                user.setPassword(editUser.password());
+            }
+            userRepository.save(user);
+            return userMapper.userToUserReturnDTO(user);
+        } else {
+            throw new RuntimeException("You are not authorized to edit this user");
+        }
     }
 }
