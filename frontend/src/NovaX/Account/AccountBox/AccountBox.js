@@ -1,6 +1,6 @@
 import './AccountBox.css'
 
-// Account Box.
+// Account.png Box.
 const AccountBox = ({
                         title,
                         tittleLength = 8,

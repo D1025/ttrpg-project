@@ -1,9 +1,9 @@
 import './AccountInformation.css';
-import {Button} from "../../index";
+import {Button, iconEdit} from "../../index";
 
-// Account Information.
+// Account.png Information.
 const AccountInformation = ({
-                                src = "./Ikonki/Edycja.png",
+                                src = iconEdit,
                                 alt = "",
                                 dataType = "dataType",
                                 data = "data",
@@ -14,7 +14,7 @@ const AccountInformation = ({
                                 buttonColorNumber = 3,
                                 buttonActive = true,
                                 className,
-                                onclick,
+                                onClick,
                                 ...rest
                             }) =>
 {
@@ -50,7 +50,7 @@ const AccountInformation = ({
             </div>
             {
                 (canEdit === true || canEdit === false) &&
-                <Button onClick={onclick} src={src} alt={alt} colorNumber={buttonColorNumber} active={buttonActive}/>
+                <Button onClick={onClick} src={src} alt={alt} colorNumber={buttonColorNumber} active={buttonActive}/>
             }
         </div>
     )

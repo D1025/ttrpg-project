@@ -1,12 +1,13 @@
 import React, {useEffect, useState, Children} from 'react';
 import './Select.css';
-import {Hr} from "../../index";
+import {Hr, iconArrowDown, iconArrowLeft} from "../../index";
 
 const Select = ({
                     children,
                     length = 13,
                     title = 'Select...',
-                    src = "./Ikonki/Strzałka_Lewo.png",
+                    srcHide = iconArrowLeft,
+                    srcShow = iconArrowDown,
                     alt = "",
                     width = 2,
                     marginBottom = false,
@@ -79,7 +80,7 @@ const Select = ({
         <div {...rest} className={myClass}>
             <div className="Select-Value" onClick={handleToggle}>
                 {selectedLabel || title}
-                <img src={src} alt={alt} className={isOpen ? 'Select-ArrowActive' : undefined}/>
+                <img src={isOpen ? srcShow : srcHide} alt={alt}/>
             </div>
             {isOpen && (
                 <div className="Select-Options">

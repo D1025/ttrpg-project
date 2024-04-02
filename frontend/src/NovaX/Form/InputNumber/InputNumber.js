@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import './InputNumber.css';
-import {Button} from "../../index";
+import {Button, iconArrowLeft, iconArrowRight} from "../../index";
 
 // InputNumber.
 const InputNumber = ({
-                         serLeftArrow = "Ikonki/Strzałka_Lewo.png",
-                         srcRightArrow = "Ikonki/Strzałka_Prawo.png",
+                         serLeftArrow = iconArrowLeft,
+                         srcRightArrow = iconArrowRight,
                          numberMin = -Infinity,
                          numberMax = Infinity,
                          numberStart = 0,

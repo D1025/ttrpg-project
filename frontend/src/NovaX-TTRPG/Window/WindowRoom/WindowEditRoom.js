@@ -1,15 +1,35 @@
 import './WindowCreateRoom.css';
-import {Button, Input, InputFile, Label, Window, Select, StorageLoad, Textarea} from "../../../NovaX";
+import {
+    Button,
+    Input,
+    InputFile,
+    Label,
+    Window,
+    Select,
+    StorageLoad,
+    Textarea,
+    iconClose, iconImage
+} from "../../../NovaX";
 import React, {useState} from "react";
 
-const WindowCreateRoom = ({onClose}) =>
+const WindowEditRoom = ({onClose, danePokoju}) =>
 {
     // Do Przetwozenia.
-    const [nazwa, ustawNazwa] = useState("");
-    const [typ, ustawTyp] = useState("");
-    const [opis, ustawOpis] = useState("");
-    const [obraz, ustawObraz] = useState("");
-    const [obrazRozszezenie, ustawObrazRozszezenie] = useState("");
+    const [nazwa, ustawNazwa] = useState(danePokoju.name);
+    const [typ, ustawTyp] = useState(danePokoju.isPrivate);
+    const [opis, ustawOpis] = useState(danePokoju.description);
+    const [obrazRozszezenie, ustawObrazRozszezenie] = useState(danePokoju.imageExtension);
+    const [obraz, ustawObraz] = useState(!danePokoju.image ? undefined : `data:image/${obrazRozszezenie};base64,${danePokoju.image}`);
+
+    const reserujDane = () =>
+    {
+        ustawNazwa(danePokoju.name)
+        ustawTyp(danePokoju.isPrivate)
+        ustawOpis(danePokoju.description)
+        ustawObrazRozszezenie(danePokoju.imageExtension)
+        ustawObraz(!danePokoju.image ? undefined : `data:image/${obrazRozszezenie};base64,${danePokoju.image}`)
+    }
+
     // Pobieranie z formulaża.
     const pobierzNazwa = (event) => // Nazwa.
     {
@@ -56,20 +76,18 @@ const WindowCreateRoom = ({onClose}) =>
 
         try
         {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/room/create', {
-                method: 'POST',
+            const odpowiedz = await fetch('http://localhost:8086/api/v1/room/' + danePokoju.id, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': loginData.token
                 },
                 body: JSON.stringify({
-                    name: nazwa,
-                    description: opis,
-                    system: 'COHORS_CTHULHU',
-                    image: obraz,
-                    extension: obrazRozszezenie,
-                    isPrivate: typ,
-                    ownerId: loginData.id
+                    name: nazwa !== danePokoju.name && nazwa,
+                    description: opis !== danePokoju.description && opis,
+                    image: obraz !== danePokoju.image && obraz,
+                    imageExtension: obrazRozszezenie !== danePokoju.imageExtension && obrazRozszezenie,
+                    isPrivate: typ !== danePokoju.isPrivate && typ,
                 })
             });
 
@@ -107,10 +125,10 @@ const WindowCreateRoom = ({onClose}) =>
                 <form onSubmit={stworzLobby}>
                     <div className={"WindowCreateRoom-Top"}>
                         <div>
-                            Tworzenie Pokoju
+                            Edycja: {'"' + (danePokoju.name.length > 15 ? danePokoju.name.substring(0, 15) + '...' : danePokoju.name) + '"'}
                         </div>
                         <div>
-                            <Button src={"./Ikonki/Zamknij.png"} onClick={onClose}/>
+                            <Button src={iconClose} onClick={onClose}/>
                         </div>
                     </div>
 
@@ -120,24 +138,24 @@ const WindowCreateRoom = ({onClose}) =>
                             <div className={"WCR-Main-Flex"}>
                                 <div className={"WCR-Main-Flex-Left"}>
                                     <div className={"MCR-Main-Section"}>
-                                        <Label  marginBottom={true}>Nazwa:</Label><br/>
-                                        <Input type={"text"} placeholder={"Nazwa"} required
+                                        <Label marginBottom={true}>Nazwa:</Label><br/>
+                                        <Input value={nazwa} type={"text"} placeholder={"Nazwa"} required
                                                onChange={pobierzNazwa}/>
                                         {/*<img src={obraz} alt={""}/>*/}
                                     </div>
 
                                     <div className={"MCR-Main-Section"}>
-                                        <Label  marginBottom={true}>Publiczne:</Label><br/>
-                                        <Select title={"Wybierz..."} id={"typ"} value={typ} onChange={pobierzTyp} required>
-                                            <option value="false">Tak</option>
-                                            <option value="true">Nie</option>
+                                        <Label marginBottom={true}>Publiczne:</Label><br/>
+                                        <Select title={"Wybierz..."} id={"typ"} value={typ.toString()} onChange={pobierzTyp}
+                                                required>
+                                            <option value={"false"}>Tak</option>
+                                            <option value={"true"}>Nie</option>
                                         </Select>
                                     </div>
 
                                     <div className={"MCR-Main-Section"}>
                                         <Label marginBottom={true}>Obraz:</Label><br/>
-                                        <InputFile onChange={pobierzObraz}
-                                                   accept={"image/jpeg, image/jpg, image/png, image/gif, image/webp"}/>
+                                        <InputFile title={"Wybierz Obraz"} onChange={pobierzObraz} accept={"image/jpeg, image/jpg, image/png, image/gif, image/webp"}/>
                                     </div>
                                 </div>
                                 {/* Podgląd obrazka. */}
@@ -146,13 +164,13 @@ const WindowCreateRoom = ({onClose}) =>
                                         <img src={obraz} alt={""}/>
                                         :
                                         <div className={"Fake-Img"}>
-                                            <img src={"./Ikonki/Obraz.png"} alt={""}/>
+                                            <img src={iconImage} alt={""}/>
                                         </div>
                                     }
                                 </div>
                             </div>
                             <Label marginBottom={true}>Opis:</Label><br/>
-                            <Textarea type={"text"} placeholder={"Opis"} onChange={pobierzOpis}/>
+                            <Textarea value={opis} type={"text"} placeholder={"Opis"} onChange={pobierzOpis}/>
 
                         </div>
 
@@ -160,7 +178,10 @@ const WindowCreateRoom = ({onClose}) =>
 
                     <div className={"WindowCreateRoom-Bottom"}>
                         <div>
-                            <div><Input type={"submit"} value={"Stwórz Pokój"}/></div>
+                            <div>
+                                <Button title={"Resetuj"} onClick={reserujDane}/>
+                                <Input type={"submit"} value={"Zapisz Zmiany"}/>
+                            </div>
                             {powiadomienie && <div>{powiadomienie}</div>}
                         </div>
                     </div>
@@ -172,4 +193,4 @@ const WindowCreateRoom = ({onClose}) =>
     );
 }
 
-export default WindowCreateRoom;
+export default WindowEditRoom;

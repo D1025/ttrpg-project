@@ -6,9 +6,9 @@ import
     Button, ButtonLogo, AccountBar,
     Main, MainArticle, MainPanel, ArticleTitle,
     RoomFrame,
-    StorageLoad, StorageRemove, setTittle, ArticleTitleOption
+    StorageLoad, StorageRemove, setTittle, ArticleTitleOption, iconAdd, iconSettings, iconTrashCan, iconPlay
 } from "../../NovaX";
-import {WindowCreateRoom, WindowLogIn} from "../../NovaX-TTRPG";
+import {WindowCreateRoom, WindowDeleteRoom, WindowEditRoom, WindowLogIn} from "../../NovaX-TTRPG";
 
 const HomePage = () =>
 {
@@ -17,14 +17,6 @@ const HomePage = () =>
 
     // Lobby Publiczne/Prywatne.
     const [lobby, ustawLobby] = useState(false);
-
-    // Odświeżanie.
-    const [odswiez, setOdswiez] = useState(false);
-    const wymusOdswiezenie = () =>
-    {
-        setOdswiez(prev => !prev);
-    };
-
 
     // Status Zalogowaniay.
     const [isLogIn, ustawIsLogIn] = useState(false); // Czy zalogowany.
@@ -56,7 +48,7 @@ const HomePage = () =>
             // Obsługa błędów związanych z siecią lub żądaniem
             console.error(`Nieoczekiwany błąd: ${blad}`);
         }
-    }, [daneUzytkownika.token, wymusOdswiezenie]);
+    }, [daneUzytkownika.token]);
 
 
     // Formularz Logowanie/Rejestracja.
@@ -70,6 +62,21 @@ const HomePage = () =>
     const togglCreateRoom = () =>
     {
         setCreateRoom(!showCreateRoom);
+    };
+    // Formularz EditRoom.
+    const [showEditRoom, setEditRoom] = useState(false);
+    const [edytowanyPokoj, setEdytowanyPokoj] = useState("");
+    const togglEditRoom = (pokoj) =>
+    {
+        setEdytowanyPokoj(pokoj);
+        setEditRoom(!showEditRoom);
+    };
+    // Formularz DeleteRoom.
+    const [showDeleteRoom, setDeleteRoom] = useState(false);
+    const togglDeleteRoom = (pokoj) =>
+    {
+        setEdytowanyPokoj(pokoj);
+        setDeleteRoom(!showDeleteRoom);
     };
 
 
@@ -113,9 +120,17 @@ const HomePage = () =>
                         title={pokoj.name && pokoj.name}
                     >
                         {isLogIn === true && (
-                            <a href={`/Gra?id=${pokoj.id}`}>
-                                <Button src={"./Ikonki/Play.png"}/>
-                            </a>
+                            <>
+                                {(daneUzytkownika.id === pokoj.ownerId || daneUzytkownika.admin===true) &&
+                                    <>
+                                        <Button colorNumber={4} onClick={()=>togglDeleteRoom(pokoj)} src={iconTrashCan}/>
+                                        <Button onClick={()=>togglEditRoom(pokoj)} src={iconSettings}/>
+                                    </>
+                                }
+                                <a href={`/Gra?id=${pokoj.id}`}>
+                                    <Button src={iconPlay}/>
+                                </a>
+                            </>
                         )}
                     </RoomFrame>
                 ));
@@ -145,7 +160,7 @@ const HomePage = () =>
             ustawIsLogIn(false);
         }
         ladujPokoje({publiczny: !lobby});
-    }, [lobby, ladujPokoje, showCreateRoom, showLogin]);
+    }, [lobby, ladujPokoje, showCreateRoom===false, showEditRoom===false, showDeleteRoom===false, showLogin]);
 
     // Aplikacja.
     return (
@@ -235,27 +250,18 @@ const HomePage = () =>
                     <ArticleTitle title={lobby === false ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
                         {isLogIn === true && (
                             <ArticleTitleOption>
-                                <Button src={"./Ikonki/Dodaj.png"} title={"Stwóż Pokój"} width={1}
-                                        onClick={togglCreateRoom}/>
+                                <Button src={iconAdd} title={"Stwóż Pokój"} width={1} onClick={togglCreateRoom}/>
                             </ArticleTitleOption>
                         )}
-                        {/*<div type={"tag"}>[Tag 1] [Tag 2]</div>*/}
                     </ArticleTitle>
 
                     {lobby === false ? (
                         <>
                             {pokoje}
-                            {/*<RoomFrame title={"Kocie Zabawy"}*/}
-                            {/*         description={"Gramy w kotki ze znajomymi a smoki chcą zjeść nasze kotki :)"}*/}
-                            {/*         src={"https://i.pinimg.com/originals/0d/72/f3/0d72f35db2305ef238e1fbc1d1151719.jpg"}/>*/}
-                            {/*<RoomFrame title={"Smoki Wojny"}*/}
-                            {/*         description={"To ekscytująca gra fabularna, gdzie gracze wcielają się w bohaterów stawiających czoła potężnym smokom i ich hordom, aby przywrócić równowagę w świecie pogrążonym w chaosie wojennym. Walka, intrygi i niebezpieczeństwa czekają na każdym kroku, a losy świata zależą od sprytu i odwagi graczy.\"\n"}*/}
-                            {/*         src={"https://i.pinimg.com/originals/db/9d/14/db9d149cdcef8f864bb3a9a8e7d93121.jpg"}/>*/}
                         </>
                     ) : (
                         <>
                             {pokoje}
-                            {/*<RoomFrame title={"Poległe Kotki"}/>*/}
                         </>
                     )}
                 </MainArticle>
@@ -265,6 +271,8 @@ const HomePage = () =>
 
             {showLogin && <WindowLogIn onClose={toggleShowLogin}/>}
             {showCreateRoom && <WindowCreateRoom onClose={togglCreateRoom}/>}
+            {showEditRoom && <WindowEditRoom danePokoju={edytowanyPokoj} onClose={togglEditRoom}/>}
+            {showDeleteRoom && <WindowDeleteRoom danePokoju={edytowanyPokoj} onClose={togglDeleteRoom}/>}
         </>
     );
 }

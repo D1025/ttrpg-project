@@ -10,6 +10,7 @@ const Button = ({
                     marginLeftRight = true,
                     colorNumber = 0,
                     active = true,
+                    wrapWord = false,
                     src,
                     alt = "",
                     ...rest
@@ -55,7 +56,7 @@ const Button = ({
                         <img src={src} alt={alt}/>
                     )}
                     {title && (
-                        <div>{title}</div>
+                        <div className={wrapWord ? 'Button-Wrap' : undefined}>{title}</div>
                     )}
                 </div>
             )}

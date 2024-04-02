@@ -2,7 +2,6 @@
 /* Design 1 [Kwadrat]. */
 Div.Button-D1
 {
-    min-width: 0.0vw!important;
     width: var(--Przycisk-Wysokość);
     height: var(--Przycisk-Wysokość);
     justify-content: center;
@@ -37,8 +36,9 @@ Div.Button-D1
 /* Design 2 [Szeroki]. */
 Div.Button-D2
 {
-    height: var(--Przycisk-Wysokość);
+    min-height: var(--Przycisk-Wysokość);
     width: max-content!important;
+    height: var(--Przycisk-Wysokość);
     font-size: 1.0rem;
     font-weight: bold;
     align-items: center;
@@ -117,4 +117,11 @@ Div.Button-MarginLeftRight
 {
     margin-left: var(--Przycisk-Odstep-X);
     margin-right: var(--Przycisk-Odstep-X);
+}
+
+/* Zawijanie tekstu. */
+Div.Button-Wrap
+{
+    width: min-content;
+    word-wrap: break-word;
 }

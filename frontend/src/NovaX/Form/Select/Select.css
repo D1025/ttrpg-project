@@ -35,11 +35,6 @@ Div.Select
             max-height: 65%;
             margin-left: auto;
         }
-            /* Strzałka aktywna. */
-            Div.Select-Value > Img.Select-ArrowActive
-            {
-                rotate: -90deg;
-            }
 
     /* Pole w wyborem wartości. */
     Div.Select-Options

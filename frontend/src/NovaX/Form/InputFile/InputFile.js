@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import './InputFile.css';
-import {Button} from "../../index";
+import {Button, iconCheckMark2, iconTrashCan} from "../../index";
 
 // Input File.
 const InputFile = ({
                        title = 'Wybierz Plik',
-                       srcTrashCan = "./Ikonki/Kosz.png",
+                       srcTrashCan = iconTrashCan,
                        buttonColorNumber = 4,
-                       srcChecked = './Ikonki/Ptaszek 2.png',
+                       srcChecked = iconCheckMark2,
                        accept,
                        onChange,
                        marginBottom = false,

@@ -1,4 +1,6 @@
-import './Root.css'; // Globalny CSS z Root.
+// Globalny Root CSS.
+import './Root.css';
+
 
 // Header.
 export {default as Header} from './Header/Header.js';                                            // Gotowe.
@@ -26,7 +28,7 @@ export {default as Button} from './Button/Button/Button.js';                    
 export {default as ButtonChoice} from './Button/ButtonChoice/ButtonChoice.js';                   // Gotowe.
 export {default as ButtonLogo} from './Button/ButtonLogo/ButtonLogo';                            // Gotowe.
 
-// Account.
+// Account.png.
 export {default as AccountBar} from './Account/AccountBar/AccountBar.js';                        // Gotowe.
 export {default as AccountBox} from './Account/AccountBox/AccountBox.js';                        // Gotowe.
 export {default as AccountInformation} from './Account/AccountInformation/AccountInformation.js';// Gotowe.
@@ -60,3 +62,37 @@ export {default as Window} from './Window/Window/Window.js';                    
 // Chat.
 export {default as Chat} from './Chat/Chat/Chat.js';                                             // TODO: Dodać przesuwanie na sam dół przy nowych wiadomościach.
 export {default as ChatMessage} from './Chat/ChatMessage/ChatMessage.js';                        // Gotowe.
+
+
+
+
+
+// Icon.
+export {default as iconAdd} from './Icon/Add_1.png';
+export {default as iconAdd2} from './Icon/Add_2.png';
+export {default as iconTrashCan} from './Icon/TrashCan_1.png';
+export {default as iconTrashCan2} from './Icon/TrashCan_2.png';
+export {default as iconEdit} from './Icon/Edit.png';
+export {default as iconAccount} from './Icon/Account.png';
+export {default as iconLink} from './Icon/Link.png';
+export {default as iconMenu} from './Icon/Menu.png';
+export {default as iconImage} from './Icon/Image.png';
+export {default as iconPlay} from './Icon/Play.png';
+export {default as iconHelp} from './Icon/Help.png';
+export {default as iconNotification} from './Icon/Notification.png';
+export {default as iconReload} from './Icon/Reload.png';
+export {default as iconCheckMark} from './Icon/CheckMark_1.png';
+export {default as iconCheckMark2} from './Icon/CheckMark_2.png';
+
+export {default as iconArrowUp} from './Icon/Strzałka_Góra.png';
+export {default as iconArrowDown} from './Icon/Strzałka_Dół.png';
+export {default as iconArrowLeft} from './Icon/Strzałka_Lewo.png';
+export {default as iconArrowRight} from './Icon/Strzałka_Prawo.png';
+export {default as iconStyle} from './Icon/Style.png';
+export {default as iconText} from './Icon/Tekst.png';
+export {default as iconFavourite} from './Icon/Favourite.png';
+export {default as iconLike} from './Icon/Like.png';
+export {default as iconDislike} from './Icon/Dislike.png';
+export {default as iconSettings} from './Icon/Ustawienia.png';
+export {default as iconClose} from './Icon/Zamknij.png';
+export {default as iconClose2} from './Icon/Zamknij 2.png';

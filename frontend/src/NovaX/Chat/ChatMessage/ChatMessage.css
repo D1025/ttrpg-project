@@ -28,13 +28,13 @@ Div.ChatMessage-D1 > Div.ChatMessage-Timestamp
     padding: 0.2vw;
     z-index: 1;
     position: relative;
-    visibility: visible;
+    visibility: hidden;
 }
     /* Widoczny czas wysłania wiadomości. */
-    /*Div.ChatMessage-D1:hover > Div.ChatMessage-Timestamp*/
-    /*{*/
-    /*    visibility: visible;*/
-    /*}*/
+    Div.ChatMessage-D1:hover > Div.ChatMessage-Timestamp
+    {
+        visibility: visible;
+    }
 
 /* Pole z wiadomością. */
 Div.ChatMessage-D1 > Div.ChatMessage-Message
@@ -53,7 +53,7 @@ Div.ChatMessage-D1 > Div.ChatMessage-Message
         width: var(--Przycisk-Wysokość);
         height: var(--Przycisk-Wysokość);
         background-color: var(--Kolor-Dodatkowy);
-        background-image: url("/public/Ikonki/Konto.png");
+        background-image: url("../../Icon/Account.png");
         background-size: 65%;
         background-position: center;
         background-repeat: no-repeat;
@@ -120,6 +120,12 @@ Div.ChatMessage-D2 > Div.ChatMessage-Timestamp
     margin-right: 0.75vw;
     margin-left: auto;
     padding: 0.2vw;
+    visibility: hidden;
+}
+/* Widoczny czas wysłania wiadomości. */
+Div.ChatMessage-D2:hover > Div.ChatMessage-Timestamp
+{
+    visibility: visible;
 }
 
 /* Pole z wiadomością. */

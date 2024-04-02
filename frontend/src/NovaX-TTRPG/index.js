@@ -7,7 +7,9 @@ export {default as AccountPage} from './Page/AccountPage';
 
 // Window.
 export {default as WindowLogIn} from './Window/WindowLogIn/WindowLogIn';
-export {default as WindowCreateRoom} from './Window/WindowCreateRoom/WindowCreateRoom.js';
+export {default as WindowCreateRoom} from './Window/WindowRoom/WindowCreateRoom.js';
+export {default as WindowEditRoom} from './Window/WindowRoom/WindowEditRoom.js';
+export {default as WindowDeleteRoom} from './Window/WindowRoom/WindowDeleteRoom.js';
 
 // Modul.
 export {default as ModulChat} from './Modul/ModulChat/ModulChat.js';

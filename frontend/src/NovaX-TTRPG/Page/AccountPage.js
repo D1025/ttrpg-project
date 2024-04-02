@@ -14,24 +14,17 @@ import {
     HeaderLeft,
     HeaderCenter,
     RoomFrame,
-    HrSeparator, Label, AccountInformation
+    HrSeparator, AccountInformation, iconTrashCan, iconSettings, iconPlay
 } from "../../NovaX";
 import './AccountPage.css';
+import {WindowDeleteRoom, WindowEditRoom} from "../index";
 
 const GamePage = () =>
 {
     // Tittle.
     setTittle("./Grafiki/Logo.png", "TTRPG | Konto");
-    const urlParams = new URLSearchParams(window.location.search);
-    const idParam = urlParams.get('id');
-
-    // Odświeżanie.
-    const [odswiez, setOdswiez] = useState(false);
-    const wymusOdswiezenie = () =>
-    {
-        setOdswiez(prev => !prev);
-    };
-
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const idParam = urlParams.get('id');
 
     // Status Zalogowaniay.
     const [isLogIn, ustawIsLogIn] = useState(false); // Czy zalogowany.
@@ -42,25 +35,8 @@ const GamePage = () =>
     const toggleShowLogin = () =>
     {
         setShowLogin(prevShowLogin => !prevShowLogin);
-        wymusOdswiezenie();
+        // wymusOdswiezenie();
     };
-
-    // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
-    useEffect(() =>
-    {
-        const loginData = StorageLoad('loginData');
-        // Jeśli dane logowania istnieją.
-        if(loginData)
-        {
-            ustawIsLogIn(true);
-            ustawDaneUzytkownika(loginData);
-        }
-        else
-        {
-            ustawDaneUzytkownika('');
-            ustawIsLogIn(false);
-        }
-    }, [odswiez]);
 
     // Załaój pokoje.
     const [pokoje, setPokoje] = useState([]);
@@ -69,20 +45,11 @@ const GamePage = () =>
         try
         {
             // Zapytanie dla publicznych pokoi
-            const odpowiedzPubliczne = await fetch('http://localhost:8086/api/v1/room?status=PUBLIC', {
+            const odpowiedzPubliczne = await fetch('http://localhost:8086/api/v1/room/my', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': daneUzytkownika.token ? daneUzytkownika.token : ''
-                },
-            });
-
-            // Zapytanie dla prywatnych pokoi
-            const odpowiedzPrywatne = await fetch('http://localhost:8086/api/v1/room?status=PRIVATE', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': daneUzytkownika.token ? daneUzytkownika.token : ''
+                    'Authorization': daneUzytkownika.token
                 },
             });
 
@@ -101,29 +68,11 @@ const GamePage = () =>
                 }
             }
 
-            // Sprawdzenie odpowiedzi dla prywatnych pokoi
-            if(!odpowiedzPrywatne.ok)
-            {
-                // Obróbka błędów
-                if(odpowiedzPrywatne.status === 400)
-                {
-                    const blad = await odpowiedzPrywatne.json();
-                    console.log(`${blad.message}`);
-                }
-                else
-                {
-                    console.log(`Błąd: ${odpowiedzPrywatne.status}`);
-                }
-            }
-
             // Przetwarzanie odpowiedzi dla publicznych pokoi
             const danePubliczne = await odpowiedzPubliczne.json();
 
-            // Przetwarzanie odpowiedzi dla prywatnych pokoi
-            const danePrywatne = await odpowiedzPrywatne.json();
-
             // Połączenie danych
-            const zrenderowanePokoje = [...danePubliczne, ...danePrywatne].map(pokoj => (
+            const zrenderowanePokoje = danePubliczne.map(pokoj => (
                 pokoj.ownerId === daneUzytkownika.id &&
                 <RoomFrame
                     key={pokoj.id}
@@ -132,16 +81,19 @@ const GamePage = () =>
                     title={pokoj.name && pokoj.name}
                 >
                     <span style={{
-                        marginRight: 'auto',
+                        marginRight: '0.5vw',
                         color: 'var(--Kolor-Oznaczenia)',
-                        fontSize: '0.9rem',
+                        fontSize: '0.86rem',
                         fontWeight: 'bold'
                     }}>{pokoj.isPrivate === false ? 'Publiczny' : 'Prywatny'}</span>
-                    <Button src={"./Ikonki/Edycja.png"}/>
                     {isLogIn && (
-                        <a href={`/Gra?id=${pokoj.id}`}>
-                            <Button src={"./Ikonki/Play.png"}/>
-                        </a>
+                        <>
+                            <Button colorNumber={4} onClick={() => togglDeleteRoom(pokoj)} src={iconTrashCan}/>
+                            <Button onClick={() => togglEditRoom(pokoj)} src={iconSettings}/>
+                            <a href={`/Gra?id=${pokoj.id}`}>
+                                <Button src={iconPlay}/>
+                            </a>
+                        </>
                     )}
                 </RoomFrame>
             ));
@@ -153,6 +105,23 @@ const GamePage = () =>
             console.log(`Nieoczekiwany błąd: ${blad}`);
         }
     }, [daneUzytkownika.token, isLogIn]); // Zależności useCallback'a
+
+
+    // Formularz EditRoom.
+    const [showEditRoom, setEditRoom] = useState(false);
+    const [edytowanyPokoj, setEdytowanyPokoj] = useState("");
+    const togglEditRoom = (pokoj) =>
+    {
+        setEdytowanyPokoj(pokoj);
+        setEditRoom(!showEditRoom);
+    };
+    // Formularz DeleteRoom.
+    const [showDeleteRoom, setDeleteRoom] = useState(false);
+    const togglDeleteRoom = (pokoj) =>
+    {
+        setEdytowanyPokoj(pokoj);
+        setDeleteRoom(!showDeleteRoom);
+    };
 
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
@@ -171,7 +140,7 @@ const GamePage = () =>
             ustawDaneUzytkownika('');
             ustawIsLogIn(false);
         }
-    }, [ladujPokoje, showLogin]);
+    }, [ladujPokoje, showEditRoom===false, showDeleteRoom===false, showLogin]);
 
     return (
         <>
@@ -268,6 +237,8 @@ const GamePage = () =>
 
                 </MainArticle>
             </Main>
+            {showEditRoom && <WindowEditRoom danePokoju={edytowanyPokoj} onClose={togglEditRoom}/>}
+            {showDeleteRoom && <WindowDeleteRoom danePokoju={edytowanyPokoj} onClose={togglDeleteRoom}/>}
         </>
     );
 }

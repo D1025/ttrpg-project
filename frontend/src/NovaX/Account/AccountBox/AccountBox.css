@@ -4,9 +4,9 @@ Div.AccountBox
     width: 6.0vw;
     background-color: var(--Motyw-Ciemny);
     border-radius: var(--Radius-2);
-    display: inline-block;
     margin-right: 0.2vw;
     margin-bottom: 0.2vw;
+    display: inline-block;
 }
     /* Ostatni nie ma marginesu po prawej. */
     Div.AccountBox:last-of-type
@@ -19,7 +19,7 @@ Div.AccountBox
     {
         aspect-ratio: 1 / 1;
         background-color: var(--Kolor-Dodatkowy);
-        background-image: url("/public/Ikonki/Konto.png");
+        background-image: url("../../Icon/Account.png");
         background-size: 65%;
         background-position: center;
         background-repeat: no-repeat;
@@ -71,18 +71,16 @@ Div.AccountBox
     Div.AccountBox > Div.AccountBox-Tittle
     {
         width: 100%;
-        font-size: 0.9rem;
         text-align: center;
-        margin-right: auto;
-        margin-left: auto;
-        margin-top: 0.5vw;
-        margin-bottom: 0.5vw;
+        margin: 0.5vw auto;
         display: block;
     }
 
 /* . */
 Div.AccountBox > Div.AccountBox-Tittle > Div:nth-child(1)
 {
+    font-size: 0.85rem;
+    font-weight: bold;
     display: block;
 }
 

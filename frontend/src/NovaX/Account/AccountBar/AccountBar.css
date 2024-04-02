@@ -41,7 +41,7 @@ Div.AccountBar > Div.AccountBar-Img
 {
     width: var(--Przycisk-Wysokość);
     height: var(--Przycisk-Wysokość);
-    background-image: url("/public/Ikonki/Konto.png");
+    background-image: url("../../Icon/Account.png");
     background-size: 65%;
     background-position: center;
     background-repeat: no-repeat;

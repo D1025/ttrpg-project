@@ -1,6 +1,7 @@
 /* Pole AccountInformation. */
 Div.AccountInformation-Box
 {
+    height: var(--Przycisk-Wysokość);
     min-width: 0.0vw;
     display: inline-flex;
 }
@@ -8,37 +9,36 @@ Div.AccountInformation-Box
 /* Element z danymi. */
 Div.AccountInformation-Box > Div.AccountInformation
 {
+    height: initial;
     width: max-content;
     align-items: center;
     border-radius: var(--Radius-1);
-    background-color: var(--Motyw-Ciemny-Przezroczysty);
+    background-color: var(--Motyw-Ciemny);
     margin-right: var(--Przycisk-Odstep-X);
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
-    padding-top: 0.25vw;
-    padding-bottom: 0.25vw;
+    padding: 0.25vw 0.5vw;
     display: grid;
     flex: 1;
 }
     /* Pole trzymające dane i nazwę typu danych. */
-    Div.AccountInformation-Box > Div.AccountInformation > Div
+    Div.AccountInformation > Div
     {
         width: max-content;
     }
         /* Nazwa typud anych. */
-        Div.AccountInformation-Box > Div.AccountInformation > Div > Div:nth-child(1)
+        Div.AccountInformation > Div > Div:nth-child(1)
         {
             color: var(--Kolor-Oznaczenia);
             font-size: 0.55rem;
             font-weight: bold;
         }
         /* Typ danych. */
-        Div.AccountInformation-Box > Div.AccountInformation > Div > Div:nth-child(2)
+        Div.AccountInformation > Div > Div:nth-child(2)
         {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            /*font-weight: bold;*/
         }
 
-/* Nadpsianie.button. */
+/* Nadpsianie Button. */
 Div.AccountInformation-Box > Div.Button
 {
     margin-left: var(--Przycisk-Odstep-X);
