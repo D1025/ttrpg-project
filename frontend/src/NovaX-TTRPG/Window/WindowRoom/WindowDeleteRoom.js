@@ -1,4 +1,4 @@
-import './WindowCreateRoom.css';
+import './WindowRoom.css';
 import {
     Button,
     Input,
