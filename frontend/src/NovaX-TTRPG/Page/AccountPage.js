@@ -140,7 +140,7 @@ const GamePage = () =>
             ustawDaneUzytkownika('');
             ustawIsLogIn(false);
         }
-    }, [ladujPokoje, showEditRoom===false, showDeleteRoom===false, showLogin]);
+    }, [ladujPokoje, showEditRoom === false, showDeleteRoom === false, showLogin]);
 
     return (
         <>

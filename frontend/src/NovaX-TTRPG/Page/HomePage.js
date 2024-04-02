@@ -121,10 +121,11 @@ const HomePage = () =>
                     >
                         {isLogIn === true && (
                             <>
-                                {(daneUzytkownika.id === pokoj.ownerId || daneUzytkownika.admin===true) &&
+                                {(daneUzytkownika.id === pokoj.ownerId || daneUzytkownika.admin === true) &&
                                     <>
-                                        <Button colorNumber={4} onClick={()=>togglDeleteRoom(pokoj)} src={iconTrashCan}/>
-                                        <Button onClick={()=>togglEditRoom(pokoj)} src={iconSettings}/>
+                                        <Button colorNumber={4} onClick={() => togglDeleteRoom(pokoj)}
+                                                src={iconTrashCan}/>
+                                        <Button onClick={() => togglEditRoom(pokoj)} src={iconSettings}/>
                                     </>
                                 }
                                 <a href={`/Gra?id=${pokoj.id}`}>
@@ -160,7 +161,7 @@ const HomePage = () =>
             ustawIsLogIn(false);
         }
         ladujPokoje({publiczny: !lobby});
-    }, [lobby, ladujPokoje, showCreateRoom===false, showEditRoom===false, showDeleteRoom===false, showLogin]);
+    }, [lobby, ladujPokoje, showCreateRoom === false, showEditRoom === false, showDeleteRoom === false, showLogin]);
 
     // Aplikacja.
     return (
@@ -187,12 +188,12 @@ const HomePage = () =>
                             <Menu2>
                                 <li>
                                     <a href={""}>
-                                        <Button title={"Wiadomości"} style={{width:"100%"}}/>
+                                        <Button title={"Wiadomości"} style={{width: "100%"}}/>
                                     </a>
                                 </li>
                                 <li>
                                     <a href={""}>
-                                        <Button title={"Regulamin"} style={{width:"100%"}}/>
+                                        <Button title={"Regulamin"} style={{width: "100%"}}/>
                                     </a>
                                 </li>
                             </Menu2>
@@ -240,8 +241,10 @@ const HomePage = () =>
                 {isLogIn === true &&
                     (
                         <MainPanel>
-                            <Button title={"Publiczne"} width={2} colorNumber={lobby === false ? 1 : 0} onClick={() => ustawLobby(false)}/>
-                            <Button title={"Prywatne"} width={2} colorNumber={lobby === true ? 1 : 0} onClick={() => ustawLobby(true)}/>
+                            <Button title={"Publiczne"} width={2} colorNumber={lobby === false ? 1 : 0}
+                                    onClick={() => ustawLobby(false)}/>
+                            <Button title={"Prywatne"} width={2} colorNumber={lobby === true ? 1 : 0}
+                                    onClick={() => ustawLobby(true)}/>
                         </MainPanel>
                     )}
 

@@ -146,7 +146,8 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
 
                                     <div className={"MCR-Main-Section"}>
                                         <Label marginBottom={true}>Publiczne:</Label><br/>
-                                        <Select title={"Wybierz..."} id={"typ"} value={typ.toString()} onChange={pobierzTyp}
+                                        <Select title={"Wybierz..."} id={"typ"} value={typ.toString()}
+                                                onChange={pobierzTyp}
                                                 required>
                                             <option value={"false"}>Tak</option>
                                             <option value={"true"}>Nie</option>
@@ -155,7 +156,8 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
 
                                     <div className={"MCR-Main-Section"}>
                                         <Label marginBottom={true}>Obraz:</Label><br/>
-                                        <InputFile title={"Wybierz Obraz"} onChange={pobierzObraz} accept={"image/jpeg, image/jpg, image/png, image/gif, image/webp"}/>
+                                        <InputFile title={"Wybierz Obraz"} onChange={pobierzObraz}
+                                                   accept={"image/jpeg, image/jpg, image/png, image/gif, image/webp"}/>
                                     </div>
                                 </div>
                                 {/* Podgląd obrazka. */}
