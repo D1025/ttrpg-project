@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import SockJs from "sockjs-client";
 import Stomp from "stompjs";
 import {Chat, StorageLoad, ChatMessage} from "../../../NovaX";
-import {ModulUserList} from "../../index";
+import {ImgBase64, ModulUserList} from "../../index";
 import './ModulChat.css';
 import dayjs from "dayjs";
 
@@ -206,7 +206,7 @@ const ModulChat = ({roomId, userId}) =>
             <Chat value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc}
                   inputPlaceholder={"Wyślij wiadomość"}>
                 {wiadomosci.map((msg, index) => (
-                    <ChatMessage key={index} title={getUserNameById(msg.userId)} text={msg.content}
+                    <ChatMessage key={index} title={getUserNameById(msg.userId)} text={msg.content} src={ImgBase64(msg.imageExtension, msg.avatar)}
                                  timestamp={dayjs(msg.timestamp).format("HH:mm")} design={msg.userId === loginData.id ? 2 : 1}/>
                 ))}
             </Chat>

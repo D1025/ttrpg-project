@@ -1,35 +1,43 @@
-import './WindowRoom.css';
+import './WindowAccount.css';
 import {
     Button,
     Input,
-    InputFile,
-    Label,
     Window,
-    Select,
-    StorageLoad,
-    Textarea,
-    iconClose
+    iconClose,
+    StorageSave
 } from "../../../NovaX";
 import React, {useState} from "react";
 
-const WindowEditRoom = ({onClose, danePokoju}) =>
+const WindowAccountEmail = ({onClose, userData}) =>
 {
-    // Usuń lobby.
+    // Do Przetwozenia.
+    const [email, setEmail] = useState(userData.email);
+
+    // Pobieranie z formulaża.
+    const takeNickname = (event) => // Email.
+    {
+        setEmail(event.target.value);
+    };
+
+    // Edytuj dane użytkownika.
     const [powiadomienie, ustawPowiadomienie] = useState('');
     const stworzLobby = async(event) =>
     {
         event.preventDefault();
-        const loginData = StorageLoad('loginData');
 
         try
         {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/room/' + danePokoju.id, {
-                method: 'DELETE',
+            const odpowiedz = await fetch('http://localhost:8086/api/v1/users/' + userData.id, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': loginData.token
+                    'Authorization': userData.token
                 },
-                body: JSON.stringify()
+                body: JSON.stringify({
+                    // "avatar": avatar,
+                    // "avatarExtension": "",
+                    "email": email
+                })
             });
 
             // Reagowanie na odpowiedź
@@ -49,6 +57,8 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
             else
             {
                 // Sukces - obsługa odpowiedzi
+                const data = await odpowiedz.json();
+                StorageSave("loginData", data)
                 onClose();
             }
         }
@@ -66,19 +76,20 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                 <form onSubmit={stworzLobby}>
                     <div className={"WindowCreateRoom-Top"}>
                         <div>
-                            Usuwanie: {'"' + (danePokoju.name.length > 15 ? danePokoju.name.substring(0, 15) + '...' : danePokoju.name) + '"'}
+                            Edycja email: {'"' + (userData.email.length > 8 ? userData.email.substring(0, 8) + '...' : userData.email) + '"'}
                         </div>
                         <div>
                             <Button src={iconClose} onClick={onClose}/>
                         </div>
                     </div>
 
+                    <div className={"WindowCreateRoom-Main"}>
+                        <Input value={email} type={"text"} placeholder={"Nazwa"} onChange={takeNickname} marginBottom={true} autoFocus={true} required/><br/>
+                    </div>
+
                     <div className={"WindowCreateRoom-Bottom"}>
                         <div>
-                            <div>
-                                <Input type={"submit"} width={4} value={"Potwierdzam Usunięcie"}
-                                       className={"BackgroundColor-4"}/>
-                            </div>
+                            <div><Input type={"submit"} value={"Potwierdzam zmianę"} width={0}/></div>
                             {powiadomienie && <div>{powiadomienie}</div>}
                         </div>
                     </div>
@@ -90,4 +101,4 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
     );
 }
 
-export default WindowEditRoom;
+export default WindowAccountEmail;

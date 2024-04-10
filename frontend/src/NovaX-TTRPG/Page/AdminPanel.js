@@ -8,6 +8,7 @@ import
     RoomFrame,
     StorageLoad, StorageRemove, setTittle
 } from "../../NovaX";
+import {ImgBase64} from "../index";
 
 const AdminPanel = () =>
 {
@@ -27,7 +28,7 @@ const AdminPanel = () =>
 
     // Status Zalogowaniay.
     const [isLogIn, ustawIsLogIn] = useState(false); // Czy zalogowany.
-    const [daneUzytkownika, ustawDaneUzytkownika] = useState(''); // Dane zalogowanego.
+    const [userData, ustawUserData] = useState(''); // Dane zalogowanego.
     // Wylogowywanie.
     const LogOut = async() =>
     {
@@ -37,7 +38,7 @@ const AdminPanel = () =>
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': daneUzytkownika.token
+                    'Authorization': userData.token
                 }
             });
 
@@ -75,7 +76,7 @@ const AdminPanel = () =>
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': daneUzytkownika.token && publiczny === false ? (daneUzytkownika.token) : ''
+                    'Authorization': userData.token && publiczny === false ? (userData.token) : ''
                 },
             });
 
@@ -117,7 +118,7 @@ const AdminPanel = () =>
         {
             console.log(`Nieoczekiwany błąd: ${blad}`);
         }
-    }, [daneUzytkownika.token]); // Zależności useCallback'a
+    }, [userData.token]); // Zależności useCallback'a
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
@@ -127,11 +128,11 @@ const AdminPanel = () =>
         if(loginData)
         {
             ustawIsLogIn(true);
-            ustawDaneUzytkownika(loginData);
+            ustawUserData(loginData);
         }
         else
         {
-            ustawDaneUzytkownika('');
+            ustawUserData('');
             ustawIsLogIn(false);
         }
         ladujUzytkownicy({publiczny: !lobby});
@@ -161,9 +162,9 @@ const AdminPanel = () =>
                     {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
                     {isLogIn === true ? (
                         <Menu2>
-                            <li><AccountBar design={1} width={2} title={daneUzytkownika.nickname}
-                                            subTitle={daneUzytkownika.admin === true && "[Admin]"}
-                                            src={daneUzytkownika.avatar}></AccountBar>
+                            <li><AccountBar design={1} width={2} title={userData.nickname}
+                                            subTitle={userData.admin === true && "[Admin]"}
+                                            src={ImgBase64(userData.imageExtension, userData.avatar)}></AccountBar>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>

@@ -7,7 +7,7 @@ import
     Main, MainArticle, ArticleTitle,
     StorageLoad, setTittle, HeaderLeft, ButtonLogo, HeaderCenter, StorageRemove
 } from "../../NovaX";
-import {WindowLogIn} from "../../NovaX-TTRPG";
+import {ImgBase64, WindowLogIn} from "../../NovaX-TTRPG";
 
 const Game = () =>
 {
@@ -23,7 +23,7 @@ const Game = () =>
 
     // Status Zalogowaniay.
     const [isLogIn, ustawIsLogIn] = useState(false); // Czy zalogowany.
-    const [daneUzytkownika, ustawDaneUzytkownika] = useState(''); // Dane zalogowanego.
+    const [userData, ustawUserData] = useState(''); // Dane zalogowanego.
     // Wylogowywanie.
     const LogOut = async() =>
     {
@@ -33,7 +33,7 @@ const Game = () =>
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': daneUzytkownika.token
+                    'Authorization': userData.token
                 }
             });
 
@@ -68,11 +68,11 @@ const Game = () =>
         if(loginData)
         {
             ustawIsLogIn(true);
-            ustawDaneUzytkownika(loginData);
+            ustawUserData(loginData);
         }
         else
         {
-            ustawDaneUzytkownika('');
+            ustawUserData('');
             ustawIsLogIn(false);
         }
     }, [odswiez]);
@@ -119,16 +119,16 @@ const Game = () =>
                     {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
                     {isLogIn === true ? (
                         <Menu2>
-                            <li><AccountBar design={1} width={2} title={daneUzytkownika.nickname}
-                                            subTitle={daneUzytkownika.admin === true && "[Admin]"}
-                                            src={daneUzytkownika.avatar}></AccountBar>
+                            <li><AccountBar design={1} width={2} title={userData.nickname}
+                                            subTitle={userData.admin === true && "[Admin]"}
+                                            src={ImgBase64(userData.imageExtension, userData.avatar)}></AccountBar>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>
                                             <Button title={"Konto"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
-                                    {daneUzytkownika.admin === true && (
+                                    {userData.admin === true && (
                                         <li>
                                             <a href={"/Panel"}>
                                                 <Button title={"Panel"} style={{width: "100%"}}/>
