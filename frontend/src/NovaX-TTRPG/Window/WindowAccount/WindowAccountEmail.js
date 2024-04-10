@@ -76,7 +76,7 @@ const WindowAccountEmail = ({onClose, userData}) =>
                 <form onSubmit={stworzLobby}>
                     <div className={"WindowCreateRoom-Top"}>
                         <div>
-                            Edycja email: {'"' + (userData.email.length > 8 ? userData.email.substring(0, 8) + '...' : userData.email) + '"'}
+                            Zmiana email
                         </div>
                         <div>
                             <Button src={iconClose} onClick={onClose}/>
@@ -84,7 +84,7 @@ const WindowAccountEmail = ({onClose, userData}) =>
                     </div>
 
                     <div className={"WindowCreateRoom-Main"}>
-                        <Input value={email} type={"text"} placeholder={"Nazwa"} onChange={takeNickname} marginBottom={true} autoFocus={true} required/><br/>
+                        <Input value={email} type={"text"} placeholder={"Email"} onChange={takeNickname} marginBottom={true} autoFocus={true} required/><br/>
                     </div>
 
                     <div className={"WindowCreateRoom-Bottom"}>

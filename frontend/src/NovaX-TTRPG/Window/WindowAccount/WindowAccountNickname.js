@@ -74,7 +74,7 @@ const WindowAccountNickname = ({onClose, userData}) =>
                 <form onSubmit={stworzLobby}>
                     <div className={"WindowCreateRoom-Top"}>
                         <div>
-                            Edycja nazwy: {'"' + (userData.nickname.length > 15 ? userData.nickname.substring(0, 15) + '...' : userData.nickname) + '"'}
+                            Zmiana nazwy
                         </div>
                         <div>
                             <Button src={iconClose} onClick={onClose}/>

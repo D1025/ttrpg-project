@@ -1,6 +1,6 @@
 import './ChatMessage.css';
 
-const ChatMessage = ({title, design = 1, src, text, timestamp, className, ...rest}) =>
+const ChatMessage = ({title, design = 1, src, alt = "", text, timestamp, className, ...rest}) =>
 {
     // Decyduje o wyglądzie.
     const classBuilder = () =>
@@ -28,7 +28,7 @@ const ChatMessage = ({title, design = 1, src, text, timestamp, className, ...res
                 <div className={"ChatMessage-Message"}>
                     <div>
                         <div className={"ChatMessage-Avatar"}>
-                            {src && <img src={src} alt={""}/>}
+                            {src && <img src={src} alt={alt}/>}
                         </div>
                     </div>
                     <div className={"ChatMessage-NickName"}>
