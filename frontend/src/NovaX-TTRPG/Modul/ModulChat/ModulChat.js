@@ -185,7 +185,7 @@ const ModulChat = ({roomId, userId}) =>
             ustawWyslijWiadomosc("");
         }
     };
-    const dodajWiadomoscPrzycisk = (e) =>
+    const dodajWiadomoscPrzycisk = () =>
     {
         if(wyslijWiadomosc.trim())
         {
