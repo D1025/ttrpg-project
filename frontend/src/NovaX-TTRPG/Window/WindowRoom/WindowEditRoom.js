@@ -86,7 +86,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                 body: JSON.stringify({
                     name: nazwa !== danePokoju.name ? nazwa : undefined,
                     description: opis !== danePokoju.description ? opis : undefined,
-                    image: obraz !== danePokoju.image ? obraz : undefined,
+                    image: obraz !== ImgBase64(obrazRozszezenie, danePokoju.image) ? obraz : undefined,
                     imageExtension: obrazRozszezenie !== danePokoju.imageExtension ? obrazRozszezenie : undefined,
                     isPrivate: typ !== danePokoju.isPrivate ? typ : undefined,
                 })
