@@ -145,7 +145,7 @@ const WindowAccountAvatar = ({onClose, userData}) =>
                 <form onSubmit={stworzLobby}>
                     <div className={"WindowCreateRoom-Top"}>
                         <div>
-                            {!newAvatar && <div>{userData.avatar !== undefined ? 'Wybierz avatar' : 'Zmień avatar'}</div>}
+                            {!newAvatar && "Zmiana avatara"}
                         </div>
                         <div>
                             <Button src={iconClose} onClick={onClose}/>
@@ -178,14 +178,15 @@ const WindowAccountAvatar = ({onClose, userData}) =>
                                 )}
                             </div>
 
-                            <InputFile onChange={takeAvatar} title={"Wybierz Plik"}/>
                         </div>
                     </div>
 
                     <div className={"WindowCreateRoom-Bottom"}>
                         <div>
-                            <div><Input type={"submit"}
-                                        value={userData.avatar !== undefined ? 'Ustaw avatar' : 'Zmień avatar'}/></div>
+                            <div>
+                                <InputFile onChange={takeAvatar} title={"Wybierz Plik"}/>
+                                <Input type={"submit"} value={"Zapisz avatar"}/>
+                            </div>
                             {powiadomienie && <div>{powiadomienie}</div>}
                         </div>
                     </div>

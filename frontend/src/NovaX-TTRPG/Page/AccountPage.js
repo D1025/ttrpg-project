@@ -314,10 +314,10 @@ const GamePage = () =>
                             </div>
                         </div>
                         <div className={"AccountPageRest"}>
-                            <AccountInformation dataType={"Nickname"} data={userData.nickname} canEdit={true}
+                            <AccountInformation dataType={"Nazwa"} data={userData.nickname} canEdit={true}
                                                 buttonColorNumber={0} width={4} marginBottom={true}
                                                 onClick={togglAccountNickname}/><br/>
-                            <AccountInformation dataType={"E-mail"} data={userData.email} canEdit={true}
+                            <AccountInformation dataType={"Email"} data={userData.email} canEdit={true}
                                                 buttonColorNumber={0} width={4} marginBottom={true}
                                                 onClick={togglAccountEmail}/><br/>
                             <AccountInformation dataType={"Hasło"} data={'*****'} canEdit={true} buttonColorNumber={0}

@@ -24,10 +24,12 @@ Div.AccounPagetAvatar > Div.Button-D1
         width: 100%;
         aspect-ratio: 1 / 1;
         background-color: var(--Motyw);
-        background-image: url("/public/Ikonki/Konto.png");
+        background-image: url("../../NovaX/Icon/Account.png");
         background-size: 65%;
         background-position: center;
         background-repeat: no-repeat;
+        border: 0.2vw solid var(--Motyw);
+        box-sizing: border-box;
         border-radius: var(--Radius-3);
         overflow: hidden;
     }
