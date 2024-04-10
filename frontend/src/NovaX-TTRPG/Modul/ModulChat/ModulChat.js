@@ -177,7 +177,15 @@ const ModulChat = ({roomId, userId}) =>
             setUserLeft(message.userId);
         }
     }
-    const dodajWiadomosc = (e) =>
+    const dodajWiadomoscEnter = (e) =>
+    {
+        if(e.key === 'Enter' && wyslijWiadomosc.trim())
+        {
+            sendMessage(wyslijWiadomosc);
+            ustawWyslijWiadomosc("");
+        }
+    };
+    const dodajWiadomoscPrzycisk = (e) =>
     {
         if(wyslijWiadomosc.trim())
         {
@@ -203,8 +211,7 @@ const ModulChat = ({roomId, userId}) =>
                 <ModulUserList allUsers={usersInRoom} activeUsers={activeUsers}/>
             </div>
 
-            <Chat value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomosc}
-                  inputPlaceholder={"Wyślij wiadomość"}>
+            <Chat value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomoscEnter} onClick={dodajWiadomoscPrzycisk} inputPlaceholder={"Wyślij wiadomość"}>
                 {wiadomosci.map((msg, index) => (
                     <ChatMessage key={index} title={getUserNameById(msg.userId)} text={msg.content} src={ImgBase64(msg.imageExtension, msg.avatar)}
                                  timestamp={dayjs(msg.timestamp).format("HH:mm")} design={msg.userId === loginData.id ? 2 : 1}/>
