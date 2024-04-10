@@ -51,23 +51,28 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserReturnDTO editUser(UUID id, EditUser editUser, String token) {
         Users user = getUserById(id);
-        if (user.getToken().equals(token) || user.isAdmin()) {
+        Users actualUser = getUserByToken(token);
+        if (user.getToken().equals(token) || actualUser.isAdmin()) {
             if (editUser.nickname() != null) {
                 user.setNickname(editUser.nickname());
+                System.out.println("User nickname: " + user.getNickname());
             }
             if (editUser.avatar() != null) {
                 user.setAvatar(editUser.avatar());
+                System.out.println("User avatar working");
+
             }
             if (editUser.avatarExtension() != null) {
                 user.setAvatarExtension(editUser.avatarExtension());
             }
             if (editUser.email() != null) {
+                System.out.println("User email working");
                 user.setEmail(editUser.email());
             }
             userRepository.save(user);
             return userMapper.userToUserReturnDTO(user);
         } else {
-            throw new RuntimeException("You are not authorized to edit this user");
+            throw new MessageException("You are not authorized to edit this user");
         }
     }
 
@@ -113,7 +118,7 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user);
             return userMapper.userToUserReturnDTO(user);
         } else {
-            throw new RuntimeException("You are not authorized to edit this user");
+            throw new MessageException("You are not authorized to edit this user");
         }
     }
 }

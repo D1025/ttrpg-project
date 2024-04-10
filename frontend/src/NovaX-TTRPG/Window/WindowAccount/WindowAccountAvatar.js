@@ -103,9 +103,8 @@ const WindowAccountAvatar = ({onClose, userData}) =>
                     'Authorization': userData.token
                 },
                 body: JSON.stringify({
-                    // "nickname": userData.nickname,
-                    "avatar": croppedImageURL,
-                    "avatarExtension": avatarExtension,
+                    avatar: croppedImageURL,
+                    avatarExtension: avatarExtension,
                 })
             });
 

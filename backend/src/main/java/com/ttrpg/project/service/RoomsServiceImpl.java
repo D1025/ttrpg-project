@@ -73,7 +73,7 @@ public class RoomsServiceImpl implements RoomsService {
         jwtAuthorization.authorize(authorizationHeader);
         Users user = userService.getUserByToken(authorizationHeader);
         Room room = roomRepository.findById(id).orElseThrow(() -> new MessageException("Room not found"));
-        if (!room.getOwner().getId().equals(user.getId()) && !user.isAdmin()) {
+        if (room.getOwner().getId().equals(user.getId()) || user.isAdmin()) {
             throw new MessageException("You are not the owner of this room");
         }
         if (editRoom.name() != null) {
