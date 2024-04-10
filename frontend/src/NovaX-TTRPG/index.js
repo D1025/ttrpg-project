@@ -11,6 +11,13 @@ export {default as WindowCreateRoom} from './Window/WindowRoom/WindowCreateRoom.
 export {default as WindowEditRoom} from './Window/WindowRoom/WindowEditRoom.js';
 export {default as WindowDeleteRoom} from './Window/WindowRoom/WindowDeleteRoom.js';
 
+export {default as WindowAccountNickname} from './Window/WindowAccount/WindowAccountNickname.js';
+export {default as WindowAccountEmail} from './Window/WindowAccount/WindowAccountEmail.js';
+export {default as WindowAccountAvatar} from './Window/WindowAccount/WindowAccountAvatar.js';
+
 // Modul.
 export {default as ModulChat} from './Modul/ModulChat/ModulChat.js';
 export {default as ModulUserList} from './Modul//ModulUserList/ModulUserList';
+
+// Function.
+export {default as ImgBase64} from './Function/ImgBase64';

@@ -14,28 +14,31 @@ import {
     HeaderLeft,
     HeaderCenter,
     RoomFrame,
-    HrSeparator, AccountInformation, iconTrashCan, iconSettings, iconPlay
+    HrSeparator, AccountInformation, iconTrashCan, iconSettings, iconPlay, iconEdit
 } from "../../NovaX";
 import './AccountPage.css';
-import {WindowDeleteRoom, WindowEditRoom} from "../index";
+import {
+    WindowDeleteRoom,
+    WindowAccountNickname,
+    WindowEditRoom,
+    WindowAccountEmail,
+    WindowAccountAvatar, ImgBase64
+} from "../index";
 
 const GamePage = () =>
 {
     // Tittle.
     setTittle("./Grafiki/Logo.png", "TTRPG | Konto");
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const idParam = urlParams.get('id');
 
     // Status Zalogowaniay.
-    const [isLogIn, ustawIsLogIn] = useState(false); // Czy zalogowany.
-    const [daneUzytkownika, ustawDaneUzytkownika] = useState(''); // Dane zalogowanego.
+    const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
+    const [userData, setLogInData] = useState(''); // Dane zalogowanego.
 
     // Formularz Logowanie/Rejestracja.
     const [showLogin, setShowLogin] = useState(false);
     const toggleShowLogin = () =>
     {
         setShowLogin(prevShowLogin => !prevShowLogin);
-        // wymusOdswiezenie();
     };
 
     // Załaój pokoje.
@@ -49,7 +52,7 @@ const GamePage = () =>
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': daneUzytkownika.token
+                    'Authorization': userData.token
                 },
             });
 
@@ -73,7 +76,7 @@ const GamePage = () =>
 
             // Połączenie danych
             const zrenderowanePokoje = danePubliczne.map(pokoj => (
-                pokoj.ownerId === daneUzytkownika.id &&
+                pokoj.ownerId === userData.id &&
                 <RoomFrame
                     key={pokoj.id}
                     src={pokoj.image && (`data:image/${pokoj.imageExtension};base64,${pokoj.image}`)}
@@ -104,7 +107,7 @@ const GamePage = () =>
         {
             console.log(`Nieoczekiwany błąd: ${blad}`);
         }
-    }, [daneUzytkownika.token, isLogIn]); // Zależności useCallback'a
+    }, [userData.token, isLogIn]); // Zależności useCallback'a
 
 
     // Formularz EditRoom.
@@ -112,6 +115,20 @@ const GamePage = () =>
     const [edytowanyPokoj, setEdytowanyPokoj] = useState("");
     const togglEditRoom = (pokoj) =>
     {
+        if(!showEditRoom)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setEditRoom(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
         setEdytowanyPokoj(pokoj);
         setEditRoom(!showEditRoom);
     };
@@ -119,28 +136,103 @@ const GamePage = () =>
     const [showDeleteRoom, setDeleteRoom] = useState(false);
     const togglDeleteRoom = (pokoj) =>
     {
+        if(!showDeleteRoom)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setDeleteRoom(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
         setEdytowanyPokoj(pokoj);
         setDeleteRoom(!showDeleteRoom);
+    };
+
+    // Edycja Konta.
+    const [showAccountNickname, setAccountNickname] = useState(false);
+    const togglAccountNickname = () =>
+    {
+        if(!showAccountNickname)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setAccountNickname(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
+        setAccountNickname(!showAccountNickname);
+    };
+
+    const [showAccountEmail, setAccountEmail] = useState(false);
+    const togglAccountEmail = () =>
+    {
+        if(!showAccountEmail)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setAccountEmail(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
+        setAccountEmail(!showAccountEmail);
+    };
+
+    const [showAccountAvatar, setAccountAvatar] = useState(false);
+    const togglAccountAvatar = () =>
+    {
+        if(!showAccountAvatar)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setAccountAvatar(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
+        setAccountAvatar(!showAccountAvatar);
     };
 
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
-        const loginData = StorageLoad('loginData');
+        const LoadLogInData = StorageLoad('loginData')
         // Jeśli dane logowania istnieją.
-        if(loginData)
+        if(LoadLogInData)
         {
-            ustawIsLogIn(true);
-            ustawDaneUzytkownika(loginData);
+            setIsLogIn(true);
+            setLogInData(LoadLogInData);
             ladujPokoje();
         }
         else
         {
-            ustawDaneUzytkownika('');
-            ustawIsLogIn(false);
+            setLogInData('');
+            setIsLogIn(false);
         }
-    }, [ladujPokoje, showEditRoom===false, showDeleteRoom===false, showLogin]);
+    }, [ladujPokoje, showEditRoom === false, showDeleteRoom === false, showAccountNickname === false, showAccountEmail === false, showAccountAvatar === false, showLogin]);
 
     return (
         <>
@@ -178,19 +270,18 @@ const GamePage = () =>
 
                 {/* Prawy nagłówek z opcjami. */}
                 <HeaderRight>
-                    {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
                     {isLogIn === true ? (
                         <Menu2>
-                            <li><AccountBar design={1} width={2} title={daneUzytkownika.nickname}
-                                            subTitle={daneUzytkownika.admin === true && "[Admin]"}
-                                            src={daneUzytkownika.avatar}></AccountBar>
+                            <li><AccountBar design={1} width={2} title={userData.nickname}
+                                            subTitle={userData.admin === true && "[Admin]"}
+                                            src={ImgBase64(userData.imageExtension, userData.avatar)}></AccountBar>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>
                                             <Button title={"Konto"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
-                                    {daneUzytkownika.admin === true && (
+                                    {userData.admin === true && (
                                         <li>
                                             <a href={"/Panel"}>
                                                 <Button title={"Panel"} style={{width: "100%"}}/>
@@ -213,22 +304,24 @@ const GamePage = () =>
 
             <Main design={1}>
                 <MainArticle>
-                    <ArticleTitle title={"Konto"}/>
+                    <ArticleTitle title={"Ustawienia konta"}/>
 
                     <div className={"AccountPageBox"}>
                         <div className={"AccounPagetAvatar"}>
-                            <Button src={"./Ikonki/Edycja.png"}/>
+                            <Button src={iconEdit} onClick={togglAccountAvatar}/>
                             <div className={"AccounPagetAvatar-Box"}>
-                                <img src={""} alt={""}/>
+                                <img src={ImgBase64(userData.imageExtension, userData.avatar)} alt={""}/>
                             </div>
                         </div>
                         <div className={"AccountPageRest"}>
-                            <AccountInformation dataType={"Nickname"} data={daneUzytkownika.nickname} canEdit={true}
-                                                buttonColorNumber={0} width={4} marginBottom={true}/><br/>
-                            <AccountInformation dataType={"E-mail"} data={daneUzytkownika.email} canEdit={true}
-                                                buttonColorNumber={0} width={4} marginBottom={true}/><br/>
-                            <AccountInformation dataType={"Hasło"} data={'*****'} canEdit={true}
-                                                buttonColorNumber={0} width={4} marginBottom={true}/><br/>
+                            <AccountInformation dataType={"Nickname"} data={userData.nickname} canEdit={true}
+                                                buttonColorNumber={0} width={4} marginBottom={true}
+                                                onClick={togglAccountNickname}/><br/>
+                            <AccountInformation dataType={"E-mail"} data={userData.email} canEdit={true}
+                                                buttonColorNumber={0} width={4} marginBottom={true}
+                                                onClick={togglAccountEmail}/><br/>
+                            <AccountInformation dataType={"Hasło"} data={'*****'} canEdit={true} buttonColorNumber={0}
+                                                width={4} marginBottom={true}/><br/>
                         </div>
                     </div>
 
@@ -239,6 +332,9 @@ const GamePage = () =>
             </Main>
             {showEditRoom && <WindowEditRoom danePokoju={edytowanyPokoj} onClose={togglEditRoom}/>}
             {showDeleteRoom && <WindowDeleteRoom danePokoju={edytowanyPokoj} onClose={togglDeleteRoom}/>}
+            {showAccountNickname && <WindowAccountNickname userData={userData} onClose={togglAccountNickname}/>}
+            {showAccountEmail && <WindowAccountEmail userData={userData} onClose={togglAccountEmail}/>}
+            {showAccountAvatar && <WindowAccountAvatar userData={userData} onClose={togglAccountAvatar}/>}
         </>
     );
 }

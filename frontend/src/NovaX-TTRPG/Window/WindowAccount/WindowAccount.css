@@ -1,0 +1,100 @@
+/* WindowEditRoom. */
+Div.WindowCreateRoom
+{
+    width: 35.0vw;
+    background-color: var(--Motyw-Przezroczysty);
+    backdrop-filter: var(--Blur);
+    border-radius: var(--Radius-4);
+}
+
+/* Górna część pola logowania. */
+Div.WindowCreateRoom  Div.WindowCreateRoom-Top
+{
+    height: 3.5vw;
+    text-align: center;
+    margin-bottom: 1.0vw;
+    padding-right: 1.0vw;
+    padding-left: calc((var(--Przycisk-Wysokość) + var(--Przycisk-Odstep-X)) * 2 );
+    display: flex;
+    align-items: end;
+}
+
+    /* Nazwa. */
+    Div.WindowCreateRoom  Div.WindowCreateRoom-Top > Div:nth-child(1)
+    {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 0.4vw;
+        flex: 1;
+    }
+    /* Przycisk Zamykający. */
+    Div.WindowCreateRoom  Div.WindowCreateRoom-Top > Div:nth-child(2)
+    {
+        margin-left: auto;
+        flex: 0;
+        z-index: 1;
+    }
+
+/* Główna część pola logowania. */
+Div.WindowCreateRoom Div.WindowCreateRoom-Main
+{
+    /*min-height: 14.0vw;*/
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 1.0vw;
+    display: flex;
+}
+
+/* Dolna część pola logowania. */
+Div.WindowCreateRoom Div.WindowCreateRoom-Bottom
+{
+    min-height: 4.0vw;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 0.5vw;
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+    /* Przycisk wysłania. */
+    Div.WindowCreateRoom Div.WindowCreateRoom-Bottom > Div > Div:nth-child(1)
+    {
+        padding-top: 0.5vw;
+        padding-bottom: 0.25vw;
+    }
+
+    /* Powiadomienie. */
+    Div.WindowCreateRoom Div.WindowCreateRoom-Bottom > Div > Div:nth-child(2)
+    {
+        color: var(--Kolor-Dodatkowy);
+        font-weight: bold;
+        padding-top: 0.25vw;
+        padding-bottom: 0.25vw;
+
+    }
+
+
+/* . */
+Div.Account-Avatar-Podglad
+{
+    width: 11.5vw;
+    height: 11.5vw;
+    background-color: var(--Motyw-Ciemny);
+    background-image: url("../../../NovaX/Icon/Account.png");
+    background-size: 65%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 0.1vw solid var(--Motyw-Ciemny);
+    border-radius: var(--Radius-2);
+    margin-bottom: 0.5vw;
+    overflow: hidden;
+}
+    /* . */
+    Div.Account-Avatar-Podglad > Img
+    {
+        max-height: 11.5vw;
+    }

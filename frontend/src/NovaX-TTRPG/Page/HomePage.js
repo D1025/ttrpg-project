@@ -8,7 +8,7 @@ import
     RoomFrame,
     StorageLoad, StorageRemove, setTittle, ArticleTitleOption, iconAdd, iconSettings, iconTrashCan, iconPlay
 } from "../../NovaX";
-import {WindowCreateRoom, WindowDeleteRoom, WindowEditRoom, WindowLogIn} from "../../NovaX-TTRPG";
+import {ImgBase64, WindowCreateRoom, WindowDeleteRoom, WindowEditRoom, WindowLogIn} from "../../NovaX-TTRPG";
 
 const HomePage = () =>
 {
@@ -20,7 +20,7 @@ const HomePage = () =>
 
     // Status Zalogowaniay.
     const [isLogIn, ustawIsLogIn] = useState(false); // Czy zalogowany.
-    const [daneUzytkownika, ustawDaneUzytkownika] = useState(''); // Dane zalogowanego.
+    const [userData, ustawUserData] = useState(''); // Dane zalogowanego.
     // Wylogowywanie.
     const LogOut = useCallback(async() =>
     {
@@ -30,17 +30,17 @@ const HomePage = () =>
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': daneUzytkownika.token
+                    'Authorization': userData.token
                 }
             });
 
             // Reagowanie na odpowiedź.
-            if(odpowiedz.ok)
+            if(!odpowiedz.ok)
             {
                 // Pomyślne wylogowanie
                 StorageRemove('loginData');
                 ustawIsLogIn(false);
-                ustawDaneUzytkownika('');
+                ustawUserData('');
             }
         }
         catch(blad)
@@ -48,19 +48,47 @@ const HomePage = () =>
             // Obsługa błędów związanych z siecią lub żądaniem
             console.error(`Nieoczekiwany błąd: ${blad}`);
         }
-    }, [daneUzytkownika.token]);
+    }, [userData.token]);
 
 
     // Formularz Logowanie/Rejestracja.
     const [showLogin, setShowLogin] = useState(false);
     const toggleShowLogin = () =>
     {
+        if(!showLogin)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setShowLogin(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
         setShowLogin(!showLogin);
     };
     // Formularz CreateRoom.
     const [showCreateRoom, setCreateRoom] = useState(false);
     const togglCreateRoom = () =>
     {
+        if(!showCreateRoom)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setCreateRoom(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
         setCreateRoom(!showCreateRoom);
     };
     // Formularz EditRoom.
@@ -68,6 +96,20 @@ const HomePage = () =>
     const [edytowanyPokoj, setEdytowanyPokoj] = useState("");
     const togglEditRoom = (pokoj) =>
     {
+        if(!showEditRoom)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setEditRoom(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
         setEdytowanyPokoj(pokoj);
         setEditRoom(!showEditRoom);
     };
@@ -75,6 +117,20 @@ const HomePage = () =>
     const [showDeleteRoom, setDeleteRoom] = useState(false);
     const togglDeleteRoom = (pokoj) =>
     {
+        if(!showDeleteRoom)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setDeleteRoom(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
         setEdytowanyPokoj(pokoj);
         setDeleteRoom(!showDeleteRoom);
     };
@@ -90,7 +146,7 @@ const HomePage = () =>
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': daneUzytkownika.token && publiczny === false ? (daneUzytkownika.token) : ''
+                    'Authorization': userData.token && publiczny === false ? (userData.token) : ''
                 },
             });
 
@@ -121,10 +177,11 @@ const HomePage = () =>
                     >
                         {isLogIn === true && (
                             <>
-                                {(daneUzytkownika.id === pokoj.ownerId || daneUzytkownika.admin===true) &&
+                                {(userData.id === pokoj.ownerId || userData.admin === true) &&
                                     <>
-                                        <Button colorNumber={4} onClick={()=>togglDeleteRoom(pokoj)} src={iconTrashCan}/>
-                                        <Button onClick={()=>togglEditRoom(pokoj)} src={iconSettings}/>
+                                        <Button colorNumber={4} onClick={() => togglDeleteRoom(pokoj)}
+                                                src={iconTrashCan}/>
+                                        <Button onClick={() => togglEditRoom(pokoj)} src={iconSettings}/>
                                     </>
                                 }
                                 <a href={`/Gra?id=${pokoj.id}`}>
@@ -142,7 +199,7 @@ const HomePage = () =>
         {
             console.log(`Nieoczekiwany błąd: ${blad}`);
         }
-    }, [daneUzytkownika.token]); // Zależności useCallback'a
+    }, [userData.token]); // Zależności useCallback'a
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
@@ -152,15 +209,15 @@ const HomePage = () =>
         if(loginData)
         {
             ustawIsLogIn(true);
-            ustawDaneUzytkownika(loginData);
+            ustawUserData(loginData);
         }
         else
         {
-            ustawDaneUzytkownika('');
+            ustawUserData('');
             ustawIsLogIn(false);
         }
         ladujPokoje({publiczny: !lobby});
-    }, [lobby, ladujPokoje, showCreateRoom===false, showEditRoom===false, showDeleteRoom===false, showLogin]);
+    }, [lobby, ladujPokoje, showCreateRoom === false, showEditRoom === false, showDeleteRoom === false, showLogin]);
 
     // Aplikacja.
     return (
@@ -187,12 +244,12 @@ const HomePage = () =>
                             <Menu2>
                                 <li>
                                     <a href={""}>
-                                        <Button title={"Wiadomości"} style={{width:"100%"}}/>
+                                        <Button title={"Wiadomości"} style={{width: "100%"}}/>
                                     </a>
                                 </li>
                                 <li>
                                     <a href={""}>
-                                        <Button title={"Regulamin"} style={{width:"100%"}}/>
+                                        <Button title={"Regulamin"} style={{width: "100%"}}/>
                                     </a>
                                 </li>
                             </Menu2>
@@ -205,16 +262,16 @@ const HomePage = () =>
                     {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
                     {isLogIn === true ? (
                         <Menu2>
-                            <li><AccountBar design={1} width={2} title={daneUzytkownika.nickname}
-                                            subTitle={daneUzytkownika.admin === true && "[Admin]"}
-                                            src={daneUzytkownika.avatar}></AccountBar>
+                            <li><AccountBar design={1} width={2} title={userData.nickname}
+                                            subTitle={userData.admin === true && "[Admin]"}
+                                            src={ImgBase64(userData.imageExtension, userData.avatar)}></AccountBar>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>
                                             <Button title={"Konto"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
-                                    {daneUzytkownika.admin === true && (
+                                    {userData.admin === true && (
                                         <li>
                                             <a href={"/Panel"}>
                                                 <Button title={"Panel"} style={{width: "100%"}}/>
@@ -240,8 +297,10 @@ const HomePage = () =>
                 {isLogIn === true &&
                     (
                         <MainPanel>
-                            <Button title={"Publiczne"} width={2} colorNumber={lobby === false ? 1 : 0} onClick={() => ustawLobby(false)}/>
-                            <Button title={"Prywatne"} width={2} colorNumber={lobby === true ? 1 : 0} onClick={() => ustawLobby(true)}/>
+                            <Button title={"Publiczne"} width={2} colorNumber={lobby === false ? 1 : 0}
+                                    onClick={() => ustawLobby(false)}/>
+                            <Button title={"Prywatne"} width={2} colorNumber={lobby === true ? 1 : 0}
+                                    onClick={() => ustawLobby(true)}/>
                         </MainPanel>
                     )}
 

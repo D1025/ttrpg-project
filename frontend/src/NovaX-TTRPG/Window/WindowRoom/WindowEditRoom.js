@@ -11,6 +11,7 @@ import {
     iconClose, iconImage
 } from "../../../NovaX";
 import React, {useState} from "react";
+import {ImgBase64} from "../../index";
 
 const WindowEditRoom = ({onClose, danePokoju}) =>
 {
@@ -19,7 +20,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
     const [typ, ustawTyp] = useState(danePokoju.isPrivate);
     const [opis, ustawOpis] = useState(danePokoju.description);
     const [obrazRozszezenie, ustawObrazRozszezenie] = useState(danePokoju.imageExtension);
-    const [obraz, ustawObraz] = useState(!danePokoju.image ? undefined : `data:image/${obrazRozszezenie};base64,${danePokoju.image}`);
+    const [obraz, ustawObraz] = useState(!danePokoju.image ? undefined : ImgBase64(obrazRozszezenie, danePokoju.image));
 
     const reserujDane = () =>
     {
@@ -27,7 +28,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
         ustawTyp(danePokoju.isPrivate)
         ustawOpis(danePokoju.description)
         ustawObrazRozszezenie(danePokoju.imageExtension)
-        ustawObraz(!danePokoju.image ? undefined : `data:image/${obrazRozszezenie};base64,${danePokoju.image}`)
+        ustawObraz(!danePokoju.image ? undefined : ImgBase64(obrazRozszezenie, danePokoju.image))
     }
 
     // Pobieranie z formulaża.
@@ -67,7 +68,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
     };
 
 
-    // Stwórz lobby.
+    // Edytuj lobby.
     const [powiadomienie, ustawPowiadomienie] = useState('');
     const stworzLobby = async(event) =>
     {
@@ -146,7 +147,8 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
 
                                     <div className={"MCR-Main-Section"}>
                                         <Label marginBottom={true}>Publiczne:</Label><br/>
-                                        <Select title={"Wybierz..."} id={"typ"} value={typ.toString()} onChange={pobierzTyp}
+                                        <Select title={"Wybierz..."} id={"typ"} value={typ.toString()}
+                                                onChange={pobierzTyp}
                                                 required>
                                             <option value={"false"}>Tak</option>
                                             <option value={"true"}>Nie</option>
@@ -155,7 +157,8 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
 
                                     <div className={"MCR-Main-Section"}>
                                         <Label marginBottom={true}>Obraz:</Label><br/>
-                                        <InputFile title={"Wybierz Obraz"} onChange={pobierzObraz} accept={"image/jpeg, image/jpg, image/png, image/gif, image/webp"}/>
+                                        <InputFile title={"Wybierz Obraz"} onChange={pobierzObraz}
+                                                   accept={"image/jpeg, image/jpg, image/png, image/gif, image/webp"}/>
                                     </div>
                                 </div>
                                 {/* Podgląd obrazka. */}

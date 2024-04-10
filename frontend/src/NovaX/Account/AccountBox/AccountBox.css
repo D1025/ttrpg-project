@@ -52,6 +52,8 @@ Div.AccountBox
         margin-top: -1.0vw;
         margin-bottom: -0.5vw;
         display: flex;
+        position: relative;
+        z-index: 1;
     }
         /* Określa czy użytkownik jest aktywny. */
         Div.AccountBox > Div.AccountBox-Status > Div

@@ -5,7 +5,7 @@ import {
     Button, AccountBar,
     StorageLoad, setTittle,
 } from "../../NovaX";
-import {ModulChat} from "../../NovaX-TTRPG";
+import {ImgBase64, ModulChat} from "../../NovaX-TTRPG";
 
 const GamePage = () =>
 {
@@ -24,7 +24,7 @@ const GamePage = () =>
 
     // Status Zalogowaniay.
     const [isLogIn, ustawIsLogIn] = useState(false); // Czy zalogowany.
-    const [daneUzytkownika, ustawDaneUzytkownika] = useState(''); // Dane zalogowanego.
+    const [userData, ustawUserData] = useState(''); // Dane zalogowanego.
 
     // Formularz Logowanie/Rejestracja.
     const [showLogin, setShowLogin] = useState(false);
@@ -42,11 +42,11 @@ const GamePage = () =>
         if(loginData)
         {
             ustawIsLogIn(true);
-            ustawDaneUzytkownika(loginData);
+            ustawUserData(loginData);
         }
         else
         {
-            ustawDaneUzytkownika('');
+            ustawUserData('');
             ustawIsLogIn(false);
         }
     }, [odswiez]);
@@ -57,19 +57,18 @@ const GamePage = () =>
             <Header design={2} src={"./Grafiki/TłoDodatkowe/TOPanime.jpg"}>
                 {/* Prawy nagłówek z opcjami. */}
                 <HeaderRight>
-                    {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
                     {isLogIn === true ? (
                         <Menu2>
-                            <li><AccountBar design={1} width={2} title={daneUzytkownika.nickname}
-                                            subTitle={daneUzytkownika.admin === true && "[Admin]"}
-                                            src={daneUzytkownika.avatar}></AccountBar>
+                            <li><AccountBar design={1} width={2} title={userData.nickname}
+                                            subTitle={userData.admin === true && "[Admin]"}
+                                            src={ImgBase64(userData.imageExtension, userData.avatar)}></AccountBar>
                                 <Menu2>
                                     <li>
                                         <a href={"/Konto"}>
                                             <Button title={"Konto"} style={{width: "100%"}}/>
                                         </a>
                                     </li>
-                                    {daneUzytkownika.admin === true && (
+                                    {userData.admin === true && (
                                         <li>
                                             <a href={"/Panel"}>
                                                 <Button title={"Panel"} style={{width: "100%"}}/>
@@ -90,7 +89,7 @@ const GamePage = () =>
                 </HeaderRight>
             </Header>
 
-            <ModulChat roomId={idParam} userId={daneUzytkownika.id}/>
+            <ModulChat roomId={idParam} userId={userData.id}/>
         </>
     );
 }

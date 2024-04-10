@@ -29,6 +29,7 @@ Div.AccounPagetAvatar > Div.Button-D1
         background-position: center;
         background-repeat: no-repeat;
         border-radius: var(--Radius-3);
+        overflow: hidden;
     }
         /* . */
         Div.AccounPagetAvatar > Div.AccounPagetAvatar-Box > Img
