@@ -179,7 +179,7 @@ const ModulChat = ({roomId, userId}) =>
     }
     const dodajWiadomosc = (e) =>
     {
-        if(e.key === 'Enter' && wyslijWiadomosc.trim())
+        if(wyslijWiadomosc.trim())
         {
             sendMessage(wyslijWiadomosc);
             ustawWyslijWiadomosc("");
