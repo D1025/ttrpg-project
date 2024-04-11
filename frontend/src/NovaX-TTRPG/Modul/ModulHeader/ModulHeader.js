@@ -24,6 +24,9 @@ const ModulHeader = ({
                          ...rest
                      }) =>
 {
+    const path = window.location.pathname;
+    const currentLocation  = path.split('/')[1];
+
     // Return.
     return (
         <Header {...rest} design={design} src={src}>
@@ -38,9 +41,7 @@ const ModulHeader = ({
                 <HeaderCenter>
                     <Menu2 tag={"nav"}>
                         <li>
-                            <a href={"/"}>
-                                <Button title={"Pokoje"} width={2}/>
-                            </a>
+                            <Button title={"Pokoje"} width={2} href={"/"}/>
                         </li>
                         {/*<li>*/}
                         {/*    <a href={""}>*/}
@@ -69,7 +70,7 @@ const ModulHeader = ({
                 <HeaderCenter>
                     <Menu2 tag={"nav"}>
                         <li>
-                            <Button title={"Pokoje"} width={2} href={""}/>
+                            <Button title={"Pokoje"} width={2} href={"/"}/>
                         </li>
                         <li>
                             <Button title={"Użytkownicy"} width={2} href={""}/>
@@ -94,10 +95,10 @@ const ModulHeader = ({
                             </AccountBar>
                             <Menu2>
                                 <li>
-                                    <Button title={"Ustawienia"} width={0} href={"/Konto"}/>
+                                    <Button title={"Ustawienia"} width={0} href={currentLocation !== 'UstawieniaKonta' && "/UstawieniaKonta"} active={currentLocation !== 'UstawieniaKonta'}/>
                                 </li>
                                 {userData.admin === true && <li>
-                                    <Button title={"Panel"} width={0} href={"/Panel"}/>
+                                    <Button title={"Panel"} width={0} href={currentLocation !== 'PanelAdmina' && "/PanelAdmina"} active={currentLocation !== 'PanelAdmina' && "/PanelAdmina"}/>
                                 </li>}
                                 <li>
                                     <Button title={"Wyloguj Się"} onClick={logOut} width={0}/>

@@ -96,7 +96,7 @@ Div.Button-noActive:hover,
 Div.Button-noActive:active
 {
     background-color: var(--Kolor-Oznaczenia)!important;
-    cursor: unset;
+    cursor: default;
 }
 
 /* Margines dolny. */
