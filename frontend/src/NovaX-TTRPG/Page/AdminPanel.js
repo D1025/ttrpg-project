@@ -74,15 +74,15 @@ const AdminPanel = () =>
     return (
         <>
             {/* Nagłłówek Strony. */}
-            <ModulHeader navAdmin={true} isLogIn={isLogIn} logIn={toggleLogIn} userData={userData} logOut={LogOut}/>
+            <ModulHeader navAdmin={true} navUser={false} isLogIn={isLogIn} logIn={toggleLogIn} userData={userData} logOut={LogOut}/>
 
             {/* Home Strony. */}
             <Main design={2}>
 
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <ArticleTitle title={"Uzytkownicy"} tag={"h2"}/>
-                    Coś
+                    <ArticleTitle title={"Panel"} tag={"h2"}/>
+                    Panel
                 </MainArticle>
             </Main>
 

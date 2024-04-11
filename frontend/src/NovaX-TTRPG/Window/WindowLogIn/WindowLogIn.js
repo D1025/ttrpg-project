@@ -152,7 +152,7 @@ const OknoLogowania = ({onClose}) =>
             return;
         }
 
-        // Asynchroniczne haszowanie hasła
+        // Asynchroniczne haszowanie hasła.
         const hasloZahashowane = await SHA256(haslo).toString();
 
         try
@@ -222,14 +222,13 @@ const OknoLogowania = ({onClose}) =>
                                            value={email}
                                            onChange={pobierzEmail}
                                            required
-                                           autoFocus={LogowanieCzyRejestracja === true && (email === undefined)}
+                                           autoFocus={true}
                                     />
                                     <Input type={"password"}
                                            placeholder={"Hasło"}
                                            value={haslo}
                                            onChange={pobierzHaslo}
                                            required
-                                           autoFocus={LogowanieCzyRejestracja === true && (email !== undefined)}
                                     />
 
                                     <div className={"WindowLogIn-Checkbox"}>
