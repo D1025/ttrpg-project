@@ -3,6 +3,7 @@ package com.ttrpg.project.service;
 import java.util.List;
 import java.util.UUID;
 
+import com.ttrpg.project.dao.MessagesRepository;
 import org.springframework.stereotype.Service;
 
 import com.ttrpg.project.dao.RoomRepository;
@@ -26,6 +27,7 @@ public class RoomsServiceImpl implements RoomsService {
     private final UserService userService;
     private final RoomMapper roomMapper;
     private final JwtAuthorization jwtAuthorization;
+    private final MessagesRepository messagesRepository;
 
 
     @Override
@@ -51,7 +53,7 @@ public class RoomsServiceImpl implements RoomsService {
         } else if (status == Status.PRIVATE ) {
             jwtAuthorization.authorize(authorizationHeader);
             Users user = userService.getUserByToken(authorizationHeader);
-            return roomMapper.roomsToRoomReturnDTOs(roomRepository.findAllByPrivateRoomIsAndOwnerId(true, user.getId()));
+            return roomMapper.roomsToRoomReturnDTOs(roomRepository.findByUsers_Id(user.getId()));
         } else {
             throw new MessageException("Invalid status");
         }
@@ -111,6 +113,7 @@ public class RoomsServiceImpl implements RoomsService {
         if (!(room.getOwner().getId().equals(user.getId()) || user.isAdmin())) {
             throw new MessageException("You are not the owner of this room");
         }
+        messagesRepository.deleteByRoomId(id);
         roomRepository.delete(room);
     }
 }

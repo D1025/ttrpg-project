@@ -113,7 +113,7 @@ public class UserServiceImpl implements UserService {
         Users user = getUserById(id);
         if (user.getToken().equals(token)) {
             if (editUser.password() != null && editUser.newPassword() != null && editUser.password().equals(user.getPassword())){
-                user.setPassword(editUser.password());
+                user.setPassword(editUser.newPassword());
             }
             userRepository.save(user);
             return userMapper.userToUserReturnDTO(user);
