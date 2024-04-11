@@ -10,14 +10,11 @@
     --Kolor-Oznaczenia: rgba(169, 169, 169, 1.0);
     --Kolor-Negatywny: rgba(180, 40, 40, 1);
     --Kolor-Pozytywny: rgba(0, 105, 0, 1);
+    --Kolor-Ostrzezezenia: rgba(209, 98, 0, 1);
+    --Kolor-Informacji: rgba(0, 163, 204, 1);
 
     --Animacja: background-color 0.05s ease-in-out, color 0.0s ease-in-out;
     --Blur: blur(2.5vw);
-
-    --Tło-Menu: url("/public/Grafiki/TłoDodatkowe/TOPanime.jpg");
-    /*--Tło-Menu: url("/public/Grafiki/TłoDodatkowe/DemonSlayer.png");*/
-    /*--Tło-Menu: url("/public/Grafiki/TłoDodatkowe/BlodyAnime.png");*/
-    /*--Tło-Menu: url("/public/Grafiki/TłoDodatkowe/AlbumMuzyki1.png");*/
 
     --Tło-Strony: url("https://cdn.openart.ai/stable_diffusion/9527cd1e77a614a32dd167420d1f1c0e535b5673_2000x2000.webp");
 
@@ -52,79 +49,66 @@
     --Przycisk-Odstep-X: 0.15vw;
     --Przycisk-Odstep-Y: 0.3vw;
 
-    --Przycisk-Cienie: -0.1vw -0.1vw 0.1vw rgba(0,0,0,0.03), 0.1vw 0.1vw 0.1vw rgba(0,0,0,0.03);
+    --Przycisk-Cienie: -0.1vw -0.1vw 0.1vw rgba(0, 0, 0, 0.03), 0.1vw 0.1vw 0.1vw rgba(0, 0, 0, 0.03);
 }
 
 
 /* Klasy szerokości. */
 .Width-0
 {
-    min-width: 0.0vw!important;
+    min-width: 0.0vw !important;
+    padding-left: 0.25vw;
+    padding-right: 0.25vw;
 }
 .Width-1
 {
-    min-width: var(--Przycisk-Szerokość-1)!important;
+    min-width: var(--Przycisk-Szerokość-1) !important;
 }
 .Width-2
 {
-    min-width: var(--Przycisk-Szerokość-2)!important;
+    min-width: var(--Przycisk-Szerokość-2) !important;
 }
 .Width-3
 {
-    min-width: var(--Przycisk-Szerokość-3)!important;
+    min-width: var(--Przycisk-Szerokość-3) !important;
 }
 .Width-4
 {
-    min-width: var(--Przycisk-Szerokość-4)!important;
+    min-width: var(--Przycisk-Szerokość-4) !important;
 }
 
 /* Kolory Przycisków. */
 .BackgroundColor-1
 {
-    background-color: var(--Motyw-Czarny)!important;
+    background-color: var(--Motyw-Czarny) !important;
 }
 .BackgroundColor-2
 {
-    background-color: var(--Kolor-Oznaczenia)!important;
+    background-color: var(--Kolor-Pozytywny) !important;
 }
 .BackgroundColor-3
 {
-    background-color: var(--Kolor-Pozytywny)!important;
-}.BackgroundColor-4
+    background-color: var(--Kolor-Ostrzezezenia) !important;
+}
+.BackgroundColor-4
 {
-    background-color: var(--Kolor-Negatywny)!important;
+    background-color: var(--Kolor-Negatywny) !important;
+}
+.BackgroundColor-5
+{
+    background-color: var(--Kolor-Informacji) !important;
 }
 
 
 /* Globalne wartości. */
-Html
+html
 {
     font-family: Verdana, serif;
     font-size: 1.0vw;
-    scroll-behavior: smooth;
-
-    /* Scrollbar w Firefox. */
-    scrollbar-color: var(--Kolor-Dodatkowy) rgba(0,0,0,0);
 }
-    /* Scrollbar w Chromium. */
-    ::-webkit-scrollbar
-    {
-        width: 0.5vw;
-        height: 0.5vw;
-    }
-    /* Scrollbar w Chromium. */
-    ::-webkit-scrollbar-thumb
-    {
-        background-color: var(--Kolor-Dodatkowy);
-    }
-    /* Scrollbar w Chromium. */
-    ::-webkit-scrollbar-track
-    {
-        background-color: var(--Motyw);
-    }
 
-/* Podstawowe Body. */
-Body
+/* Podstawowe ustawienia dla elementu body */
+body
 {
     color: white;
     background-image: var(--Tło-Strony);
@@ -132,8 +116,14 @@ Body
     background-size: cover;
     background-repeat: no-repeat;
     background-color: var(--Motyw-Przezroczysty);
-    margin: 0.0vw;
-    padding: 0.0vw;
+    margin: 0;
+    padding: 0;
+}
+
+/* Customowy Scrollbar. */
+*
+{
+    scrollbar-color: var(--Kolor-Dodatkowy) var(--Motyw);
 }
 
 /* Wygląd odnośnika. */

@@ -11,7 +11,7 @@ const AccountInformation = ({
                                 width = 1,
                                 marginLeftRight = false,
                                 marginBottom = false,
-                                buttonColorNumber = 3,
+                                buttonColorNumber = 2,
                                 buttonActive = true,
                                 className,
                                 onClick,

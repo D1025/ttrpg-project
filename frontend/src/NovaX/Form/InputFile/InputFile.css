@@ -76,8 +76,8 @@ Div.InputFile-MarginBottom
     margin-bottom: var(--Przycisk-Odstep-Y);
 }
      /*Kiedy ostatni albo jedyny. */
-    Div.InputFile-MarginBottom:last-of-type,
-    Div.InputFile-MarginBottom:only-of-type
-    {
-        margin-bottom: 0.0vw;
-    }
+    /*Div.InputFile-MarginBottom:last-of-type,*/
+    /*Div.InputFile-MarginBottom:only-of-type*/
+    /*{*/
+    /*    margin-bottom: 0.0vw;*/
+    /*}*/

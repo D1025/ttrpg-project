@@ -1,7 +1,7 @@
 /* Nadpisany: Input do Klikania. */
 Input.Input[type="submit"], Input.Input[type="button"]
 {
-    width: max-content;
+    width: 0.0vw;
     height: var(--Przycisk-Wysokość);
     align-items: center;
     text-align: center;
@@ -86,7 +86,7 @@ Input.Input-MarginBottom
 {
     margin-bottom: var(--Przycisk-Odstep-Y);
 }
-    /*!* Kiedy ostatni albo jedyny. *!*/
+    /* Kiedy ostatni albo jedyny. */
     /*Input.Input-MarginBottom:last-of-type,*/
     /*Input.Input-MarginBottom:only-of-type*/
     /*{*/

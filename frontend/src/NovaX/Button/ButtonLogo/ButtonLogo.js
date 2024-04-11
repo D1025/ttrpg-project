@@ -2,15 +2,15 @@ import './ButtonLogo.css';
 import React from "react";
 
 // Button Logo.
-const ButtonLogo = ({src, alt = "", title, className, href, ...rest}) =>
+const ButtonLogo = ({src, alt = "", title, colorNumber, className, href, ...rest}) =>
 {
     // Decyduje o wyglądzie.
     const classBuilder = () =>
     {
         let classList = [];
 
-        // Tworzenie listy klas.
         classList.push(title ? 'ButtonLogo-D2' : 'ButtonLogo-D1');
+        classList.push(colorNumber >= 0 && `BackgroundColor-${colorNumber}`);
         if(className) classList.push(className);
 
         return classList.join(' ');
@@ -18,7 +18,6 @@ const ButtonLogo = ({src, alt = "", title, className, href, ...rest}) =>
 
     // Przypisanie listy klas w postaci 'String'.
     const myClass = classBuilder();
-
 
     // Return.
     return (

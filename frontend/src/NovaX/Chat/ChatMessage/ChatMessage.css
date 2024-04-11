@@ -59,7 +59,6 @@ Div.ChatMessage-D1 > Div.ChatMessage-Message
         background-repeat: no-repeat;
         border-radius: var(--Radius-1);
         margin-right: 0.25vw;
-        overflow: hidden;
     }
         /* Obrazek użytkownika. */
         Div.ChatMessage-Avatar > Img
@@ -154,7 +153,6 @@ Div.ChatMessage-D2 > Div.ChatMessage-Message
 /* Design 3. */
 Div.ChatMessage-D3
 {
-    margin-left: 1.0vw;
     margin-bottom: 0.65vw;
 }
     /* Usuwanie maeginesu z ostatniego. */

@@ -2,16 +2,15 @@
 /* Design 1. */
 A.ButtonLogo-D1
 {
+    width: max-content;
     height: 2.8vw;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: var(--Motyw);
     border-radius: var(--Radius-1);
-    padding-top: 0.15vw ;
-    padding-bottom: 0.15vw;
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
-    display: flex;
+    padding: 0.25vw;
+    display: inline-flex;
     cursor: pointer;
     transform: var(--Animacja);
     user-select: none;
@@ -32,6 +31,7 @@ A.ButtonLogo-D1:active
     /* Wygląd Zdjęcia w Przycisku. */
     A.ButtonLogo-D1 > Img
     {
+        max-width: 2.5vw;
         height: 90%;
     }
 
@@ -51,17 +51,19 @@ A.ButtonLogo-D1:active
 /* Design 2. */
 A.ButtonLogo-D2
 {
+    width: max-content;
     height: 2.8vw;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-size: 1.0rem;
+    background-color: var(--Motyw);
     border-radius: var(--Radius-1);
-    padding-top: 0.15vw ;
-    padding-bottom: 0.15vw;
+    padding-top: 0.25vw ;
+    padding-bottom: 0.25vw;
     padding-left: 0.5vw;
     padding-right: 0.5vw;
-    display: flex;
+    display: inline-flex;
     cursor: pointer;
     transform: var(--Animacja);
     user-select: none;
@@ -82,8 +84,8 @@ A.ButtonLogo-D2:active
     /* Wygląd Zdjęcia w Przycisku. */
     A.ButtonLogo-D2 > Img
     {
-        max-width: 8vw;
-        height: 95%;
+        max-width: 2.5vw;
+        max-height: 95%;
     }
 
     /* Wygląd Nazwy w Przycisku. */

@@ -19,7 +19,7 @@ const Button = ({
     // Decyduje o wyglądzie.
     const classBuilder = () =>
     {
-        let classList = [];
+        let classList = ['Button'];
 
         // Tworzenie listy klas.
         classList.push(title ? 'Button-D2' : 'Button-D1');
@@ -27,6 +27,7 @@ const Button = ({
         if(marginBottom) classList.push('Button-MarginBottom');
         if(marginLeftRight) classList.push('Button-MarginLeftRight');
         if(active === false) classList.push('Button-noActive');
+        if(wrapWord === true) classList.push('Button-Wrap');
         if(colorNumber > 0  && active !== false) classList.push(`BackgroundColor-${colorNumber}`);
         if(className) classList.push(className);
 
@@ -56,7 +57,7 @@ const Button = ({
                         <img src={src} alt={alt}/>
                     )}
                     {title && (
-                        <div className={wrapWord ? 'Button-Wrap' : undefined}>{title}</div>
+                        <div>{title}</div>
                     )}
                 </div>
             )}
