@@ -14,6 +14,7 @@ export {default as WindowDeleteRoom} from './Window/WindowRoom/WindowDeleteRoom.
 export {default as WindowAccountNickname} from './Window/WindowAccount/WindowAccountNickname.js';
 export {default as WindowAccountEmail} from './Window/WindowAccount/WindowAccountEmail.js';
 export {default as WindowAccountAvatar} from './Window/WindowAccount/WindowAccountAvatar.js';
+export {default as WindowAccountPassword} from './Window/WindowAccount/WindowAccountPassword.js';
 
 // Modul.
 export {default as ModulChat} from './Modul/ModulChat/ModulChat.js';

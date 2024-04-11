@@ -5,7 +5,7 @@ import
     Window,
     Input,
     Button,
-    StorageSave, StorageLoad, StorageRemove, InputCheckbox
+    StorageSave, StorageLoad, StorageRemove, InputCheckbox, iconEdit, iconClose
 } from "../../../NovaX";
 import './WindowLogIn.css';
 
@@ -152,7 +152,7 @@ const OknoLogowania = ({onClose}) =>
             return;
         }
 
-        // Asynchroniczne haszowanie hasła
+        // Asynchroniczne haszowanie hasła.
         const hasloZahashowane = await SHA256(haslo).toString();
 
         try
@@ -207,7 +207,7 @@ const OknoLogowania = ({onClose}) =>
 
                 <div className={"WindowLogIn"}>
                     <div className={"WindowLogIn-Top"}>
-                        <Button src={"/Ikonki/Zamknij.png"} onClick={onClose}/>
+                        <Button src={iconClose} onClick={onClose}/>
                     </div>
 
                     <div className={"WindowLogIn-Main"}>
@@ -222,14 +222,13 @@ const OknoLogowania = ({onClose}) =>
                                            value={email}
                                            onChange={pobierzEmail}
                                            required
-                                           autoFocus={LogowanieCzyRejestracja === true && (email === undefined)}
+                                           autoFocus={true}
                                     />
                                     <Input type={"password"}
                                            placeholder={"Hasło"}
                                            value={haslo}
                                            onChange={pobierzHaslo}
                                            required
-                                           autoFocus={LogowanieCzyRejestracja === true && (email !== undefined)}
                                     />
 
                                     <div className={"WindowLogIn-Checkbox"}>

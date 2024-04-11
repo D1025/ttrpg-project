@@ -132,14 +132,20 @@ const WindowCreateRoom = ({onClose}) =>
                             <div className={"WCR-Main-Flex"}>
                                 <div className={"WCR-Main-Flex-Left"}>
                                     <div className={"MCR-Main-Section"}>
-                                        <Label  marginBottom={true}>Nazwa:</Label><br/>
-                                        <Input type={"text"} placeholder={"Nazwa"} required
-                                               onChange={pobierzNazwa}/>
+                                        <Label marginBottom={true}>Nazwa:</Label><br/>
+                                        <Input
+                                            type={"text"}
+                                            placeholder={"Nazwa"}
+                                            required
+                                            onChange={pobierzNazwa}
+                                            autoFocus={true}
+                                        />
                                     </div>
 
                                     <div className={"MCR-Main-Section"}>
-                                        <Label  marginBottom={true}>Publiczne:</Label><br/>
-                                        <Select title={"Wybierz..."} id={"typ"} value={typ.toString()} onChange={pobierzTyp} required>
+                                        <Label marginBottom={true}>Publiczne:</Label><br/>
+                                        <Select title={"Wybierz..."} id={"typ"} value={typ.toString()}
+                                                onChange={pobierzTyp} required>
                                             <option value="false">Tak</option>
                                             <option value="true">Nie</option>
                                         </Select>

@@ -69,7 +69,7 @@ const ModulHeader = ({
                 {navAdmin === true && <>
                     <Menu2 tag={"nav"}>
                         <li>
-                            <Button title={"Pokoje"} width={2} href={"/"}/>
+                            <Button title={"Pokoje"} width={2} href={""}/>
                         </li>
                         <li>
                             <Button title={"Użytkownicy"} width={2} href={""}/>
@@ -93,16 +93,16 @@ const ModulHeader = ({
                             >
                             </AccountBar>
                             <Menu2>
-                                <li>
-                                    <Button title={"Ustawienia"} width={0}
-                                            href={currentLocation !== 'UstawieniaKonta' && "/UstawieniaKonta"}
-                                            active={currentLocation !== 'UstawieniaKonta'}/>
-                                </li>
                                 {userData.admin === true && <li>
                                     <Button title={"Panel"} width={0}
                                             href={currentLocation !== 'PanelAdmina' && "/PanelAdmina"}
                                             active={currentLocation !== 'PanelAdmina' && "/PanelAdmina"}/>
                                 </li>}
+                                <li>
+                                    <Button title={"Ustawienia"} width={0}
+                                            href={currentLocation !== 'UstawieniaKonta' && "/UstawieniaKonta"}
+                                            active={currentLocation !== 'UstawieniaKonta'}/>
+                                </li>
                                 <li>
                                     <Button title={"Wyloguj Się"} onClick={logOut} width={0}/>
                                 </li>

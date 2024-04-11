@@ -1,7 +1,14 @@
 import {useCallback, useEffect, useState} from "react";
 import
 {
+    Menu2,
+    Header,
+    HeaderLeft,
+    HeaderCenter,
+    HeaderRight,
     Button,
+    ButtonLogo,
+    AccountBar,
     Main,
     MainArticle,
     MainPanel,
@@ -12,9 +19,11 @@ import
     setTittle,
     ArticleTitleOption,
     iconAdd,
+    iconSettings,
     iconTrashCan,
     iconPlay,
     iconEdit,
+    Input
 } from "../../NovaX";
 import {
     ImgBase64,
@@ -25,7 +34,8 @@ import {
     WindowLogIn
 } from "../../NovaX-TTRPG";
 
-const HomePage = () => {
+const HomePage = () =>
+{
     // Tittle.
     setTittle("../Grafiki/Logo.png", "TTRPG | Lobby");
 
@@ -37,8 +47,10 @@ const HomePage = () => {
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
 
     // Wylogowywanie.
-    const LogOut = useCallback(async () => {
-        try {
+    const LogOut = useCallback(async() =>
+    {
+        try
+        {
             const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/logout', {
                 method: 'POST',
                 headers: {
@@ -48,13 +60,16 @@ const HomePage = () => {
             });
 
             // Reagowanie na odpowiedź.
-            if (!odpowiedz.ok) {
+            if(odpowiedz.ok)
+            {
                 // Pomyślne wylogowanie
                 StorageRemove('loginData');
                 setIsLogIn(false);
                 setUserData('');
             }
-        } catch (blad) {
+        }
+        catch(blad)
+        {
             // Obsługa błędów związanych z siecią lub żądaniem
             console.error(`Nieoczekiwany błąd: ${blad}`);
         }
@@ -63,11 +78,15 @@ const HomePage = () => {
 
     // Formularz Logowanie/Rejestracja.
     const [showLogIn, setShowLogIn] = useState(false);
-    const toggleLogIn = () => {
-        if (!showLogIn) {
+    const toggleLogIn = () =>
+    {
+        if(!showLogIn)
+        {
             // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
-            const handleEscape = (event) => {
-                if (event.key === 'Escape') {
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
                     setShowLogIn(false);
                     document.removeEventListener('keydown', handleEscape);
                 }
@@ -79,11 +98,15 @@ const HomePage = () => {
     };
     // Formularz CreateRoom.
     const [showCreateRoom, setCreateRoom] = useState(false);
-    const togglCreateRoom = () => {
-        if (!showCreateRoom) {
+    const togglCreateRoom = () =>
+    {
+        if(!showCreateRoom)
+        {
             // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
-            const handleEscape = (event) => {
-                if (event.key === 'Escape') {
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
                     setCreateRoom(false);
                     document.removeEventListener('keydown', handleEscape);
                 }
@@ -96,11 +119,15 @@ const HomePage = () => {
     // Formularz EditRoom.
     const [showEditRoom, setEditRoom] = useState(false);
     const [edytowanyPokoj, setEdytowanyPokoj] = useState("");
-    const togglEditRoom = (pokoj) => {
-        if (!showEditRoom) {
+    const togglEditRoom = (pokoj) =>
+    {
+        if(!showEditRoom)
+        {
             // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
-            const handleEscape = (event) => {
-                if (event.key === 'Escape') {
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
                     setEditRoom(false);
                     document.removeEventListener('keydown', handleEscape);
                 }
@@ -113,11 +140,15 @@ const HomePage = () => {
     };
     // Formularz DeleteRoom.
     const [showDeleteRoom, setDeleteRoom] = useState(false);
-    const togglDeleteRoom = (pokoj) => {
-        if (!showDeleteRoom) {
+    const togglDeleteRoom = (pokoj) =>
+    {
+        if(!showDeleteRoom)
+        {
             // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
-            const handleEscape = (event) => {
-                if (event.key === 'Escape') {
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
                     setDeleteRoom(false);
                     document.removeEventListener('keydown', handleEscape);
                 }
@@ -132,8 +163,10 @@ const HomePage = () => {
 
     // Załaój pokoje.
     const [pokoje, setPokoje] = useState([]);
-    const ladujPokoje = useCallback(async ({publiczny = true}) => {
-        try {
+    const ladujPokoje = useCallback(async({publiczny = true}) =>
+    {
+        try
+        {
             const odpowiedz = await fetch(`http://localhost:8086/api/v1/room?status=${publiczny ? 'PUBLIC' : 'PRIVATE'}`, {
                 method: 'GET',
                 headers: {
@@ -142,15 +175,21 @@ const HomePage = () => {
                 },
             });
 
-            if (!odpowiedz.ok) {
+            if(!odpowiedz.ok)
+            {
                 // Obróbka błędów
-                if (odpowiedz.status === 400) {
+                if(odpowiedz.status === 400)
+                {
                     const blad = await odpowiedz.json();
                     console.log(`${blad.message}`);
-                } else {
+                }
+                else
+                {
                     console.log(`Błąd: ${odpowiedz.status}`);
                 }
-            } else {
+            }
+            else
+            {
                 const dane = await odpowiedz.json();
 
                 // Przetwarzanie i tworzenie komponentów pokoi
@@ -180,19 +219,25 @@ const HomePage = () => {
 
                 setPokoje(zrenderowanePokoje);
             }
-        } catch (blad) {
+        }
+        catch(blad)
+        {
             console.log(`Nieoczekiwany błąd: ${blad}`);
         }
     }, [userData.token]); // Zależności useCallback'a
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
-    useEffect(() => {
+    useEffect(() =>
+    {
         const loginData = StorageLoad('loginData');
         // Jeśli dane logowania istnieją.
-        if (loginData) {
+        if(loginData)
+        {
             setIsLogIn(true);
             setUserData(loginData);
-        } else {
+        }
+        else
+        {
             setUserData('');
             setIsLogIn(false);
         }
