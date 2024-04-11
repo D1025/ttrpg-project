@@ -87,7 +87,7 @@ const WindowAccountNickname = ({onClose, userData}) =>
 
                     <div className={"WindowCreateRoom-Bottom"}>
                         <div>
-                            <div><Input type={"submit"} value={"Potwierdzam zmianę"} width={0}/></div>
+                            <div><Input type={"submit"} value={"Potwierdzam zmianę"} width={3}/></div>
                             {powiadomienie && <div>{powiadomienie}</div>}
                         </div>
                     </div>

@@ -19,7 +19,7 @@ const AccountBar = ({
     {
         let classList = ['AccountBar'];
 
-        // Tworzenie listy klas.
+        if(design > 0) classList.push(`AccountBar-D${design}`)
         if(width >= 0) classList.push(`Width-${width}`)
         if(marginLeftRight) classList.push('AccountBar-MarginLeftRight');
         if(className) classList.push(className);

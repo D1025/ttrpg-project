@@ -1,5 +1,6 @@
 /* AccountBar. */
-Div.AccountBar
+/* Design 1. */
+Div.AccountBar-D1
 {
     width: max-content;
     height: var(--Przycisk-Wysokość);
@@ -9,36 +10,34 @@ Div.AccountBar
     font-size: 1.0rem;
     background-color: var(--Motyw-Ciemny);
     border-radius: var(--Radius-1);
-    padding: 0 0 0 0.5vw;
+    padding: 0.0vw 0.0vw 0.0vw 0.5vw;
     display: inline-flex;
-    cursor: pointer;
     user-select: none;
 }
 
 /* Nickname. */
-Div.AccountBar > Div.AccountBar-Title
+Div.AccountBar-D1 > Div.AccountBar-Title
 {
     font-weight: bold;
     margin-left: auto;
     margin-right: auto;
 }
+    /* Nazwa. */
+    Div.AccountBar-D1 > Div.AccountBar-Title > Div:nth-child(1)
+    {
+        font-weight: bold;
+        font-size: 0.95rem;
+    }
 
-/* . */
-Div.AccountBar > Div.AccountBar-Title > Div:nth-child(1)
-{
-    font-weight: bold;
-    font-size: 0.95rem;
-}
-
-/* . */
-Div.AccountBar > Div.AccountBar-Title > Div:nth-child(2)
-{
-    font-weight: normal;
-    font-size: 0.6rem;
-}
+    /* Podtytuł. */
+    Div.AccountBar-D1 > Div.AccountBar-Title > Div:nth-child(2)
+    {
+        font-weight: normal;
+        font-size: 0.6rem;
+    }
 
 /* Miejsce na Avatar. */
-Div.AccountBar > Div.AccountBar-Img
+Div.AccountBar-D1 > Div.AccountBar-Img
 {
     width: var(--Przycisk-Wysokość);
     height: var(--Przycisk-Wysokość);
@@ -52,12 +51,74 @@ Div.AccountBar > Div.AccountBar-Img
     margin-left: 0.5vw;
 }
     /* Wygląd Img. */
-    Div.AccountBar > Div.AccountBar-Img > Img
+    Div.AccountBar-D1 > Div.AccountBar-Img > Img
     {
         max-width: 100%;
         max-height: 100%;
         border-radius: inherit;
     }
+
+
+
+/* Design 1. */
+Div.AccountBar-D2
+{
+    width: max-content;
+    height: var(--Przycisk-Wysokość);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.0rem;
+    background-color: var(--Motyw-Ciemny);
+    border-radius: var(--Radius-1);
+    padding: 0.0vw 0.5vw 0.0vw 0.0vw;
+    display: inline-flex;
+    user-select: none;
+}
+
+/* Nickname. */
+Div.AccountBar-D2 > Div.AccountBar-Title
+{
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+}
+    /* Nazwa. */
+    Div.AccountBar-D2 > Div.AccountBar-Title > Div:nth-child(1)
+    {
+        font-weight: bold;
+        font-size: 0.95rem;
+    }
+
+    /* Podtytuł. */
+    Div.AccountBar-D2 > Div.AccountBar-Title > Div:nth-child(2)
+    {
+        font-weight: normal;
+        font-size: 0.6rem;
+    }
+
+/* Miejsce na Avatar. */
+Div.AccountBar-D2 > Div.AccountBar-Img
+{
+    width: var(--Przycisk-Wysokość);
+    height: var(--Przycisk-Wysokość);
+    background-image: url("../../Icon/Account.png");
+    background-size: 65%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--Kolor-Dodatkowy);
+    border-radius: var(--Radius-1);
+    box-shadow: var(--Przycisk-Cienie);
+    margin-right: 0.5vw;
+}
+    /* Wygląd Img. */
+    Div.AccountBar-D2 > Div.AccountBar-Img > Img
+    {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: inherit;
+    }
+
 
 
 /* Margines lewy i prawy. */

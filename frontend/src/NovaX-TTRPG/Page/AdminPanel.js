@@ -74,7 +74,7 @@ const AdminPanel = () =>
     return (
         <>
             {/* Nagłłówek Strony. */}
-            <ModulHeader menuAdmin={true} isLogIn={isLogIn} logIn={toggleLogIn} userData={userData} logOut={LogOut}/>
+            <ModulHeader navAdmin={true} isLogIn={isLogIn} logIn={toggleLogIn} userData={userData} logOut={LogOut}/>
 
             {/* Home Strony. */}
             <Main design={2}>

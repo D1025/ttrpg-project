@@ -75,7 +75,7 @@ const GamePage = () =>
     return (
         <>
             {/* Nagłłówek Strony. */}
-            <ModulHeader isLogIn={isLogIn} userData={userData} logOut={LogOut} logIn={toggleLogIn}/>
+            <ModulHeader isLogIn={isLogIn} userData={userData} logOut={LogOut} navUser={false} logIn={toggleLogIn}/>
 
             <ModulChat roomId={idParam} userId={userData.id}/>
 
