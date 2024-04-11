@@ -60,7 +60,7 @@ const HomePage = () =>
             });
 
             // Reagowanie na odpowiedź.
-            if(!odpowiedz.ok)
+            if(odpowiedz.ok)
             {
                 // Pomyślne wylogowanie
                 StorageRemove('loginData');

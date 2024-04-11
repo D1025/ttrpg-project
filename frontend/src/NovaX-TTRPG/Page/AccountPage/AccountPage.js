@@ -49,7 +49,7 @@ const GamePage = () =>
             });
 
             // Reagowanie na odpowiedź.
-            if(!odpowiedz.ok)
+            if(odpowiedz.ok)
             {
                 // Pomyślne wylogowanie
                 StorageRemove('loginData');
