@@ -101,8 +101,8 @@ Div.Select
     margin-bottom: var(--Przycisk-Odstep-Y);
 }
     /* Kiedy ostatni albo jedyny. */
-    .Select-MarginBottom:last-of-type,
-    .Select-MarginBottom:only-of-type
-    {
-        margin-bottom: 0.0vw;
-    }
+    /*.Select-MarginBottom:last-of-type,*/
+    /*.Select-MarginBottom:only-of-type*/
+    /*{*/
+    /*    margin-bottom: 0.0vw;*/
+    /*}*/

@@ -7,6 +7,7 @@ const AccountBar = ({
                            subTitle,
                            src,
                            alt = "",
+                           maxLength = 20,
                            className,
                            marginLeftRight = true,
                            width = 1,
@@ -41,7 +42,7 @@ const AccountBar = ({
 
             {/* Nazwa i podtytół. */}
             <div className={"AccountBar-Title"}>
-                <div>{title.length > 20 ? title.substring(0, 20) + '...' : title}</div>
+                <div>{title.length > maxLength ? title.substring(0, maxLength) + '...' : title}</div>
                 {subTitle && (<div>{subTitle}</div>)}
             </div>
 

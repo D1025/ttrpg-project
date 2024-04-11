@@ -2,11 +2,28 @@ import {useCallback, useEffect, useState} from "react";
 import
 {
     Menu2,
-    Header, HeaderLeft, HeaderCenter, HeaderRight,
-    Button, ButtonLogo, AccountBar,
-    Main, MainArticle, MainPanel, ArticleTitle,
+    Header,
+    HeaderLeft,
+    HeaderCenter,
+    HeaderRight,
+    Button,
+    ButtonLogo,
+    AccountBar,
+    Main,
+    MainArticle,
+    MainPanel,
+    ArticleTitle,
     RoomFrame,
-    StorageLoad, StorageRemove, setTittle, ArticleTitleOption, iconAdd, iconSettings, iconTrashCan, iconPlay, iconEdit
+    StorageLoad,
+    StorageRemove,
+    setTittle,
+    ArticleTitleOption,
+    iconAdd,
+    iconSettings,
+    iconTrashCan,
+    iconPlay,
+    iconEdit,
+    Input
 } from "../../NovaX";
 import {
     ImgBase64,
@@ -251,7 +268,8 @@ const HomePage = () =>
                     <ArticleTitle title={lobby === false ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
                         {isLogIn === true && (
                             <ArticleTitleOption>
-                                <Button src={iconAdd} title={"Stwóż Pokój"} width={1} onClick={togglCreateRoom}/>
+                                {/*<Input type={"text"} placeholder={"Szukaj"} width={2}/>*/}
+                                <Button src={iconAdd} title={"Stwóż Pokój"} width={2} onClick={togglCreateRoom}/>
                             </ArticleTitleOption>
                         )}
                     </ArticleTitle>

@@ -67,16 +67,14 @@ Div.Button-D2
     /* Wygląd obrazka w przycisku. */
     Div.Button-D2 > Img
     {
-        width: calc(var(--Przycisk-Wysokość) * 0.65);
-        height: calc(var(--Przycisk-Wysokość) * 0.65);
-        margin-left: 0.25vw;
-        margin-right: 0.25vw;
+        max-width: calc(var(--Przycisk-Wysokość) * 0.65);
+        max-height: calc(var(--Przycisk-Wysokość) * 0.65);
+        margin-right: 0.5vw;
     }
     /* Wygląd tytułu w przycisku. */
     Div.Button-D2 > Div
     {
-        margin-left: 0.25vw;
-        margin-right: 0.25vw;
+        width: max-content;
     }
 
 
@@ -98,7 +96,7 @@ Div.Button-noActive:hover,
 Div.Button-noActive:active
 {
     background-color: var(--Kolor-Oznaczenia)!important;
-    cursor: unset;
+    cursor: default;
 }
 
 /* Margines dolny. */
@@ -107,10 +105,11 @@ Div.Button-MarginBottom
     margin-bottom: var(--Przycisk-Odstep-Y);
 }
     /* Jeśli jest ostatni to styl niedziała. */
-    Div.Button-MarginBottom:last-of-type
-    {
-        margin-bottom: 0.0vw!important;
-    }
+    /*Div.Button-MarginBottom:last-of-type,*/
+    /*Div.Button-MarginBottom:only-of-type*/
+    /*{*/
+    /*    margin-bottom: 0.0vw!important;*/
+    /*}*/
 
 /* Margines lewy i prawy. */
 Div.Button-MarginLeftRight
@@ -122,6 +121,16 @@ Div.Button-MarginLeftRight
 /* Zawijanie tekstu. */
 Div.Button-Wrap
 {
-    width: min-content;
-    word-wrap: break-word;
+    height: auto;
 }
+    /* . */
+    Div.Button-Wrap > Img
+    {
+        height: calc(var(--Przycisk-Wysokość)*0.65);
+    }
+    /* . */
+    Div.Button-Wrap > Div
+    {
+        width: min-content;
+        word-wrap: break-word;
+    }

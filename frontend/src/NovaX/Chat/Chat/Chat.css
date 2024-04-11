@@ -31,12 +31,23 @@ Div.Chat
 
 
 /* Pole pobierające wiadomości. */
-Input.ChatInput
+Div.ChatInput
 {
-    width: 100%!important;
-    height: 3.0vw!important;
-    margin-left: auto!important;
-    margin-right: auto!important;
-    border-radius: var(--Radius-3)!important;
-    display: block;
+    display: flex;
 }
+    /* Input czatu. */
+    Div.ChatInput > Input[type="text"]
+    {
+        width: 100%!important;
+        height: 3.0vw!important;
+        border-radius: var(--Radius-2);
+        flex: 1;
+    }
+    /* Przycisk wysyłający. */
+    Div.ChatInput > Div.Button
+    {
+        width: 3.0vw;
+        height: 3.0vw;
+        border-radius: var(--Radius-2);
+        margin-left: 0.3vw;
+    }

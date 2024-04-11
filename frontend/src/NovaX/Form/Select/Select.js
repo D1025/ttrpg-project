@@ -4,7 +4,7 @@ import {Hr, iconArrowDown, iconArrowLeft} from "../../index";
 
 const Select = ({
                     children,
-                    length = 13,
+                    length = 11,
                     title = 'Select...',
                     srcHide = iconArrowLeft,
                     srcShow = iconArrowDown,
