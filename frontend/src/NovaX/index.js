@@ -20,17 +20,7 @@ export {default as ArticleTitle} from './Main/MainArticleTitle/ArticleTitle/Arti
     export {default as ArticleTitleOption} from './Main/MainArticleTitle/ArticleTitleOption/ArticleTitleOption.js'; // Gotowe.
     export {default as ArticleTitleTag} from './Main/MainArticleTitle/ArticleTitleTag/ArticleTitleTag.js';          // Gotowe.
 
-// Bar.
-export {default as EpisodeBar} from './Bar/InfoBar/InfoBar.js';                                  // Gotowe.
-    export {default as EpisodeBarBig} from './Bar/InfoBar/InfoBarSize/InfoBarBig.js';            // Gotowe.
-    export {default as EpisodeBarMiddle} from './Bar/InfoBar/InfoBarSize/InfoBarMiddle.js';      // Gotowe.
-    export {default as EpisodeBarSmall} from './Bar/InfoBar/InfoBarSize/InfoBarSmall.js';        // Gotowe.
-    export {default as EpisodeBarTiny} from './Bar/InfoBar/InfoBarSize/InfoBarTiny.js';          // Gotowe.
-
 // Frame.
-export {default as InfoFrame} from './Frame/InfoFrame/InfoFrame.js';                             // TODO: Dodać płynne przwijanie po obrazkach do wyboru.
-    export {default as InfoFrameData} from './Frame/InfoFrame/InfoFrameData/InfoFrameData.js';   // Gotowe.
-export {default as NewsFrame} from './Frame/NewsFrame/NewsFrame.js';                             // Gotowe.
 export {default as RoomFrame} from './Frame/RoomFrame/RoomFrame.js';                             // Gotowe.
 
 // Button.
@@ -73,8 +63,6 @@ export {default as Window} from './Window/Window/Window.js';                    
 export {default as Chat} from './Chat/Chat/Chat.js';                                             // Gotowe.
 export {default as ChatMessage} from './Chat/ChatMessage/ChatMessage.js';                        // Gotowe.
 
-// Code2Text.
-export {default as Code2Text} from './Code2Text/Code2Text.js';
 
 
 
