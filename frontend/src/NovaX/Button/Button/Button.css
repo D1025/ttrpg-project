@@ -67,8 +67,8 @@ Div.Button-D2
     /* Wygląd obrazka w przycisku. */
     Div.Button-D2 > Img
     {
-        max-width: 65%;
-        max-height: 65%;
+        width: calc(var(--Przycisk-Wysokość) * 0.65);
+        height: calc(var(--Przycisk-Wysokość) * 0.65);
         margin-left: 0.25vw;
         margin-right: 0.25vw;
     }

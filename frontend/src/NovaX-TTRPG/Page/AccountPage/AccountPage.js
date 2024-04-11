@@ -1,29 +1,30 @@
 import {useCallback, useEffect, useState} from "react";
 import {
-    Menu2,
-    Header,
-    HeaderRight,
     Button,
-    AccountBar,
     StorageLoad,
     setTittle,
     Main,
     MainArticle,
     ArticleTitle,
-    ButtonLogo,
-    HeaderLeft,
-    HeaderCenter,
     RoomFrame,
-    HrSeparator, AccountInformation, iconTrashCan, iconSettings, iconPlay, iconEdit
-} from "../../NovaX";
+    HrSeparator,
+    StorageRemove,
+    AccountInformation,
+    iconTrashCan,
+    iconSettings,
+    iconPlay,
+    iconEdit
+} from "../../../NovaX";
 import './AccountPage.css';
 import {
     WindowDeleteRoom,
     WindowAccountNickname,
     WindowEditRoom,
     WindowAccountEmail,
-    WindowAccountAvatar, ImgBase64
-} from "../index";
+    WindowAccountAvatar,
+    ImgBase64,
+    ModulHeader, WindowLogIn
+} from "../../index";
 
 const GamePage = () =>
 {
@@ -32,13 +33,42 @@ const GamePage = () =>
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
-    const [userData, setLogInData] = useState(''); // Dane zalogowanego.
+    const [userData, setUserData] = useState(''); // Dane zalogowanego.
+
+    // Wylogowywanie.
+    const LogOut = useCallback(async() =>
+    {
+        try
+        {
+            const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': userData.token
+                }
+            });
+
+            // Reagowanie na odpowiedź.
+            if(!odpowiedz.ok)
+            {
+                // Pomyślne wylogowanie
+                StorageRemove('loginData');
+                setIsLogIn(false);
+                setUserData('');
+            }
+        }
+        catch(blad)
+        {
+            // Obsługa błędów związanych z siecią lub żądaniem
+            console.error(`Nieoczekiwany błąd: ${blad}`);
+        }
+    }, [userData.token]);
 
     // Formularz Logowanie/Rejestracja.
-    const [showLogin, setShowLogin] = useState(false);
-    const toggleShowLogin = () =>
+    const [showLogIn, setShowLogIn] = useState(false);
+    const toggleLogIn = () =>
     {
-        setShowLogin(prevShowLogin => !prevShowLogin);
+        setShowLogIn(prevShowLogin => !prevShowLogin);
     };
 
     // Załaój pokoje.
@@ -92,7 +122,7 @@ const GamePage = () =>
                     {isLogIn && (
                         <>
                             <Button colorNumber={4} onClick={() => togglDeleteRoom(pokoj)} src={iconTrashCan}/>
-                            <Button onClick={() => togglEditRoom(pokoj)} src={iconSettings}/>
+                            <Button onClick={() => togglEditRoom(pokoj)} src={iconEdit}/>
                             <a href={`/Gra?id=${pokoj.id}`}>
                                 <Button src={iconPlay}/>
                             </a>
@@ -215,7 +245,6 @@ const GamePage = () =>
         setAccountAvatar(!showAccountAvatar);
     };
 
-
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
@@ -224,83 +253,21 @@ const GamePage = () =>
         if(LoadLogInData)
         {
             setIsLogIn(true);
-            setLogInData(LoadLogInData);
+            setUserData(LoadLogInData);
             ladujPokoje();
         }
         else
         {
-            setLogInData('');
+            setUserData('');
             setIsLogIn(false);
+            window.location.href = '/';
         }
-    }, [ladujPokoje, showEditRoom === false, showDeleteRoom === false, showAccountNickname === false, showAccountEmail === false, showAccountAvatar === false, showLogin]);
+    }, [ladujPokoje, showEditRoom === false, showDeleteRoom === false, showAccountNickname === false, showAccountEmail === false, showAccountAvatar === false, showLogIn, LogOut]);
 
     return (
         <>
             {/* Nagłłówek Strony. */}
-            <Header design={2}>
-                <HeaderLeft>
-                    <ButtonLogo title={"TTRPG"} src={"./Grafiki/Logo.png"} href={"/"}/>
-                </HeaderLeft>
-                <HeaderCenter>
-                    <Menu2 tag="nav">
-                        <li>
-                            <a href={"/"}>
-                                <Button title={"Pokoje"} width={2}/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href={""}>
-                                <Button title={"O Nas"} width={2}/>
-                            </a>
-                            <Menu2>
-                                <li>
-                                    <a href={""}>
-                                        <Button title={"Wiadomości"} style={{width: "100%"}}/>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={""}>
-                                        <Button title={"Regulamin"} style={{width: "100%"}}/>
-                                    </a>
-                                </li>
-                            </Menu2>
-                        </li>
-                    </Menu2>
-                </HeaderCenter>
-
-                {/* Prawy nagłówek z opcjami. */}
-                <HeaderRight>
-                    {isLogIn === true ? (
-                        <Menu2>
-                            <li><AccountBar design={1} width={2} title={userData.nickname}
-                                            subTitle={userData.admin === true && "[Admin]"}
-                                            src={ImgBase64(userData.imageExtension, userData.avatar)}></AccountBar>
-                                <Menu2>
-                                    <li>
-                                        <a href={"/Konto"}>
-                                            <Button title={"Konto"} style={{width: "100%"}}/>
-                                        </a>
-                                    </li>
-                                    {userData.admin === true && (
-                                        <li>
-                                            <a href={"/Panel"}>
-                                                <Button title={"Panel"} style={{width: "100%"}}/>
-                                            </a>
-                                        </li>)}
-                                    <li>
-                                        <a href={"/"}>
-                                            <Button title={"Wyjdź"} style={{width: "100%"}}/>
-                                        </a>
-                                    </li>
-                                </Menu2>
-                            </li>
-                        </Menu2>
-                    ) : (
-                        <Button title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
-                                onClick={toggleShowLogin} width={1}/>
-                    )}
-                </HeaderRight>
-            </Header>
+            <ModulHeader userData={userData} logIn={toggleLogIn} logOut={LogOut} isLogIn={isLogIn}/>
 
             <Main design={1}>
                 <MainArticle>
@@ -314,22 +281,39 @@ const GamePage = () =>
                             </div>
                         </div>
                         <div className={"AccountPageRest"}>
-                            <AccountInformation dataType={"Nazwa"} data={userData.nickname} canEdit={true}
-                                                buttonColorNumber={0} width={4} marginBottom={true}
-                                                onClick={togglAccountNickname}/><br/>
-                            <AccountInformation dataType={"Email"} data={userData.email} canEdit={true}
-                                                buttonColorNumber={0} width={4} marginBottom={true}
-                                                onClick={togglAccountEmail}/><br/>
-                            <AccountInformation dataType={"Hasło"} data={'*****'} canEdit={true} buttonColorNumber={0}
-                                                width={4} marginBottom={true}/><br/>
+                            <AccountInformation
+                                dataType={"Nazwa"}
+                                data={userData.nickname}
+                                canEdit={true}
+                                buttonColorNumber={0}
+                                width={4}
+                                marginBottom={true}
+                                onClick={togglAccountNickname}
+                            /><br/>
+                            <AccountInformation
+                                dataType={"Email"}
+                                data={userData.email}
+                                canEdit={true}
+                                buttonColorNumber={0}
+                                width={4} marginBottom={true}
+                                onClick={togglAccountEmail}
+                            /><br/>
+                            <AccountInformation
+                                dataType={"Hasło"}
+                                data={'*****'}
+                                canEdit={true} buttonColorNumber={0}
+                                width={4}
+                                marginBottom={true}
+                            /><br/>
                         </div>
                     </div>
 
                     <HrSeparator title={"Moje Pokoje"}/>
                     {pokoje}
-
                 </MainArticle>
             </Main>
+
+            {showLogIn && <WindowLogIn onClose={toggleLogIn}/>}
             {showEditRoom && <WindowEditRoom danePokoju={edytowanyPokoj} onClose={togglEditRoom}/>}
             {showDeleteRoom && <WindowDeleteRoom danePokoju={edytowanyPokoj} onClose={togglDeleteRoom}/>}
             {showAccountNickname && <WindowAccountNickname userData={userData} onClose={togglAccountNickname}/>}

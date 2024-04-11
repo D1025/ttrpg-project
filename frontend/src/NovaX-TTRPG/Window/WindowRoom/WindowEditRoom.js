@@ -86,7 +86,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                 body: JSON.stringify({
                     name: nazwa !== danePokoju.name ? nazwa : undefined,
                     description: opis !== danePokoju.description ? opis : undefined,
-                    image: obraz !== danePokoju.image ? obraz : undefined,
+                    image: obraz !== ImgBase64(obrazRozszezenie, danePokoju.image) ? obraz : undefined,
                     imageExtension: obrazRozszezenie !== danePokoju.imageExtension ? obrazRozszezenie : undefined,
                     isPrivate: typ !== danePokoju.isPrivate ? typ : undefined,
                 })
@@ -126,7 +126,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                 <form onSubmit={stworzLobby}>
                     <div className={"WindowCreateRoom-Top"}>
                         <div>
-                            Edycja: {'"' + (danePokoju.name.length > 15 ? danePokoju.name.substring(0, 15) + '...' : danePokoju.name) + '"'}
+                            Edycja: {'"' + (danePokoju.name.length > 10 ? danePokoju.name.substring(0, 10) + '...' : danePokoju.name) + '"'}
                         </div>
                         <div>
                             <Button src={iconClose} onClick={onClose}/>

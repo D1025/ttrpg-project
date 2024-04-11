@@ -6,9 +6,16 @@ import
     Button, ButtonLogo, AccountBar,
     Main, MainArticle, MainPanel, ArticleTitle,
     RoomFrame,
-    StorageLoad, StorageRemove, setTittle, ArticleTitleOption, iconAdd, iconSettings, iconTrashCan, iconPlay
+    StorageLoad, StorageRemove, setTittle, ArticleTitleOption, iconAdd, iconSettings, iconTrashCan, iconPlay, iconEdit
 } from "../../NovaX";
-import {ImgBase64, WindowCreateRoom, WindowDeleteRoom, WindowEditRoom, WindowLogIn} from "../../NovaX-TTRPG";
+import {
+    ImgBase64,
+    ModulHeader,
+    WindowCreateRoom,
+    WindowDeleteRoom,
+    WindowEditRoom,
+    WindowLogIn
+} from "../../NovaX-TTRPG";
 
 const HomePage = () =>
 {
@@ -19,8 +26,9 @@ const HomePage = () =>
     const [lobby, ustawLobby] = useState(false);
 
     // Status Zalogowaniay.
-    const [isLogIn, ustawIsLogIn] = useState(false); // Czy zalogowany.
-    const [userData, ustawUserData] = useState(''); // Dane zalogowanego.
+    const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
+    const [userData, setUserData] = useState(''); // Dane zalogowanego.
+
     // Wylogowywanie.
     const LogOut = useCallback(async() =>
     {
@@ -39,8 +47,8 @@ const HomePage = () =>
             {
                 // Pomyślne wylogowanie
                 StorageRemove('loginData');
-                ustawIsLogIn(false);
-                ustawUserData('');
+                setIsLogIn(false);
+                setUserData('');
             }
         }
         catch(blad)
@@ -52,24 +60,24 @@ const HomePage = () =>
 
 
     // Formularz Logowanie/Rejestracja.
-    const [showLogin, setShowLogin] = useState(false);
-    const toggleShowLogin = () =>
+    const [showLogIn, setShowLogIn] = useState(false);
+    const toggleLogIn = () =>
     {
-        if(!showLogin)
+        if(!showLogIn)
         {
             // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
             const handleEscape = (event) =>
             {
                 if(event.key === 'Escape')
                 {
-                    setShowLogin(false);
+                    setShowLogIn(false);
                     document.removeEventListener('keydown', handleEscape);
                 }
             };
 
             document.addEventListener('keydown', handleEscape);
         }
-        setShowLogin(!showLogin);
+        setShowLogIn(!showLogIn);
     };
     // Formularz CreateRoom.
     const [showCreateRoom, setCreateRoom] = useState(false);
@@ -181,7 +189,7 @@ const HomePage = () =>
                                     <>
                                         <Button colorNumber={4} onClick={() => togglDeleteRoom(pokoj)}
                                                 src={iconTrashCan}/>
-                                        <Button onClick={() => togglEditRoom(pokoj)} src={iconSettings}/>
+                                        <Button onClick={() => togglEditRoom(pokoj)} src={iconEdit}/>
                                     </>
                                 }
                                 <a href={`/Gra?id=${pokoj.id}`}>
@@ -208,88 +216,22 @@ const HomePage = () =>
         // Jeśli dane logowania istnieją.
         if(loginData)
         {
-            ustawIsLogIn(true);
-            ustawUserData(loginData);
+            setIsLogIn(true);
+            setUserData(loginData);
         }
         else
         {
-            ustawUserData('');
-            ustawIsLogIn(false);
+            setUserData('');
+            setIsLogIn(false);
         }
         ladujPokoje({publiczny: !lobby});
-    }, [lobby, ladujPokoje, showCreateRoom === false, showEditRoom === false, showDeleteRoom === false, showLogin]);
+    }, [lobby, ladujPokoje, showCreateRoom === false, showEditRoom === false, showDeleteRoom === false, showLogIn === false, LogOut]);
 
     // Aplikacja.
     return (
         <>
             {/* Nagłłówek Strony. */}
-            <Header design={2} src={"./Grafiki/TłoDodatkowe/TOPanime.jpg"}>
-                {/* Lewy Nagłówek z logo. */}
-                <HeaderLeft>
-                    <ButtonLogo title={"TTRPG"} src={"./Grafiki/Logo.png"} href={"/"}/>
-                </HeaderLeft>
-
-                {/* Środkowy nagłówek z menu. */}
-                <HeaderCenter>
-                    <Menu2 tag="nav">
-                        <li>
-                            <a href={"/"}>
-                                <Button title={"Pokoje"} width={2}/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href={""}>
-                                <Button title={"O Nas"} width={2}/>
-                            </a>
-                            <Menu2>
-                                <li>
-                                    <a href={""}>
-                                        <Button title={"Wiadomości"} style={{width: "100%"}}/>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={""}>
-                                        <Button title={"Regulamin"} style={{width: "100%"}}/>
-                                    </a>
-                                </li>
-                            </Menu2>
-                        </li>
-                    </Menu2>
-                </HeaderCenter>
-
-                {/* Prawy nagłówek z opcjami. */}
-                <HeaderRight>
-                    {/*<Button active={false} src={"./Ikonki/Style.png"}/>*/}
-                    {isLogIn === true ? (
-                        <Menu2>
-                            <li><AccountBar design={1} width={2} title={userData.nickname}
-                                            subTitle={userData.admin === true && "[Admin]"}
-                                            src={ImgBase64(userData.imageExtension, userData.avatar)}></AccountBar>
-                                <Menu2>
-                                    <li>
-                                        <a href={"/Konto"}>
-                                            <Button title={"Konto"} style={{width: "100%"}}/>
-                                        </a>
-                                    </li>
-                                    {userData.admin === true && (
-                                        <li>
-                                            <a href={"/Panel"}>
-                                                <Button title={"Panel"} style={{width: "100%"}}/>
-                                            </a>
-                                        </li>)}
-                                    <li>
-                                        <Button title={"Wyloguj Się"} onClick={LogOut} width={0}/>
-                                    </li>
-                                </Menu2>
-                            </li>
-                        </Menu2>
-                    ) : (
-                        <Button title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
-                                onClick={toggleShowLogin} width={1}/>
-                    )}
-                </HeaderRight>
-            </Header>
-
+            <ModulHeader userData={userData} logIn={toggleLogIn} logOut={LogOut} isLogIn={isLogIn}/>
 
             {/* Home Strony. */}
             <Main design={2}>
@@ -324,11 +266,9 @@ const HomePage = () =>
                         </>
                     )}
                 </MainArticle>
-
-
             </Main>
 
-            {showLogin && <WindowLogIn onClose={toggleShowLogin}/>}
+            {showLogIn && <WindowLogIn onClose={toggleLogIn}/>}
             {showCreateRoom && <WindowCreateRoom onClose={togglCreateRoom}/>}
             {showEditRoom && <WindowEditRoom danePokoju={edytowanyPokoj} onClose={togglEditRoom}/>}
             {showDeleteRoom && <WindowDeleteRoom danePokoju={edytowanyPokoj} onClose={togglDeleteRoom}/>}
