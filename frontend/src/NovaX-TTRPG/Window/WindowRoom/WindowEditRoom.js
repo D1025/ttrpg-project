@@ -140,9 +140,14 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                                 <div className={"WCR-Main-Flex-Left"}>
                                     <div className={"MCR-Main-Section"}>
                                         <Label marginBottom={true}>Nazwa:</Label><br/>
-                                        <Input value={nazwa} type={"text"} placeholder={"Nazwa"} required
-                                               onChange={pobierzNazwa}/>
-                                        {/*<img src={obraz} alt={""}/>*/}
+                                        <Input
+                                            value={nazwa}
+                                            type={"text"}
+                                            placeholder={"Nazwa"}
+                                            required
+                                            onChange={pobierzNazwa}
+                                            autoFocus={true}
+                                        />
                                     </div>
 
                                     <div className={"MCR-Main-Section"}>

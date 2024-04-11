@@ -19,15 +19,15 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
     const stworzLobby = async(event) =>
     {
         event.preventDefault();
-        const loginData = StorageLoad('loginData');
+        const userData = StorageLoad('loginData');
 
         try
         {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/room/' + danePokoju.id, {
+            const odpowiedz = await fetch(`http://localhost:8086/api/v1/room/${danePokoju.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': loginData.token
+                    'Authorization': userData.token
                 },
                 body: JSON.stringify()
             });
@@ -76,8 +76,13 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                     <div className={"WindowCreateRoom-Bottom"}>
                         <div>
                             <div>
-                                <Input type={"submit"} width={4} value={"Potwierdzam Usunięcie"}
-                                       className={"BackgroundColor-4"}/>
+                                <Input
+                                    type={"submit"}
+                                    width={4}
+                                    value={"Potwierdzam Usunięcie"}
+                                    className={"BackgroundColor-4"}
+                                    autoFocus={true}
+                                />
                             </div>
                             {powiadomienie && <div>{powiadomienie}</div>}
                         </div>

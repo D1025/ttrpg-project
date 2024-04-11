@@ -23,7 +23,7 @@ import {
     WindowAccountEmail,
     WindowAccountAvatar,
     ImgBase64,
-    ModulHeader, WindowLogIn
+    ModulHeader, WindowLogIn, WindowAccountPassword
 } from "../../index";
 
 const GamePage = () =>
@@ -49,7 +49,7 @@ const GamePage = () =>
             });
 
             // Reagowanie na odpowiedź.
-            if(!odpowiedz.ok)
+            if(odpowiedz.ok)
             {
                 // Pomyślne wylogowanie
                 StorageRemove('loginData');
@@ -245,6 +245,26 @@ const GamePage = () =>
         setAccountAvatar(!showAccountAvatar);
     };
 
+    const [showAccountPassword, setAccountPassword] = useState(false);
+    const togglAccountPassword = () =>
+    {
+        if(!showAccountAvatar)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setAccountPassword(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
+        setAccountPassword(!showAccountPassword);
+    };
+
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
@@ -304,6 +324,7 @@ const GamePage = () =>
                                 canEdit={true} buttonColorNumber={0}
                                 width={4}
                                 marginBottom={true}
+                                onClick={togglAccountPassword}
                             /><br/>
                         </div>
                     </div>
@@ -319,6 +340,7 @@ const GamePage = () =>
             {showAccountNickname && <WindowAccountNickname userData={userData} onClose={togglAccountNickname}/>}
             {showAccountEmail && <WindowAccountEmail userData={userData} onClose={togglAccountEmail}/>}
             {showAccountAvatar && <WindowAccountAvatar userData={userData} onClose={togglAccountAvatar}/>}
+            {showAccountPassword && <WindowAccountPassword userData={userData} onClose={togglAccountPassword}/>}
         </>
     );
 }
