@@ -5,7 +5,7 @@ import
     Window,
     Input,
     Button,
-    StorageSave, StorageLoad, StorageRemove, InputCheckbox
+    StorageSave, StorageLoad, StorageRemove, InputCheckbox, iconEdit, iconClose
 } from "../../../NovaX";
 import './WindowLogIn.css';
 
@@ -207,7 +207,7 @@ const OknoLogowania = ({onClose}) =>
 
                 <div className={"WindowLogIn"}>
                     <div className={"WindowLogIn-Top"}>
-                        <Button src={"/Ikonki/Zamknij.png"} onClick={onClose}/>
+                        <Button src={iconClose} onClick={onClose}/>
                     </div>
 
                     <div className={"WindowLogIn-Main"}>
