@@ -116,4 +116,53 @@ public class RoomsServiceImpl implements RoomsService {
         messagesRepository.deleteByRoomId(id);
         roomRepository.delete(room);
     }
+
+    @Override
+    public String getInvitationLink(UUID id, String authorizationHeader) {
+        Users user = userService.getUserByToken(authorizationHeader);
+        Room room = roomRepository.findById(id).orElseThrow(() -> new MessageException("Room not found"));
+        if (!(room.getOwner().getId().equals(user.getId()) || user.isAdmin())) {
+            throw new MessageException("You are not the owner of this room");
+        }
+        return room.getInvitationLink();
+    }
+
+    @Override
+    @Transactional
+    public String regenerateInvitationLink(UUID id, String authorizationHeader) {
+        Users user = userService.getUserByToken(authorizationHeader);
+        Room room = roomRepository.findById(id).orElseThrow(() -> new MessageException("Room not found"));
+        if (!(room.getOwner().getId().equals(user.getId()) || user.isAdmin())) {
+            throw new MessageException("You are not the owner of this room");
+        }
+        room.setInvitationLink(generateInvitationLink());
+        roomRepository.save(room);
+        return room.getInvitationLink();
+    }
+
+    @Override
+    public void deleteInvitationLink(UUID id, String authorizationHeader) {
+        Users user = userService.getUserByToken(authorizationHeader);
+        Room room = roomRepository.findById(id).orElseThrow(() -> new MessageException("Room not found"));
+        if (!(room.getOwner().getId().equals(user.getId()) || user.isAdmin())) {
+            throw new MessageException("You are not the owner of this room");
+        }
+        room.setInvitationLink(null);
+        roomRepository.save(room);
+    }
+
+    @Override
+    public void joinRoom(String authorizationHeader, String invitation) {
+        Users user = userService.getUserByToken(authorizationHeader);
+        Room room = roomRepository.findByInvitationLink(invitation);
+        if (room == null) {
+            throw new MessageException("Room not found");
+        }
+        room.getUsers().add(user);
+        roomRepository.save(room);
+    }
+
+    private String generateInvitationLink() {
+        return UUID.randomUUID().toString();
+    }
 }

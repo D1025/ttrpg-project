@@ -18,4 +18,6 @@ public interface RoomRepository extends JpaRepository<Room, UUID> {
     List<Room> findByUsers_Id(UUID userId);
 
     List<Room> findAllByOwnerId(UUID ownerId);
+
+    Room findByInvitationLink(String invitationLink);
 }

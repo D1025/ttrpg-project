@@ -53,4 +53,30 @@ public class RoomController {
         return ResponseEntity.ok(roomsService.getMyOwnedRooms(authorizationHeader));
     }
 
+    @GetMapping("/{id}/invitations")
+    public ResponseEntity<String> getInvitationLink(@PathVariable UUID id, @RequestHeader(name = "Authorization") String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        return ResponseEntity.ok(roomsService.getInvitationLink(id, authorizationHeader));
+    }
+
+    @PutMapping("/{id}/invitations")
+    public ResponseEntity<String> regenerateInvitationLink(@PathVariable UUID id, @RequestHeader(name = "Authorization") String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        return ResponseEntity.ok(roomsService.regenerateInvitationLink(id, authorizationHeader));
+    }
+
+    @DeleteMapping("/{id}/invitations")
+    public ResponseEntity<Void> deleteInvitationLink(@PathVariable UUID id, @RequestHeader(name = "Authorization") String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        roomsService.deleteInvitationLink(id, authorizationHeader);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/join/{invitation}")
+    public ResponseEntity<Void> joinRoom(@RequestHeader(name = "Authorization") String authorizationHeader, @PathVariable String invitation) {
+        jwtAuthorization.authorize(authorizationHeader);
+        roomsService.joinRoom(authorizationHeader, invitation);
+        return ResponseEntity.ok().build();
+    }
+
 }

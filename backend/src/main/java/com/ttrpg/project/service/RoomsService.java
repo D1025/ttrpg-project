@@ -21,4 +21,12 @@ public interface RoomsService {
     RoomReturnDTO modifyRoom(EditRoom editRoom, UUID id, String authorizationHeader);
 
     void deleteRoom(UUID id, String authorizationHeader);
+
+    String getInvitationLink(UUID id, String authorizationHeader);
+
+    String regenerateInvitationLink(UUID id, String authorizationHeader);
+
+    void deleteInvitationLink(UUID id, String authorizationHeader);
+
+    void joinRoom(String authorizationHeader, String invitation);
 }
