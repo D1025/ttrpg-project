@@ -1,4 +1,4 @@
-/* Pełne pole nad stroną. */
+/* Wyskakujące okienko. */
 Div.Window
 {
     justify-content: center;
@@ -7,7 +7,7 @@ Div.Window
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: var(--Motyw-Przezroczysty);
+    background-color: var(--Motyw-PolPrzezroczysty);
     display: grid;
     position: fixed;
     top: 0;

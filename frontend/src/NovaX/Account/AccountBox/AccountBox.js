@@ -3,7 +3,7 @@ import './AccountBox.css'
 // Account.png Box.
 const AccountBox = ({
                         title,
-                        tittleLength = 8,
+                        tittleLength = 7,
                         subTitle,
                         active = null,
                         src,

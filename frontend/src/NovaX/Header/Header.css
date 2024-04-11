@@ -5,6 +5,12 @@
     --MinWysokosc: 4.0vw;
 }
 
+Div.Header
+{
+    position: relative;
+    z-index: 1;
+}
+
 
 /* Design 1. */
 Div.Header-D1
@@ -14,22 +20,19 @@ Div.Header-D1
     font-size: 1.0rem;
     border-radius: var(--Radius-3);
     background-color: var(--Motyw);
-    background-image: linear-gradient(to right, var(--Motyw), transparent 190%), var(--Tło-Menu);
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: 25%;
-    margin-top: 1.0vw;
-    margin-bottom: 1.5vw;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 1.0vw auto 1.5vw;
     display: flex;
-    /*position: fixed;*/
-    /*z-index: 5;*/
-    /*top: 1.0vw;*/
-    /*left: 4.0vw;*/
-    /*right: 4.0vw;*/
 }
-    /* Styl globalny dla piewszych dzieci. */
+    /* Obrazek w Header. */
+    Div.Header-Img
+    {
+        background-image: linear-gradient(to right, var(--Motyw), transparent 190%), var(--Tło-Menu);
+        background-position: right;
+        background-repeat: no-repeat;
+        background-size: 25%;
+    }
+
+    /* Styl globalny dla dzieci. */
     Div.Header-D1 > Div
     {
         padding-top: 0.5vw!important;
@@ -41,13 +44,17 @@ Div.Header-D1
     /* Lewy nagłówek. */
     Div.Header-D1 > Div.HeaderLeft
     {
+        margin-right: auto;
         padding-left: 1.5vw;
-        padding-right: 1.0vw;
+        padding-right: 1.5vw;
     }
     /* Środkowy nagłówek. */
     Div.Header-D1 > Div.HeaderCenter
     {
+        margin-left: auto;
+        margin-right: auto;
         padding-right: 1.5vw;
+        padding-left: 1.5vw;
     }
     /* Prawy nagłówek. */
     Div.Header-D1 > Div.HeaderRight
@@ -56,6 +63,13 @@ Div.Header-D1
         padding-right: 1.5vw;
         padding-left: 1.5vw;
     }
+
+        /* Separator nagłówka. */
+        Div.Header-D1 Div.HeaderSpace
+        {
+            width: 0.5vw;
+            height: 100%;
+        }
 
 
 /* Design 2. */
@@ -67,7 +81,7 @@ Div.Header-D2
     margin: 1.0vw auto 1.5vw auto;
     display: flex;
 }
-    /* Styl globalny dla piewszych dzieci. */
+    /* Styl globalny dla dzieci. */
     Div.Header-D2 > Div
     {
         padding-top: 0.5vw!important;
@@ -81,17 +95,21 @@ Div.Header-D2
     Div.Header-D2 > Div.HeaderLeft
     {
         background-color: var(--Motyw);
-        border-radius: var(--Radius-3) 0 0 var(--Radius-3);
-        padding-left: 1.3vw;
-        padding-right: 0.3vw;
+        border-radius: var(--Radius-3);
+        margin-right: auto;
+        padding-left: 1.0vw;
+        padding-right: 1.0vw;
     }
 
     /* Środkowy nagłówek. */
     Div.Header-D2 > Div.HeaderCenter
     {
         background-color: var(--Motyw);
-        border-radius: 0 var(--Radius-3) var(--Radius-3) 0;
-        padding-right: 1.3vw;
+        border-radius: var(--Radius-3);
+        margin-left: auto;
+        margin-right: auto;
+        padding-right: 1.0vw;
+        padding-left: 1.0vw;
     }
 
     /* Prawy nagłówek. */
@@ -100,6 +118,13 @@ Div.Header-D2
         background-color: var(--Motyw);
         border-radius: var(--Radius-3);
         margin-left: auto;
-        padding-right: 1.3vw;
-        padding-left: 1.3vw;
+        padding-right: 1.0vw;
+        padding-left: 1.0vw;
     }
+
+        /* Separator nagłówka. */
+        Div.Header-D2 Div.HeaderSpace
+        {
+            width: 0.5vw;
+            height: 100%;
+        }

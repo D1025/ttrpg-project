@@ -50,7 +50,7 @@ const AccountInformation = ({
             </div>
             {
                 (canEdit === true || canEdit === false) &&
-                <Button onClick={onClick} src={src} alt={alt} colorNumber={buttonColorNumber} active={buttonActive}/>
+                <Button onClick={onClick} src={src} alt={alt} colorNumber={buttonColorNumber} active={buttonActive} marginLeftRight={false}/>
             }
         </div>
     )

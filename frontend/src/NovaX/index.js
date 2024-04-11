@@ -4,9 +4,10 @@ import './Root.css';
 
 // Header.
 export {default as Header} from './Header/Header.js';                                            // Gotowe.
-export {default as HeaderLeft} from './Header/HeaderPosition/HeaderLeft.js';                     // Gotowe.
-export {default as HeaderCenter} from './Header/HeaderPosition/HeaderCenter.js';                 // Gotowe.
-export {default as HeaderRight} from './Header/HeaderPosition/HeaderRight.js';                   // Gotowe.
+    export {default as HeaderLeft} from './Header/HeaderPosition/HeaderLeft.js';                 // Gotowe.
+    export {default as HeaderCenter} from './Header/HeaderPosition/HeaderCenter.js';             // Gotowe.
+    export {default as HeaderRight} from './Header/HeaderPosition/HeaderRight.js';               // Gotowe.
+    export {default as HeaderSpace} from './Header/HeaderPosition/HeaderSpace.js';               // Gotowe.
 
 // Menu.
 export {default as Menu} from './Menu/Menu/Menu.js';                                             // Gotowe.
@@ -62,7 +63,6 @@ export {default as Window} from './Window/Window/Window.js';                    
 // Chat.
 export {default as Chat} from './Chat/Chat/Chat.js';                                             // Gotowe.
 export {default as ChatMessage} from './Chat/ChatMessage/ChatMessage.js';                        // Gotowe.
-
 
 
 
