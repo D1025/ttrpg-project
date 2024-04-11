@@ -24,7 +24,7 @@ Div.AccounPagetAvatar > Div.Button-D1
         width: 100%;
         aspect-ratio: 1 / 1;
         background-color: var(--Motyw);
-        background-image: url("../../NovaX/Icon/Account.png");
+        background-image: url("../../../NovaX/Icon/Account.png");
         background-size: 65%;
         background-position: center;
         background-repeat: no-repeat;

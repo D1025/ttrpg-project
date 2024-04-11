@@ -126,7 +126,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                 <form onSubmit={stworzLobby}>
                     <div className={"WindowCreateRoom-Top"}>
                         <div>
-                            Edycja: {'"' + (danePokoju.name.length > 15 ? danePokoju.name.substring(0, 15) + '...' : danePokoju.name) + '"'}
+                            Edycja: {'"' + (danePokoju.name.length > 10 ? danePokoju.name.substring(0, 10) + '...' : danePokoju.name) + '"'}
                         </div>
                         <div>
                             <Button src={iconClose} onClick={onClose}/>

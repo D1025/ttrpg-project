@@ -1,11 +1,11 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {
     Menu2,
     Header, HeaderRight,
     Button, AccountBar,
-    StorageLoad, setTittle,
+    StorageLoad, setTittle, StorageRemove,
 } from "../../NovaX";
-import {ImgBase64, ModulChat} from "../../NovaX-TTRPG";
+import {ImgBase64, ModulChat, ModulHeader, WindowLogIn} from "../../NovaX-TTRPG";
 
 const GamePage = () =>
 {
@@ -14,24 +14,44 @@ const GamePage = () =>
     const urlParams = new URLSearchParams(window.location.search);
     const idParam = urlParams.get('id');
 
-    // Odświeżanie.
-    const [odswiez, setOdswiez] = useState(false);
-    const wymusOdswiezenie = () =>
-    {
-        setOdswiez(prev => !prev);
-    };
-
-
     // Status Zalogowaniay.
-    const [isLogIn, ustawIsLogIn] = useState(false); // Czy zalogowany.
-    const [userData, ustawUserData] = useState(''); // Dane zalogowanego.
+    const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
+    const [userData, setUserData] = useState(''); // Dane zalogowanego.
+
+    // Wylogowywanie.
+    const LogOut = useCallback(async() =>
+    {
+        try
+        {
+            const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': userData.token
+                }
+            });
+
+            // Reagowanie na odpowiedź.
+            if(!odpowiedz.ok)
+            {
+                // Pomyślne wylogowanie
+                StorageRemove('loginData');
+                setIsLogIn(false);
+                setUserData('');
+            }
+        }
+        catch(blad)
+        {
+            // Obsługa błędów związanych z siecią lub żądaniem
+            console.error(`Nieoczekiwany błąd: ${blad}`);
+        }
+    }, [userData.token]);
 
     // Formularz Logowanie/Rejestracja.
-    const [showLogin, setShowLogin] = useState(false);
-    const toggleShowLogin = () =>
+    const [showLogIn, setShowLogIn] = useState(false);
+    const toggleLogIn = () =>
     {
-        setShowLogin(prevShowLogin => !prevShowLogin);
-        wymusOdswiezenie();
+        setShowLogIn(prevShowLogin => !prevShowLogin);
     };
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
@@ -41,55 +61,25 @@ const GamePage = () =>
         // Jeśli dane logowania istnieją.
         if(loginData)
         {
-            ustawIsLogIn(true);
-            ustawUserData(loginData);
+            setIsLogIn(true);
+            setUserData(loginData);
         }
         else
         {
-            ustawUserData('');
-            ustawIsLogIn(false);
+            setUserData('');
+            setIsLogIn(false);
+            window.location.href = '/';
         }
-    }, [odswiez]);
+    }, [showLogIn === false, LogOut]);
 
     return (
         <>
             {/* Nagłłówek Strony. */}
-            <Header design={2} src={"./Grafiki/TłoDodatkowe/TOPanime.jpg"}>
-                {/* Prawy nagłówek z opcjami. */}
-                <HeaderRight>
-                    {isLogIn === true ? (
-                        <Menu2>
-                            <li><AccountBar design={1} width={2} title={userData.nickname}
-                                            subTitle={userData.admin === true && "[Admin]"}
-                                            src={ImgBase64(userData.imageExtension, userData.avatar)}></AccountBar>
-                                <Menu2>
-                                    <li>
-                                        <a href={"/Konto"}>
-                                            <Button title={"Konto"} style={{width: "100%"}}/>
-                                        </a>
-                                    </li>
-                                    {userData.admin === true && (
-                                        <li>
-                                            <a href={"/Panel"}>
-                                                <Button title={"Panel"} style={{width: "100%"}}/>
-                                            </a>
-                                        </li>)}
-                                    <li>
-                                        <a href={"/"}>
-                                            <Button title={"Wyjdź"} style={{width: "100%"}}/>
-                                        </a>
-                                    </li>
-                                </Menu2>
-                            </li>
-                        </Menu2>
-                    ) : (
-                        <Button title={"Zaloguj Się"} src={"./Ikonki/Konto.png"}
-                                onClick={toggleShowLogin} width={1}/>
-                    )}
-                </HeaderRight>
-            </Header>
+            <ModulHeader isLogIn={isLogIn} userData={userData} logOut={LogOut} logIn={toggleLogIn}/>
 
             <ModulChat roomId={idParam} userId={userData.id}/>
+
+            {showLogIn && <WindowLogIn onClose={toggleLogIn}/>}
         </>
     );
 }

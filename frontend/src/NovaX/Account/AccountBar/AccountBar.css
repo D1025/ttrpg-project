@@ -9,6 +9,7 @@ Div.AccountBar
     font-size: 1.0rem;
     background-color: var(--Motyw-Ciemny);
     border-radius: var(--Radius-1);
+    padding: 0 0 0 0.5vw;
     display: inline-flex;
     cursor: pointer;
     user-select: none;
@@ -48,6 +49,7 @@ Div.AccountBar > Div.AccountBar-Img
     background-color: var(--Kolor-Dodatkowy);
     border-radius: var(--Radius-1);
     box-shadow: var(--Przycisk-Cienie);
+    margin-left: 0.5vw;
 }
     /* Wygląd Img. */
     Div.AccountBar > Div.AccountBar-Img > Img

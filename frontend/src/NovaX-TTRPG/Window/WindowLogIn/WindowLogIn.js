@@ -199,9 +199,9 @@ const OknoLogowania = ({onClose}) =>
             <div>
                 {/* Pole wyboru Rejestracja/Logowanie. */}
                 <div className={"WindowLogIn-Choice"}>
-                    <Button title={"Logowanie"} colorNumber={LogowanieCzyRejestracja===true ? 1 : 0}
+                    <Button title={"Logowanie"} colorNumber={LogowanieCzyRejestracja === true ? 1 : 0}
                             onClick={() => ustawLogowanieCzyRejestracja(true)}/>
-                    <Button title={"Rejestracja"} colorNumber={LogowanieCzyRejestracja!==true ? 1 : 0}
+                    <Button title={"Rejestracja"} colorNumber={LogowanieCzyRejestracja !== true ? 1 : 0}
                             onClick={() => ustawLogowanieCzyRejestracja(false)}/>
                 </div>
 
@@ -217,13 +217,28 @@ const OknoLogowania = ({onClose}) =>
                                 <div>
                                     <img src={"/Grafiki/Logo.png"} alt={""}/>
 
-                                    <Input type={"text"} placeholder={"Email"} value={email} onChange={pobierzEmail}
-                                           required/>
-                                    <Input type={"password"} placeholder={"Hasło"} value={haslo} onChange={pobierzHaslo}
-                                           required/>
+                                    <Input type={"text"}
+                                           placeholder={"Email"}
+                                           value={email}
+                                           onChange={pobierzEmail}
+                                           required
+                                           autoFocus={LogowanieCzyRejestracja === true && (email === undefined)}
+                                    />
+                                    <Input type={"password"}
+                                           placeholder={"Hasło"}
+                                           value={haslo}
+                                           onChange={pobierzHaslo}
+                                           required
+                                           autoFocus={LogowanieCzyRejestracja === true && (email !== undefined)}
+                                    />
 
                                     <div className={"WindowLogIn-Checkbox"}>
-                                        <InputCheckbox id={"Zapamiętaj"} title={"Zapamiętaj mnie"} onChange={pobierzCheckbox} active={checkbox}/>
+                                        <InputCheckbox
+                                            id={"Zapamiętaj"}
+                                            title={"Zapamiętaj mnie"}
+                                            onChange={pobierzCheckbox}
+                                            active={checkbox}
+                                        />
                                     </div>
 
                                     <Input type={"submit"} value={"Zaloguj się"}/>
