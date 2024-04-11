@@ -193,23 +193,23 @@ const HomePage = () =>
                 const dane = await odpowiedz.json();
 
                 // Przetwarzanie i tworzenie komponentów pokoi
-                const zrenderowanePokoje = dane.map(pokoj => (
+                const zrenderowanePokoje = dane.map(room => (
                     <RoomFrame
-                        key={pokoj.id}
-                        src={pokoj.image && (`data:image/${pokoj.imageExtension};base64,${pokoj.image}`)}
-                        description={pokoj.description && pokoj.description}
-                        title={pokoj.name && pokoj.name}
+                        key={room.id}
+                        src={ImgBase64(room.imageExtension, room.image)}
+                        description={room.description}
+                        title={room.name}
                     >
                         {isLogIn === true && (
                             <>
-                                {(userData.id === pokoj.ownerId || userData.admin === true) &&
+                                {(userData.id === room.ownerId || userData.admin === true) &&
                                     <>
-                                        <Button colorNumber={4} onClick={() => togglDeleteRoom(pokoj)}
+                                        <Button colorNumber={4} onClick={() => togglDeleteRoom(room)}
                                                 src={iconTrashCan}/>
-                                        <Button onClick={() => togglEditRoom(pokoj)} src={iconEdit}/>
+                                        <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
                                     </>
                                 }
-                                <a href={`/Gra?id=${pokoj.id}`}>
+                                <a href={`/Gra?id=${room.id}`}>
                                     <Button src={iconPlay}/>
                                 </a>
                             </>

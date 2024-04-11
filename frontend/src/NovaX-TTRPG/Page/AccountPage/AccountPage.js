@@ -105,25 +105,25 @@ const GamePage = () =>
             const danePubliczne = await odpowiedzPubliczne.json();
 
             // Połączenie danych
-            const zrenderowanePokoje = danePubliczne.map(pokoj => (
-                pokoj.ownerId === userData.id &&
+            const zrenderowanePokoje = danePubliczne.map(room => (
+                room.ownerId === userData.id &&
                 <RoomFrame
-                    key={pokoj.id}
-                    src={pokoj.image && (`data:image/${pokoj.imageExtension};base64,${pokoj.image}`)}
-                    description={pokoj.description && pokoj.description}
-                    title={pokoj.name && pokoj.name}
+                    key={room.id}
+                    src={ImgBase64(room.imageExtension, room.image)}
+                    description={room.description}
+                    title={room.name}
                 >
                     <span style={{
                         marginRight: '0.5vw',
                         color: 'var(--Kolor-Oznaczenia)',
                         fontSize: '0.86rem',
                         fontWeight: 'bold'
-                    }}>{pokoj.isPrivate === false ? 'Publiczny' : 'Prywatny'}</span>
+                    }}>{room.isPrivate === false ? 'Publiczny' : 'Prywatny'}</span>
                     {isLogIn && (
                         <>
-                            <Button colorNumber={4} onClick={() => togglDeleteRoom(pokoj)} src={iconTrashCan}/>
-                            <Button onClick={() => togglEditRoom(pokoj)} src={iconEdit}/>
-                            <a href={`/Gra?id=${pokoj.id}`}>
+                            <Button colorNumber={4} onClick={() => togglDeleteRoom(room)} src={iconTrashCan}/>
+                            <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
+                            <a href={`/Gra?id=${room.id}`}>
                                 <Button src={iconPlay}/>
                             </a>
                         </>

@@ -8,7 +8,6 @@ const RoomFrame = ({children, src, description, title, design = 1, className, ..
     {
         let classList = ['RoomFrame'];
 
-        // Dodawanie dodatkowej klasy przekazanej jako props.
         if(className) classList.push(className);
 
         return classList.join(' ');
@@ -19,7 +18,7 @@ const RoomFrame = ({children, src, description, title, design = 1, className, ..
 
     // Dodaje obrazek po prawej stronie.
     let myStyle = {
-        ...(src ? {backgroundImage: `linear-gradient(to right, var(--Motyw-Ciemny), transparent 190%), url("${src}")`, ...rest.style} : {})
+        ...(src ? {backgroundImage: ` url("${src}")`, ...rest.style} : {...rest.style})
     };
 
     // Return.
