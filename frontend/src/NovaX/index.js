@@ -96,3 +96,4 @@ export {default as iconLike} from './Icon/Like.png';
 export {default as iconDislike} from './Icon/Dislike.png';
 export {default as iconSettings} from './Icon/Settings.png';
 export {default as iconSend} from './Icon/Send.png';
+export {default as iconShare} from './Icon/Share.png';
