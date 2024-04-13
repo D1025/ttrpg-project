@@ -3,6 +3,7 @@ package com.ttrpg.project.controller;
 import java.util.List;
 import java.util.UUID;
 
+import com.ttrpg.project.dto.room.InvitationLink;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,15 +55,15 @@ public class RoomController {
     }
 
     @GetMapping("/{id}/invitations")
-    public ResponseEntity<String> getInvitationLink(@PathVariable UUID id, @RequestHeader(name = "Authorization") String authorizationHeader) {
+    public ResponseEntity<InvitationLink> getInvitationLink(@PathVariable UUID id, @RequestHeader(name = "Authorization") String authorizationHeader) {
         jwtAuthorization.authorize(authorizationHeader);
-        return ResponseEntity.ok(roomsService.getInvitationLink(id, authorizationHeader));
+        return ResponseEntity.ok(new InvitationLink(roomsService.getInvitationLink(id, authorizationHeader)));
     }
 
     @PutMapping("/{id}/invitations")
-    public ResponseEntity<String> regenerateInvitationLink(@PathVariable UUID id, @RequestHeader(name = "Authorization") String authorizationHeader) {
+    public ResponseEntity<InvitationLink> regenerateInvitationLink(@PathVariable UUID id, @RequestHeader(name = "Authorization") String authorizationHeader) {
         jwtAuthorization.authorize(authorizationHeader);
-        return ResponseEntity.ok(roomsService.regenerateInvitationLink(id, authorizationHeader));
+        return ResponseEntity.ok(new InvitationLink(roomsService.regenerateInvitationLink(id, authorizationHeader)));
     }
 
     @DeleteMapping("/{id}/invitations")

@@ -33,6 +33,7 @@ import {
     WindowEditRoom,
     WindowLogIn
 } from "../../NovaX-TTRPG";
+import WindowInviteSettings from "../Window/WindowRoom/WindowInviteSettings";
 
 const HomePage = () =>
 {
@@ -160,6 +161,25 @@ const HomePage = () =>
         setDeleteRoom(!showDeleteRoom);
     };
 
+    const [showInvite, setInvite] = useState(false);
+    const toggleInvite = (pokoj) => {
+        if(!showInvite)
+        {
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setInvite(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
+        setEdytowanyPokoj(pokoj);
+        setInvite(!showInvite);
+    }
+
 
     // Załaój pokoje.
     const [pokoje, setPokoje] = useState([]);
@@ -205,6 +225,8 @@ const HomePage = () =>
                                 {(userData.id === room.ownerId || userData.admin === true) &&
                                     <>
                                         <Button colorNumber={4} onClick={() => togglDeleteRoom(room)}
+                                                src={iconTrashCan}/>
+                                        <Button colorNumber={5} onClick={() => toggleInvite(room)}
                                                 src={iconTrashCan}/>
                                         <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
                                     </>
@@ -274,15 +296,7 @@ const HomePage = () =>
                         )}
                     </ArticleTitle>
 
-                    {lobby === false ? (
-                        <>
-                            {pokoje}
-                        </>
-                    ) : (
-                        <>
-                            {pokoje}
-                        </>
-                    )}
+                    {pokoje}
                 </MainArticle>
             </Main>
 
@@ -290,6 +304,7 @@ const HomePage = () =>
             {showCreateRoom && <WindowCreateRoom onClose={togglCreateRoom}/>}
             {showEditRoom && <WindowEditRoom danePokoju={edytowanyPokoj} onClose={togglEditRoom}/>}
             {showDeleteRoom && <WindowDeleteRoom danePokoju={edytowanyPokoj} onClose={togglDeleteRoom}/>}
+            {showInvite && <WindowInviteSettings danePokoju={edytowanyPokoj} onClose={toggleInvite}/>}
         </>
     );
 }
