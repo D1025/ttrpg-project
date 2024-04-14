@@ -3,6 +3,7 @@ package com.ttrpg.project.controller;
 import java.util.List;
 import java.util.UUID;
 
+import com.ttrpg.project.dto.room.InvitationLink;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +52,38 @@ public class RoomController {
     public ResponseEntity<List<RoomReturnDTO>> getMyOwnedRooms(@RequestHeader(name = "Authorization") String authorizationHeader) {
         jwtAuthorization.authorize(authorizationHeader);
         return ResponseEntity.ok(roomsService.getMyOwnedRooms(authorizationHeader));
+    }
+
+    @GetMapping("/{id}/invitations")
+    public ResponseEntity<InvitationLink> getInvitationLink(@PathVariable UUID id, @RequestHeader(name = "Authorization") String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        return ResponseEntity.ok(new InvitationLink(roomsService.getInvitationLink(id, authorizationHeader)));
+    }
+
+    @PutMapping("/{id}/invitations")
+    public ResponseEntity<InvitationLink> regenerateInvitationLink(@PathVariable UUID id, @RequestHeader(name = "Authorization") String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        return ResponseEntity.ok(new InvitationLink(roomsService.regenerateInvitationLink(id, authorizationHeader)));
+    }
+
+    @DeleteMapping("/{id}/invitations")
+    public ResponseEntity<Void> deleteInvitationLink(@PathVariable UUID id, @RequestHeader(name = "Authorization") String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        roomsService.deleteInvitationLink(id, authorizationHeader);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/join/{invitation}")
+    public ResponseEntity<RoomReturnDTO> getInfoAboutJoining(@PathVariable String invitation) {
+
+        return ResponseEntity.ok(roomsService.getInfoAboutJoining(invitation));
+    }
+
+    @PostMapping("/join/{invitation}")
+    public ResponseEntity<Void> joinRoom(@RequestHeader(name = "Authorization") String authorizationHeader, @PathVariable String invitation) {
+        jwtAuthorization.authorize(authorizationHeader);
+        roomsService.joinRoom(authorizationHeader, invitation);
+        return ResponseEntity.ok().build();
     }
 
 }

@@ -50,7 +50,7 @@ public class Room extends Model {
     @Enumerated(EnumType.STRING)
     private Systems system;
 
-    @Column(name = "invitation_link", nullable = false)
+    @Column(name = "invitation_link")
     private String invitationLink;
 
     @ManyToOne

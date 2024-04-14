@@ -9,5 +9,7 @@ import com.ttrpg.project.model.Messages;
 
 @Repository
 public interface MessagesRepository extends JpaRepository<Messages, UUID> {
-    
+    void deleteByRoomId(UUID roomId);
+    void deleteByUserId(UUID userId);
+    Messages findByUserIdAndRoomId(UUID userId, UUID roomId);
 }
