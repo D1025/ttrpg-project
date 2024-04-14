@@ -5,7 +5,7 @@ import
     Window,
     Input,
     Button,
-    StorageSave, StorageLoad, StorageRemove, InputCheckbox, iconEdit, iconClose
+    StorageSave, StorageLoad, StorageRemove, InputCheckbox, iconEdit, iconClose, InputCheckbox2
 } from "../../../NovaX";
 import './WindowLogIn.css';
 
@@ -41,9 +41,9 @@ const OknoLogowania = ({onClose}) =>
         ustawHaslo2(event.target.value);
     };
     // Zapamiętaj email.
-    const pobierzCheckbox = (isChecked) => // Checkbox.
+    const pobierzCheckbox = (event) => // Checkbox.
     {
-        ustawCheckbox(isChecked);
+        ustawCheckbox(event.target.checked);
     };
 
     // Usuwanie wartości input [Logowanie/Rejestracja].
@@ -207,7 +207,7 @@ const OknoLogowania = ({onClose}) =>
 
                 <div className={"WindowLogIn"}>
                     <div className={"WindowLogIn-Top"}>
-                        <Button src={iconClose} onClick={onClose}/>
+                        <Button src={iconClose} onClick={onClose} marginLeftRight={false}/>
                     </div>
 
                     <div className={"WindowLogIn-Main"}>
@@ -232,11 +232,10 @@ const OknoLogowania = ({onClose}) =>
                                     />
 
                                     <div className={"WindowLogIn-Checkbox"}>
-                                        <InputCheckbox
-                                            id={"Zapamiętaj"}
+                                        <InputCheckbox2
                                             title={"Zapamiętaj mnie"}
                                             onChange={pobierzCheckbox}
-                                            active={checkbox}
+                                            value={checkbox}
                                         />
                                     </div>
 
@@ -260,7 +259,7 @@ const OknoLogowania = ({onClose}) =>
                                            required/>
 
                                     <div className={"WindowLogIn-Checkbox"}>
-                                        <InputCheckbox id={"regulamin"} title={"Regulamin"} required/>
+                                        <InputCheckbox2 title={"Regulamin"} required/>
                                     </div>
 
                                     <Input type={"submit"} value={"Zarejestruj się"}/>

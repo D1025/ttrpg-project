@@ -15,7 +15,7 @@ Div.ChatMessage-D1
 Div.ChatMessage-D1 > Div.ChatMessage-Timestamp
 {
     width: max-content;
-    min-width: calc(var(--Przycisk-Wysokość) - 0.4vw);
+    min-width: calc(var(--Button-Height) - 0.4vw);
     background-color: var(--Motyw-Czarny);
     backdrop-filter: var(--Blur);
     border-radius: var(--Radius-1);
@@ -50,8 +50,8 @@ Div.ChatMessage-D1 > Div.ChatMessage-Message
     /* Avatar użytkownika pole. */
     Div.ChatMessage-D1 > Div.ChatMessage-Message > Div > Div.ChatMessage-Avatar
     {
-        width: var(--Przycisk-Wysokość);
-        height: var(--Przycisk-Wysokość);
+        width: var(--Button-Height);
+        height: var(--Button-Height);
         background-color: var(--Kolor-Dodatkowy);
         background-image: url("../../Icon/Account.png");
         background-size: 65%;
@@ -63,14 +63,14 @@ Div.ChatMessage-D1 > Div.ChatMessage-Message
         /* Obrazek użytkownika. */
         Div.ChatMessage-Avatar > Img
         {
-            width: var(--Przycisk-Wysokość);
-            max-height: var(--Przycisk-Wysokość);
+            width: var(--Button-Height);
+            max-height: var(--Button-Height);
         }
 
     /* Nazwa użytkownika. */
     Div.ChatMessage-D1 > Div.ChatMessage-Message > Div.ChatMessage-NickName
     {
-        height: var(--Przycisk-Wysokość);
+        height: var(--Button-Height);
         color: inherit;
         justify-content: center;
         align-items: center;
@@ -107,7 +107,7 @@ Div.ChatMessage-D2
 Div.ChatMessage-D2 > Div.ChatMessage-Timestamp
 {
     width: max-content;
-    min-width: calc(var(--Przycisk-Wysokość) - 0.4vw);
+    min-width: calc(var(--Button-Height) - 0.4vw);
     background-color: var(--Motyw-Czarny);
     backdrop-filter: var(--Blur);
     border-radius: var(--Radius-1);
@@ -165,7 +165,7 @@ Div.ChatMessage-D3
 Div.ChatMessage-D3 > Div.ChatMessage-Timestamp
 {
     width: min-content;
-    min-width: calc(var(--Przycisk-Wysokość) - 0.4vw);
+    min-width: calc(var(--Button-Height) - 0.4vw);
     font-size: 0.55rem;
     font-weight: bold;
     text-align: center;

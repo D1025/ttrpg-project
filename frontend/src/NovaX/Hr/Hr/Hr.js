@@ -8,7 +8,6 @@ const Hr = ({colorNumber = 0, marginBottom = false, className, ...rest}) =>
     {
         let classList = ['Hr'];
 
-        // Dodawanie dodatkowej klasy przekazanej jako props.
         if(colorNumber > 0) classList.push(`BackgroundColor-${colorNumber}`)
         if(marginBottom) classList.push('Hr-MarginBottom');
         if(className) classList.push(className);

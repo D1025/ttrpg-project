@@ -1,0 +1,68 @@
+/* Pole Checkbox'a' */
+.InputCheckbox2
+{
+    align-items: center;
+    display: inline-flex;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Nadpisanie komponentu "Label". */
+.InputCheckbox2 > .Label
+{
+    padding-left: 0.1vw;
+    cursor: pointer;
+}
+
+/* Niestandardowy checkbox. */
+.InputCheckbox2 > .newCheckbox2
+{
+    width: 1.0vw;
+    height: 1.0vw;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Motyw);
+    border: 0.12vw solid var(--Kolor-Dodatkowy);
+    border-radius: 0.35vw;
+    box-sizing: border-box;
+    display: inline-flex;
+    box-shadow: var(--Przycisk-Cienie);
+    transition: var(--Animacja);
+    position: relative;
+}
+    /* Zaznaczony checkbox */
+    .InputCheckbox2 > .newCheckbox2.newCheckbox2-Checked
+    {
+        background-color: var(--Kolor-Dodatkowy);
+        background-image: url("../../Icon/CheckMark_2.png");
+        background-size: 90%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        border: 0.0vw;
+    }
+
+
+/* Ukrycie oryginalnego checkbox'a. */
+.InputCheckbox2-Orygin
+{
+    width: 0;
+    height: 0;
+    margin: 0;
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Style dla nieaktywnego checkboxa [Niezaznaczony]. */
+.InputCheckbox2.InputCheckbox2-noActive .newCheckbox2
+{
+    background-color: var(--Motyw)!important;
+    border-color: var(--Kolor-Oznaczenia)!important;
+    cursor: default;
+    pointer-events: none;
+}
+/* Style dla nieaktywnego checkboxa [Zaznaczony]. */
+.InputCheckbox2.InputCheckbox2-noActive .newCheckbox2.newCheckbox2-Checked
+{
+    background-color: var(--Kolor-Oznaczenia)!important;
+}

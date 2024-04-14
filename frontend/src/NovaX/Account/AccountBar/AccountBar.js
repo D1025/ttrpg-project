@@ -2,17 +2,19 @@ import './AccountBar.css';
 
 // Button Acount.
 const AccountBar = ({
-                           design = 1,
-                           title,
-                           subTitle,
-                           src,
-                           alt = "",
-                           maxLength = 20,
-                           className,
-                           marginLeftRight = true,
-                           width = 1,
-                           ...rest
-                       }) =>
+                        design = 1,
+                        title,
+                        subTitle,
+                        src,
+                        alt = "",
+                        maxLength = 20,
+                        className,
+                        marginLeftRight = true,
+                        marginBottom = false,
+                        marginTop = false,
+                        width = 1,
+                        ...rest
+                    }) =>
 {
     // Decyduje o wyglądzie.
     const classBuilder = () =>
@@ -21,7 +23,9 @@ const AccountBar = ({
 
         if(design > 0) classList.push(`AccountBar-D${design}`)
         if(width >= 0) classList.push(`Width-${width}`)
-        if(marginLeftRight) classList.push('AccountBar-MarginLeftRight');
+        if(marginLeftRight) classList.push('MarginLeftRight');
+        if(marginBottom === true) classList.push('MarginBottom');
+        if(marginTop) classList.push('MarginTop');
         if(className) classList.push(className);
 
         return classList.join(' ');

@@ -1,11 +1,8 @@
 import {useCallback, useEffect, useState} from "react";
 import {
-    Menu2,
-    Header, HeaderRight,
-    Button, AccountBar,
     StorageLoad, setTittle, StorageRemove,
 } from "../../NovaX";
-import {ImgBase64, ModulChat, ModulHeader, WindowLogIn} from "../../NovaX-TTRPG";
+import {ModulChat, ModulHeader, WindowLogIn} from "../../NovaX-TTRPG";
 
 const GamePage = () =>
 {
@@ -75,7 +72,7 @@ const GamePage = () =>
     return (
         <>
             {/* Nagłłówek Strony. */}
-            <ModulHeader isLogIn={isLogIn} userData={userData} logOut={LogOut} navUser={false} logIn={toggleLogIn}/>
+            <ModulHeader isLogIn={isLogIn} userData={userData} logOut={LogOut} navUser={false} navGame={true} logIn={toggleLogIn}/>
 
             <ModulChat roomId={idParam} userId={userData.id}/>
 

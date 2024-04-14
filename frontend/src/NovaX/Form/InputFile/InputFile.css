@@ -1,17 +1,15 @@
-/* Box trzymający przycisk. */
-Div.InputFile-Box
+/* Pole trzymający przycisk. */
+.InputFile
 {
-    width: 0.0vw;
+    width: max-content;
     display: inline-flex;
 }
 
-
-/* Styl dla niestandardowego przycisku, który zastąpi input[type="file"] */
-Label.InputFile
+/* Niestandardowy newInputFile. */
+.newInputFile
 {
-    height: var(--Przycisk-Wysokość);
+    height: var(--Button-Height);
     width: 100%;
-    font-size: 0.9rem;
     font-weight: bold;
     color: white;
     justify-content: center;
@@ -22,6 +20,8 @@ Label.InputFile
     background-size: auto 50%;
     background-repeat: no-repeat;
     border-radius: var(--Radius-1);
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
     display: flex;
     cursor: pointer;
     user-select: none;
@@ -31,53 +31,66 @@ Label.InputFile
     box-shadow: var(--Przycisk-Cienie);
 }
     /* Wygląd Inputu po najechaniu. */
-    Label.InputFile:hover, Label.InputFile:hover
+    .newInputFile:hover
     {
         background-color: var(--Motyw-Ciemny)!important;
     }
-
     /* Wygląd Inputu po aktywacji. */
-    Label.InputFile:active, Label.InputFile:active
+    .newInputFile:active
     {
         background-color: var(--Motyw)!important;
     }
 
-/* Input typu File */
-Label.InputFile > Input[type="file"]
+    /* Nazwa pliku. */
+    .newInputFile > Span
+    {
+        font-size: 0.9rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Pole trzymaj. */
+    .newInputFile > Div
+    {
+        height: var(--Button-Height);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        display: flex;
+    }
+        /* Ptaszek oznaczający poprawny format pliku. */
+        .newInputFile > Div > Img
+        {
+            width: calc(var(--Button-Height) * 0.55);
+            height: calc(var(--Button-Height) * 0.55);
+        }
+
+/* Ukrycie oryginalnego input file. */
+.newInputFile > Input[type="file"]
 {
-    display: none;
+    visibility: hidden;
+    position: absolute;
 }
 
 
 /* Wygląd aktywny. */
-Label.InputFile-Active
+.newInputFile-Active
 {
-    width: calc(100% - var(--Przycisk-Wysokość) - 1 * var(--Przycisk-Odstep-X));
-    background-color: var(--Motyw-Czarny);
+    background-color: var(--Motyw-Czarny)!important;
+    padding-left: calc(0.5vw + var(--Button-Height) * 0.55);
 }
     /* Nadpisanie Koloru przycisku obok. */
-    Label.InputFile-Active + Div
+    .newInputFile-Active + .Button
     {
-        margin-left: var(--Przycisk-Odstep-X);
+        min-width: var(--Button-Height);
+        margin-left: var(--Space-X);
         margin-right: 0;
     }
 
-
-/* Margin Left Right. */
-Div.InputFile-MarginLeftRight
+/* Wyłączenie newInputFile . */
+.newInputFile.newInputFile-noActive
 {
-    margin-left: var(--Przycisk-Odstep-X);
-    margin-right: var(--Przycisk-Odstep-X);
+    background-color: var(--Kolor-Oznaczenia)!important;
+    cursor: default;
+    pointer-events: none;
 }
-
-/* Margin Bottom. */
-Div.InputFile-MarginBottom
-{
-    margin-bottom: var(--Przycisk-Odstep-Y);
-}
-     /*Kiedy ostatni albo jedyny. */
-    /*Div.InputFile-MarginBottom:last-of-type,*/
-    /*Div.InputFile-MarginBottom:only-of-type*/
-    /*{*/
-    /*    margin-bottom: 0.0vw;*/
-    /*}*/

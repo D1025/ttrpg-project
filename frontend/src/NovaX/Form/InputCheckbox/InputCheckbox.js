@@ -1,56 +1,81 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import './InputCheckbox.css';
 import {Label} from "../../index";
 
 const InputCheckbox = ({
-                           id = "id",
-                           title = "name",
-                           onChange,
+                           id,
                            name,
+                           value = false,
+                           onChange,
+                           title = "name",
                            marginBottom = false,
                            marginLeftRight = true,
-                           active = false,
+                           marginTop = false,
+                           active = true,
                            className,
                            ...rest
                        }) =>
 {
-    const [isChecked, setIsChecked] = useState(active);
+    const uniqueId = useMemo(() => id || `InputCheckbox-${Math.floor(Math.random() * 1000000)}`, [id]);
+    const [myChecked, setMyChecked] = useState(value);
 
-    // Synchronizacja stanu wewnętrznego z propsem 'active'.
     useEffect(() =>
     {
-        setIsChecked(active);
-    }, [active]);
+        setMyChecked(value);
+    }, [value]);
 
-    const handleChange = (event) =>
+    const handleChange = (checked) =>
     {
-        const newChecked = event.target.checked;
-        setIsChecked(newChecked);
-        if(onChange) onChange(newChecked);
+        if(active)
+        {
+            setMyChecked(checked);
+            if(onChange) onChange({target: {name, checked}});
+        }
+    };
+
+    // Obsługa spacji.
+    const handleKeyDown = (event) =>
+    {
+        if(event.keyCode === 32 || event.keyCode === 13)
+        {
+            event.preventDefault();
+            handleChange(!myChecked);
+        }
     };
 
     const classBuilder = () =>
     {
         let classList = ['InputCheckbox'];
-        if(marginLeftRight) classList.push("InputCheckbox-MarginLeftRight");
-        if(marginBottom) classList.push("InputCheckbox-MarginBottom");
+
+        if(marginLeftRight) classList.push("MarginLeftRight");
+        if(marginBottom) classList.push("MarginBottom");
+        if(marginTop) classList.push('MarginTop');
+        if(!active) classList.push('InputCheckbox-noActive');
         if(className) classList.push(className);
         return classList.join(' ');
     };
 
-    const myClass = classBuilder();
-
     return (
-        <div className={myClass}>
+        <div className={classBuilder()}>
             <input
                 {...rest}
-                id={id}
-                type="checkbox"
-                checked={isChecked}
-                onChange={handleChange}
+                id={uniqueId}
+                type={"checkbox"}
+                checked={myChecked}
+                onChange={(event) => handleChange(event.target.checked)}
                 name={name}
+                tabIndex={-1}
             />
-            <Label htmlFor={id} marginLeftRight={false} marginBottom={false}>{title}</Label>
+            <Label
+                htmlFor={uniqueId}
+                marginLeftRight={false}
+                marginBottom={false}
+                marginTop={false}
+                onKeyDown={handleKeyDown}
+                tabIndex={0}
+            >
+                {title}
+            </Label>
         </div>
     );
 };

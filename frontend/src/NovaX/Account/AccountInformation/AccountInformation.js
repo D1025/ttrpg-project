@@ -7,11 +7,12 @@ const AccountInformation = ({
                                 alt = "",
                                 dataType = "dataType",
                                 data = "data",
-                                canEdit = null,
+                                showButton = false,
                                 width = 1,
                                 marginLeftRight = false,
                                 marginBottom = false,
-                                buttonColorNumber = 2,
+                                marginTop = false,
+                                buttonColorNumber = 0,
                                 buttonActive = true,
                                 className,
                                 onClick,
@@ -25,8 +26,9 @@ const AccountInformation = ({
 
         // Dodawanie klasy na podstawie wartości.
         if(width >= 0) classList.push(`Width-${width}`);
-        if(marginLeftRight === true) classList.push('AccountInformation-MarginLeftRight');
-        if(marginBottom === true) classList.push('AccountInformation-MarginBottom');
+        if(marginLeftRight === true) classList.push('MarginLeftRight');
+        if(marginBottom === true) classList.push('MarginBottom');
+        if(marginTop) classList.push('MarginTop');
         if(className) classList.push(className);
 
         return classList.join(' ');
@@ -48,10 +50,15 @@ const AccountInformation = ({
                     </div>
                 </div>
             </div>
-            {
-                (canEdit === true || canEdit === false) &&
-                <Button onClick={onClick} src={src} alt={alt} colorNumber={buttonColorNumber} active={buttonActive} marginLeftRight={false}/>
-            }
+            {showButton === true &&
+                <Button
+                    onClick={onClick}
+                    src={src}
+                    alt={alt}
+                    colorNumber={buttonColorNumber}
+                    active={buttonActive}
+                    marginLeftRight={false}
+                />}
         </div>
     )
 }

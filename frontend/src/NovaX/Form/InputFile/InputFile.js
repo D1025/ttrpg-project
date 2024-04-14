@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import './InputFile.css';
 import {Button, iconCheckMark2, iconTrashCan} from "../../index";
 
@@ -8,145 +8,127 @@ const InputFile = ({
                        srcTrashCan = iconTrashCan,
                        buttonColorNumber = 4,
                        srcChecked = iconCheckMark2,
+                       alt = "",
                        accept,
                        onChange,
                        marginBottom = false,
                        marginLeftRight = true,
+                       marginTop = false,
                        width = 2,
+                       length = 6,
+                       active = true,
+                       colorNumber = 0,
                        className,
                        ...rest
                    }) =>
 {
-    // Stan komponentu.
-    const [nazwaPliku, ustawNazwePliku] = useState(title);
-    const [formatPoprawny, ustawFormatPoprawny] = useState(true);
-    const [elementInputuPliku, ustawElementInputuPliku] = useState(null);
+    // Zmienne.
+    const [fileName, setFileName] = useState(title);
+    const [correctFileExtension, setCorrectFileExtension] = useState(true);
+    const fileInputRef = useRef(null);
 
-    // Obsługa wyboru pliku.
-    const obsluzWyborPliku = (event) =>
+    // Sprawdzanie pliku.
+    const validateFile = (event) =>
     {
-        const wybranyPlik = event.target.files[0];
-
-        if(wybranyPlik)
+        const file = event.target.files[0];
+        if(!file)
         {
-            const nazwaWybranegoPliku = wybranyPlik.name;
-            const rozszerzeniePliku = `.${nazwaWybranegoPliku.split('.').pop().toLowerCase()}`;
+            setFileName('Brak pliku wybranego');
+            setCorrectFileExtension(false);
+            onChange && onChange('');
+            return;
+        }
 
-            // Domyślnie akceptuj wszystko, jeśli nie podano `accept`
-            const akceptujeWszystko = !accept;
-            let akceptowanyFormat = true; // Zakładamy, że format jest akceptowany
+        const fileName = file.name;
+        const fileExtension = fileName.split('.').pop().toLowerCase();
+        const isFormatAccepted = accept ? accept.split(',').some(format => format.includes(fileExtension)) : true;
 
-            if(!akceptujeWszystko)
-            {
-                const akceptowaneFormaty = accept.split(',').map(format => `.${format.split('/').pop()}`);
-                akceptowanyFormat = akceptowaneFormaty.includes(rozszerzeniePliku);
-            }
-
-            if(!akceptowanyFormat)
-            {
-                ustawNazwePliku('Zły format');
-                ustawFormatPoprawny(false);
-                event.target.value = ''; // Resetuj pole wyboru pliku
-                if(onChange)
-                {
-                    onChange('');
-                }
-            }
-            else
-            {
-                ustawNazwePliku(nazwaWybranegoPliku);
-                ustawFormatPoprawny(true);
-                ustawElementInputuPliku(event.target);
-                if(onChange)
-                {
-                    onChange(event);
-                }
-            }
+        if(!isFormatAccepted)
+        {
+            setFileName('Zły format');
+            setCorrectFileExtension(false);
+            event.target.value = '';
+            onChange && onChange('');
         }
         else
         {
-            ustawNazwePliku('Brak pliku wybranego');
-            ustawFormatPoprawny(false);
-            if(onChange)
-            {
-                onChange(event);
-            }
+            setFileName(fileName);
+            setCorrectFileExtension(true);
+            onChange && onChange(event);
         }
     };
 
-
-    // Usuwanie wybranego pliku.
-    const usunWybranyPlik = () =>
+    // Usuwanie pliku.
+    const removeFile = () =>
     {
-        ustawNazwePliku(title);
-        ustawFormatPoprawny(true);
-        if(elementInputuPliku)
-        {
-            elementInputuPliku.value = '';
-        }
-        if(onChange)
-        {
-            onChange('');
-        }
+        setFileName(title);
+        setCorrectFileExtension(true);
+        fileInputRef.current.value = '';
+        onChange && onChange('');
     };
 
-
-    // Decyduje o wyglądzie [Boxa trzymającego].
-    const classBuilderBox = () =>
+    // Obsługa klawiatóry.
+    const handleKeyDown = (event) =>
     {
-        let classList = ['InputFile-Box'];
-
-        // Dodawanie klasy na podstawie wartości.
-        if(marginBottom === true) classList.push('InputFile-MarginBottom');
-        if(width > 0) classList.push(`Width-${width}`);
-        if(marginLeftRight === true) classList.push('InputFile-MarginLeftRight');
-        if(className) classList.push(className);
-
-        return classList.join(' ');
+        if(event.keyCode === 32 || event.keyCode === 13)
+        {
+            event.preventDefault();
+            fileInputRef.current.click();
+        }
     };
-    // Przypisanie listy klas w postaci 'String'.
-    const myClassBox = classBuilderBox();
 
+    // Class Builder [Dla Pola].
+    const classBuilder_Box = () =>
+    {
+        let classes = ['InputFile'];
+        if(width > 0) classes.push(`Width-${width}`);
+        if(marginLeftRight) classes.push('MarginLeftRight');
+        if(marginBottom) classes.push('MarginBottom');
+        if(marginTop) classes.push('MarginTop');
+        if(className) classes.push(className);
+        return classes.join(' ');
+    };
 
-    // Decyduje o wyglądzie [Środka].
+    // Class Builder [Dla Przycisku].
     const classBuilder = () =>
     {
-        let classList = ['InputFile'];
-
-        // Dodawanie klasy na podstawie wartości.
-        if(formatPoprawny && nazwaPliku !== title) classList.push('InputFile-Active');
-
-        return classList.join(' ');
+        let classes = ['newInputFile'];
+        if(correctFileExtension && fileName !== title) classes.push('newInputFile-Active');
+        if(!active) classes.push('newInputFile-noActive');
+        if(colorNumber > 0) classes.push(`BackgroundColor-${colorNumber}`);
+        return classes.join(' ');
     };
-    // Przypisanie listy klas w postaci 'String'.
-    const myClass = classBuilder();
-    let myStyle = {...rest.style};
-    if(formatPoprawny && nazwaPliku !== title)
-    {
-        myStyle = {backgroundImage: `url('${srcChecked}')`, ...rest.style};
-    }
 
-    let skrocone = 6; // Mówi o ile skrócić tekst.
-    const wyswietlanaNazwaPliku = formatPoprawny && nazwaPliku !== title && nazwaPliku.length > skrocone ? nazwaPliku.slice(0, skrocone) + "..." : nazwaPliku; // Skraca tekst.
-
+    // Skrócona nazwa.
+    const displayFileName = correctFileExtension && fileName !== title && fileName.length > length ? `${fileName.slice(0, length)}...` : fileName;
 
     // Return.
     return (
-        <div className={myClassBox}>
-            <label className={myClass} style={myStyle}>
+        <div className={classBuilder_Box()}>
+            <label className={classBuilder()} onKeyDown={handleKeyDown} tabIndex={0}>
                 <input
+                    ref={fileInputRef}
                     type={"file"}
-                    onChange={obsluzWyborPliku}
+                    onChange={validateFile}
                     accept={accept}
                     {...rest}
+                    tabIndex={-1}
                 />
-                <span>{wyswietlanaNazwaPliku}</span>
+                <span>{displayFileName}</span>
+                {correctFileExtension && fileName !== title &&
+                    <div>
+                        <img src={srcChecked} alt={alt}/>
+                    </div>}
             </label>
-            {formatPoprawny && nazwaPliku !== title && (
-                <Button src={srcTrashCan} onClick={usunWybranyPlik} colorNumber={buttonColorNumber} active={true}/>
-            )}
-        </div>
-    );
+            {(correctFileExtension && fileName !== title) &&
+                <Button
+                    src={srcTrashCan}
+                    onClick={removeFile}
+                    colorNumber={buttonColorNumber}
+                    active={true}
+                    marginLeftRight={false}
+                />}
+        </div>);
 };
 
 export default InputFile;

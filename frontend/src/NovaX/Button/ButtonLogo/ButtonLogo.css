@@ -1,6 +1,6 @@
-/* Pole Loga. */
+/* Przycisk Loga. */
 /* Design 1. */
-A.ButtonLogo-D1
+.ButtonLogo-D1
 {
     width: 2.8vw;
     height: 2.8vw;
@@ -17,39 +17,43 @@ A.ButtonLogo-D1
 }
 
 /* Po najechaniu. */
-A.ButtonLogo-D1:hover
+.ButtonLogo-D1:hover
 {
     background-color: var(--Motyw-Ciemny)!important;
 }
 
 /* Po kliknięciu. */
-A.ButtonLogo-D1:active
+.ButtonLogo-D1:active
 {
     background-color: var(--Motyw)!important;
 }
 
-    /* Wygląd Zdjęcia w Przycisku. */
-    A.ButtonLogo-D1 > Img
+    /* Wygląd pola zdjęcia. */
+    .ButtonLogo-D1 > Div:nth-child(1)
     {
-        max-width: 85%;
-        max-height: 85%;
+        width: 2.8vw;
+        height: 2.8vw;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        display: flex;
     }
+        /* Wygląd Zdjęcia. */
+        .ButtonLogo-D1 > Div:nth-child(1) > Img
+        {
+            max-width: 80%;
+            max-height: 80%;
+        }
 
     /* Wygląd Nazwy w Przycisku. */
-    A.ButtonLogo-D1 > Div
+    .ButtonLogo-D1 > Div:nth-child(2)
     {
         font-weight: bold;
         margin-left: 0.25vw;
     }
-        /* Wygląd Nazwy w Przycisku. */
-        A.ButtonLogo-D1 > *:first-child
-        {
-            margin-left: 0.0vw!important;
-        }
-
 
 /* Design 2. */
-A.ButtonLogo-D2
+.ButtonLogo-D2
 {
     width: max-content;
     min-width: 2.8vw;
@@ -68,32 +72,37 @@ A.ButtonLogo-D2
 }
 
 /* Po najechaniu. */
-A.ButtonLogo-D2:hover
+.ButtonLogo-D2:hover
 {
     background-color: var(--Motyw-Ciemny)!important;
 }
 
 /* Po kliknięciu. */
-A.ButtonLogo-D2:active
+.ButtonLogo-D2:active
 {
     background-color: var(--Motyw)!important;
 }
 
-    /* Wygląd Zdjęcia w Przycisku. */
-    A.ButtonLogo-D2 > Img
+    /* Wygląd Pola zdjęcia. */
+    .ButtonLogo-D2 > Div:nth-child(1)
     {
-        max-width: 85%;
-        max-height: 85%;
-        margin-right: 0.5vw;
+        width: 2.8vw;
+        height: 2.8vw;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        display: flex;
     }
+        /* Wygląd Zdjęcia. */
+        .ButtonLogo-D2 > Div:nth-child(1) > Img
+        {
+            max-width: 80%;
+            max-height: 80%;
+        }
 
     /* Wygląd Nazwy w Przycisku. */
-    A.ButtonLogo-D2 > Div
+    .ButtonLogo-D2 > Div:nth-child(2)
     {
         font-weight: bold;
+        margin-left: 0.25vw;
     }
-        /* Wygląd Nazwy w Przycisku. */
-        A.ButtonLogo-D2 > *:first-child
-        {
-            margin-left: 0.0vw!important;
-        }

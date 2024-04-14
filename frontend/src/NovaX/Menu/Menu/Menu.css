@@ -3,7 +3,7 @@
 {
     font-weight: bold;
     list-style: none;
-    margin: 0.0vw var(--Przycisk-Odstep-X);
+    margin: 0.0vw var(--Space-X);
     padding: 0.0vw;
     display: flex;
     user-select: none;
@@ -19,7 +19,7 @@
 .Menu > Li
 {
     width: 100%;
-    min-height: var(--Przycisk-Wysokość);
+    min-height: var(--Button-Height);
     font-size: 1.0rem;
     text-align: center;
     justify-content: center;
@@ -27,7 +27,7 @@
     background-color: var(--Kolor-Dodatkowy);
     backdrop-filter: var(--Blur);
     border-radius: var(--Radius-1);
-    margin-right: var(--Przycisk-Odstep-X);
+    margin-right: var(--Space-X);
     display: flex;
     cursor: pointer;
     transition: var(--Animacja);

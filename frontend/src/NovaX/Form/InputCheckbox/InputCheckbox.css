@@ -1,22 +1,25 @@
 /* Główne pole tzrmające CheckBox. */
-Div.InputCheckbox
+.InputCheckbox
 {
     display: inline-flex;
+    user-select: none;
+    cursor: pointer;
 }
 
 
 /* Ukryj oryginalny checkbox. */
-Div.InputCheckbox > Input[type="checkbox"]
+.InputCheckbox > Input[type="checkbox"]
 {
     width: 0.0vw;
     height: 0.0vw;
     margin: 0;
     position: absolute;
     opacity: 0;
+    z-index: -1;
 }
 
 /* Stylizacja niestandardowego znacznika. */
-Div.InputCheckbox > Input[type="checkbox"] + Label
+.InputCheckbox > Input[type="checkbox"] + Label
 {
     width: max-content;
     justify-content: center;
@@ -27,12 +30,13 @@ Div.InputCheckbox > Input[type="checkbox"] + Label
     display: inline-flex;
 }
     /* Podstawowe wartości Checkbox'a. */
-    Div.InputCheckbox > Input[type="checkbox"] + Label::before
+    .InputCheckbox > Input[type="checkbox"] + Label::before
     {
         content: "";
-        width: 0.95vw;
-        height: 0.95vw;
+        width: 1.0vw;
+        height: 1.0vw;
         background-color: var(--Motyw);
+        border: 0.12vw solid var(--Kolor-Dodatkowy);
         border-radius: 0.35vw;
         box-sizing: border-box;
         margin-right: 0.2vw;
@@ -41,31 +45,30 @@ Div.InputCheckbox > Input[type="checkbox"] + Label
     }
 
     /* Zaznaczony. */
-    Div.InputCheckbox > Input[type="checkbox"]:checked + Label::before
+    .InputCheckbox > Input[type="checkbox"]:checked + Label::before
     {
         background-color: var(--Kolor-Dodatkowy);
         background-image: url("../../Icon/CheckMark_2.png");
+        border: 0.0vw;
         background-size: 90%;
         background-repeat: no-repeat;
-        background-position: center 65%;
+        background-position: center center;
     }
 
 
-/* margines Lewy i Prawy. */
-Div.InputCheckbox-MarginLeftRight
+/* Niekatywny InputNumber [Niezaznaczony]. */
+.InputCheckbox.InputCheckbox-noActive > Input[type="checkbox"] + Label::before
 {
-    margin-left: var(--Przycisk-Odstep-X);
-    margin-right: var(--Przycisk-Odstep-X);
+    background-color: var(--Motyw)!important;
+    border-color: var(--Kolor-Oznaczenia)!important;
+    cursor: default;
+    pointer-events: none;
 }
-
-/* Margines Dolny. */
-Div.InputCheckbox-MarginBottom
+/* Niekatywny InputNumber [Zaznaczony]. */
+.InputCheckbox.InputCheckbox-noActive > Input[type="checkbox"]:checked + Label::before
 {
-    margin-bottom: var(--Przycisk-Odstep-Y);
+    background-color: var(--Kolor-Oznaczenia)!important;
+    border: 0.0vw;
+    cursor: default;
+    pointer-events: none;
 }
-    /* Usunięcie dolnego dla ostatniego i jedynego. */
-    Div.InputCheckbox-MarginBottom:last-of-type,
-    Div.InputCheckbox-MarginBottom:only-of-type
-    {
-        margin-bottom: 0.0vw;
-    }

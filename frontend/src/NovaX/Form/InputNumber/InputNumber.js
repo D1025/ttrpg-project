@@ -1,92 +1,158 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './InputNumber.css';
 import {Button, iconArrowLeft, iconArrowRight} from "../../index";
 
-// InputNumber.
 const InputNumber = ({
-                         serLeftArrow = iconArrowLeft,
+                         srcLeftArrow = iconArrowLeft,
                          srcRightArrow = iconArrowRight,
-                         numberMin = -Infinity,
-                         numberMax = Infinity,
-                         numberStart = 0,
+                         valueMin = -Infinity,
+                         valueMax = Infinity,
+                         valueInLoop = false,
+                         value = valueMin !== -Infinity && valueMin < valueMax ? valueMin : 0,
                          onChange,
                          width = 2,
                          marginBottom = false,
                          marginLeftRight = true,
-                         arrows = true,
+                         marginTop = false,
+                         colorNumber = 0,
+                         buttonLeftActive = true,
+                         buttonRightActive = true,
+                         buttonShow = true,
+                         active = true,
                          className,
                          ...rest
                      }) =>
 {
-    // Przechowuje obecną wartość.
-    const [number, setNumber] = useState(numberStart);
+    // Zażądzanie wartością [value].
+    const [myValue, setMyValue] = useState(value);
 
-    // Zmienia liczbę.
-    const changeNumber = (newValue) =>
+    // Synchronizacja wewnętrznego z zewnętrznym stanem.
+    useEffect(() =>
     {
-        const clampedValue = Math.min(Math.max(newValue, numberMin), numberMax);
-        setNumber(clampedValue);
+        if(value !== undefined)
+        {
+            setMyValue(value);
+        }
+    }, [value]);
+
+    // Aktualizacja wartości.
+    const updateValue = (newValue) =>
+    {
+        let clampedValue;
+        if(valueInLoop)
+        {
+            if(newValue > valueMax)
+            {
+                clampedValue = valueMin;
+            }
+            else if(newValue < valueMin)
+            {
+                clampedValue = valueMax;
+            }
+            else
+            {
+                clampedValue = newValue;
+            }
+        }
+        else
+        {
+            clampedValue = Math.max(Math.min(newValue, valueMax), valueMin);
+        }
+
+        // Tworzenie eventu.
+        const event = {
+            target: {
+                value: clampedValue,
+                type: 'change'
+            },
+            type: 'change'
+        };
+
         if(onChange)
         {
-            onChange(clampedValue);
+            onChange(event);
         }
-    };
-
-    // Następna liczba.
-    const nextNumber = () =>
-    {
-        const temp = number + 1;
-        if(temp <= numberMax)
+        else
         {
-            changeNumber(temp);
+            setMyValue(clampedValue);
         }
     };
 
-    // Poprzednia liczba.
-    const prevNumber = () =>
-    {
-        const temp = number - 1;
-        if(temp >= numberMin)
-        {
-            changeNumber(temp);
-        }
-    };
-
-    // Pobiera liczbę.
+    // Aktualizacja wartości.
     const handleInputChange = (e) =>
     {
-        const newValue = Number(e.target.value);
-        changeNumber(newValue);
+        updateValue(Number(e.target.value));
     };
 
-    // Class builder.
+    // Aktualizacja wartości.
+    const increment = () => updateValue(myValue + 1);
+    const decrement = () => updateValue(myValue - 1);
+
+    // Sprawdzanie aktywności przycisków.
+    // Użytkownik nie wyłączył przycisku.
+    // Jest opcia loop z przedziałamiw [nie wyłączy].
+    // Jest opcia loop ale bez przedziałów [wyłączy].
+    // Jeśli przycisk jest wyłączony [wyłączony].
+    const compartment = (valueMin !== -Infinity) && (valueMax !== Infinity); // Czy istniej przedziały.
+    const isLoop = compartment && valueInLoop; // Czy jest zapętlony.
+
+    const isDecrementActive = active && buttonLeftActive && (isLoop || (myValue > valueMin));
+    const isIncrementActive = active && buttonRightActive && (isLoop || (myValue < valueMax));
+
+
+    // Class builder [Dla całeo komponentu].
     const classBuilder = () =>
     {
         let classList = ['InputNumber'];
 
-        if(marginBottom) classList.push('InputNumber-MarginBottom');
         if(width > 0) classList.push(`Width-${width}`);
-        if(marginLeftRight) classList.push('InputNumber-MarginLeftRight');
+        if(marginLeftRight) classList.push('MarginLeftRight');
+        if(marginBottom) classList.push('MarginBottom');
+        if(marginTop) classList.push('MarginTop');
+        if(active === false) classList.push('InputNumber-noActive');
         if(className) classList.push(className);
 
         return classList.join(' ');
     };
-
-    // Gotowe klasy.
     const myClass = classBuilder();
 
-    // Return.
+    // Class builder [Dla Input'a].
+    const classBuilder_2 = () =>
+    {
+        let classList = [];
+
+        if(colorNumber > 0 && active === true) classList.push(`BorderColor-${colorNumber}`);
+
+        return classList.join(' ');
+    };
+    const myClass_2 = classBuilder_2();
+
     return (
         <div className={myClass} {...rest}>
-            {arrows === true && <Button onClick={prevNumber} src={serLeftArrow}/>}
+            {buttonShow && <Button
+                onClick={decrement}
+                src={srcLeftArrow}
+                marginLeftRight={true}
+                active={isDecrementActive}
+                colorNumber={colorNumber}
+            />}
             <input
                 type={"number"}
-                value={number}
+                value={myValue}
                 onChange={handleInputChange}
+                min={valueMin}
+                max={valueMax}
+                className={myClass_2}
             />
-            {arrows === true && <Button onClick={nextNumber} src={srcRightArrow}/>}
+            {buttonShow && <Button
+                onClick={increment}
+                src={srcRightArrow}
+                marginLeftRight={true}
+                active={isIncrementActive}
+                colorNumber={colorNumber}
+            />}
         </div>
     );
-}
+};
 
 export default InputNumber;

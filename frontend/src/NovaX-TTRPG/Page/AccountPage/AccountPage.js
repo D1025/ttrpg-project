@@ -303,8 +303,7 @@ const GamePage = () =>
                             <AccountInformation
                                 dataType={"Nazwa"}
                                 data={userData.nickname}
-                                canEdit={true}
-                                buttonColorNumber={0}
+                                showButton={true}
                                 width={4}
                                 marginBottom={true}
                                 onClick={togglAccountNickname}
@@ -312,15 +311,15 @@ const GamePage = () =>
                             <AccountInformation
                                 dataType={"Email"}
                                 data={userData.email}
-                                canEdit={true}
-                                buttonColorNumber={0}
-                                width={4} marginBottom={true}
+                                showButton={true}
+                                width={4}
+                                marginBottom={true}
                                 onClick={togglAccountEmail}
                             /><br/>
                             <AccountInformation
                                 dataType={"Hasło"}
                                 data={'*****'}
-                                canEdit={true} buttonColorNumber={0}
+                                showButton={true}
                                 width={4}
                                 marginBottom={true}
                                 onClick={togglAccountPassword}

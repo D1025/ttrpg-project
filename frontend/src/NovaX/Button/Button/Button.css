@@ -2,8 +2,8 @@
 /* Design 1 [Kwadrat]. */
 Div.Button-D1
 {
-    width: var(--Przycisk-Wysokość);
-    height: var(--Przycisk-Wysokość);
+    width: var(--Button-Height);
+    height: var(--Button-Height);
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -14,6 +14,7 @@ Div.Button-D1
     cursor: pointer;
     transition: var(--Animacja);
     box-shadow: var(--Przycisk-Cienie);
+    user-select: none;
 }
     /* Przycisk po najechaniu. */
     Div.Button-D1:hover
@@ -26,19 +27,19 @@ Div.Button-D1
         background-color: var(--Motyw)!important;
     }
     /* Wygląd obrazka w przycisku. */
-    Div.Button-D1 > Img
+    Div.Button-D1 Img
     {
-        max-width: 65%;
-        max-height: 65%;
+        max-width: calc(var(--Button-Height) * 0.65);
+        height: calc(var(--Button-Height) * 0.65);
     }
 
 
 /* Design 2 [Prostokąt]. */
 Div.Button-D2
 {
-    min-height: var(--Przycisk-Wysokość);
+    min-height: var(--Button-Height);
     width: max-content!important;
-    height: var(--Przycisk-Wysokość);
+    height: var(--Button-Height);
     font-size: 1.0rem;
     font-weight: bold;
     align-items: center;
@@ -49,9 +50,9 @@ Div.Button-D2
     border-radius: var(--Radius-1);
     display: inline-flex;
     cursor: pointer;
-    user-select: none;
     transition: var(--Animacja);
     box-shadow: var(--Przycisk-Cienie);
+    user-select: none;
 }
 
     /* Po Najechaniu. */
@@ -65,10 +66,10 @@ Div.Button-D2
         background-color: var(--Motyw)!important;
     }
     /* Wygląd obrazka w przycisku. */
-    Div.Button-D2 > Img
+    Div.Button-D2 Img
     {
-        max-width: calc(var(--Przycisk-Wysokość) * 0.65);
-        max-height: calc(var(--Przycisk-Wysokość) * 0.65);
+        max-width: calc(var(--Button-Height) * 0.65);
+        height: calc(var(--Button-Height) * 0.65);
         margin-right: 0.5vw;
     }
     /* Wygląd tytułu w przycisku. */
@@ -91,32 +92,13 @@ Div.Button-D2 > A, Div.Button-D1 > A
 
 
 /* Nieaktywny Przycisk. */
-Div.Button-noActive,
-Div.Button-noActive:hover,
-Div.Button-noActive:active
+Div.Button-noActive
 {
     background-color: var(--Kolor-Oznaczenia)!important;
     cursor: default;
+    pointer-events: none;
 }
 
-/* Margines dolny. */
-Div.Button-MarginBottom
-{
-    margin-bottom: var(--Przycisk-Odstep-Y);
-}
-    /* Jeśli jest ostatni to styl niedziała. */
-    /*Div.Button-MarginBottom:last-of-type,*/
-    /*Div.Button-MarginBottom:only-of-type*/
-    /*{*/
-    /*    margin-bottom: 0.0vw!important;*/
-    /*}*/
-
-/* Margines lewy i prawy. */
-Div.Button-MarginLeftRight
-{
-    margin-left: var(--Przycisk-Odstep-X);
-    margin-right: var(--Przycisk-Odstep-X);
-}
 
 /* Zawijanie tekstu. */
 Div.Button-Wrap
@@ -124,13 +106,15 @@ Div.Button-Wrap
     height: auto;
 }
     /* . */
-    Div.Button-Wrap > Img
-    {
-        height: calc(var(--Przycisk-Wysokość)*0.65);
-    }
-    /* . */
     Div.Button-Wrap > Div
     {
         width: min-content;
         word-wrap: break-word;
     }
+
+/* Nadpisanie globalnego stylu spcialnie dla przycisku. */
+Div.Button.Width-0
+{
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+}

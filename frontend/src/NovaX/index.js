@@ -1,5 +1,4 @@
-// Globalny Root CSS.
-import './Root.css';
+import './Root.css'; /* Zmienne CSS. */
 
 
 // Header.
@@ -38,6 +37,7 @@ export {default as AccountInformation} from './Account/AccountInformation/Accoun
 export {default as Input} from './Form/Input/Input.js';                                          // Gotowe.
 export {default as InputFile} from './Form/InputFile/InputFile.js';                              // Gotowe.
 export {default as InputCheckbox} from './Form/InputCheckbox/InputCheckbox.js';                  // Gotowe.
+export {default as InputCheckbox2} from './Form/InputCheckbox2/InputCheckbox2.js';               // Gotowe.
 export {default as InputNumber} from './Form/InputNumber/InputNumber.js';                        // Gotowe.
 export {default as Label} from './Form/Label/Label.js';                                          // Gotowe.
 export {default as Select} from './Form/Select/Select.js';                                       // Gotowe.
