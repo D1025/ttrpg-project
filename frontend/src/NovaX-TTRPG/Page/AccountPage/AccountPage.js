@@ -11,7 +11,6 @@ import {
     StorageRemove,
     AccountInformation,
     iconTrashCan,
-    iconSettings,
     iconPlay,
     iconEdit
 } from "../../../NovaX";
