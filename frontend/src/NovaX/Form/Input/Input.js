@@ -14,19 +14,17 @@ const Input = ({
                    marginTop = false,
                    className,
                    ...rest
-               }) =>
-{
+               }) => {
     // Decyduje o wyglądzie.
-    const classBuilder = () =>
-    {
+    const classBuilder = () => {
         let classList = ['Input'];
 
-        if(active === true) classList.push('Input-Active');
-        if(width > 0) classList.push(`Width-${width}`);
-        if(marginLeftRight === true) classList.push('MarginLeftRight');
-        if(marginBottom === true) classList.push('MarginBottom');
-        if(marginTop) classList.push('MarginTop');
-        if(className) classList.push(className);
+        if (active === true) classList.push('Input-Active');
+        if (width > 0) classList.push(`Width-${width}`);
+        if (marginLeftRight === true) classList.push('MarginLeftRight');
+        if (marginBottom === true) classList.push('MarginBottom');
+        if (marginTop) classList.push('MarginTop');
+        if (className) classList.push(className);
 
         return classList.join(' ');
     };

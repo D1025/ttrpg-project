@@ -12,7 +12,7 @@ import {
     AccountInformation,
     iconTrashCan,
     iconPlay,
-    iconEdit
+    iconEdit, iconArrowLeft, iconArrowRight, Input
 } from "../../../NovaX";
 import './AccountPage.css';
 import {
@@ -24,6 +24,7 @@ import {
     ImgBase64,
     ModulHeader, WindowLogIn, WindowAccountPassword
 } from "../../index";
+import useDebounce from "../../Utils/Debounce";
 
 const GamePage = () =>
 {
@@ -33,6 +34,17 @@ const GamePage = () =>
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
+    const [page, setPage] = useState(0);
+    const [pageMax, setPageMax] = useState(0);
+
+    const [search, setSearch] = useState('');
+    const debouncedSearchTerm = useDebounce(search, 500);
+
+    useEffect(() => {
+        setPage(0);
+        setPageMax(0);
+    }, [debouncedSearchTerm]);
+
 
     // Wylogowywanie.
     const LogOut = useCallback(async() =>
@@ -72,17 +84,17 @@ const GamePage = () =>
 
     // Załaój pokoje.
     const [pokoje, setPokoje] = useState([]);
-    const ladujPokoje = useCallback(async() =>
+    const ladujPokoje = useCallback(async(search) =>
     {
         try
         {
             // Zapytanie dla publicznych pokoi
-            const odpowiedzPubliczne = await fetch('http://localhost:8086/api/v1/room/my', {
+            const odpowiedzPubliczne = await fetch(`http://localhost:8086/api/v1/room/my?page=${page}&name=${search}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': userData.token
-                },
+                }
             });
 
             // Sprawdzenie odpowiedzi dla publicznych pokoi
@@ -103,8 +115,10 @@ const GamePage = () =>
             // Przetwarzanie odpowiedzi dla publicznych pokoi
             const danePubliczne = await odpowiedzPubliczne.json();
 
+            setPageMax(danePubliczne.totalPages - 1);
+
             // Połączenie danych
-            const zrenderowanePokoje = danePubliczne.map(room => (
+            const zrenderowanePokoje = danePubliczne.content.map(room => (
                 room.ownerId === userData.id &&
                 <RoomFrame
                     key={room.id}
@@ -136,7 +150,7 @@ const GamePage = () =>
         {
             console.log(`Nieoczekiwany błąd: ${blad}`);
         }
-    }, [userData.token, isLogIn]); // Zależności useCallback'a
+    }, [userData.token, isLogIn, page]); // Zależności useCallback'a
 
 
     // Formularz EditRoom.
@@ -273,7 +287,7 @@ const GamePage = () =>
         {
             setIsLogIn(true);
             setUserData(LoadLogInData);
-            ladujPokoje();
+            ladujPokoje(debouncedSearchTerm);
         }
         else
         {
@@ -281,7 +295,7 @@ const GamePage = () =>
             setIsLogIn(false);
             window.location.href = '/';
         }
-    }, [ladujPokoje, showEditRoom === false, showDeleteRoom === false, showAccountNickname === false, showAccountEmail === false, showAccountAvatar === false, showLogIn, LogOut]);
+    }, [ladujPokoje, showEditRoom === false, showDeleteRoom === false, showAccountNickname === false, showAccountEmail === false, showAccountAvatar === false, showLogIn, LogOut, debouncedSearchTerm]);
 
     return (
         <>
@@ -328,6 +342,9 @@ const GamePage = () =>
                     </div>
 
                     <HrSeparator title={"Moje Pokoje"}/>
+                    <Button src={iconArrowLeft} onClick={() => page > 0 ? setPage(page - 1) : null}/>
+                    <Button src={iconArrowRight} onClick={() => page < pageMax ? setPage(page + 1) : null}/>
+                    <Input type={"text"} placeholder={"Szukaj"} width={2} value={search} onChange={e => setSearch(e.target.value)}/>
                     {pokoje}
                 </MainArticle>
             </Main>

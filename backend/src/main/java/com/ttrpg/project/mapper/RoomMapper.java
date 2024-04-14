@@ -4,6 +4,7 @@ import com.ttrpg.project.dto.room.RoomReturnDTO;
 import com.ttrpg.project.model.Room;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 

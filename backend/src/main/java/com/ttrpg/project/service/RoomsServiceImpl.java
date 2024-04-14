@@ -3,6 +3,9 @@ package com.ttrpg.project.service;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.ttrpg.project.dao.MessagesRepository;
 import org.springframework.stereotype.Service;
 
@@ -47,16 +50,18 @@ public class RoomsServiceImpl implements RoomsService {
     }
 
     @Override
-    public List<RoomReturnDTO> getAllRooms(Status status, String authorizationHeader) {
-        if (status == Status.PUBLIC) {
-            return roomMapper.roomsToRoomReturnDTOs(roomRepository.findAllByPrivateRoomIs(false));
-        } else if (status == Status.PRIVATE ) {
+    public Page<RoomReturnDTO> getAllRooms(Status status, String authorizationHeader, Pageable pageable, String name) {
+        boolean isPrivate = status == Status.PRIVATE;
+        if (isPrivate) {
             jwtAuthorization.authorize(authorizationHeader);
-            Users user = userService.getUserByToken(authorizationHeader);
-            return roomMapper.roomsToRoomReturnDTOs(roomRepository.findByUsers_Id(user.getId()));
-        } else {
-            throw new MessageException("Invalid status");
         }
+        Page<Room> rooms;
+        if (name != null) {
+            rooms = roomRepository.findAllByPrivateRoomIsAndNameContaining(isPrivate, name, pageable);
+        } else {
+            rooms = roomRepository.findAllByPrivateRoomIs(isPrivate, pageable);
+        }
+        return rooms.map(roomMapper::roomToRoomReturnDTO);
     }
 
     @Override
@@ -98,10 +103,13 @@ public class RoomsServiceImpl implements RoomsService {
     }
 
     @Override
-    public List<RoomReturnDTO> getMyOwnedRooms(String authorizationHeader) {
+    public Page<RoomReturnDTO> getMyOwnedRooms(String authorizationHeader, Pageable pageable, String name) {
         jwtAuthorization.authorize(authorizationHeader);
         Users user = userService.getUserByToken(authorizationHeader);
-        return roomMapper.roomsToRoomReturnDTOs(roomRepository.findAllByOwnerId(user.getId()));
+        if (name != null) {
+            return roomRepository.findAllByOwnerIdAndNameContaining(user.getId(), name, pageable).map(roomMapper::roomToRoomReturnDTO);
+        }
+        return roomRepository.findAllByOwnerId(user.getId(), pageable).map(roomMapper::roomToRoomReturnDTO);
     }
 
     @Override
