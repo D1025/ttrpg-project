@@ -20,7 +20,7 @@ Div.AccounPagetAvatar > Div.Button-D1
     /* . */
     Div.AccounPagetAvatar > Div.AccounPagetAvatar-Box
     {
-        margin-top: calc(-1*var(--Przycisk-Wysokość) - 0.5vw);
+        margin-top: calc(-1*var(--Button-Height) - 0.5vw);
         width: 100%;
         aspect-ratio: 1 / 1;
         background-color: var(--Motyw);

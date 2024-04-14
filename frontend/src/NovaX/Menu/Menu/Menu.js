@@ -14,7 +14,7 @@ const Li_Pomocnicze = ({children}) =>
 
     // Return.
     return (
-        <li className={classNames}>
+        <li className={classNames} tabIndex={0}>
             {children}
         </li>
     );

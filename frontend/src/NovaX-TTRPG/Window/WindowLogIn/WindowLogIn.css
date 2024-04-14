@@ -28,6 +28,7 @@ Div.WindowLogIn > Div.WindowLogIn-Top
     text-align: center;
     align-items: end;
     padding-right: 1.0vw;
+    padding-left: calc(var(--Button-Height) + 1.0vw);
     display: flex;
 }
 

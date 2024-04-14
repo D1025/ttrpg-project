@@ -6,19 +6,4 @@ Label.Label
     align-items: center;
     text-align: center;
     display: inline-flex;
-    user-select: none;
-}
-
-
-/* Dodatkowy margines dolny. */
-Label.Label-MarginBottom
-{
-    margin-bottom: var(--Przycisk-Odstep-Y);
-}
-
-/* Dodatkowy margines Lewy i Prawy. */
-Label.Label-MarginLeftRight
-{
-    margin-left: var(--Przycisk-Odstep-X);
-    margin-right: var(--Przycisk-Odstep-X);
 }

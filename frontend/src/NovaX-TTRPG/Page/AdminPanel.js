@@ -36,6 +36,8 @@ const AdminPanel = () =>
             {
                 // Pomyślne wylogowanie
                 StorageRemove('loginData');
+                setIsLogIn(false);
+                setUserData('');
             }
         }
         catch(blad)

@@ -1,10 +1,10 @@
-/* Pole Hr. */
+/* Hr. */
 .HrSeparator
 {
     justify-content: center;
     text-align: center;
     align-items: center;
-    margin-top: 1.5vw;
+    margin-top: 1.0vw;
     margin-bottom: 1.0vw;
     display: flex;
 }
@@ -22,7 +22,7 @@
     }
 
     /* Wygląd Hr bocznego. */
-    .HrSeparator > Hr
+    .HrSeparator > .Hr
     {
         flex: 1;
     }

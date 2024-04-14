@@ -4,8 +4,6 @@ Div.AccountBox
     width: 6.0vw;
     background-color: var(--Motyw-Ciemny);
     border-radius: var(--Radius-2);
-    margin-right: 0.2vw;
-    margin-bottom: 0.2vw;
     display: inline-block;
 }
     /* Ostatni nie ma marginesu po prawej. */

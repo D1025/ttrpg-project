@@ -1,5 +1,5 @@
-/* Linia oddzielająca Hr. */
-Hr.Hr
+/* Hr. */
+.Hr
 {
     height: 0.2vw;
     background-color: var(--Kolor-Dodatkowy);
@@ -10,7 +10,7 @@ Hr.Hr
 
 
 /* Dodatkowy margines dolny Hr. */
-Hr.Hr-MarginBottom
+.Hr-MarginBottom
 {
     margin-bottom: 1.0vw!important;
 }

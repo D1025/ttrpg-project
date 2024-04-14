@@ -77,7 +77,7 @@ const WindowAccountNickname = ({onClose, userData}) =>
                             Zmiana nazwy
                         </div>
                         <div>
-                            <Button src={iconClose} onClick={onClose}/>
+                            <Button src={iconClose} onClick={onClose} marginLeftRight={false}/>
                         </div>
                     </div>
 

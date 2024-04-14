@@ -1,7 +1,7 @@
 /* Pole AccountInformation. */
 Div.AccountInformation-Box
 {
-    height: var(--Przycisk-Wysokość);
+    height: var(--Button-Height);
     min-width: 0.0vw;
     display: inline-flex;
 }
@@ -14,7 +14,7 @@ Div.AccountInformation-Box > Div.AccountInformation
     align-items: center;
     border-radius: var(--Radius-1);
     background-color: var(--Motyw-Ciemny);
-    margin-right: var(--Przycisk-Odstep-X);
+    margin-right: var(--Space-X);
     padding: 0.25vw 0.5vw;
     display: grid;
     flex: 1;
@@ -35,33 +35,10 @@ Div.AccountInformation-Box > Div.AccountInformation
         Div.AccountInformation > Div > Div:nth-child(2)
         {
             font-size: 0.9rem;
-            /*font-weight: bold;*/
         }
 
 /* Nadpsianie Button. */
 Div.AccountInformation-Box > Div.Button
 {
-    margin-left: var(--Przycisk-Odstep-X);
+    margin-left: var(--Space-X);
 }
-
-
-/* Margin Left Right. */
-Div.AccountInformation-MarginLeftRight
-{
-    margin-left: var(--Przycisk-Odstep-X);
-    margin-right: var(--Przycisk-Odstep-X);
-}
-
-/* Margin Bottom. */
-Div.AccountInformation-MarginBottom
-{
-    margin-bottom: var(--Przycisk-Odstep-Y);
-}
-    /*Kiedy ostatni albo jedyny. */
-    Div.AccountInformation-MarginBottom:last-of-type,
-    Div.AccountInformation-MarginBottom:only-of-type
-    {
-        margin-bottom: 0.0vw;
-    }
-
-

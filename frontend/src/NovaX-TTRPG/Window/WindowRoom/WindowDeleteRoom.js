@@ -69,7 +69,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                             Usuwanie: {'"' + (danePokoju.name.length > 10 ? danePokoju.name.substring(0, 10) + '...' : danePokoju.name) + '"'}
                         </div>
                         <div>
-                            <Button src={iconClose} onClick={onClose}/>
+                            <Button src={iconClose} onClick={onClose} marginLeftRight={false}/>
                         </div>
                     </div>
 

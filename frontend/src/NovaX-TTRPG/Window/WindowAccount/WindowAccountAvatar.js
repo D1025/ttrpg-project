@@ -147,7 +147,7 @@ const WindowAccountAvatar = ({onClose, userData}) =>
                             {!newAvatar && "Zmiana avatara"}
                         </div>
                         <div>
-                            <Button src={iconClose} onClick={onClose}/>
+                            <Button src={iconClose} onClick={onClose} marginLeftRight={false}/>
                         </div>
                     </div>
 

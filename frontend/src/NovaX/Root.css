@@ -19,7 +19,22 @@
 
     /*--Tło-Menu: url("");*/
     --Tło-Strony: url("https://cdn.openart.ai/stable_diffusion/9527cd1e77a614a32dd167420d1f1c0e535b5673_2000x2000.webp");
+
     --Kolor-Dodatkowy: rgba(87, 159, 100, 0.95);
+    /*--Kolor-Dodatkowy: rgba(205, 197, 135, 0.95);*/
+    /*--Kolor-Dodatkowy: rgba(66, 129, 136, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(148, 5, 48, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(155, 105, 149, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(255, 215, 0, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(255, 160, 107, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(122, 145, 164, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(149, 183, 210, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(220, 174, 160, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(195, 77, 76, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(244, 139, 159, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(222, 108, 158, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(0, 160, 107, 0.8);*/
+    /*--Kolor-Dodatkowy: rgba(18, 110, 135, 0.8);*/
 
 
     --Radius-1: 0.7vw;
@@ -27,64 +42,103 @@
     --Radius-3: 1.3vw;
     --Radius-4: 1.5vw;
 
-    --Przycisk-Wysokość: 2.45vw;
-    --Przycisk-Szerokość-1: 10.0vw;
-    --Przycisk-Szerokość-2: 11.0vw;
-    --Przycisk-Szerokość-3: 12.0vw;
-    --Przycisk-Szerokość-4: 13.0vw;
+    --Button-Height: 2.45vw;
+    --Button-Width-1: 10.0vw;
+    --Button-Width-2: 11.0vw;
+    --Button-Width-3: 12.0vw;
+    --Button-Width-4: 13.0vw;
 
-    --Przycisk-Odstep-X: 0.15vw;
-    --Przycisk-Odstep-Y: 0.3vw;
+    --Space-X: 0.15vw;
+    --Space-Y: 0.3vw;
 
     --Przycisk-Cienie: -0.1vw -0.1vw 0.1vw rgba(0, 0, 0, 0.03), 0.1vw 0.1vw 0.1vw rgba(0, 0, 0, 0.03);
 }
 
 
-/* Klasy szerokości. */
-.Width-0
+
+
+/* Globalne szerokości. */
+.Width-0 /* Wyłączenie min. szerokości. */
 {
     min-width: 0.0vw !important;
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
 }
-.Width-1
+.Width-1 /* Szerokość 1. */
 {
-    min-width: var(--Przycisk-Szerokość-1) !important;
+    min-width: var(--Button-Width-1) !important;
 }
-.Width-2
+.Width-2 /* Szerokość 2. */
 {
-    min-width: var(--Przycisk-Szerokość-2) !important;
+    min-width: var(--Button-Width-2) !important;
 }
-.Width-3
+.Width-3 /* Szerokość 3. */
 {
-    min-width: var(--Przycisk-Szerokość-3) !important;
+    min-width: var(--Button-Width-3) !important;
 }
-.Width-4
+.Width-4 /* Szerokość 4. */
 {
-    min-width: var(--Przycisk-Szerokość-4) !important;
+    min-width: var(--Button-Width-4) !important;
 }
 
-/* Kolory Przycisków. */
-.BackgroundColor-1
+/* Globalne Kolory tła. */
+.BackgroundColor-1 /* Kolor aktywny. */
 {
     background-color: var(--Motyw-Czarny) !important;
 }
-.BackgroundColor-2
+.BackgroundColor-2 /* Kolor Zielony. */
 {
     background-color: var(--Kolor-Pozytywny) !important;
 }
-.BackgroundColor-3
+.BackgroundColor-3 /* Kolor Pomarańczowy. */
 {
     background-color: var(--Kolor-Ostrzezezenia) !important;
 }
-.BackgroundColor-4
+.BackgroundColor-4 /* Kolor Czerwony. */
 {
     background-color: var(--Kolor-Negatywny) !important;
 }
-.BackgroundColor-5
+.BackgroundColor-5 /* Kolor Niebieski. */
 {
     background-color: var(--Kolor-Informacji) !important;
 }
+
+/* Globalny Kolor obramowania. */
+.BorderColor-1 /* Kolor aktywny. */
+{
+    border-color: var(--Motyw-Czarny) !important;
+}
+.BorderColor-2 /* Kolor Zielony. */
+{
+    border-color: var(--Kolor-Pozytywny) !important;
+}
+.BorderColor-3 /* Kolor Pomarańczowy. */
+{
+    border-color: var(--Kolor-Ostrzezezenia) !important;
+}
+.BorderColor-4 /* Kolor Czerwony. */
+{
+    border-color: var(--Kolor-Negatywny) !important;
+}
+.BorderColor-5 /* Kolor Niebieski. */
+{
+    border-color: var(--Kolor-Informacji) !important;
+}
+
+/* Globalne marginesy. */
+.MarginTop /* Margines górny. */
+{
+    margin-top: var(--Space-Y);
+}
+.MarginBottom /* Margines dolny. */
+{
+    margin-bottom: var(--Space-Y);
+}
+.MarginLeftRight /* Marginesy boczne. */
+{
+    margin-left: var(--Space-X);
+    margin-right: var(--Space-X);
+}
+
+
 
 
 /* Globalne wartości. */

@@ -122,7 +122,7 @@ const WindowCreateRoom = ({onClose}) =>
                             Tworzenie Pokoju
                         </div>
                         <div>
-                            <Button src={iconClose} onClick={onClose}/>
+                            <Button src={iconClose} onClick={onClose} marginLeftRight={false}/>
                         </div>
                     </div>
 

@@ -1,14 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
 import
 {
-    Menu2,
-    Header,
-    HeaderLeft,
-    HeaderCenter,
-    HeaderRight,
     Button,
-    ButtonLogo,
-    AccountBar,
     Main,
     MainArticle,
     MainPanel,
@@ -19,11 +12,9 @@ import
     setTittle,
     ArticleTitleOption,
     iconAdd,
-    iconSettings,
     iconTrashCan,
     iconPlay,
     iconEdit,
-    Input
 } from "../../NovaX";
 import {
     ImgBase64,

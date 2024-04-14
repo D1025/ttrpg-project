@@ -6,6 +6,9 @@ const AccountBox = ({
                         tittleLength = 7,
                         subTitle,
                         active = null,
+                        marginLeftRight = true,
+                        marginBottom = false,
+                        marginTop = false,
                         src,
                         alt = "",
                         className,
@@ -17,7 +20,9 @@ const AccountBox = ({
     {
         let classList = ['AccountBox'];
 
-        // Tworzenie listy klas.
+        if(marginLeftRight) classList.push('MarginLeftRight');
+        if(marginBottom) classList.push('MarginBottom');
+        if(marginTop) classList.push('MarginTop');
         if(className) classList.push(className);
 
         return classList.join(' ');
