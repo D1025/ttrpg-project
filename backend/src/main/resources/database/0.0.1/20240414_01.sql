@@ -1,0 +1,1 @@
+ALTER TABLE "rooms" ALTER COLUMN "invitation_link" DROP NOT NULL;

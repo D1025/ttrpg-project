@@ -14,7 +14,7 @@ import
     iconAdd,
     iconTrashCan,
     iconPlay,
-    iconEdit,
+    iconEdit, iconShare,
 } from "../../NovaX";
 import {
     ImgBase64,
@@ -218,7 +218,7 @@ const HomePage = () =>
                                         <Button colorNumber={4} onClick={() => togglDeleteRoom(room)}
                                                 src={iconTrashCan}/>
                                         <Button colorNumber={5} onClick={() => toggleInvite(room)}
-                                                src={iconTrashCan}/>
+                                                src={iconShare}/>
                                         <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
                                     </>
                                 }

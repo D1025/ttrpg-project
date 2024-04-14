@@ -29,4 +29,6 @@ public interface RoomsService {
     void deleteInvitationLink(UUID id, String authorizationHeader);
 
     void joinRoom(String authorizationHeader, String invitation);
+
+    RoomReturnDTO getInfoAboutJoining(String invitation);
 }

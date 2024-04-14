@@ -162,6 +162,15 @@ public class RoomsServiceImpl implements RoomsService {
         roomRepository.save(room);
     }
 
+    @Override
+    public RoomReturnDTO getInfoAboutJoining(String invitation) {
+        Room room = roomRepository.findByInvitationLink(invitation);
+        if (room == null) {
+            throw new MessageException("Room not found");
+        }
+        return roomMapper.roomToRoomReturnDTO(room);
+    }
+
     private String generateInvitationLink() {
         return UUID.randomUUID().toString();
     }

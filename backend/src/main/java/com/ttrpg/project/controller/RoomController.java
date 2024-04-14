@@ -73,6 +73,12 @@ public class RoomController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/join/{invitation}")
+    public ResponseEntity<RoomReturnDTO> getInfoAboutJoining(@PathVariable String invitation) {
+
+        return ResponseEntity.ok(roomsService.getInfoAboutJoining(invitation));
+    }
+
     @PostMapping("/join/{invitation}")
     public ResponseEntity<Void> joinRoom(@RequestHeader(name = "Authorization") String authorizationHeader, @PathVariable String invitation) {
         jwtAuthorization.authorize(authorizationHeader);
