@@ -11,6 +11,7 @@ const Input = ({
                    width = 2,
                    marginBottom = false,
                    marginLeftRight = true,
+                   marginTop = false,
                    className,
                    ...rest
                }) =>
@@ -20,11 +21,11 @@ const Input = ({
     {
         let classList = ['Input'];
 
-        // Dodawanie klasy na podstawie wartości.
         if(active === true) classList.push('Input-Active');
         if(width > 0) classList.push(`Width-${width}`);
-        if(marginLeftRight === true) classList.push('Input-MarginLeftRight');
-        if(marginBottom === true) classList.push('Input-MarginBottom');
+        if(marginLeftRight === true) classList.push('MarginLeftRight');
+        if(marginBottom === true) classList.push('MarginBottom');
+        if(marginTop) classList.push('MarginTop');
         if(className) classList.push(className);
 
         return classList.join(' ');

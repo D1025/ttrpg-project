@@ -6,6 +6,7 @@ Div.ObszarGry
     display: flex;
     position: absolute;
     top: 0;
+    z-index: -1;
 }
 
     /* Lista graczy. */

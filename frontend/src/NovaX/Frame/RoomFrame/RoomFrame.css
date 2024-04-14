@@ -58,7 +58,7 @@ Div.RoomFrame > Div.RoomFrame-Main
 /* Pole opcji. */
 Div.RoomFrame-Option
 {
-    min-height: var(--Przycisk-Wysokość)!important;
+    min-height: var(--Button-Height)!important;
     justify-content: right;
     text-align: center;
     align-items: center;

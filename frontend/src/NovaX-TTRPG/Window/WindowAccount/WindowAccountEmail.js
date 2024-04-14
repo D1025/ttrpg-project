@@ -79,7 +79,7 @@ const WindowAccountEmail = ({onClose, userData}) =>
                             Zmiana email
                         </div>
                         <div>
-                            <Button src={iconClose} onClick={onClose}/>
+                            <Button src={iconClose} onClick={onClose} marginLeftRight={false}/>
                         </div>
                     </div>
 

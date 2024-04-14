@@ -2,7 +2,7 @@
 Input.Input[type="submit"], Input.Input[type="button"]
 {
     width: 0.0vw;
-    height: var(--Przycisk-Wysokość);
+    height: var(--Button-Height);
     align-items: center;
     text-align: center;
     font-size: 1.0rem;
@@ -37,7 +37,7 @@ Input.Input[type="submit"], Input.Input[type="button"]
 Input.Input[type="text"], Input.Input[type="password"]
 {
     width: 0.0vw;
-    height: var(--Przycisk-Wysokość);
+    height: var(--Button-Height);
     color: inherit;
     font-size: 1.0rem;
     font-weight: bold;
@@ -66,29 +66,3 @@ Input.Input[type="text"], Input.Input[type="password"]
         color: white;
         opacity: 0.6;
     }
-
-
-/* Aktywny. */
-Input[type="Submit"].Input-Active, Input[type="Button"].Input-Active, Input[type="text"].Input-Active, Input[type="password"].Input-Active
-{
-    background-color: var(--Motyw-Ciemny) !important;
-}
-
-/* Margin Left Right. */
-Input.Input-MarginLeftRight
-{
-    margin-left: var(--Przycisk-Odstep-X);
-    margin-right: var(--Przycisk-Odstep-X);
-}
-
-/* Margin Bottom. */
-Input.Input-MarginBottom
-{
-    margin-bottom: var(--Przycisk-Odstep-Y);
-}
-    /* Kiedy ostatni albo jedyny. */
-    /*Input.Input-MarginBottom:last-of-type,*/
-    /*Input.Input-MarginBottom:only-of-type*/
-    /*{*/
-    /*    margin-bottom: 0.0vw;*/
-    /*}*/

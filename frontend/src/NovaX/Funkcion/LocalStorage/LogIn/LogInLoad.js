@@ -3,8 +3,10 @@ import {StorageLoad} from "../../../index";
 // LogIn Load.
 const LogInLoad = () =>
 {
+    const loginData = StorageLoad("LogInData");
+
     // Return.
-    return StorageLoad("LogInData");
+    return loginData ? loginData : undefined;
 }
 
 export default LogInLoad;

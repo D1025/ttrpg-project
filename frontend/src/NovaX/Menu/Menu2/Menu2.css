@@ -14,10 +14,10 @@
 .Menu2 > Li
 {
     width: max-content;
-    height: var(--Przycisk-Wysokość);
+    height: var(--Button-Height);
     backdrop-filter: blur(0);
-    margin-left: var(--Przycisk-Odstep-X);
-    margin-right: var(--Przycisk-Odstep-X);
+    margin-left: var(--Space-X);
+    margin-right: var(--Space-X);
 }
 
 /* Początek menu rozwijanego. */

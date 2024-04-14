@@ -3,12 +3,11 @@ import {
     Button,
     ButtonLogo,
     Header,
-    HeaderCenter,
     HeaderLeft,
     HeaderRight,
     Menu2,
     iconAccount,
-    iconStyle, iconSettings, HeaderSpace
+    HeaderSpace
 } from "../../../NovaX";
 import {ImgBase64} from "../../index";
 
@@ -19,8 +18,7 @@ const ModulHeader = ({
                          src,
                          navAdmin = false,
                          navUser = true,
-                         menuLeft = true,
-                         menuRight = true,
+                         navGame = false,
                          logIn,
                          isLogIn = false,
                          logOut,
@@ -33,9 +31,10 @@ const ModulHeader = ({
     // Return.
     return (
         <Header {...rest} design={design} src={src}>
-            {menuLeft === true && <HeaderLeft>
+            {(navGame || navUser || navAdmin) === true && <HeaderLeft>
                 {/* Logo. */}
-                <ButtonLogo title={"TTRPG"} src={"./Grafiki/Logo.png"} href={"/"}/>
+                {navGame !== true && <ButtonLogo title={"TTRPG"} src={"./Grafiki/Logo.png"} href={"/"}/>}
+                {navGame === true && <Button title={"Wyjdź"} href={"/"}/>}
 
                 {(navUser === true || navAdmin === true) && <HeaderSpace/>}
 
@@ -80,7 +79,7 @@ const ModulHeader = ({
 
 
             {/* Nawigacja Konta. */}
-            {menuRight === true && <HeaderRight>
+            <HeaderRight>
                 {/*<Button src={iconStyle} active={false}/>*/}
                 {isLogIn === true ? (
                     <Menu2>
@@ -112,7 +111,7 @@ const ModulHeader = ({
                 ) : (
                     <Button title={"Zaloguj Się"} src={iconAccount} onClick={logIn} width={1}/>
                 )}
-            </HeaderRight>}
+            </HeaderRight>
         </Header>
     );
 }

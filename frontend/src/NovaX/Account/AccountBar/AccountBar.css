@@ -3,7 +3,7 @@
 Div.AccountBar-D1
 {
     width: max-content;
-    height: var(--Przycisk-Wysokość);
+    height: var(--Button-Height);
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -39,8 +39,8 @@ Div.AccountBar-D1 > Div.AccountBar-Title
 /* Miejsce na Avatar. */
 Div.AccountBar-D1 > Div.AccountBar-Img
 {
-    width: var(--Przycisk-Wysokość);
-    height: var(--Przycisk-Wysokość);
+    width: var(--Button-Height);
+    height: var(--Button-Height);
     background-image: url("../../Icon/Account.png");
     background-size: 65%;
     background-position: center;
@@ -64,7 +64,7 @@ Div.AccountBar-D1 > Div.AccountBar-Img
 Div.AccountBar-D2
 {
     width: max-content;
-    height: var(--Przycisk-Wysokość);
+    height: var(--Button-Height);
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -100,8 +100,8 @@ Div.AccountBar-D2 > Div.AccountBar-Title
 /* Miejsce na Avatar. */
 Div.AccountBar-D2 > Div.AccountBar-Img
 {
-    width: var(--Przycisk-Wysokość);
-    height: var(--Przycisk-Wysokość);
+    width: var(--Button-Height);
+    height: var(--Button-Height);
     background-image: url("../../Icon/Account.png");
     background-size: 65%;
     background-position: center;
@@ -118,12 +118,3 @@ Div.AccountBar-D2 > Div.AccountBar-Img
         max-height: 100%;
         border-radius: inherit;
     }
-
-
-
-/* Margines lewy i prawy. */
-Div.AccountBar-MarginLeftRight
-{
-    margin-left: var(--Przycisk-Odstep-X);
-    margin-right: var(--Przycisk-Odstep-X);
-}

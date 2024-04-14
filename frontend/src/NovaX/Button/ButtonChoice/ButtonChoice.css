@@ -3,8 +3,8 @@
 Div.ButtonChoice-D1
 {
     width: max-content;
-    min-width: var(--Przycisk-Wysokość);
-    height: var(--Przycisk-Wysokość);
+    min-width: var(--Button-Height);
+    height: var(--Button-Height);
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -19,6 +19,7 @@ Div.ButtonChoice-D1
     cursor: pointer;
     overflow: hidden;
     box-shadow: var(--Przycisk-Cienie);
+    user-select: none;
 }
 
     /* Wygląd Img w przycisku. */
@@ -62,6 +63,7 @@ Div.ButtonChoice-D2
     cursor: pointer;
     overflow: hidden;
     box-shadow: var(--Przycisk-Cienie);
+    user-select: none;
 }
     /* Wygląd Img w przycisku. */
     Div.ButtonChoice-D2 > Img

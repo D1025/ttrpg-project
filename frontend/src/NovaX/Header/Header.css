@@ -1,22 +1,17 @@
-/* Niepubliczny Root. */
+/* Prywatne zmienne CSS. */
 :root
 {
-    --Szerokosc: 92.0vw;
-    --MinWysokosc: 4.0vw;
-}
-
-Div.Header
-{
-    position: relative;
-    z-index: 1;
+    --Header-Width: 92.0%;
+    --Header-Height: 4.0vw;
 }
 
 
 /* Design 1. */
 Div.Header-D1
 {
-    width: var(--Szerokosc);
-    min-height: var(--MinWysokosc);
+    max-width: var(--Header-Width);
+    width: inherit;
+    min-height: var(--Header-Height);
     font-size: 1.0rem;
     border-radius: var(--Radius-3);
     background-color: var(--Motyw);
@@ -75,8 +70,8 @@ Div.Header-D1
 /* Design 2. */
 Div.Header-D2
 {
-    width: var(--Szerokosc);
-    min-height: var(--MinWysokosc);
+    width: var(--Header-Width);
+    min-height: var(--Header-Height);
     font-size: 1.0rem;
     margin: 1.0vw auto 1.5vw auto;
     display: flex;

@@ -5,30 +5,42 @@ const Button = ({
                     title,
                     width = 1,
                     href,
-                    className,
+                    src,
+                    alt = "",
+                    marginTop = false,
                     marginBottom = false,
                     marginLeftRight = true,
                     colorNumber = 0,
                     active = true,
                     wrapWord = false,
-                    src,
-                    alt = "",
+                    onClick,
+                    className,
                     ...rest
                 }) =>
 {
+    // Obsługa spacji.
+    const handleKeyDown = (event) =>
+    {
+        if(event.keyCode === 32 || event.keyCode === 13)
+        {
+            event.preventDefault();
+            if(onClick) onClick(event);
+        }
+    };
+
     // Decyduje o wyglądzie.
     const classBuilder = () =>
     {
         let classList = ['Button'];
 
-        // Tworzenie listy klas.
         classList.push(title ? 'Button-D2' : 'Button-D1');
         if(width >= 0 && title) classList.push(`Width-${width}`);
-        if(marginBottom) classList.push('Button-MarginBottom');
-        if(marginLeftRight) classList.push('Button-MarginLeftRight');
+        if(marginLeftRight) classList.push('MarginLeftRight');
+        if(marginBottom) classList.push('MarginBottom');
+        if(marginTop) classList.push('MarginTop');
         if(active === false) classList.push('Button-noActive');
         if(wrapWord === true) classList.push('Button-Wrap');
-        if(colorNumber > 0  && active !== false) classList.push(`BackgroundColor-${colorNumber}`);
+        if(colorNumber > 0 && active !== false) classList.push(`BackgroundColor-${colorNumber}`);
         if(className) classList.push(className);
 
         return classList.join(' ');
@@ -41,7 +53,13 @@ const Button = ({
     return (
         <>
             {href ? (
-                <div {...rest} className={myClass}>
+                <div
+                    {...rest}
+                    onKeyDown={handleKeyDown}
+                    onClick={onClick}
+                    className={myClass}
+                    tabIndex={0}
+                >
                     <a href={href}>
                         {src && (
                             <img src={src} alt={alt}/>
@@ -52,7 +70,13 @@ const Button = ({
                     </a>
                 </div>
             ) : (
-                <div {...rest} className={myClass}>
+                <div
+                    {...rest}
+                    onKeyDown={handleKeyDown}
+                    onClick={onClick}
+                    className={myClass}
+                    tabIndex={0}
+                >
                     {src && (
                         <img src={src} alt={alt}/>
                     )}
