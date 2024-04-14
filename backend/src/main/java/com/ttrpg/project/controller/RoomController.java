@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.UUID;
 
 import com.ttrpg.project.dto.room.InvitationLink;
+import com.ttrpg.project.utils.PageUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +28,8 @@ public class RoomController {
 
     private final JwtAuthorization jwtAuthorization;
 
+    private final PageUtils pageUtils;
+
     @PostMapping("/create")
     public ResponseEntity<RoomReturnDTO> createRoom(@RequestBody CreateRoom room, @RequestHeader(name = "Authorization", required = false) String authorizationHeader) {
         jwtAuthorization.authorize(authorizationHeader);
@@ -32,8 +37,9 @@ public class RoomController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RoomReturnDTO>> getAllRooms(@RequestParam Status status, @RequestHeader(name = "Authorization", required = false) String authorizationHeader) {
-        return ResponseEntity.ok(roomsService.getAllRooms(status, authorizationHeader));
+    public ResponseEntity<Page<RoomReturnDTO>> getAllRooms(@RequestParam Status status, @RequestHeader(name = "Authorization", required = false) String authorizationHeader, @RequestParam(defaultValue = "0") Integer page, @RequestParam(required = false)  String name) {
+        Pageable pageable = pageUtils.getPageable(page, 10);
+        return ResponseEntity.ok(roomsService.getAllRooms(status, authorizationHeader, pageable, name));
     }
 
     @PutMapping("/{id}")
@@ -49,9 +55,10 @@ public class RoomController {
     }
 
     @GetMapping("/my")
-    public ResponseEntity<List<RoomReturnDTO>> getMyOwnedRooms(@RequestHeader(name = "Authorization") String authorizationHeader) {
+    public ResponseEntity<Page<RoomReturnDTO>> getMyOwnedRooms(@RequestHeader(name = "Authorization") String authorizationHeader, @RequestParam(defaultValue = "0") Integer page, @RequestParam(required = false) String name) {
         jwtAuthorization.authorize(authorizationHeader);
-        return ResponseEntity.ok(roomsService.getMyOwnedRooms(authorizationHeader));
+        Pageable pageable = pageUtils.getPageable(page, 10);
+        return ResponseEntity.ok(roomsService.getMyOwnedRooms(authorizationHeader, pageable, name));
     }
 
     @GetMapping("/{id}/invitations")

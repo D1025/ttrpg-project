@@ -14,7 +14,7 @@ import
     iconAdd,
     iconTrashCan,
     iconPlay,
-    iconEdit, iconShare,
+    iconEdit, iconShare, Input, iconArrowLeft, iconArrowRight,
 } from "../../NovaX";
 import {
     ImgBase64,
@@ -25,6 +25,7 @@ import {
     WindowLogIn
 } from "../../NovaX-TTRPG";
 import WindowInviteSettings from "../Window/WindowRoom/WindowInviteSettings";
+import useDebounce from "../Utils/Debounce";
 
 const HomePage = () =>
 {
@@ -37,6 +38,17 @@ const HomePage = () =>
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
+
+    const [page, setPage] = useState(0);
+    const [pageMax, setPageMax] = useState(0);
+
+    const [search, setSearch] = useState('');
+    const debouncedSearchTerm = useDebounce(search, 500);
+
+    useEffect(() => {
+        setPage(0);
+        setPageMax(0);
+    }, [lobby, debouncedSearchTerm]);
 
     // Wylogowywanie.
     const LogOut = useCallback(async() =>
@@ -171,19 +183,18 @@ const HomePage = () =>
         setInvite(!showInvite);
     }
 
-
     // Załaój pokoje.
     const [pokoje, setPokoje] = useState([]);
-    const ladujPokoje = useCallback(async({publiczny = true}) =>
+    const ladujPokoje = useCallback(async({publiczny = true, page, search}) =>
     {
         try
         {
-            const odpowiedz = await fetch(`http://localhost:8086/api/v1/room?status=${publiczny ? 'PUBLIC' : 'PRIVATE'}`, {
+            const odpowiedz = await fetch(`http://localhost:8086/api/v1/room?status=${publiczny ? 'PUBLIC' : 'PRIVATE'}&page=${page}&name=${search}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': userData.token && publiczny === false ? (userData.token) : ''
-                },
+                }
             });
 
             if(!odpowiedz.ok)
@@ -202,9 +213,10 @@ const HomePage = () =>
             else
             {
                 const dane = await odpowiedz.json();
+                setPageMax(dane.totalPages - 1);
 
                 // Przetwarzanie i tworzenie komponentów pokoi
-                const zrenderowanePokoje = dane.map(room => (
+                const zrenderowanePokoje = dane.content.map(room => (
                     <RoomFrame
                         key={room.id}
                         src={ImgBase64(room.imageExtension, room.image)}
@@ -254,8 +266,8 @@ const HomePage = () =>
             setUserData('');
             setIsLogIn(false);
         }
-        ladujPokoje({publiczny: !lobby});
-    }, [lobby, ladujPokoje, showCreateRoom === false, showEditRoom === false, showDeleteRoom === false, showLogIn === false, LogOut]);
+        ladujPokoje({publiczny: !lobby, page: page, search: debouncedSearchTerm});
+    }, [lobby, ladujPokoje, showCreateRoom === false, showEditRoom === false, showDeleteRoom === false, showLogIn === false, LogOut, page, debouncedSearchTerm]);
 
     // Aplikacja.
     return (
@@ -281,7 +293,9 @@ const HomePage = () =>
                     <ArticleTitle title={lobby === false ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
                         {isLogIn === true && (
                             <ArticleTitleOption>
-                                {/*<Input type={"text"} placeholder={"Szukaj"} width={2}/>*/}
+                                <Button src={iconArrowLeft} onClick={() => page > 0 ? setPage(page - 1) : null}/>
+                                <Button src={iconArrowRight} onClick={() => page < pageMax ? setPage(page + 1) : null}/>
+                                <Input type={"text"} placeholder={"Szukaj"} width={2} value={search} onChange={e => setSearch(e.target.value)}/>
                                 <Button src={iconAdd} title={"Stwóż Pokój"} width={2} onClick={togglCreateRoom}/>
                             </ArticleTitleOption>
                         )}

@@ -1,5 +1,8 @@
 package com.ttrpg.project.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -12,11 +15,11 @@ public interface RoomsService {
 
     RoomReturnDTO createRoom(CreateRoom room);
 
-    List<RoomReturnDTO> getAllRooms(Status status, String authorizationHeader);
+    Page<RoomReturnDTO> getAllRooms(Status status, String authorizationHeader , Pageable pageable, String name);
 
     List<RoomReturnDTO> getAllRooms(String authorizationHeader);
 
-    List<RoomReturnDTO> getMyOwnedRooms(String authorizationHeader);
+    Page<RoomReturnDTO> getMyOwnedRooms(String authorizationHeader, Pageable pageable, String name);
 
     RoomReturnDTO modifyRoom(EditRoom editRoom, UUID id, String authorizationHeader);
 
