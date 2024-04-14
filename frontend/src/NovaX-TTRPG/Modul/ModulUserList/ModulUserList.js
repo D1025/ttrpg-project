@@ -15,8 +15,14 @@ const ModulUserList = ({allUsers, activeUsers}) =>
     // Return.
     return (
         <>
-            {sortedUsers.map(user => (
-                <AccountBox key={user.id} title={user.nickname} active={isActive(user)} src={ImgBase64(user.imageExtension, user.avatar)}/>
+            {sortedUsers.map((user, index) => (
+                <AccountBox
+                    key={user.id}
+                    title={user.nickname}
+                    active={isActive(user)}
+                    src={ImgBase64(user.imageExtension, user.avatar)}
+                    marginBottom={(index + 1) % 7 === 0}
+                />
             ))}
         </>
     );

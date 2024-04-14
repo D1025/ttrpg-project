@@ -207,14 +207,28 @@ const ModulChat = ({roomId, userId}) =>
     }
     return (
         <div className={"ObszarGry"}>
-            <div className={"Gracze"}>
-                <ModulUserList allUsers={usersInRoom} activeUsers={activeUsers}/>
+            <div className={"ListaGraczy"}>
+                <div>
+                    <ModulUserList allUsers={usersInRoom} activeUsers={activeUsers}/>
+                </div>
             </div>
 
-            <Chat value={wyslijWiadomosc} onChange={ustawWiadomoscMi} onKeyDown={dodajWiadomoscEnter} onClick={dodajWiadomoscPrzycisk} inputPlaceholder={"Wyślij wiadomość"}>
+            <Chat
+                value={wyslijWiadomosc}
+                onChange={ustawWiadomoscMi}
+                onKeyDown={dodajWiadomoscEnter}
+                onClick={dodajWiadomoscPrzycisk}
+                inputPlaceholder={"Wyślij wiadomość"}
+            >
                 {wiadomosci.map((msg, index) => (
-                    <ChatMessage key={index} title={getUserNameById(msg.userId)} text={msg.content} src={ImgBase64(usersInRoom.find(user => user.id === msg.userId).avatarE, usersInRoom.find(user => user.id === msg.userId).avatar)}
-                                 timestamp={dayjs(msg.timestamp).format("HH:mm")} design={msg.userId === loginData.id ? 2 : 1}/>
+                    <ChatMessage
+                        key={index}
+                        title={getUserNameById(msg.userId)}
+                        text={msg.content}
+                        src={ImgBase64(usersInRoom.find(user => user.id === msg.userId).avatarE, usersInRoom.find(user => user.id === msg.userId).avatar)}
+                        timestamp={dayjs(msg.timestamp).format("HH:mm")}
+                        design={msg.userId === loginData.id ? 2 : 1}
+                    />
                 ))}
             </Chat>
         </div>
