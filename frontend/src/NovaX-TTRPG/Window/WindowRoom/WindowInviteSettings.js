@@ -66,6 +66,8 @@ const WindowInviteSettings = ({onClose, danePokoju}) => {
                                 <div>
                                     Link do zaproszenia: <a>{invitationLink ? "http://localhost:3000/invite/"+invitationLink : ""}</a>
                                 </div>
+                                <Button >Wygeneruj</Button>
+                                <Button >Usuń</Button>
                             </div>
                             {powiadomienie && <div>{powiadomienie}</div>}
                         </div>
