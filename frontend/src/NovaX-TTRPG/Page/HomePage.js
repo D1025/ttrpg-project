@@ -14,7 +14,7 @@ import
     iconAdd,
     iconTrashCan,
     iconPlay,
-    iconEdit, iconShare, Input, iconArrowLeft, iconArrowRight,
+    iconEdit, iconShare, Input, iconArrowLeft, iconArrowRight, InputNumber,
 } from "../../NovaX";
 import {
     ImgBase64,
@@ -43,12 +43,18 @@ const HomePage = () =>
     const [pageMax, setPageMax] = useState(0);
 
     const [search, setSearch] = useState('');
-    const debouncedSearchTerm = useDebounce(search, 500);
+    const debouncedSearchTerm = useDebounce(search, 400);
 
-    useEffect(() => {
+    useEffect(() =>
+    {
         setPage(0);
         setPageMax(0);
     }, [lobby, debouncedSearchTerm]);
+
+    const takePage = (event) =>
+    {
+        setPage(event.target.value);
+    }
 
     // Wylogowywanie.
     const LogOut = useCallback(async() =>
@@ -165,7 +171,8 @@ const HomePage = () =>
     };
 
     const [showInvite, setInvite] = useState(false);
-    const toggleInvite = (pokoj) => {
+    const toggleInvite = (pokoj) =>
+    {
         if(!showInvite)
         {
             const handleEscape = (event) =>
@@ -293,9 +300,15 @@ const HomePage = () =>
                     <ArticleTitle title={lobby === false ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
                         {isLogIn === true && (
                             <ArticleTitleOption>
-                                <Button src={iconArrowLeft} onClick={() => page > 0 ? setPage(page - 1) : null}/>
-                                <Button src={iconArrowRight} onClick={() => page < pageMax ? setPage(page + 1) : null}/>
-                                <Input type={"text"} placeholder={"Szukaj"} width={2} value={search} onChange={e => setSearch(e.target.value)}/>
+                                <InputNumber
+                                    valueMin={0}
+                                    value={page}
+                                    valueMax={pageMax}
+                                    onChange={takePage}
+                                    width={0}
+                                />
+                                <Input type={"text"} placeholder={"Szukaj"} width={2} value={search}
+                                       onChange={e => setSearch(e.target.value)}/>
                                 <Button src={iconAdd} title={"Stwóż Pokój"} width={2} onClick={togglCreateRoom}/>
                             </ArticleTitleOption>
                         )}
