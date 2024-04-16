@@ -52,41 +52,25 @@ const Button = ({
 
     // Return.
     return (
-        <>
+        <div
+            {...rest}
+            onKeyDown={handleKeyDown}
+            onClick={onClick}
+            className={myClass}
+            tabIndex={0}
+        >
             {href ? (
-                <div
-                    {...rest}
-                    onKeyDown={handleKeyDown}
-                    onClick={onClick}
-                    className={myClass}
-                    tabIndex={0}
-                >
-                    <a href={href}>
-                        {src && (
-                            <img src={src} alt={alt}/>
-                        )}
-                        {title && (
-                            <div>{title}</div>
-                        )}
-                    </a>
-                </div>
+                <a href={href}>
+                    {src && <img src={src} alt={alt}/>}
+                    {title && <div>{title}</div>}
+                </a>
             ) : (
-                <div
-                    {...rest}
-                    onKeyDown={handleKeyDown}
-                    onClick={onClick}
-                    className={myClass}
-                    tabIndex={0}
-                >
-                    {src && (
-                        <img src={src} alt={alt}/>
-                    )}
-                    {title && (
-                        <div>{title}</div>
-                    )}
-                </div>
+                <>
+                    {src && <img src={src} alt={alt}/>}
+                    {title && <div>{title}</div>}
+                </>
             )}
-        </>
+        </div>
     );
 };
 

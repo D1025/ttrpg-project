@@ -143,6 +143,7 @@ const InputNumber = ({
                 min={valueMin}
                 max={valueMax}
                 className={myClass_2}
+                {...rest.style}
             />
             {buttonShow && <Button
                 onClick={increment}

@@ -59,6 +59,7 @@ Div.ChatMessage-D1 > Div.ChatMessage-Message
         background-repeat: no-repeat;
         border-radius: var(--Radius-1);
         margin-right: 0.25vw;
+        overflow: hidden;
     }
         /* Obrazek użytkownika. */
         Div.ChatMessage-Avatar > Img
