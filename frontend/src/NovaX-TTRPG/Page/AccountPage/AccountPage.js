@@ -12,7 +12,7 @@ import {
     AccountInformation,
     iconTrashCan,
     iconPlay,
-    iconEdit, iconArrowLeft, iconArrowRight, Input
+    iconEdit, iconArrowLeft, iconArrowRight, Input, InputNumber
 } from "../../../NovaX";
 import './AccountPage.css';
 import {
@@ -44,6 +44,11 @@ const GamePage = () =>
         setPage(0);
         setPageMax(0);
     }, [debouncedSearchTerm]);
+
+    const takePage = (event) =>
+    {
+        setPage(event.target.value);
+    }
 
 
     // Wylogowywanie.
@@ -342,9 +347,19 @@ const GamePage = () =>
                     </div>
 
                     <HrSeparator title={"Moje Pokoje"}/>
-                    <Button src={iconArrowLeft} onClick={() => page > 0 ? setPage(page - 1) : null}/>
-                    <Button src={iconArrowRight} onClick={() => page < pageMax ? setPage(page + 1) : null}/>
-                    <Input type={"text"} placeholder={"Szukaj"} width={2} value={search} onChange={e => setSearch(e.target.value)}/>
+                    <div style={{display: "flex", marginBottom: "0.5vw", alignItems: 'center'}}>
+                        <InputNumber
+                            valueMin={0}
+                            value={page}
+                            valueMax={pageMax}
+                            onChange={takePage}
+                            width={0}
+                        />
+                        <Input type={"text"} placeholder={"Szukaj"} width={2} value={search} onChange={e => setSearch(e.target.value)}/>
+                        <p style={{marginLeft:'auto', color: 'var(--Kolor-Oznaczenia)'}}>
+                            Strony pokoi: {pageMax+1}
+                        </p>
+                    </div>
                     {pokoje}
                 </MainArticle>
             </Main>

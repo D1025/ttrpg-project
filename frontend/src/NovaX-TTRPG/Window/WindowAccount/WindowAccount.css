@@ -81,8 +81,8 @@ Div.WindowCreateRoom Div.WindowCreateRoom-Bottom
 /* . */
 Div.Account-Avatar-Podglad
 {
-    width: 11.5vw;
-    height: 11.5vw;
+    min-width: 17.0vw;
+    height: 17.0vw;
     background-color: var(--Motyw-Ciemny);
     background-image: url("../../../NovaX/Icon/Account.png");
     background-size: 65%;
@@ -92,6 +92,7 @@ Div.Account-Avatar-Podglad
     border-radius: var(--Radius-2);
     margin-bottom: 0.5vw;
     overflow: hidden;
+    position: relative;
 }
     /* . */
     Div.Account-Avatar-Podglad > Img
