@@ -144,7 +144,7 @@ const WindowAccountAvatar = ({onClose, userData}) =>
                 <form onSubmit={stworzLobby}>
                     <div className={"WindowCreateRoom-Top"}>
                         <div>
-                            {!newAvatar && "Zmiana avatara"}
+                            Zmiana avatara
                         </div>
                         <div>
                             <Button src={iconClose} onClick={onClose} marginLeftRight={false}/>
@@ -168,9 +168,11 @@ const WindowAccountAvatar = ({onClose, userData}) =>
                                         }}
                                         style={{
                                             containerStyle: {
-                                                borderRadius: 'var(--Radius-3)',
+                                                width: '28vw',
+                                                height: '100%',
+                                                backgroundColor: 'var(--Motyw)',
                                                 cursor: 'default',
-                                                height: '100%'
+                                                position: 'relative'
                                             }
                                         }}
                                     />
@@ -183,8 +185,9 @@ const WindowAccountAvatar = ({onClose, userData}) =>
                     <div className={"WindowCreateRoom-Bottom"}>
                         <div>
                             <div>
+                                {/*<InputFile onChange={takeAvatar} title={"Wybierz Plik"} marginBottom={true}/><br/>*/}
                                 <InputFile onChange={takeAvatar} title={"Wybierz Plik"}/>
-                                <Input type={"submit"} value={"Zapisz avatar"}/>
+                                <Input type={"submit"} value={"Zapisz"}/>
                             </div>
                             {powiadomienie && <div>{powiadomienie}</div>}
                         </div>

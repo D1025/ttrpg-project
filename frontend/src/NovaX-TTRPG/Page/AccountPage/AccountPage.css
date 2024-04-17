@@ -8,11 +8,11 @@ Div.AccountPageBox
 /* . */
 Div.AccounPagetAvatar
 {
-    width: 11.5vw;
+    width: 10.0vw;
     margin-right: 1.0vw;
     text-align: right;
 }
-Div.AccounPagetAvatar > Div.Button-D1
+Div.AccounPagetAvatar > .Button
 {
     margin-top: 0.5vw;
     margin-right: 0.5vw;

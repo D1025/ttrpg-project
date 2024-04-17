@@ -1,5 +1,6 @@
-import {Button, setTittle, StorageLoad} from "../../NovaX";
-import {useEffect, useState} from "react";
+import {AccountBar, Button, iconClose, Label, RoomFrame, setTittle, StorageLoad, Window} from "../../NovaX";
+import React, {useEffect, useState} from "react";
+import {ImgBase64} from "../index";
 
 const InvitePage = () => {
     setTittle("./Grafiki/Logo.png", "TTRPG | Join");
@@ -76,11 +77,30 @@ const InvitePage = () => {
 
 
     return (
-        <div>
-            <h1>{roomData ? roomData.name : ""}</h1>
-            <Button title={"Dołącz"} onClick={joinToRoom}/>
-            <Button title={"Wróć"} onClick={backToHome}/>
-        </div>
+        <Window>
+            <div className={"WindowCreateRoom"}>
+                <div className={"WindowCreateRoom-Top"}>
+                    <div>
+                        Pokuj: "{roomData && roomData.name}"
+                    </div>
+                    <div>
+                        <Button src={iconClose} onClick={backToHome} marginLeftRight={false}/>
+                    </div>
+                </div>
+                <div className={"WindowCreateRoom-Main"}>
+                    <div style={{textAlign: "left"}}>
+                        <Label style={{fontWeight:'bold'}}>Właściciel</Label><br/>
+                        <AccountBar title={roomData ? roomData.ownerNickname : ''} src={roomData && ImgBase64(roomData.ownerAvatarExtension,roomData.ownerAvatar)}/>
+                        <br/>
+
+                        {/*{console.log(roomData)}*/}
+                    </div>
+                </div>
+                <div className={"WindowCreateRoom-Bottom"}>
+                    <Button title={"Dołącz"} onClick={joinToRoom}/>
+                </div>
+            </div>
+        </Window>
     );
 }
 
