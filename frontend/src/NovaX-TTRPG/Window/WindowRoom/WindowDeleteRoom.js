@@ -6,7 +6,7 @@ import {
     Label,
     Window,
     Select,
-    StorageLoad,
+    storageLoad,
     Textarea,
     iconClose
 } from "../../../NovaX";
@@ -19,7 +19,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
     const stworzLobby = async(event) =>
     {
         event.preventDefault();
-        const userData = StorageLoad('loginData');
+        const userData = storageLoad('loginData');
 
         try
         {

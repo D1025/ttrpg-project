@@ -2,6 +2,7 @@
 /* Design 1. */
 Div.ChatMessage-D1
 {
+    max-width: 75%;
     margin-left: 1.0vw;
     margin-bottom: 0.65vw;
 }
@@ -40,9 +41,10 @@ Div.ChatMessage-D1 > Div.ChatMessage-Timestamp
 Div.ChatMessage-D1 > Div.ChatMessage-Message
 {
     width: max-content;
-    max-width: 80%;
+    max-width: 100%;
     background-color: var(--Motyw-Ciemny-Przezroczysty);
     border-radius: var(--Radius-2);
+    box-sizing: border-box;
     padding: 0.75vw;
     display: flex;
     z-index: 0;
@@ -69,25 +71,21 @@ Div.ChatMessage-D1 > Div.ChatMessage-Message
         }
 
     /* Nazwa użytkownika. */
-    Div.ChatMessage-D1 > Div.ChatMessage-Message > Div.ChatMessage-NickName
+    Div.ChatMessage-D1 > Div.ChatMessage-Message Div.ChatMessage-NickName
     {
-        height: var(--Button-Height);
         color: inherit;
-        justify-content: center;
         align-items: center;
         font-size: 1.0rem;
         font-weight: bold;
-        margin-right: 0.2vw;
         display: flex;
     }
 
     /* Wiadomość użytkownika. */
-    Div.ChatMessage-D1 > Div.ChatMessage-Message > Div.ChatMessage-Text
+    Div.ChatMessage-D1 > Div.ChatMessage-Message Div.ChatMessage-Text
     {
         justify-content: center;
         align-items: center;
         color: rgba(150, 150, 150, 0.8);
-        padding-left: 0.25vw;
         display: flex;
     }
 
@@ -95,7 +93,9 @@ Div.ChatMessage-D1 > Div.ChatMessage-Message
 /* Design 2. */
 Div.ChatMessage-D2
 {
+    width: 75%;
     margin-right: 1.0vw;
+    margin-left: auto;
     margin-bottom: 0.65vw;
 }
     /* Usuwanie maeginesu z ostatniego. */
@@ -108,6 +108,7 @@ Div.ChatMessage-D2
 Div.ChatMessage-D2 > Div.ChatMessage-Timestamp
 {
     width: max-content;
+    max-width: 100%;
     min-width: calc(var(--Button-Height) - 0.4vw);
     background-color: var(--Motyw-Czarny);
     backdrop-filter: var(--Blur);
@@ -132,9 +133,10 @@ Div.ChatMessage-D2:hover > Div.ChatMessage-Timestamp
 Div.ChatMessage-D2 > Div.ChatMessage-Message
 {
     width: max-content;
-    max-width: 80%;
+    max-width: 100%;
     background-color: var(--Kolor-Dodatkowy);
     border-radius: var(--Radius-2);
+    box-sizing: border-box;
     margin-left: auto;
     padding: 0.75vw;
     display: flex;
@@ -154,6 +156,7 @@ Div.ChatMessage-D2 > Div.ChatMessage-Message
 /* Design 3. */
 Div.ChatMessage-D3
 {
+    width: 100%;
     margin-bottom: 0.65vw;
 }
     /* Usuwanie maeginesu z ostatniego. */
@@ -180,6 +183,7 @@ Div.ChatMessage-D3 > Div.ChatMessage-Timestamp
 /* Pole z wiadomością. */
 Div.ChatMessage-D3 > Div.ChatMessage-Message
 {
+    width: initial;
     justify-content: center;
     align-items: center;
     background-color: var(--Motyw-Ciemny);
@@ -189,6 +193,8 @@ Div.ChatMessage-D3 > Div.ChatMessage-Message
     margin-bottom: 0.5vw;
     padding-top: 1.0vw;
     padding-bottom: 1.0vw;
+    padding-left: 0.75vw;
+    padding-right: 0.75vw;
     display: flex;
 }
 
@@ -204,6 +210,7 @@ Div.ChatMessage-D3 > Div.ChatMessage-Message
     /* Wiadomość użytkownika. */
     Div.ChatMessage-D3 > Div.ChatMessage-Message > Div.ChatMessage-Text
     {
+        width: max-content;
         font-size: 1.0rem;
         font-weight: bold;
         color: rgba(150, 150, 150, 0.8);

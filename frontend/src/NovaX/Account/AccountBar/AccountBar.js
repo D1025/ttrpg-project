@@ -1,18 +1,21 @@
 import './AccountBar.css';
+import {shortString} from "../../index";
 
 // Button Acount.
 const AccountBar = ({
                         design = 1,
                         title,
+                        titleLength = 20,
                         subTitle,
+                        subTitleLength = 20,
                         src,
                         alt = "",
-                        maxLength = 20,
-                        className,
+                        width = 1,
                         marginLeftRight = true,
                         marginBottom = false,
                         marginTop = false,
-                        width = 1,
+                        colorNumber = 0,
+                        className,
                         ...rest
                     }) =>
 {
@@ -31,33 +34,28 @@ const AccountBar = ({
         return classList.join(' ');
     };
 
-    // Przypisanie listy klas w postaci 'String'.
-    const myClass = classBuilder();
-
     // Return.
-    return (
-        <div {...rest} className={myClass}>
-            {/* Avatar po lewej. */}
-            {design === 2 && (
-                <div className={"AccountBar-Img"}>
-                    {src && (<img src={src} alt={alt}/>)}
-                </div>
-            )}
-
-            {/* Nazwa i podtytół. */}
-            <div className={"AccountBar-Title"}>
-                <div>{title.length > maxLength ? title.substring(0, maxLength) + '...' : title}</div>
-                {subTitle && (<div>{subTitle}</div>)}
+    return (<div {...rest} className={classBuilder()}>
+        {/* Avatar po lewej. */}
+        {design === 2 && (
+            <div className={"AccountBar-Img" + (colorNumber > 0 ? ` BackgroundColor-${colorNumber}` : '')}>
+                {src && (<img src={src} alt={alt}/>)}
             </div>
+        )}
 
-            {/* Avatar po prawej. */}
-            {design === 1 && (
-                <div className={"AccountBar-Img"}>
-                    {src && (<img src={src} alt={alt}/>)}
-                </div>
-            )}
+        {/* Nazwa i podtytół. */}
+        <div className={"AccountBar-Title"}>
+            <div>{title && shortString(title, titleLength)}</div>
+            {subTitle && (<div>{shortString(subTitle, subTitleLength)}</div>)}
         </div>
-    )
+
+        {/* Avatar po prawej. */}
+        {design === 1 && (
+            <div className={"AccountBar-Img" + (colorNumber > 0 ? ` BackgroundColor-${colorNumber}` : '')}>
+                {src && (<img src={src} alt={alt}/>)}
+            </div>
+        )}
+    </div>)
 }
 
 export default AccountBar;

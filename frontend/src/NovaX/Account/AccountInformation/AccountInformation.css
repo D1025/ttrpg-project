@@ -1,44 +1,55 @@
-/* Pole AccountInformation. */
-Div.AccountInformation-Box
+/* Pole z danymi. */
+.AccountInformation
 {
-    height: var(--Button-Height);
     min-width: 0.0vw;
-    display: inline-flex;
-}
-
-/* Element z danymi. */
-Div.AccountInformation-Box > Div.AccountInformation
-{
     height: initial;
     width: max-content;
-    align-items: center;
-    border-radius: var(--Radius-1);
-    background-color: var(--Motyw-Ciemny);
-    margin-right: var(--Space-X);
-    padding: 0.25vw 0.5vw;
-    display: grid;
-    flex: 1;
+    display: inline-block;
 }
-    /* Pole trzymające dane i nazwę typu danych. */
-    Div.AccountInformation > Div
+    /* Nazwa Info. */
+    .AccountInformation > .AccountInformation-DataType
     {
         width: max-content;
+        min-width: calc(var(--Button-Height) - 0.4vw);
+        background-color: var(--Motyw-Przezroczysty);
+        backdrop-filter: var(--Blur);
+        border-radius: var(--Radius-1);
+        font-size: 0.55rem;
+        font-weight: bold;
+        text-align: center;
+        color: var(--Kolor-Oznaczenia);
+        margin-bottom: -0.5vw;
+        margin-right: 0.75vw;
+        margin-left: 0.4vw;
+        padding: 0.2vw;
+        position: relative;
+        z-index: 1;
     }
-        /* Nazwa typud anych. */
-        Div.AccountInformation > Div > Div:nth-child(1)
+
+    /* Info i przycisk. */
+    .AccountInformation > .AccountInformation-InfoAndButton
+    {
+        width: initial;
+        height: var(--Button-Height);
+        font-size: 0.9rem;
+        display: flex;
+    }
+        /* . */
+        .AccountInformation > .AccountInformation-InfoAndButton > :nth-child(1)
         {
-            color: var(--Kolor-Oznaczenia);
-            font-size: 0.55rem;
-            font-weight: bold;
-        }
-        /* Typ danych. */
-        Div.AccountInformation > Div > Div:nth-child(2)
-        {
-            font-size: 0.9rem;
+            min-width: var(--Button-Height);
+            height: var(--Button-Height);
+            align-items: center;
+            background-color: var(--Motyw-Ciemny);
+            border-radius: var(--Radius-1);
+            box-sizing: border-box;
+            padding: 0.5vw;
+            display: grid;
+            flex: 1;
         }
 
-/* Nadpsianie Button. */
-Div.AccountInformation-Box > Div.Button
-{
-    margin-left: var(--Space-X);
-}
+        /* Nadpsianie Button. */
+        .AccountInformation > .AccountInformation-InfoAndButton > .Button
+        {
+            margin-left: var(--Space-X);
+        }

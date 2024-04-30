@@ -29,8 +29,8 @@ Div.Button-D1
     /* Wygląd obrazka w przycisku. */
     Div.Button-D1 Img
     {
-        max-width: calc(var(--Button-Height) * 0.65);
-        height: calc(var(--Button-Height) * 0.65);
+        max-width: 65.0%;
+        height: 65.0%;
     }
 
 
@@ -68,8 +68,8 @@ Div.Button-D2
     /* Wygląd obrazka w przycisku. */
     Div.Button-D2 Img
     {
-        max-width: calc(var(--Button-Height) * 0.65);
-        height: calc(var(--Button-Height) * 0.65);
+        max-width: 65.0%;
+        height: 65.0%;
         margin-right: 0.5vw;
     }
     /* Wygląd tytułu w przycisku. */
@@ -94,7 +94,7 @@ Div.Button-D2 > A, Div.Button-D1 > A
 /* Nieaktywny Przycisk. */
 Div.Button-noActive
 {
-    background-color: var(--Kolor-Oznaczenia)!important;
+    background-color: var(--Kolor-Oznaczenia);
     cursor: default;
     pointer-events: none;
 }

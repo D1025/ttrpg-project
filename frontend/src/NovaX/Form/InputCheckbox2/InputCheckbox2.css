@@ -53,16 +53,23 @@
     z-index: -1;
 }
 
+
 /* Style dla nieaktywnego checkboxa [Niezaznaczony]. */
-.InputCheckbox2.InputCheckbox2-noActive .newCheckbox2
+.InputCheckbox2.InputCheckbox2-noActive > .newCheckbox2
 {
-    background-color: var(--Motyw)!important;
-    border-color: var(--Kolor-Oznaczenia)!important;
+    background-color: var(--Motyw);
+    border-color: var(--Kolor-Oznaczenia);
     cursor: default;
     pointer-events: none;
 }
+    /* Nadpisanie kursora. */
+    .InputCheckbox2.InputCheckbox2-noActive > .Label,
+    .InputCheckbox2.InputCheckbox2-noActive
+    {
+        cursor: default;
+    }
 /* Style dla nieaktywnego checkboxa [Zaznaczony]. */
-.InputCheckbox2.InputCheckbox2-noActive .newCheckbox2.newCheckbox2-Checked
+.InputCheckbox2.InputCheckbox2-noActive > .newCheckbox2.newCheckbox2-Checked
 {
-    background-color: var(--Kolor-Oznaczenia)!important;
+    background-color: var(--Kolor-Oznaczenia);
 }

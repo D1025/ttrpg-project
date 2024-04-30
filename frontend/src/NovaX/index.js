@@ -25,7 +25,6 @@ export {default as RoomFrame} from './Frame/RoomFrame/RoomFrame.js';            
 
 // Button.
 export {default as Button} from './Button/Button/Button.js';                                     // Gotowe.
-export {default as ButtonChoice} from './Button/ButtonChoice/ButtonChoice.js';                   // Gotowe.
 export {default as ButtonLogo} from './Button/ButtonLogo/ButtonLogo';                            // Gotowe.
 
 // Account.png.
@@ -48,14 +47,11 @@ export {default as Hr} from './Hr/Hr/Hr.js';                                    
 export {default as HrSeparator} from './Hr/HrSeparator/HrSeparator.js';                          // Gotowe.
 
 // Funkcion.
-export {default as setTittle} from './Funkcion/SetTittle/setTittle.js';                          // Gotowe.
-export {default as StorageSave} from './Funkcion/LocalStorage/StorageSave.js';                   // Gotowe.
-export {default as StorageLoad} from './Funkcion/LocalStorage/StorageLoad.js';                   // Gotowe.
-export {default as StorageRemove} from './Funkcion/LocalStorage/StorageRemove.js';               // Gotowe.
-    // LogIn Data.
-    export {default as LogInSave} from './Funkcion/LocalStorage/LogIn/LogInSave.js';             // Gotowe.
-    export {default as LogInLoad} from './Funkcion/LocalStorage/LogIn/LogInLoad.js';             // Gotowe.
-    export {default as LogInRemove} from './Funkcion/LocalStorage/LogIn/LogInRemove.js';         // Gotowe.
+export {default as setTittle} from './Funkcion/SetTittle/SetTittle.js';                          // Gotowe.
+export {default as shortString} from './Funkcion/ShortString/ShortString.js';                    // Gotowe.
+export {default as storageSave} from './Funkcion/LocalStorage/StorageSave.js';                   // Gotowe.
+export {default as storageLoad} from './Funkcion/LocalStorage/StorageLoad.js';                   // Gotowe.
+export {default as storageRemove} from './Funkcion/LocalStorage/StorageRemove.js';               // Gotowe.
 
 // Window.
 export {default as Window} from './Window/Window/Window.js';                                     // Gotowe.
@@ -74,6 +70,8 @@ export {default as iconTrashCan} from './Icon/TrashCan_1.png';
 export {default as iconTrashCan2} from './Icon/TrashCan_2.png';
 export {default as iconClose} from './Icon/Close_1.png';
 export {default as iconClose2} from './Icon/Close_2.png';
+export {default as iconCopy_1} from './Icon/Copy_1.png';
+export {default as iconCopy_2} from './Icon/Copy_2.png';
 export {default as iconCheckMark} from './Icon/CheckMark_1.png';
 export {default as iconCheckMark2} from './Icon/CheckMark_2.png';
 export {default as iconEdit} from './Icon/Edit.png';

@@ -1,0 +1,1 @@
+// Dodatkowo: Przycisk Kopiowania zawartości.

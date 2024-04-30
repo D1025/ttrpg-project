@@ -18,7 +18,7 @@ const ButtonLogo = ({
     // Decyduje o wyglądzie.
     const classBuilder = () =>
     {
-        let classList = [];
+        let classList = ['ButtonLogo'];
 
         classList.push(title ? 'ButtonLogo-D2' : 'ButtonLogo-D1');
         if(marginLeftRight) classList.push('MarginLeftRight');

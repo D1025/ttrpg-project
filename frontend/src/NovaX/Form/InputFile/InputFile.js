@@ -1,10 +1,11 @@
 import React, {useRef, useState} from 'react';
 import './InputFile.css';
-import {Button, iconCheckMark2, iconTrashCan} from "../../index";
+import {Button, iconCheckMark2, iconTrashCan, shortString} from "../../index";
 
 // Input File.
 const InputFile = ({
                        title = 'Wybierz Plik',
+                       titleLength = 10,
                        srcTrashCan = iconTrashCan,
                        buttonColorNumber = 4,
                        srcChecked = iconCheckMark2,
@@ -15,7 +16,6 @@ const InputFile = ({
                        marginLeftRight = true,
                        marginTop = false,
                        width = 2,
-                       length = 6,
                        active = true,
                        colorNumber = 0,
                        className,
@@ -96,11 +96,12 @@ const InputFile = ({
         if(correctFileExtension && fileName !== title) classes.push('newInputFile-Active');
         if(!active) classes.push('newInputFile-noActive');
         if(colorNumber > 0) classes.push(`BackgroundColor-${colorNumber}`);
+
         return classes.join(' ');
     };
 
     // Skrócona nazwa.
-    const displayFileName = correctFileExtension && fileName !== title && fileName.length > length ? `${fileName.slice(0, length)}...` : fileName;
+    const displayFileName = correctFileExtension && fileName !== title && fileName.length > titleLength ? shortString(fileName, titleLength) : fileName;
 
     // Return.
     return (

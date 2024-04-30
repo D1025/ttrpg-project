@@ -1,18 +1,19 @@
 import {useCallback, useEffect, useState} from "react";
 import {
     Button,
-    StorageLoad,
+    storageLoad,
     setTittle,
     Main,
     MainArticle,
     ArticleTitle,
     RoomFrame,
     HrSeparator,
-    StorageRemove,
     AccountInformation,
+    Input,
+    InputNumber,
     iconTrashCan,
     iconPlay,
-    iconEdit, iconArrowLeft, iconArrowRight, Input, InputNumber
+    iconEdit
 } from "../../../NovaX";
 import './AccountPage.css';
 import {
@@ -21,10 +22,13 @@ import {
     WindowEditRoom,
     WindowAccountEmail,
     WindowAccountAvatar,
-    ImgBase64,
-    ModulHeader, WindowLogIn, WindowAccountPassword
+    imgBase64,
+    ModulHeader,
+    WindowLogIn,
+    WindowAccountPassword,
+    useLogOut,
+    useDebounce
 } from "../../index";
-import useDebounce from "../../Utils/Debounce";
 
 const GamePage = () =>
 {
@@ -50,35 +54,8 @@ const GamePage = () =>
         setPage(event.target.value);
     }
 
-
     // Wylogowywanie.
-    const LogOut = useCallback(async() =>
-    {
-        try
-        {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/logout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': userData.token
-                }
-            });
-
-            // Reagowanie na odpowiedź.
-            if(odpowiedz.ok)
-            {
-                // Pomyślne wylogowanie
-                StorageRemove('loginData');
-                setIsLogIn(false);
-                setUserData('');
-            }
-        }
-        catch(blad)
-        {
-            // Obsługa błędów związanych z siecią lub żądaniem
-            console.error(`Nieoczekiwany błąd: ${blad}`);
-        }
-    }, [userData.token]);
+    const LogOut = useLogOut(userData, setIsLogIn, setUserData);
 
     // Formularz Logowanie/Rejestracja.
     const [showLogIn, setShowLogIn] = useState(false);
@@ -127,7 +104,7 @@ const GamePage = () =>
                 room.ownerId === userData.id &&
                 <RoomFrame
                     key={room.id}
-                    src={ImgBase64(room.imageExtension, room.image)}
+                    src={imgBase64(room.imageExtension, room.image)}
                     description={room.description}
                     title={room.name}
                 >
@@ -286,7 +263,7 @@ const GamePage = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
-        const LoadLogInData = StorageLoad('loginData')
+        const LoadLogInData = storageLoad('loginData')
         // Jeśli dane logowania istnieją.
         if(LoadLogInData)
         {
@@ -315,7 +292,7 @@ const GamePage = () =>
                         <div className={"AccounPagetAvatar"}>
                             <Button src={iconEdit} onClick={togglAccountAvatar}/>
                             <div className={"AccounPagetAvatar-Box"}>
-                                <img src={ImgBase64(userData.imageExtension, userData.avatar)} alt={""}/>
+                                <img src={imgBase64(userData.imageExtension, userData.avatar)} alt={""}/>
                             </div>
                         </div>
                         <div className={"AccountPageRest"}>
@@ -326,7 +303,7 @@ const GamePage = () =>
                                 width={4}
                                 marginBottom={true}
                                 onClick={togglAccountNickname}
-                            /><br/>
+                            />
                             <AccountInformation
                                 dataType={"Email"}
                                 data={userData.email}
@@ -334,7 +311,7 @@ const GamePage = () =>
                                 width={4}
                                 marginBottom={true}
                                 onClick={togglAccountEmail}
-                            /><br/>
+                            />
                             <AccountInformation
                                 dataType={"Hasło"}
                                 data={'*****'}
@@ -342,7 +319,7 @@ const GamePage = () =>
                                 width={4}
                                 marginBottom={true}
                                 onClick={togglAccountPassword}
-                            /><br/>
+                            />
                         </div>
                     </div>
 
@@ -357,7 +334,7 @@ const GamePage = () =>
                         />
                         <Input type={"text"} placeholder={"Szukaj"} width={2} value={search} onChange={e => setSearch(e.target.value)}/>
                         <p style={{marginLeft:'auto', color: 'var(--Kolor-Oznaczenia)'}}>
-                            Strony pokoi: {pageMax+1}
+                            Strony pokoi: {isNaN(pageMax) ? 0 : pageMax + 1}
                         </p>
                     </div>
                     {pokoje}

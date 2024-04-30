@@ -7,25 +7,28 @@ import
     MainPanel,
     ArticleTitle,
     RoomFrame,
-    StorageLoad,
-    StorageRemove,
+    storageLoad,
     setTittle,
     ArticleTitleOption,
     iconAdd,
     iconTrashCan,
     iconPlay,
-    iconEdit, iconShare, Input, iconArrowLeft, iconArrowRight, InputNumber,
+    iconEdit,
+    iconShare,
+    Input,
+    InputNumber,
 } from "../../NovaX";
 import {
-    ImgBase64,
+    imgBase64,
     ModulHeader,
+    useDebounce,
+    useLogOut,
     WindowCreateRoom,
     WindowDeleteRoom,
     WindowEditRoom,
     WindowLogIn
 } from "../../NovaX-TTRPG";
 import WindowInviteSettings from "../Window/WindowRoom/WindowInviteSettings";
-import useDebounce from "../Utils/Debounce";
 
 const HomePage = () =>
 {
@@ -57,33 +60,7 @@ const HomePage = () =>
     }
 
     // Wylogowywanie.
-    const LogOut = useCallback(async() =>
-    {
-        try
-        {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/logout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': userData.token
-                }
-            });
-
-            // Reagowanie na odpowiedź.
-            if(odpowiedz.ok)
-            {
-                // Pomyślne wylogowanie
-                StorageRemove('loginData');
-                setIsLogIn(false);
-                setUserData('');
-            }
-        }
-        catch(blad)
-        {
-            // Obsługa błędów związanych z siecią lub żądaniem
-            console.error(`Nieoczekiwany błąd: ${blad}`);
-        }
-    }, [userData.token]);
+    const LogOut = useLogOut(userData, setIsLogIn, setUserData);
 
 
     // Formularz Logowanie/Rejestracja.
@@ -226,7 +203,7 @@ const HomePage = () =>
                 const zrenderowanePokoje = dane.content.map(room => (
                     <RoomFrame
                         key={room.id}
-                        src={ImgBase64(room.imageExtension, room.image)}
+                        src={imgBase64(room.imageExtension, room.image)}
                         description={room.description}
                         title={room.name}
                     >
@@ -261,7 +238,7 @@ const HomePage = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
-        const loginData = StorageLoad('loginData');
+        const loginData = storageLoad('loginData');
         // Jeśli dane logowania istnieją.
         if(loginData)
         {
@@ -300,13 +277,15 @@ const HomePage = () =>
                     <ArticleTitle title={lobby === false ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
                         {isLogIn === true && (
                             <ArticleTitleOption>
-                                <InputNumber
-                                    valueMin={0}
-                                    value={page}
-                                    valueMax={pageMax}
-                                    onChange={takePage}
-                                    width={0}
-                                />
+                                {pageMax > 0 &&
+                                    <InputNumber
+                                        valueMin={0}
+                                        value={page}
+                                        valueMax={pageMax}
+                                        onChange={takePage}
+                                        width={0}
+                                    />
+                                }
                                 <Input type={"text"} placeholder={"Szukaj"} width={2} value={search}
                                        onChange={e => setSearch(e.target.value)}/>
                                 <Button src={iconAdd} title={"Stwóż Pokój"} width={2} onClick={togglCreateRoom}/>

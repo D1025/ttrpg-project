@@ -1,5 +1,5 @@
 import {AccountBox} from "../../../NovaX";
-import {ImgBase64} from "../../index";
+import {imgBase64} from "../../index";
 
 // ModulUserList.
 const ModulUserList = ({allUsers, activeUsers}) =>
@@ -20,7 +20,7 @@ const ModulUserList = ({allUsers, activeUsers}) =>
                     key={user.id}
                     title={user.nickname}
                     active={isActive(user)}
-                    src={ImgBase64(user.imageExtension, user.avatar)}
+                    src={imgBase64(user.imageExtension, user.avatar)}
                     marginBottom={(index + 1) % 7 === 0}
                 />
             ))}

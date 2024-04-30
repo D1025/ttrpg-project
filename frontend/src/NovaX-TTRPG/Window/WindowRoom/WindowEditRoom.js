@@ -6,12 +6,12 @@ import {
     Label,
     Window,
     Select,
-    StorageLoad,
+    storageLoad,
     Textarea,
     iconClose, iconImage
 } from "../../../NovaX";
 import React, {useState} from "react";
-import {ImgBase64} from "../../index";
+import {imgBase64} from "../../index";
 
 const WindowEditRoom = ({onClose, danePokoju}) =>
 {
@@ -20,7 +20,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
     const [typ, ustawTyp] = useState(danePokoju.isPrivate);
     const [opis, ustawOpis] = useState(danePokoju.description);
     const [obrazRozszezenie, ustawObrazRozszezenie] = useState(danePokoju.imageExtension);
-    const [obraz, ustawObraz] = useState(!danePokoju.image ? undefined : ImgBase64(obrazRozszezenie, danePokoju.image));
+    const [obraz, ustawObraz] = useState(!danePokoju.image ? undefined : imgBase64(obrazRozszezenie, danePokoju.image));
 
     const reserujDane = () =>
     {
@@ -28,7 +28,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
         ustawTyp(danePokoju.isPrivate)
         ustawOpis(danePokoju.description)
         ustawObrazRozszezenie(danePokoju.imageExtension)
-        ustawObraz(!danePokoju.image ? undefined : ImgBase64(obrazRozszezenie, danePokoju.image))
+        ustawObraz(!danePokoju.image ? undefined : imgBase64(obrazRozszezenie, danePokoju.image))
     }
 
     // Pobieranie z formulaża.
@@ -73,7 +73,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
     const stworzLobby = async(event) =>
     {
         event.preventDefault();
-        const loginData = StorageLoad('loginData');
+        const loginData = storageLoad('loginData');
 
         try
         {
@@ -86,7 +86,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                 body: JSON.stringify({
                     name: nazwa !== danePokoju.name ? nazwa : undefined,
                     description: opis !== danePokoju.description ? opis : undefined,
-                    image: obraz !== ImgBase64(obrazRozszezenie, danePokoju.image) ? obraz : undefined,
+                    image: obraz !== imgBase64(obrazRozszezenie, danePokoju.image) ? obraz : undefined,
                     imageExtension: obrazRozszezenie !== danePokoju.imageExtension ? obrazRozszezenie : undefined,
                     isPrivate: typ !== danePokoju.isPrivate ? typ : undefined,
                 })

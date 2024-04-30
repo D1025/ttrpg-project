@@ -10,9 +10,9 @@ Div.AccountBar-D1
     font-size: 1.0rem;
     background-color: var(--Motyw-Ciemny);
     border-radius: var(--Radius-1);
+    box-sizing: border-box;
     padding: 0.0vw 0.0vw 0.0vw 0.5vw;
     display: inline-flex;
-    user-select: none;
 }
 
 /* Nickname. */
@@ -71,9 +71,9 @@ Div.AccountBar-D2
     font-size: 1.0rem;
     background-color: var(--Motyw-Ciemny);
     border-radius: var(--Radius-1);
+    box-sizing: border-box;
     padding: 0.0vw 0.5vw 0.0vw 0.0vw;
     display: inline-flex;
-    user-select: none;
 }
 
 /* Nickname. */

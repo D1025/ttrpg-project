@@ -1,13 +1,13 @@
-import {AccountBar, Button, iconClose, Label, RoomFrame, setTittle, StorageLoad, Window} from "../../NovaX";
+import {AccountBar, Button, iconClose, Label, RoomFrame, setTittle, storageLoad, Window} from "../../NovaX";
 import React, {useEffect, useState} from "react";
-import {ImgBase64} from "../index";
+import {imgBase64} from "../index";
 
 const InvitePage = () => {
     setTittle("./Grafiki/Logo.png", "TTRPG | Join");
     const idParam = window.location.pathname.split('/').pop();
     const [roomData, setRoomData] = useState(null);
 
-    const loginData = StorageLoad('loginData');
+    const loginData = storageLoad('loginData');
 
     const backToHome = () => {
         window.location.href = '/';
@@ -90,7 +90,7 @@ const InvitePage = () => {
                 <div className={"WindowCreateRoom-Main"}>
                     <div style={{textAlign: "left"}}>
                         <Label style={{fontWeight:'bold'}}>Właściciel</Label><br/>
-                        <AccountBar title={roomData ? roomData.ownerNickname : ''} src={roomData && ImgBase64(roomData.ownerAvatarExtension,roomData.ownerAvatar)}/>
+                        <AccountBar title={roomData ? roomData.ownerNickname : ''} src={roomData && imgBase64(roomData.ownerAvatarExtension,roomData.ownerAvatar)}/>
                         <br/>
 
                         {/*{console.log(roomData)}*/}

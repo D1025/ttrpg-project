@@ -9,7 +9,7 @@ import {
     iconAccount,
     HeaderSpace
 } from "../../../NovaX";
-import {ImgBase64} from "../../index";
+import {imgBase64} from "../../index";
 
 // Modul Header.
 const ModulHeader = ({
@@ -88,7 +88,7 @@ const ModulHeader = ({
                                         width={2}
                                         title={userData.nickname}
                                         subTitle={userData.admin === true && "[Admin]"}
-                                        src={ImgBase64(userData.imageExtension, userData.avatar)}
+                                        src={imgBase64(userData.imageExtension, userData.avatar)}
                             >
                             </AccountBar>
                             <Menu2>

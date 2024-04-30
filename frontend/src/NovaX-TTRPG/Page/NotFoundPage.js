@@ -5,9 +5,9 @@ import
     Header, HeaderRight,
     Button, AccountBar,
     Main, MainArticle, ArticleTitle,
-    StorageLoad, setTittle, HeaderLeft, ButtonLogo, HeaderCenter, StorageRemove
+    storageLoad, setTittle, HeaderLeft, ButtonLogo, HeaderCenter, storageRemove
 } from "../../NovaX";
-import {ImgBase64, ModulHeader, WindowLogIn} from "../../NovaX-TTRPG";
+import {imgBase64, ModulHeader, useLogOut, WindowLogIn} from "../../NovaX-TTRPG";
 
 const Game = () =>
 {
@@ -18,33 +18,7 @@ const Game = () =>
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
 
     // Wylogowywanie.
-    const LogOut = async() =>
-    {
-        try
-        {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/logout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': userData.token
-                }
-            });
-
-            // Reagowanie na odpowiedź.
-            if(odpowiedz.ok)
-            {
-                // Pomyślne wylogowanie
-                StorageRemove('loginData');
-                setIsLogIn(false)
-                setUserData('')
-            }
-        }
-        catch(blad)
-        {
-            // Obsługa błędów związanych z siecią lub żądaniem
-            console.error(`Nieoczekiwany błąd: ${blad}`);
-        }
-    }
+    const LogOut = useLogOut(userData, setIsLogIn, setUserData);
 
     // Formularz Logowanie/Rejestracja.
     const [showLogIn, setShowLogIn] = useState(false);
@@ -56,7 +30,7 @@ const Game = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
-        const loginData = StorageLoad('loginData');
+        const loginData = storageLoad('loginData');
         // Jeśli dane logowania istnieją.
         if(loginData)
         {
