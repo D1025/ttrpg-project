@@ -69,10 +69,10 @@ const WindowAccountNickname = ({onClose, userData}) =>
 
     return (
         <Window>
-            <div className={"WindowCreateRoom"}>
+            <div className={"WindowAccount"}>
 
                 <form onSubmit={stworzLobby}>
-                    <div className={"WindowCreateRoom-Top"}>
+                    <div className={"WindowAccount-Top"}>
                         <div>
                             Zmiana nazwy
                         </div>
@@ -81,11 +81,11 @@ const WindowAccountNickname = ({onClose, userData}) =>
                         </div>
                     </div>
 
-                    <div className={"WindowCreateRoom-Main"}>
+                    <div className={"WindowAccount-Main"}>
                         <Input value={nickname} type={"text"} placeholder={"Nazwa"} onChange={takeNickname} marginBottom={true} autoFocus={true} required/><br/>
                     </div>
 
-                    <div className={"WindowCreateRoom-Bottom"}>
+                    <div className={"WindowAccount-Bottom"}>
                         <div>
                             <div><Input type={"submit"} value={"Potwierdzam zmianę"} width={3}/></div>
                             {powiadomienie && <div>{powiadomienie}</div>}

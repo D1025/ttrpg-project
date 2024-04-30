@@ -139,10 +139,10 @@ const WindowAccountAvatar = ({onClose, userData}) =>
 
     return (
         <Window>
-            <div className={"WindowCreateRoom"}>
+            <div className={"WindowAccount"}>
 
                 <form onSubmit={stworzLobby}>
-                    <div className={"WindowCreateRoom-Top"}>
+                    <div className={"WindowAccount-Top"}>
                         <div>
                             Zmiana avatara
                         </div>
@@ -151,9 +151,9 @@ const WindowAccountAvatar = ({onClose, userData}) =>
                         </div>
                     </div>
 
-                    <div className={"WindowCreateRoom-Main"}>
+                    <div className={"WindowAccount-Main"}>
                         <div>
-                            <div className="Account-Avatar-Podglad">
+                            <div className="Account-Avatar-Look">
                                 {newAvatar && (
                                     <Cropper
                                         image={newAvatar}
@@ -182,7 +182,7 @@ const WindowAccountAvatar = ({onClose, userData}) =>
                         </div>
                     </div>
 
-                    <div className={"WindowCreateRoom-Bottom"}>
+                    <div className={"WindowAccount-Bottom"}>
                         <div>
                             <div>
                                 {/*<InputFile onChange={takeAvatar} title={"Wybierz Plik"} marginBottom={true}/><br/>*/}
