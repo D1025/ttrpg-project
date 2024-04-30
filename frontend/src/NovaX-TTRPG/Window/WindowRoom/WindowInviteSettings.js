@@ -3,7 +3,7 @@ import {
     Button,
     Window,
     storageLoad,
-    iconClose, Label, Input, iconSend
+    iconClose, Label, Input, iconSend, iconCopy_1
 } from "../../../NovaX";
 import React, {useEffect, useState} from "react";
 
@@ -146,12 +146,19 @@ const WindowInviteSettings = ({onClose, danePokoju}) =>
                     <div>
                         <div style={{textAlign: "left", paddingBottom: 10}}>
                             <Label marginBottom={true}>Link do zaproszenia:</Label><br/>
-                            <Input
-                                type={"text"}
-                                value={invitationLink ? "http://localhost:3000/invite/" + invitationLink : ""}
-                                style={{width: '20vw'}}
-                                placeholder={"Link do zaproszenia"}
-                            />
+                            <div style={{display: 'flex'}}>
+                                <Input
+                                    type={"text"}
+                                    value={invitationLink ? "http://localhost:3000/invite/" + invitationLink : ""}
+                                    style={{width: 'calc(20vw - var(--Button-Height))'}}
+                                    placeholder={"Link do zaproszenia"}
+                                />
+                                <Button
+                                    src={iconCopy_1}
+                                    onClick={() => {navigator.clipboard.writeText(invitationLink ? "http://localhost:3000/invite/" + invitationLink : "")}}
+                                    active={invitationLink !== ''}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

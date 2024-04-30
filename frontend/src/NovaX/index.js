@@ -70,6 +70,8 @@ export {default as iconTrashCan} from './Icon/TrashCan_1.png';
 export {default as iconTrashCan2} from './Icon/TrashCan_2.png';
 export {default as iconClose} from './Icon/Close_1.png';
 export {default as iconClose2} from './Icon/Close_2.png';
+export {default as iconCopy_1} from './Icon/Copy_1.png';
+export {default as iconCopy_2} from './Icon/Copy_2.png';
 export {default as iconCheckMark} from './Icon/CheckMark_1.png';
 export {default as iconCheckMark2} from './Icon/CheckMark_2.png';
 export {default as iconEdit} from './Icon/Edit.png';
