@@ -24,13 +24,6 @@ const AdminPanel = () =>
     // Wylogowywanie.
     const LogOut = useLogOut(userData, setIsLogIn, setUserData);
 
-    // Formularz Logowanie/Rejestracja.
-    const [showLogIn, setShowLogIn] = useState(false);
-    const toggleLogIn = () =>
-    {
-        setShowLogIn(prevShowLogin => !prevShowLogin);
-    };
-
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
@@ -43,15 +36,17 @@ const AdminPanel = () =>
         }
         else
         {
+            setIsLogIn(false);
+            setUserData('');
             window.location.href = '/';
         }
-    }, [showLogIn === false, LogOut]);
+    }, [LogOut]);
 
     // Aplikacja.
     return (
         <>
             {/* Nagłłówek Strony. */}
-            <ModulHeader navAdmin={true} navUser={false} isLogIn={isLogIn} logIn={toggleLogIn} userData={userData}
+            <ModulHeader navAdmin={true} navUser={false} isLogIn={isLogIn} userData={userData}
                          logOut={LogOut}/>
 
             {/* Home Strony. */}
@@ -63,8 +58,6 @@ const AdminPanel = () =>
                     Panel
                 </MainArticle>
             </Main>
-
-            {showLogIn && <WindowLogIn onClose={toggleLogIn}/>}
         </>
     );
 }
