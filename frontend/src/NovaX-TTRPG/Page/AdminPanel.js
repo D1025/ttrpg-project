@@ -43,7 +43,6 @@ const AdminPanel = () =>
         }
         else
         {
-
             window.location.href = '/';
         }
     }, [showLogIn === false, LogOut]);
