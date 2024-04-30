@@ -8,7 +8,6 @@ import {
     ArticleTitle,
     RoomFrame,
     HrSeparator,
-    storageRemove,
     AccountInformation,
     Input,
     InputNumber,
@@ -24,7 +23,7 @@ import {
     WindowAccountEmail,
     WindowAccountAvatar,
     ImgBase64,
-    ModulHeader, WindowLogIn, WindowAccountPassword
+    ModulHeader, WindowLogIn, WindowAccountPassword, useLogOut
 } from "../../index";
 import useDebounce from "../../Utils/Debounce";
 
@@ -52,35 +51,8 @@ const GamePage = () =>
         setPage(event.target.value);
     }
 
-
     // Wylogowywanie.
-    const LogOut = useCallback(async() =>
-    {
-        try
-        {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/logout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': userData.token
-                }
-            });
-
-            // Reagowanie na odpowiedź.
-            if(odpowiedz.ok)
-            {
-                // Pomyślne wylogowanie
-                storageRemove('loginData');
-                setIsLogIn(false);
-                setUserData('');
-            }
-        }
-        catch(blad)
-        {
-            // Obsługa błędów związanych z siecią lub żądaniem
-            console.error(`Nieoczekiwany błąd: ${blad}`);
-        }
-    }, [userData.token]);
+    const LogOut = useLogOut(userData, setIsLogIn, setUserData);
 
     // Formularz Logowanie/Rejestracja.
     const [showLogIn, setShowLogIn] = useState(false);

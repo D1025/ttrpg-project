@@ -23,3 +23,6 @@ export {default as ModulHeader} from './Modul/ModulHeader/ModulHeader.js';
 
 // Function.
 export {default as ImgBase64} from './Function/ImgBase64.js';
+
+// Unit.
+export {default as useLogOut} from './Utils/useLogOut.js';
