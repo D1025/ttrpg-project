@@ -1,18 +1,20 @@
 import {useCallback, useEffect, useState} from "react";
 import {
     Button,
-    StorageLoad,
+    storageLoad,
     setTittle,
     Main,
     MainArticle,
     ArticleTitle,
     RoomFrame,
     HrSeparator,
-    StorageRemove,
+    storageRemove,
     AccountInformation,
+    Input,
+    InputNumber,
     iconTrashCan,
     iconPlay,
-    iconEdit, iconArrowLeft, iconArrowRight, Input, InputNumber
+    iconEdit
 } from "../../../NovaX";
 import './AccountPage.css';
 import {
@@ -68,7 +70,7 @@ const GamePage = () =>
             if(odpowiedz.ok)
             {
                 // Pomyślne wylogowanie
-                StorageRemove('loginData');
+                storageRemove('loginData');
                 setIsLogIn(false);
                 setUserData('');
             }
@@ -286,7 +288,7 @@ const GamePage = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
-        const LoadLogInData = StorageLoad('loginData')
+        const LoadLogInData = storageLoad('loginData')
         // Jeśli dane logowania istnieją.
         if(LoadLogInData)
         {
@@ -326,7 +328,7 @@ const GamePage = () =>
                                 width={4}
                                 marginBottom={true}
                                 onClick={togglAccountNickname}
-                            /><br/>
+                            />
                             <AccountInformation
                                 dataType={"Email"}
                                 data={userData.email}
@@ -334,7 +336,7 @@ const GamePage = () =>
                                 width={4}
                                 marginBottom={true}
                                 onClick={togglAccountEmail}
-                            /><br/>
+                            />
                             <AccountInformation
                                 dataType={"Hasło"}
                                 data={'*****'}
@@ -342,7 +344,7 @@ const GamePage = () =>
                                 width={4}
                                 marginBottom={true}
                                 onClick={togglAccountPassword}
-                            /><br/>
+                            />
                         </div>
                     </div>
 
@@ -357,7 +359,7 @@ const GamePage = () =>
                         />
                         <Input type={"text"} placeholder={"Szukaj"} width={2} value={search} onChange={e => setSearch(e.target.value)}/>
                         <p style={{marginLeft:'auto', color: 'var(--Kolor-Oznaczenia)'}}>
-                            Strony pokoi: {pageMax+1}
+                            Strony pokoi: {isNaN(pageMax) ? 0 : pageMax + 1}
                         </p>
                     </div>
                     {pokoje}

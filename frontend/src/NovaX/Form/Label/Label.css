@@ -4,6 +4,5 @@ Label.Label
     font-size: 0.95rem;
     justify-content: center;
     align-items: center;
-    text-align: center;
     display: inline-flex;
 }

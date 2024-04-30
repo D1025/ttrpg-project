@@ -3,9 +3,7 @@
 {
     display: inline-flex;
     user-select: none;
-    cursor: pointer;
 }
-
 
 /* Ukryj oryginalny checkbox. */
 .InputCheckbox > Input[type="checkbox"]
@@ -39,7 +37,7 @@
         border: 0.12vw solid var(--Kolor-Dodatkowy);
         border-radius: 0.35vw;
         box-sizing: border-box;
-        margin-right: 0.2vw;
+        margin-right: 0.25vw;
         transition: var(--Animacja);
         box-shadow: var(--Przycisk-Cienie);
     }
@@ -59,15 +57,21 @@
 /* Niekatywny InputNumber [Niezaznaczony]. */
 .InputCheckbox.InputCheckbox-noActive > Input[type="checkbox"] + Label::before
 {
-    background-color: var(--Motyw)!important;
-    border-color: var(--Kolor-Oznaczenia)!important;
+    background-color: var(--Motyw);
+    border-color: var(--Kolor-Oznaczenia);
     cursor: default;
     pointer-events: none;
 }
+    /* Nadpisanie kursora. */
+    .InputCheckbox.InputCheckbox-noActive > Input[type="checkbox"] + Label
+    {
+        cursor: default;
+    }
+
 /* Niekatywny InputNumber [Zaznaczony]. */
 .InputCheckbox.InputCheckbox-noActive > Input[type="checkbox"]:checked + Label::before
 {
-    background-color: var(--Kolor-Oznaczenia)!important;
+    background-color: var(--Kolor-Oznaczenia);
     border: 0.0vw;
     cursor: default;
     pointer-events: none;

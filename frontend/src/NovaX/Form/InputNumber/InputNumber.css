@@ -6,16 +6,16 @@
 }
 
 /* Usunięcie domyślnych wartości. */
-.InputNumber input[type="number"]::-webkit-inner-spin-button,
-.InputNumber input[type="number"]::-webkit-outer-spin-button,
-.InputNumber input[type="number"]
+.InputNumber Input[type="number"]::-webkit-inner-spin-button,
+.InputNumber Input[type="number"]::-webkit-outer-spin-button,
+.InputNumber Input[type="number"]
 {
     -webkit-appearance: none;
     -moz-appearance: textfield;
 }
 
 /* Nadpisanie wyglądu inputu. */
-.InputNumber > input[type="number"]
+.InputNumber > Input[type="number"]
 {
     width: 100%;
     min-width: var(--Button-Height);
@@ -23,7 +23,6 @@
     color: inherit;
     font-size: 1.0rem;
     font-weight: bold;
-    text-align: center;
     background-color: var(--Motyw);
     backdrop-filter: var(--Blur);
     border: 0.2vw solid var(--Kolor-Dodatkowy);
@@ -37,14 +36,15 @@
     box-shadow: var(--Przycisk-Cienie);
 }
     /* Dodanie animacji. */
-    .InputNumber > input[type="number"]:focus, .InputNumber > input[type="number"]:valid:not(:placeholder-shown)
+    .InputNumber > Input[type="number"]:focus,
+    .InputNumber > Input[type="number"]:valid:not(:placeholder-shown)
     {
         background-color: var(--Motyw-Ciemny);
         cursor: text;
     }
 
     /* Zachowanie placeholder. */
-    .InputNumber > input[type="number"]::placeholder
+    .InputNumber > Input[type="number"]::placeholder
     {
         color: white;
         opacity: 0.6;
@@ -68,8 +68,14 @@
 /* Niekatywny InputNumber. */
 .InputNumber-noActive > Input
 {
-    background-color: var(--Motyw)!important;
-    border-color: var(--Kolor-Oznaczenia)!important;
+    background-color: var(--Motyw);
+    border-color: var(--Kolor-Oznaczenia);
     cursor: default;
     pointer-events: none;
+}
+
+/* Specialne wyśrodkowanie dla minimalnych wielkości Inputu. */
+.InputNumber.Width-0 > Input[type="number"]
+{
+    text-align: center;
 }

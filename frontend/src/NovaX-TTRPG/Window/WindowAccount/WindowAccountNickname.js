@@ -4,7 +4,7 @@ import {
     Input,
     Window,
     iconClose,
-    StorageSave
+    storageSave
 } from "../../../NovaX";
 import React, {useState} from "react";
 
@@ -56,7 +56,7 @@ const WindowAccountNickname = ({onClose, userData}) =>
             {
                 // Sukces - obsługa odpowiedzi
                 const data = await odpowiedz.json();
-                StorageSave("loginData", data)
+                storageSave("loginData", data)
                 onClose();
             }
         }

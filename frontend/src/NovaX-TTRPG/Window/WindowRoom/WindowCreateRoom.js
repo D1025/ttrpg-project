@@ -6,7 +6,7 @@ import {
     Label,
     Window,
     Select,
-    StorageLoad,
+    storageLoad,
     Textarea,
     iconImage,
     iconClose
@@ -64,7 +64,7 @@ const WindowCreateRoom = ({onClose}) =>
     const stworzLobby = async(event) =>
     {
         event.preventDefault();
-        const loginData = StorageLoad('loginData');
+        const loginData = storageLoad('loginData');
 
         try
         {

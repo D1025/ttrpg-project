@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import
 {
     Main, MainArticle, ArticleTitle,
-    StorageLoad, StorageRemove, setTittle
+    storageLoad, storageRemove, setTittle
 } from "../../NovaX";
 import {ModulHeader, WindowLogIn} from "../index";
 
@@ -27,7 +27,7 @@ const AdminPanel = () => {
             // Reagowanie na odpowiedź.
             if (odpowiedz.ok) {
                 // Pomyślne wylogowanie
-                StorageRemove('loginData');
+                storageRemove('loginData');
                 setIsLogIn(false);
                 setUserData('');
             }
@@ -45,7 +45,7 @@ const AdminPanel = () => {
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() => {
-        const loginData = StorageLoad('loginData');
+        const loginData = storageLoad('loginData');
         // Jeśli dane logowania istnieją.
         if (loginData) {
             setIsLogIn(true);

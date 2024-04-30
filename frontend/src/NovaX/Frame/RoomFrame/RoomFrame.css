@@ -1,7 +1,7 @@
 /* RoomFrame. */
 Div.RoomFrame
 {
-    width: 55.5vw;
+    width: initial;
     text-align: left;
     background-color: var(--Motyw-Ciemny);
     border-radius: var(--Radius-2);
@@ -26,6 +26,7 @@ Div.RoomFrame
 /* Pole trzymające Nazwę i opis. */
 Div.RoomFrame > Div.RoomFrame-Main
 {
+    width: 70%;
     align-items: center;
     padding: 1.0vw;
     display: grid;
@@ -58,6 +59,7 @@ Div.RoomFrame > Div.RoomFrame-Main
 /* Pole opcji. */
 Div.RoomFrame-Option
 {
+    width: 30%;
     min-height: var(--Button-Height)!important;
     justify-content: right;
     text-align: center;

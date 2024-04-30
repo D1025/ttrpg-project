@@ -27,19 +27,15 @@ const Chat = ({children, className, value = '', onChange, onClick, onKeyDown, in
     {
         let classList = ['Chat'];
 
-        // Tworzenie listy klas.
         if(className) classList.push(className);
 
         return classList.join(' ');
     };
 
-    // Przypisanie listy klas w postaci 'String'.
-    const myClass = classBuilder();
-
     // Return.
     return (
-        <div className={"Chat-Box"}>
-            <div {...rest.rest} className={myClass}>
+        <div {...rest} className={"Chat-Box"}>
+            <div className={classBuilder()}>
                 <div>
                     {children}
                 </div>

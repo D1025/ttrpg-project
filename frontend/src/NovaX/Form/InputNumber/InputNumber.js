@@ -105,7 +105,7 @@ const InputNumber = ({
     {
         let classList = ['InputNumber'];
 
-        if(width > 0) classList.push(`Width-${width}`);
+        if(width >= 0) classList.push(`Width-${width}`);
         if(marginLeftRight) classList.push('MarginLeftRight');
         if(marginBottom) classList.push('MarginBottom');
         if(marginTop) classList.push('MarginTop');
@@ -143,7 +143,6 @@ const InputNumber = ({
                 min={valueMin}
                 max={valueMax}
                 className={myClass_2}
-                {...rest.style}
             />
             {buttonShow && <Button
                 onClick={increment}

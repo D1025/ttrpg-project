@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from "react";
 import {
-    StorageLoad, setTittle, StorageRemove,
+    storageLoad, setTittle, storageRemove,
 } from "../../NovaX";
 import {ModulChat, ModulHeader, WindowLogIn} from "../../NovaX-TTRPG";
 
@@ -32,7 +32,7 @@ const GamePage = () =>
             if(odpowiedz.ok)
             {
                 // Pomyślne wylogowanie
-                StorageRemove('loginData');
+                storageRemove('loginData');
                 setIsLogIn(false);
                 setUserData('');
             }
@@ -54,7 +54,7 @@ const GamePage = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
-        const loginData = StorageLoad('loginData');
+        const loginData = storageLoad('loginData');
         // Jeśli dane logowania istnieją.
         if(loginData)
         {

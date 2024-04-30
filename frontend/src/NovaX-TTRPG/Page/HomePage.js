@@ -7,14 +7,14 @@ import
     MainPanel,
     ArticleTitle,
     RoomFrame,
-    StorageLoad,
-    StorageRemove,
+    storageLoad,
+    storageRemove,
     setTittle,
     ArticleTitleOption,
     iconAdd,
     iconTrashCan,
     iconPlay,
-    iconEdit, iconShare, Input, iconArrowLeft, iconArrowRight, InputNumber,
+    iconEdit, iconShare, Input, InputNumber,
 } from "../../NovaX";
 import {
     ImgBase64,
@@ -73,7 +73,7 @@ const HomePage = () =>
             if(odpowiedz.ok)
             {
                 // Pomyślne wylogowanie
-                StorageRemove('loginData');
+                storageRemove('loginData');
                 setIsLogIn(false);
                 setUserData('');
             }
@@ -261,7 +261,7 @@ const HomePage = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
-        const loginData = StorageLoad('loginData');
+        const loginData = storageLoad('loginData');
         // Jeśli dane logowania istnieją.
         if(loginData)
         {

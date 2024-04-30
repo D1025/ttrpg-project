@@ -96,8 +96,8 @@
 /* Niekatywny Select. */
 .Select-noActive
 {
-    background-color: var(--Motyw)!important;
-    border-color: var(--Kolor-Oznaczenia)!important;
+    background-color: var(--Motyw);
+    border-color: var(--Kolor-Oznaczenia);
     cursor: default;
     pointer-events: none;
 }

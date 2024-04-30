@@ -29,10 +29,7 @@ Main.Main-D1 > Div.ArticleArea
         backdrop-filter: var(--Blur);
         border-radius: var(--Radius-4);
         margin-bottom: 1.0vw;
-        padding-top: 1.5vw;
-        padding-bottom: 1.5vw;
-        padding-left: 2.0vw;
-        padding-right: 2.0vw;
+        padding: 1.5vw 2.0vw;
     }
     /* Ostatni artykół main'a. */
     Main.Main-D1 > Div.ArticleArea > Article.MainArticle:last-of-type
@@ -59,10 +56,7 @@ Main.Main-D1 > Div.PanelArea
         border-radius: var(--Radius-4);
         margin-left: 0.5vw;
         margin-bottom: 0.5vw;
-        padding-top: 1.5vw;
-        padding-bottom: 1.5vw;
-        padding-left: 1.0vw;
-        padding-right: 1.0vw;
+        padding: 1.5vw 1.0vw;
         display: grid;
     }
     /* Usunięcie marginesu dolnego u ostatniego panela. */
@@ -84,10 +78,7 @@ Main.Main-D1 > Div.PanelArea
 Main.Main-D2
 {
     width: max-content;
-    margin-top: 2.0vw;
-    margin-bottom: 1.0vw;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 2.0vw auto 1.0vw;
 }
 
 /* Pole dla Artykułów. */
@@ -103,10 +94,7 @@ Main.Main-D2 > Div.ArticleArea
         backdrop-filter: var(--Blur);
         border-radius: var(--Radius-4);
         margin-bottom: 1.0vw;
-        padding-top: 1.5vw;
-        padding-bottom: 1.5vw;
-        padding-left: 2.0vw;
-        padding-right: 2.0vw;
+        padding: 1.5vw 2.0vw;
     }
     /* Ostatni artykół main'a. */
     Main.Main-D2 > Div.ArticleArea > Article.MainArticle:last-of-type
@@ -131,10 +119,7 @@ Main.Main-D2 > Div.PanelArea
         backdrop-filter: var(--Blur);
         border-radius: var(--Radius-3);
         margin-right: 0.5vw;
-        padding-top: 1.0vw;
-        padding-bottom: 1.0vw;
-        padding-left: 1.0vw;
-        padding-right: 1.0vw;
+        padding: 1.0vw;
         display: flex;
     }
         /* Usunięcie marginesu prawego dla ostatniego Panela. */
@@ -186,10 +171,7 @@ Main.Main-D3 > Div.ArticleArea
         backdrop-filter: var(--Blur);
         border-radius: var(--Radius-4);
         margin-bottom: 1.0vw;
-        padding-top: 1.5vw;
-        padding-bottom: 1.5vw;
-        padding-left: 2.0vw;
-        padding-right: 2.0vw;
+        padding: 1.5vw 2.0vw;
     }
     /* Ostatni artykół main'a. */
     Main.Main-D3 > Div.ArticleArea > Article.MainArticle:last-of-type
@@ -217,10 +199,7 @@ Main.Main-D3 > Div.PanelArea
         border-radius: var(--Radius-4);
         margin-right: 0.5vw;
         margin-bottom: 0.5vw;
-        padding-top: 1.5vw;
-        padding-bottom: 1.5vw;
-        padding-left: 1.0vw;
-        padding-right: 1.0vw;
+        padding: 1.5vw 1.0vw;
         display: grid;
     }
     /* . */

@@ -4,7 +4,7 @@ import {
     Input,
     Window,
     iconClose,
-    StorageSave
+    storageSave
 } from "../../../NovaX";
 import React, {useState} from "react";
 import SHA256 from "crypto-js/sha256";
@@ -81,7 +81,7 @@ const WindowAccountPassword = ({onClose, userData}) =>
             {
                 // Sukces - obsługa odpowiedzi
                 const data = await odpowiedz.json();
-                StorageSave("loginData", data)
+                storageSave("loginData", data)
                 onClose();
             }
         }

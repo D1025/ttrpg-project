@@ -5,9 +5,8 @@ const ChatMessage = ({title, design = 1, src, alt = "", text, timestamp, classNa
     // Decyduje o wyglądzie.
     const classBuilder = () =>
     {
-        let classList = [];
+        let classList = ['ChatMessage'];
 
-        // Tworzenie listy klas.
         if(design > 0) classList.push(`ChatMessage-D${design}`);
         if(className) classList.push(className);
 
@@ -31,11 +30,13 @@ const ChatMessage = ({title, design = 1, src, alt = "", text, timestamp, classNa
                             {src && <img src={src} alt={alt}/>}
                         </div>
                     </div>
-                    <div className={"ChatMessage-NickName"}>
-                        {title + ": "}
-                    </div>
-                    <div className={"ChatMessage-Text"}>
-                        {text}
+                    <div>
+                        <div className={"ChatMessage-NickName"}>
+                            {title}
+                        </div>
+                        <div className={"ChatMessage-Text"}>
+                            {text}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -46,7 +47,7 @@ const ChatMessage = ({title, design = 1, src, alt = "", text, timestamp, classNa
         return (
             <div {...rest} className={myClass}>
                 <div className={"ChatMessage-Timestamp"}>
-                    {timestamp}
+                {timestamp}
                 </div>
 
                 <div className={"ChatMessage-Message"}>

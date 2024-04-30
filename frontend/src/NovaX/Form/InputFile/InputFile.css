@@ -90,7 +90,7 @@
 /* Wyłączenie newInputFile . */
 .newInputFile.newInputFile-noActive
 {
-    background-color: var(--Kolor-Oznaczenia)!important;
+    background-color: var(--Kolor-Oznaczenia);
     cursor: default;
     pointer-events: none;
 }

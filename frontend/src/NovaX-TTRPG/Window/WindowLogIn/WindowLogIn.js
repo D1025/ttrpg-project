@@ -5,7 +5,7 @@ import
     Window,
     Input,
     Button,
-    StorageSave, StorageLoad, StorageRemove, InputCheckbox, iconEdit, iconClose, InputCheckbox2
+    storageSave, storageLoad, storageRemove, InputCheckbox, iconEdit, iconClose, InputCheckbox2
 } from "../../../NovaX";
 import './WindowLogIn.css';
 
@@ -58,7 +58,7 @@ const OknoLogowania = ({onClose}) =>
         }
         else if(LogowanieCzyRejestracja)
         {
-            const ZapisanyEmail = StorageLoad('loginEmail')
+            const ZapisanyEmail = storageLoad('loginEmail')
             // Wstawianie hasła, jeśli zostało zapisane.
             if(ZapisanyEmail)
             {
@@ -121,16 +121,16 @@ const OknoLogowania = ({onClose}) =>
                         email: email
                     };
 
-                    StorageSave('loginEmail', zapamietajEmail);
+                    storageSave('loginEmail', zapamietajEmail);
                 }
                 else
                 {
-                    StorageRemove('loginEmail');
+                    storageRemove('loginEmail');
                 }
 
                 // Zapisuje dane logowania.
                 const dane = await odpowiedz.json();
-                StorageSave('loginData', dane);
+                storageSave('loginData', dane);
                 onClose();
             }
         }

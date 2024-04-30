@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import SockJs from "sockjs-client";
 import Stomp from "stompjs";
-import {Chat, StorageLoad, ChatMessage} from "../../../NovaX";
+import {Chat, storageLoad, ChatMessage} from "../../../NovaX";
 import {ImgBase64, ModulUserList} from "../../index";
 import './ModulChat.css';
 import dayjs from "dayjs";
@@ -17,7 +17,7 @@ const ModulChat = ({roomId, userId}) =>
     const [activeUsers, setActiveUsers] = useState([]);
     const [usersInRoom, setUsersInRoom] = useState([]);
     const [loadInitialMessages, setLoadInitialMessages] = useState(true);
-    const loginData = StorageLoad('loginData');
+    const loginData = storageLoad('loginData');
 
     const [stompClient, setStompClient] = useState(undefined);
     const [connected, setConnected] = useState(false);

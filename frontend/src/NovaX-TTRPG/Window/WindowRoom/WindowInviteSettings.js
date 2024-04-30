@@ -2,7 +2,7 @@ import './WindowRoom.css';
 import {
     Button,
     Window,
-    StorageLoad,
+    storageLoad,
     iconClose, Label, Input, iconSend
 } from "../../../NovaX";
 import React, {useEffect, useState} from "react";
@@ -11,7 +11,7 @@ const WindowInviteSettings = ({onClose, danePokoju}) =>
 {
     const [powiadomienie, ustawPowiadomienie] = useState('');
     const [invitationLink, setInvitationLink] = useState('');
-    const userData = StorageLoad('loginData');
+    const userData = storageLoad('loginData');
 
     const fetchInvitationLink = async() =>
     {

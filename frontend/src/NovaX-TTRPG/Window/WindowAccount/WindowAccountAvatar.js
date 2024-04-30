@@ -4,7 +4,7 @@ import {
     Input,
     Window,
     iconClose,
-    StorageSave, InputFile
+    storageSave, InputFile
 } from "../../../NovaX";
 import React, {useState} from 'react';
 import Cropper from 'react-easy-crop';
@@ -126,7 +126,7 @@ const WindowAccountAvatar = ({onClose, userData}) =>
             {
                 // Sukces - obsługa odpowiedzi
                 const data = await odpowiedz.json();
-                StorageSave("loginData", data)
+                storageSave("loginData", data)
                 onClose();
             }
         }

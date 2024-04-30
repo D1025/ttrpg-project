@@ -18,23 +18,11 @@
     --Blur: blur(2.5vw);
 
     /*--Tło-Menu: url("");*/
+
     --Tło-Strony: url("https://cdn.openart.ai/stable_diffusion/9527cd1e77a614a32dd167420d1f1c0e535b5673_2000x2000.webp");
 
-    --Kolor-Dodatkowy: rgba(87, 159, 100, 0.95);
-    /*--Kolor-Dodatkowy: rgba(205, 197, 135, 0.95);*/
-    /*--Kolor-Dodatkowy: rgba(66, 129, 136, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(148, 5, 48, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(155, 105, 149, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(255, 215, 0, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(255, 160, 107, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(122, 145, 164, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(149, 183, 210, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(220, 174, 160, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(195, 77, 76, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(244, 139, 159, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(222, 108, 158, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(0, 160, 107, 0.8);*/
-    /*--Kolor-Dodatkowy: rgba(18, 110, 135, 0.8);*/
+    --Kolor-Dodatkowy: rgba(87, 159, 100, 0.8);
+    /*--Kolor-Dodatkowy: rgba(87, 159, 100, 1.0);*/
 
 
     --Radius-1: 0.7vw;
@@ -48,8 +36,8 @@
     --Button-Width-3: 12.0vw;
     --Button-Width-4: 13.0vw;
 
-    --Space-X: 0.15vw;
-    --Space-Y: 0.3vw;
+    --Space-X: 0.13rem;
+    --Space-Y: 0.3rem;
 
     --Przycisk-Cienie: -0.1vw -0.1vw 0.1vw rgba(0, 0, 0, 0.03), 0.1vw 0.1vw 0.1vw rgba(0, 0, 0, 0.03);
 }

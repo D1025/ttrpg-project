@@ -5,7 +5,7 @@ import
     Header, HeaderRight,
     Button, AccountBar,
     Main, MainArticle, ArticleTitle,
-    StorageLoad, setTittle, HeaderLeft, ButtonLogo, HeaderCenter, StorageRemove
+    storageLoad, setTittle, HeaderLeft, ButtonLogo, HeaderCenter, storageRemove
 } from "../../NovaX";
 import {ImgBase64, ModulHeader, WindowLogIn} from "../../NovaX-TTRPG";
 
@@ -34,7 +34,7 @@ const Game = () =>
             if(odpowiedz.ok)
             {
                 // Pomyślne wylogowanie
-                StorageRemove('loginData');
+                storageRemove('loginData');
                 setIsLogIn(false)
                 setUserData('')
             }
@@ -56,7 +56,7 @@ const Game = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
-        const loginData = StorageLoad('loginData');
+        const loginData = storageLoad('loginData');
         // Jeśli dane logowania istnieją.
         if(loginData)
         {

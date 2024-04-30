@@ -1,4 +1,4 @@
-import {AccountBar, Button, iconClose, Label, RoomFrame, setTittle, StorageLoad, Window} from "../../NovaX";
+import {AccountBar, Button, iconClose, Label, RoomFrame, setTittle, storageLoad, Window} from "../../NovaX";
 import React, {useEffect, useState} from "react";
 import {ImgBase64} from "../index";
 
@@ -7,7 +7,7 @@ const InvitePage = () => {
     const idParam = window.location.pathname.split('/').pop();
     const [roomData, setRoomData] = useState(null);
 
-    const loginData = StorageLoad('loginData');
+    const loginData = storageLoad('loginData');
 
     const backToHome = () => {
         window.location.href = '/';

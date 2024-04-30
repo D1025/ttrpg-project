@@ -15,7 +15,6 @@ const Button = ({
                     wrapWord = false,
                     onClick,
                     className,
-                    disabled = false,
                     ...rest
                 }) =>
 {
