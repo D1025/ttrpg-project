@@ -300,13 +300,15 @@ const HomePage = () =>
                     <ArticleTitle title={lobby === false ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
                         {isLogIn === true && (
                             <ArticleTitleOption>
-                                <InputNumber
-                                    valueMin={0}
-                                    value={page}
-                                    valueMax={pageMax}
-                                    onChange={takePage}
-                                    width={0}
-                                />
+                                {pageMax > 0 &&
+                                    <InputNumber
+                                        valueMin={0}
+                                        value={page}
+                                        valueMax={pageMax}
+                                        onChange={takePage}
+                                        width={0}
+                                    />
+                                }
                                 <Input type={"text"} placeholder={"Szukaj"} width={2} value={search}
                                        onChange={e => setSearch(e.target.value)}/>
                                 <Button src={iconAdd} title={"Stwóż Pokój"} width={2} onClick={togglCreateRoom}/>
