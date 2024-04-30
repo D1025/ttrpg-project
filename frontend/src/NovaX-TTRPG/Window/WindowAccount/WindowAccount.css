@@ -60,22 +60,6 @@ Div.WindowCreateRoom Div.WindowCreateRoom-Bottom
     position: relative;
     z-index: 1;
 }
-    /* Przycisk wysłania. */
-    Div.WindowCreateRoom Div.WindowCreateRoom-Bottom > Div > Div:nth-child(1)
-    {
-        padding-top: 0.5vw;
-        padding-bottom: 0.25vw;
-    }
-
-    /* Powiadomienie. */
-    Div.WindowCreateRoom Div.WindowCreateRoom-Bottom > Div > Div:nth-child(2)
-    {
-        color: var(--Kolor-Dodatkowy);
-        font-weight: bold;
-        padding-top: 0.25vw;
-        padding-bottom: 0.25vw;
-
-    }
 
 
 /* . */
