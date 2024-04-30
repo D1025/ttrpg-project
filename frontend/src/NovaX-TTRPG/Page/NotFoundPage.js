@@ -7,7 +7,7 @@ import
     Main, MainArticle, ArticleTitle,
     storageLoad, setTittle, HeaderLeft, ButtonLogo, HeaderCenter, storageRemove
 } from "../../NovaX";
-import {ImgBase64, ModulHeader, useLogOut, WindowLogIn} from "../../NovaX-TTRPG";
+import {imgBase64, ModulHeader, useLogOut, WindowLogIn} from "../../NovaX-TTRPG";
 
 const Game = () =>
 {

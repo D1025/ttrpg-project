@@ -22,10 +22,13 @@ import {
     WindowEditRoom,
     WindowAccountEmail,
     WindowAccountAvatar,
-    ImgBase64,
-    ModulHeader, WindowLogIn, WindowAccountPassword, useLogOut
+    imgBase64,
+    ModulHeader,
+    WindowLogIn,
+    WindowAccountPassword,
+    useLogOut,
+    useDebounce
 } from "../../index";
-import useDebounce from "../../Utils/Debounce";
 
 const GamePage = () =>
 {
@@ -101,7 +104,7 @@ const GamePage = () =>
                 room.ownerId === userData.id &&
                 <RoomFrame
                     key={room.id}
-                    src={ImgBase64(room.imageExtension, room.image)}
+                    src={imgBase64(room.imageExtension, room.image)}
                     description={room.description}
                     title={room.name}
                 >
@@ -289,7 +292,7 @@ const GamePage = () =>
                         <div className={"AccounPagetAvatar"}>
                             <Button src={iconEdit} onClick={togglAccountAvatar}/>
                             <div className={"AccounPagetAvatar-Box"}>
-                                <img src={ImgBase64(userData.imageExtension, userData.avatar)} alt={""}/>
+                                <img src={imgBase64(userData.imageExtension, userData.avatar)} alt={""}/>
                             </div>
                         </div>
                         <div className={"AccountPageRest"}>

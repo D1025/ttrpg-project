@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import SockJs from "sockjs-client";
 import Stomp from "stompjs";
 import {Chat, storageLoad, ChatMessage} from "../../../NovaX";
-import {ImgBase64, ModulUserList} from "../../index";
+import {imgBase64, ModulUserList} from "../../index";
 import './ModulChat.css';
 import dayjs from "dayjs";
 
@@ -225,7 +225,7 @@ const ModulChat = ({roomId, userId}) =>
                         key={index}
                         title={getUserNameById(msg.userId)}
                         text={msg.content}
-                        src={ImgBase64(usersInRoom.find(user => user.id === msg.userId).avatarE, usersInRoom.find(user => user.id === msg.userId).avatar)}
+                        src={imgBase64(usersInRoom.find(user => user.id === msg.userId).avatarE, usersInRoom.find(user => user.id === msg.userId).avatar)}
                         timestamp={dayjs(msg.timestamp).format("HH:mm")}
                         design={msg.userId === loginData.id ? 2 : 1}
                     />

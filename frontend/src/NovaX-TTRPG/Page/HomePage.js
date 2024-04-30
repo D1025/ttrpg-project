@@ -19,8 +19,9 @@ import
     InputNumber,
 } from "../../NovaX";
 import {
-    ImgBase64,
+    imgBase64,
     ModulHeader,
+    useDebounce,
     useLogOut,
     WindowCreateRoom,
     WindowDeleteRoom,
@@ -28,7 +29,6 @@ import {
     WindowLogIn
 } from "../../NovaX-TTRPG";
 import WindowInviteSettings from "../Window/WindowRoom/WindowInviteSettings";
-import useDebounce from "../Utils/Debounce";
 
 const HomePage = () =>
 {
@@ -203,7 +203,7 @@ const HomePage = () =>
                 const zrenderowanePokoje = dane.content.map(room => (
                     <RoomFrame
                         key={room.id}
-                        src={ImgBase64(room.imageExtension, room.image)}
+                        src={imgBase64(room.imageExtension, room.image)}
                         description={room.description}
                         title={room.name}
                     >
