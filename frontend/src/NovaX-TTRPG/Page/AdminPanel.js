@@ -7,12 +7,14 @@ import
     storageLoad,
     setTittle
 } from "../../NovaX";
-import {ModulHeader,
+import {
+    ModulHeader,
     useLogOut,
     WindowLogIn
 } from "../index";
 
-const AdminPanel = () => {
+const AdminPanel = () =>
+{
     // Tittle.
     setTittle("../Grafiki/Logo.png", "TTRPG | Panel");
 
@@ -24,20 +26,24 @@ const AdminPanel = () => {
 
     // Formularz Logowanie/Rejestracja.
     const [showLogIn, setShowLogIn] = useState(false);
-    const toggleLogIn = () => {
+    const toggleLogIn = () =>
+    {
         setShowLogIn(prevShowLogin => !prevShowLogin);
     };
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
-    useEffect(() => {
+    useEffect(() =>
+    {
         const loginData = storageLoad('loginData');
         // Jeśli dane logowania istnieją.
-        if (loginData) {
+        if(loginData)
+        {
             setIsLogIn(true);
             setUserData(loginData);
-        } else {
-            setUserData('');
-            setIsLogIn(false);
+        }
+        else
+        {
+
             window.location.href = '/';
         }
     }, [showLogIn === false, LogOut]);

@@ -37,8 +37,6 @@ const GamePage = () =>
         }
         else
         {
-            setUserData('');
-            setIsLogIn(false);
             window.location.href = '/';
         }
     }, [showLogIn === false, LogOut]);
