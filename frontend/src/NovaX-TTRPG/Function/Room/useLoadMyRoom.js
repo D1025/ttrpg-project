@@ -6,9 +6,9 @@ import {
     iconShare,
     iconEdit,
     iconPlay
-} from "../../NovaX";
-import {imgBase64} from "../../NovaX-TTRPG";
-import {websiteAdres} from "../index";
+} from "../../../NovaX";
+import {imgBase64} from "../../index";
+import {websiteAdres} from "../../index";
 
 function useLoadMyRoom({
                          isLogIn,
