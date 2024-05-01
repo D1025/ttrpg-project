@@ -7,6 +7,7 @@ import {
     storageSave
 } from "../../../NovaX";
 import React, {useState} from "react";
+import {websiteAdres} from "../../index";
 
 const WindowAccountNickname = ({onClose, userData}) =>
 {
@@ -27,7 +28,7 @@ const WindowAccountNickname = ({onClose, userData}) =>
 
         try
         {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/users/' + userData.id, {
+            const odpowiedz = await fetch(`${websiteAdres}/api/v1/users/` + userData.id, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

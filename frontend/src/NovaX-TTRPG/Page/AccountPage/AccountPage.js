@@ -27,7 +27,7 @@ import {
     WindowLogIn,
     WindowAccountPassword,
     useLogOut,
-    useDebounce
+    useDebounce, websiteAdres
 } from "../../index";
 
 const GamePage = () =>
@@ -71,7 +71,7 @@ const GamePage = () =>
         try
         {
             // Zapytanie dla publicznych pokoi
-            const odpowiedzPubliczne = await fetch(`http://localhost:8086/api/v1/room/my?page=${page}&name=${search}`, {
+            const odpowiedzPubliczne = await fetch(`${websiteAdres}/api/v1/room/my?page=${page}&name=${search}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

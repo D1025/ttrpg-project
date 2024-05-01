@@ -1,15 +1,16 @@
 import {storageRemove} from "../../NovaX";
 import {useCallback} from "react";
+import {websiteAdres} from "../index";
 
 // Log Out.
-const useLogOut = (userData, setIsLogIn, setUserData) =>
+function useLogOut(userData, setIsLogIn, setUserData)
 {
     // Return.
     return useCallback(async() =>
     {
         try
         {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/auth/logout', {
+            const odpowiedz = await fetch(`${websiteAdres}/api/v1/auth/logout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

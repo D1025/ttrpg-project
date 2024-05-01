@@ -8,10 +8,11 @@ import {
     Select,
     storageLoad,
     Textarea,
-    iconClose, iconImage
+    iconClose,
+    iconImage
 } from "../../../NovaX";
 import React, {useState} from "react";
-import {imgBase64} from "../../index";
+import {imgBase64, websiteAdres} from "../../index";
 
 const WindowEditRoom = ({onClose, danePokoju}) =>
 {
@@ -77,7 +78,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
 
         try
         {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/room/' + danePokoju.id, {
+            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/` + danePokoju.id, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

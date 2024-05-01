@@ -22,7 +22,7 @@ import {
     imgBase64,
     ModulHeader,
     useDebounce,
-    useLogOut,
+    useLogOut, websiteAdres,
     WindowCreateRoom,
     WindowDeleteRoom,
     WindowEditRoom,
@@ -173,7 +173,7 @@ const HomePage = () =>
     {
         try
         {
-            const odpowiedz = await fetch(`http://localhost:8086/api/v1/room?status=${publiczny ? 'PUBLIC' : 'PRIVATE'}&page=${page}&name=${search}`, {
+            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room?status=${publiczny ? 'PUBLIC' : 'PRIVATE'}&page=${page}&name=${search}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

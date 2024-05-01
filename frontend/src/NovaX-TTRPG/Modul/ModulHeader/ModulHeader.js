@@ -6,8 +6,8 @@ import {
     HeaderLeft,
     HeaderRight,
     Menu2,
+    HeaderSpace,
     iconAccount,
-    HeaderSpace
 } from "../../../NovaX";
 import {imgBase64} from "../../index";
 
