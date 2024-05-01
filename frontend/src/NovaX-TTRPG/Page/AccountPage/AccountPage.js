@@ -6,13 +6,10 @@ import {
     Main,
     MainArticle,
     ArticleTitle,
-    RoomFrame,
     HrSeparator,
     AccountInformation,
     Input,
     InputNumber,
-    iconTrashCan,
-    iconPlay,
     iconEdit
 } from "../../../NovaX";
 import './AccountPage.css';
@@ -27,7 +24,9 @@ import {
     WindowLogIn,
     WindowAccountPassword,
     useLogOut,
-    useDebounce, websiteAdres, useLoadRoom
+    useDebounce,
+    useToggleConst,
+    useLoadMyRoom
 } from "../../index";
 import WindowInviteSettings from "../../Window/WindowRoom/WindowInviteSettings";
 
@@ -60,10 +59,7 @@ const GamePage = () =>
 
     // Formularz Logowanie/Rejestracja.
     const [showLogIn, setShowLogIn] = useState(false);
-    const toggleLogIn = () =>
-    {
-        setShowLogIn(prevShowLogin => !prevShowLogin);
-    };
+    const toggleLogIn = useToggleConst({setData: setShowLogIn})
 
     // Formularz EditRoom.
     const [showEditRoom, setEditRoom] = useState(false);
@@ -109,16 +105,16 @@ const GamePage = () =>
         setDeleteRoom(!showDeleteRoom);
     };
     // Zaproszenia Pokoi.
-    const [showInvite, setInvite] = useState(false);
-    const toggleInvite = (pokoj) =>
+    const [showInviteRoom, setShowInviteRoom] = useState(false);
+    const toggleInviteRoom = (pokoj) =>
     {
-        if(!showInvite)
+        if(!showInviteRoom)
         {
             const handleEscape = (event) =>
             {
                 if(event.key === 'Escape')
                 {
-                    setInvite(false);
+                    setShowInviteRoom(false);
                     document.removeEventListener('keydown', handleEscape);
                 }
             };
@@ -126,12 +122,21 @@ const GamePage = () =>
             document.addEventListener('keydown', handleEscape);
         }
         setEdytowanyPokoj(pokoj);
-        setInvite(!showInvite);
+        setShowInviteRoom(!showInviteRoom);
     }
     // Załaój pokoje.
     const [rooms, setRooms] = useState([]);
-    const LoadRooms = useLoadRoom(true, isLogIn, page, setPageMax, setRooms, togglDeleteRoom, toggleInvite, togglEditRoom, search, userData);
-
+    const LoadRooms = useLoadMyRoom({
+        isLogIn: isLogIn,
+        page: page,
+        setPageMax: setPageMax,
+        setRooms: setRooms,
+        togglDeleteRoom: togglDeleteRoom,
+        toggleInviteRoom: toggleInviteRoom,
+        togglEditRoom: togglEditRoom,
+        search: search,
+        userData: userData
+    });
 
     // Edycja Konta.
     const [showAccountNickname, setAccountNickname] = useState(false);
@@ -223,7 +228,18 @@ const GamePage = () =>
         {
             setIsLogIn(true);
             setUserData(LoadLogInData);
-            LoadRooms(debouncedSearchTerm);
+            LoadRooms({
+                isPublic: false,
+                isLogIn: isLogIn,
+                page: page,
+                setPageMax: setPageMax,
+                setRooms: setRooms,
+                togglDeleteRoom: togglDeleteRoom,
+                toggleInviteRoom: toggleInviteRoom,
+                togglEditRoom: togglEditRoom,
+                search: search,
+                userData: userData
+            });
         }
         else
         {
@@ -296,9 +312,9 @@ const GamePage = () =>
             </Main>
 
             {showLogIn && <WindowLogIn onClose={toggleLogIn}/>}
-            {showEditRoom && <WindowEditRoom danePokoju={edytowanyPokoj} onClose={togglEditRoom}/>}
-            {showDeleteRoom && <WindowDeleteRoom danePokoju={edytowanyPokoj} onClose={togglDeleteRoom}/>}
-            {showInvite && <WindowInviteSettings danePokoju={edytowanyPokoj} onClose={toggleInvite}/>}
+            {showEditRoom && <WindowEditRoom roomData={edytowanyPokoj} onClose={togglEditRoom}/>}
+            {showDeleteRoom && <WindowDeleteRoom roomData={edytowanyPokoj} onClose={togglDeleteRoom}/>}
+            {showInviteRoom && <WindowInviteSettings roomData={edytowanyPokoj} onClose={toggleInviteRoom}/>}
             {showAccountNickname && <WindowAccountNickname userData={userData} onClose={togglAccountNickname}/>}
             {showAccountEmail && <WindowAccountEmail userData={userData} onClose={togglAccountEmail}/>}
             {showAccountAvatar && <WindowAccountAvatar userData={userData} onClose={togglAccountAvatar}/>}

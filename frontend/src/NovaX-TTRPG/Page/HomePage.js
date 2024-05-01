@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import
 {
     Button,
@@ -6,23 +6,19 @@ import
     MainArticle,
     MainPanel,
     ArticleTitle,
-    RoomFrame,
     storageLoad,
     setTittle,
     ArticleTitleOption,
-    iconAdd,
-    iconTrashCan,
-    iconPlay,
-    iconEdit,
-    iconShare,
     Input,
     InputNumber,
+    iconAdd,
 } from "../../NovaX";
 import {
-    imgBase64,
     ModulHeader,
-    useDebounce, useLoadRoom,
-    useLogOut, websiteAdres,
+    useToggleConst,
+    useDebounce,
+    useLoadRoom,
+    useLogOut,
     WindowCreateRoom,
     WindowDeleteRoom,
     WindowEditRoom,
@@ -36,15 +32,16 @@ const HomePage = () =>
     setTittle("../Grafiki/Logo.png", "TTRPG | Lobby");
 
     // Lobby Publiczne/Prywatne.
-    const [lobby, ustawLobby] = useState(false);
+    const [lobby, setLobby] = useState(true);
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
 
+    // Ilość Stron.
     const [page, setPage] = useState(0);
     const [pageMax, setPageMax] = useState(0);
-
+    // Dane Wyszukiwania.
     const [search, setSearch] = useState('');
     const debouncedSearchTerm = useDebounce(search, 400);
 
@@ -54,6 +51,7 @@ const HomePage = () =>
         setPageMax(0);
     }, [lobby, debouncedSearchTerm]);
 
+    // Obecnie wybrana strona.
     const takePage = (event) =>
     {
         setPage(event.target.value);
@@ -62,51 +60,17 @@ const HomePage = () =>
     // Wylogowywanie.
     const LogOut = useLogOut(userData, setIsLogIn, setUserData);
 
-
     // Formularz Logowanie/Rejestracja.
     const [showLogIn, setShowLogIn] = useState(false);
-    const toggleLogIn = () =>
-    {
-        if(!showLogIn)
-        {
-            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
-            const handleEscape = (event) =>
-            {
-                if(event.key === 'Escape')
-                {
-                    setShowLogIn(false);
-                    document.removeEventListener('keydown', handleEscape);
-                }
-            };
+    const toggleLogIn = useToggleConst({setData: setShowLogIn})
 
-            document.addEventListener('keydown', handleEscape);
-        }
-        setShowLogIn(!showLogIn);
-    };
     // Formularz CreateRoom.
-    const [showCreateRoom, setCreateRoom] = useState(false);
-    const togglCreateRoom = () =>
-    {
-        if(!showCreateRoom)
-        {
-            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
-            const handleEscape = (event) =>
-            {
-                if(event.key === 'Escape')
-                {
-                    setCreateRoom(false);
-                    document.removeEventListener('keydown', handleEscape);
-                }
-            };
-
-            document.addEventListener('keydown', handleEscape);
-        }
-        setCreateRoom(!showCreateRoom);
-    };
+    const [showCreateRoom, setShowCreateRoom] = useState(false);
+    const togglCreateRoom = useToggleConst({setData: setShowCreateRoom})
     // Formularz EditRoom.
-    const [showEditRoom, setEditRoom] = useState(false);
-    const [edytowanyPokoj, setEdytowanyPokoj] = useState("");
-    const togglEditRoom = (pokoj) =>
+    const [showEditRoom, setShowEditRoom] = useState(false);
+    const [choiceRoom, setChoiceRoom] = useState("");
+    const togglEditRoom = (choiceRoom) =>
     {
         if(!showEditRoom)
         {
@@ -115,19 +79,19 @@ const HomePage = () =>
             {
                 if(event.key === 'Escape')
                 {
-                    setEditRoom(false);
+                    setShowEditRoom(false);
                     document.removeEventListener('keydown', handleEscape);
                 }
             };
 
             document.addEventListener('keydown', handleEscape);
         }
-        setEdytowanyPokoj(pokoj);
-        setEditRoom(!showEditRoom);
+        setChoiceRoom(choiceRoom);
+        setShowEditRoom(!showEditRoom);
     };
     // Formularz DeleteRoom.
     const [showDeleteRoom, setDeleteRoom] = useState(false);
-    const togglDeleteRoom = (pokoj) =>
+    const togglDeleteRoom = (choiceRoom) =>
     {
         if(!showDeleteRoom)
         {
@@ -143,33 +107,44 @@ const HomePage = () =>
 
             document.addEventListener('keydown', handleEscape);
         }
-        setEdytowanyPokoj(pokoj);
+        setChoiceRoom(choiceRoom);
         setDeleteRoom(!showDeleteRoom);
     };
 
-    const [showInvite, setInvite] = useState(false);
-    const toggleInvite = (pokoj) =>
+    const [showInviteRoom, setShowInviteRoom] = useState(false);
+    const toggleInviteRoom = (choiceRoom) =>
     {
-        if(!showInvite)
+        if(!showInviteRoom)
         {
             const handleEscape = (event) =>
             {
                 if(event.key === 'Escape')
                 {
-                    setInvite(false);
+                    setShowInviteRoom(false);
                     document.removeEventListener('keydown', handleEscape);
                 }
             };
 
             document.addEventListener('keydown', handleEscape);
         }
-        setEdytowanyPokoj(pokoj);
-        setInvite(!showInvite);
+        setChoiceRoom(choiceRoom);
+        setShowInviteRoom(!showInviteRoom);
     }
 
     // Załaój pokoje.
     const [rooms, setRooms] = useState([]);
-    const LoadRooms = useLoadRoom(true, isLogIn, page, setPageMax, setRooms, togglDeleteRoom, toggleInvite, togglEditRoom, search, userData);
+    const LoadRooms = useLoadRoom({
+        isPublic: lobby,
+        isLogIn: isLogIn,
+        page: page,
+        setPageMax: setPageMax,
+        setRooms: setRooms,
+        togglDeleteRoom: togglDeleteRoom,
+        toggleInviteRoom: toggleInviteRoom,
+        togglEditRoom: togglEditRoom,
+        search: search,
+        userData: userData
+    });
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
@@ -180,13 +155,24 @@ const HomePage = () =>
         {
             setIsLogIn(true);
             setUserData(loginData);
+            LoadRooms({
+                isPublic: lobby,
+                isLogIn: isLogIn,
+                page: page,
+                setPageMax: setPageMax,
+                setRooms: setRooms,
+                togglDeleteRoom: togglDeleteRoom,
+                toggleInviteRoom: toggleInviteRoom,
+                togglEditRoom: togglEditRoom,
+                search: search,
+                userData: userData
+            });
         }
         else
         {
             setUserData('');
             setIsLogIn(false);
         }
-        LoadRooms({publiczny: !lobby, page: page, search: debouncedSearchTerm});
     }, [lobby, LoadRooms, showCreateRoom === false, showEditRoom === false, showDeleteRoom === false, showLogIn === false, LogOut, page, debouncedSearchTerm]);
 
     // Aplikacja.
@@ -201,16 +187,16 @@ const HomePage = () =>
                 {isLogIn === true &&
                     (
                         <MainPanel>
-                            <Button title={"Publiczne"} width={2} colorNumber={lobby === false ? 1 : 0}
-                                    onClick={() => ustawLobby(false)}/>
-                            <Button title={"Prywatne"} width={2} colorNumber={lobby === true ? 1 : 0}
-                                    onClick={() => ustawLobby(true)}/>
+                            <Button title={"Publiczne"} width={2} colorNumber={lobby === true ? 1 : 0}
+                                    onClick={() => setLobby(true)}/>
+                            <Button title={"Prywatne"} width={2} colorNumber={lobby === false ? 1 : 0}
+                                    onClick={() => setLobby(false)}/>
                         </MainPanel>
                     )}
 
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <ArticleTitle title={lobby === false ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
+                    <ArticleTitle title={lobby === true ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
                         {isLogIn === true && (
                             <ArticleTitleOption>
                                 {pageMax > 0 &&
@@ -235,9 +221,9 @@ const HomePage = () =>
 
             {showLogIn && <WindowLogIn onClose={toggleLogIn}/>}
             {showCreateRoom && <WindowCreateRoom onClose={togglCreateRoom}/>}
-            {showEditRoom && <WindowEditRoom danePokoju={edytowanyPokoj} onClose={togglEditRoom}/>}
-            {showDeleteRoom && <WindowDeleteRoom danePokoju={edytowanyPokoj} onClose={togglDeleteRoom}/>}
-            {showInvite && <WindowInviteSettings danePokoju={edytowanyPokoj} onClose={toggleInvite}/>}
+            {showEditRoom && <WindowEditRoom roomData={choiceRoom} onClose={togglEditRoom}/>}
+            {showDeleteRoom && <WindowDeleteRoom roomData={choiceRoom} onClose={togglDeleteRoom}/>}
+            {showInviteRoom && <WindowInviteSettings roomData={choiceRoom} onClose={toggleInviteRoom}/>}
         </>
     );
 }

@@ -9,7 +9,7 @@ import {
 import React, {useState} from "react";
 import {websiteAdres} from "../../index";
 
-const WindowEditRoom = ({onClose, danePokoju}) =>
+const WindowEditRoom = ({onClose, roomData}) =>
 {
     // Usuń lobby.
     const [powiadomienie, ustawPowiadomienie] = useState('');
@@ -20,7 +20,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
 
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${danePokoju.id}`, {
+            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${roomData.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                 <form onSubmit={stworzLobby}>
                     <div className={"WindowCreateRoom-Top"}>
                         <div>
-                            Usuwanie: {'"' + (danePokoju.name.length > 10 ? danePokoju.name.substring(0, 10) + '...' : danePokoju.name) + '"'}
+                            Usuwanie: {'"' + (roomData.name.length > 10 ? roomData.name.substring(0, 10) + '...' : roomData.name) + '"'}
                         </div>
                         <div>
                             <Button src={iconClose} onClick={onClose} marginLeftRight={false}/>

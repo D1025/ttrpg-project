@@ -10,26 +10,29 @@ import {
 import {imgBase64} from "../../NovaX-TTRPG";
 import {websiteAdres} from "../index";
 
-function useLoadRoom(
-    isPublic = true,
-    isLogIn,
-    page,
-    setPageMax,
-    setRooms,
-    togglDeleteRoom,
-    toggleInvite,
-    togglEditRoom,
-    search,
-    userData)
+function useLoadRoom({
+                         isLogIn,
+                         setPageMax,
+                         setRooms,
+                         togglDeleteRoom,
+                         toggleInviteRoom,
+                         togglEditRoom,
+                         userData,
+                         // Dynamicznie zmieniające się.
+                         isPublic,
+                         page,
+                         search,
+                     })
 {
-    return useCallback(async() =>
+    return useCallback(async p =>
     {
         try
         {
             const odpowiedz = await fetch(`${websiteAdres}/api/v1/room?status=${isPublic ? 'PUBLIC' : 'PRIVATE'}&page=${page}&name=${search}`, {
-                method: 'GET', headers: {
+                method: 'GET',
+                headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': userData.token && isPublic === false ? (userData.token) : ''
+                    'Authorization': p.userData.token && !p.isPublic ? p.userData.token : ''
                 }
             });
 
@@ -56,18 +59,22 @@ function useLoadRoom(
                         description={room.description}
                         title={room.name}
                     >
-                        {isLogIn === true && (<>
-                            {(userData.id === room.ownerId || userData.admin === true) && (<>
-                                <Button colorNumber={4} onClick={() => togglDeleteRoom(room)}
-                                        src={iconTrashCan}/>
-                                <Button colorNumber={5} onClick={() => toggleInvite(room)}
-                                        src={iconShare}/>
-                                <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
-                            </>)}
-                            <a href={`/Gra?id=${room.id}`}>
-                                <Button src={iconPlay}/>
-                            </a>
-                        </>)}
+                        {isLogIn && (
+                            <>
+                                {(userData.id === room.ownerId || userData.admin) && (
+                                    <>
+                                        <Button colorNumber={4} onClick={() => togglDeleteRoom(room)}
+                                                src={iconTrashCan}/>
+                                        <Button colorNumber={5} onClick={() => toggleInviteRoom(room)}
+                                                src={iconShare}/>
+                                        <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
+                                    </>
+                                )}
+                                <a href={`/Gra?id=${room.id}`}>
+                                    <Button src={iconPlay}/>
+                                </a>
+                            </>
+                        )}
                     </RoomFrame>
                 ));
                 setRooms(renderedRooms);
@@ -77,7 +84,7 @@ function useLoadRoom(
         {
             console.log(`Nieoczekiwany błąd: ${blad}`);
         }
-    }, [userData.token]);
+    }, [userData.token, isPublic, page, search]);
 }
 
 export default useLoadRoom;

@@ -11,7 +11,7 @@ import {
 import React, {useEffect, useState} from "react";
 import {websiteAdres} from "../../index";
 
-const WindowInviteSettings = ({onClose, danePokoju}) =>
+const WindowInviteSettings = ({onClose, roomData}) =>
 {
     const [powiadomienie, ustawPowiadomienie] = useState('');
     const [invitationLink, setInvitationLink] = useState('');
@@ -21,7 +21,7 @@ const WindowInviteSettings = ({onClose, danePokoju}) =>
     {
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${danePokoju.id}/invitations`, {
+            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${roomData.id}/invitations`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,13 +58,13 @@ const WindowInviteSettings = ({onClose, danePokoju}) =>
     useEffect(() =>
     {
         fetchInvitationLink();
-    }, [danePokoju.id]);
+    }, [roomData.id]);
 
     const sendRegenerateInvitationLink = async() =>
     {
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${danePokoju.id}/invitations`, {
+            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${roomData.id}/invitations`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ const WindowInviteSettings = ({onClose, danePokoju}) =>
     {
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${danePokoju.id}/invitations`, {
+            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${roomData.id}/invitations`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
