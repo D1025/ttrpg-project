@@ -12,6 +12,7 @@ import {
     iconClose
 } from "../../../NovaX";
 import React, {useState} from "react";
+import {websiteAdres} from "../../index";
 
 const WindowCreateRoom = ({onClose}) =>
 {
@@ -68,7 +69,7 @@ const WindowCreateRoom = ({onClose}) =>
 
         try
         {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/room/create', {
+            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/create`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

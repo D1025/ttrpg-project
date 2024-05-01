@@ -8,27 +8,28 @@ import {
     Select,
     storageLoad,
     Textarea,
-    iconClose, iconImage
+    iconClose,
+    iconImage
 } from "../../../NovaX";
 import React, {useState} from "react";
-import {imgBase64} from "../../index";
+import {imgBase64, websiteAdres} from "../../index";
 
-const WindowEditRoom = ({onClose, danePokoju}) =>
+const WindowEditRoom = ({onClose, roomData}) =>
 {
     // Do Przetwozenia.
-    const [nazwa, ustawNazwa] = useState(danePokoju.name);
-    const [typ, ustawTyp] = useState(danePokoju.isPrivate);
-    const [opis, ustawOpis] = useState(danePokoju.description);
-    const [obrazRozszezenie, ustawObrazRozszezenie] = useState(danePokoju.imageExtension);
-    const [obraz, ustawObraz] = useState(!danePokoju.image ? undefined : imgBase64(obrazRozszezenie, danePokoju.image));
+    const [nazwa, ustawNazwa] = useState(roomData.name);
+    const [typ, ustawTyp] = useState(roomData.isPrivate);
+    const [opis, ustawOpis] = useState(roomData.description);
+    const [obrazRozszezenie, ustawObrazRozszezenie] = useState(roomData.imageExtension);
+    const [obraz, ustawObraz] = useState(!roomData.image ? undefined : imgBase64(obrazRozszezenie, roomData.image));
 
     const reserujDane = () =>
     {
-        ustawNazwa(danePokoju.name)
-        ustawTyp(danePokoju.isPrivate)
-        ustawOpis(danePokoju.description)
-        ustawObrazRozszezenie(danePokoju.imageExtension)
-        ustawObraz(!danePokoju.image ? undefined : imgBase64(obrazRozszezenie, danePokoju.image))
+        ustawNazwa(roomData.name)
+        ustawTyp(roomData.isPrivate)
+        ustawOpis(roomData.description)
+        ustawObrazRozszezenie(roomData.imageExtension)
+        ustawObraz(!roomData.image ? undefined : imgBase64(obrazRozszezenie, roomData.image))
     }
 
     // Pobieranie z formulaża.
@@ -77,18 +78,18 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
 
         try
         {
-            const odpowiedz = await fetch('http://localhost:8086/api/v1/room/' + danePokoju.id, {
+            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/` + roomData.id, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': loginData.token
                 },
                 body: JSON.stringify({
-                    name: nazwa !== danePokoju.name ? nazwa : undefined,
-                    description: opis !== danePokoju.description ? opis : undefined,
-                    image: obraz !== imgBase64(obrazRozszezenie, danePokoju.image) ? obraz : undefined,
-                    imageExtension: obrazRozszezenie !== danePokoju.imageExtension ? obrazRozszezenie : undefined,
-                    isPrivate: typ !== danePokoju.isPrivate ? typ : undefined,
+                    name: nazwa !== roomData.name ? nazwa : undefined,
+                    description: opis !== roomData.description ? opis : undefined,
+                    image: obraz !== imgBase64(obrazRozszezenie, roomData.image) ? obraz : undefined,
+                    imageExtension: obrazRozszezenie !== roomData.imageExtension ? obrazRozszezenie : undefined,
+                    isPrivate: typ !== roomData.isPrivate ? typ : undefined,
                 })
             });
 
@@ -126,7 +127,7 @@ const WindowEditRoom = ({onClose, danePokoju}) =>
                 <form onSubmit={stworzLobby}>
                     <div className={"WindowCreateRoom-Top"}>
                         <div>
-                            Edycja: {'"' + (danePokoju.name.length > 10 ? danePokoju.name.substring(0, 10) + '...' : danePokoju.name) + '"'}
+                            Edycja: {'"' + (roomData.name.length > 10 ? roomData.name.substring(0, 10) + '...' : roomData.name) + '"'}
                         </div>
                         <div>
                             <Button src={iconClose} onClick={onClose} marginLeftRight={false}/>

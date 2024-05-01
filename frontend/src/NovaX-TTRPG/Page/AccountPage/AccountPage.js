@@ -6,13 +6,10 @@ import {
     Main,
     MainArticle,
     ArticleTitle,
-    RoomFrame,
     HrSeparator,
     AccountInformation,
     Input,
     InputNumber,
-    iconTrashCan,
-    iconPlay,
     iconEdit
 } from "../../../NovaX";
 import './AccountPage.css';
@@ -27,8 +24,11 @@ import {
     WindowLogIn,
     WindowAccountPassword,
     useLogOut,
-    useDebounce
+    useDebounce,
+    useToggleConst,
+    useLoadMyRoom
 } from "../../index";
+import WindowInviteSettings from "../../Window/WindowRoom/WindowInviteSettings";
 
 const GamePage = () =>
 {
@@ -59,81 +59,7 @@ const GamePage = () =>
 
     // Formularz Logowanie/Rejestracja.
     const [showLogIn, setShowLogIn] = useState(false);
-    const toggleLogIn = () =>
-    {
-        setShowLogIn(prevShowLogin => !prevShowLogin);
-    };
-
-    // Załaój pokoje.
-    const [pokoje, setPokoje] = useState([]);
-    const ladujPokoje = useCallback(async(search) =>
-    {
-        try
-        {
-            // Zapytanie dla publicznych pokoi
-            const odpowiedzPubliczne = await fetch(`http://localhost:8086/api/v1/room/my?page=${page}&name=${search}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': userData.token
-                }
-            });
-
-            // Sprawdzenie odpowiedzi dla publicznych pokoi
-            if(!odpowiedzPubliczne.ok)
-            {
-                // Obróbka błędów
-                if(odpowiedzPubliczne.status === 400)
-                {
-                    const blad = await odpowiedzPubliczne.json();
-                    console.log(`${blad.message}`);
-                }
-                else
-                {
-                    console.log(`Błąd: ${odpowiedzPubliczne.status}`);
-                }
-            }
-
-            // Przetwarzanie odpowiedzi dla publicznych pokoi
-            const danePubliczne = await odpowiedzPubliczne.json();
-
-            setPageMax(danePubliczne.totalPages - 1);
-
-            // Połączenie danych
-            const zrenderowanePokoje = danePubliczne.content.map(room => (
-                room.ownerId === userData.id &&
-                <RoomFrame
-                    key={room.id}
-                    src={imgBase64(room.imageExtension, room.image)}
-                    description={room.description}
-                    title={room.name}
-                >
-                    <span style={{
-                        marginRight: '0.5vw',
-                        color: 'var(--Kolor-Oznaczenia)',
-                        fontSize: '0.86rem',
-                        fontWeight: 'bold'
-                    }}>{room.isPrivate === false ? 'Publiczny' : 'Prywatny'}</span>
-                    {isLogIn && (
-                        <>
-                            <Button colorNumber={4} onClick={() => togglDeleteRoom(room)} src={iconTrashCan}/>
-                            <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
-                            <a href={`/Gra?id=${room.id}`}>
-                                <Button src={iconPlay}/>
-                            </a>
-                        </>
-                    )}
-                </RoomFrame>
-            ));
-
-            setPokoje(zrenderowanePokoje);
-        }
-        catch(blad)
-        {
-            console.log(`Nieoczekiwany błąd: ${blad}`);
-        }
-    }, [userData.token, isLogIn, page]); // Zależności useCallback'a
-
+    const toggleLogIn = useToggleConst({setData: setShowLogIn})
 
     // Formularz EditRoom.
     const [showEditRoom, setEditRoom] = useState(false);
@@ -178,6 +104,39 @@ const GamePage = () =>
         setEdytowanyPokoj(pokoj);
         setDeleteRoom(!showDeleteRoom);
     };
+    // Zaproszenia Pokoi.
+    const [showInviteRoom, setShowInviteRoom] = useState(false);
+    const toggleInviteRoom = (pokoj) =>
+    {
+        if(!showInviteRoom)
+        {
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setShowInviteRoom(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
+        setEdytowanyPokoj(pokoj);
+        setShowInviteRoom(!showInviteRoom);
+    }
+    // Załaój pokoje.
+    const [rooms, setRooms] = useState([]);
+    const LoadRooms = useLoadMyRoom({
+        isLogIn: isLogIn,
+        page: page,
+        setPageMax: setPageMax,
+        setRooms: setRooms,
+        togglDeleteRoom: togglDeleteRoom,
+        toggleInviteRoom: toggleInviteRoom,
+        togglEditRoom: togglEditRoom,
+        search: search,
+        userData: userData
+    });
 
     // Edycja Konta.
     const [showAccountNickname, setAccountNickname] = useState(false);
@@ -269,7 +228,18 @@ const GamePage = () =>
         {
             setIsLogIn(true);
             setUserData(LoadLogInData);
-            ladujPokoje(debouncedSearchTerm);
+            LoadRooms({
+                isPublic: false,
+                isLogIn: isLogIn,
+                page: page,
+                setPageMax: setPageMax,
+                setRooms: setRooms,
+                togglDeleteRoom: togglDeleteRoom,
+                toggleInviteRoom: toggleInviteRoom,
+                togglEditRoom: togglEditRoom,
+                search: search,
+                userData: userData
+            });
         }
         else
         {
@@ -277,7 +247,7 @@ const GamePage = () =>
             setIsLogIn(false);
             window.location.href = '/';
         }
-    }, [ladujPokoje, showEditRoom === false, showDeleteRoom === false, showAccountNickname === false, showAccountEmail === false, showAccountAvatar === false, showLogIn, LogOut, debouncedSearchTerm]);
+    }, [LoadRooms, showEditRoom === false, showDeleteRoom === false, showAccountNickname === false, showAccountEmail === false, showAccountAvatar === false, showLogIn, LogOut, debouncedSearchTerm]);
 
     return (
         <>
@@ -337,13 +307,14 @@ const GamePage = () =>
                             Strony pokoi: {isNaN(pageMax) ? 0 : pageMax + 1}
                         </p>
                     </div>
-                    {pokoje}
+                    {rooms}
                 </MainArticle>
             </Main>
 
             {showLogIn && <WindowLogIn onClose={toggleLogIn}/>}
-            {showEditRoom && <WindowEditRoom danePokoju={edytowanyPokoj} onClose={togglEditRoom}/>}
-            {showDeleteRoom && <WindowDeleteRoom danePokoju={edytowanyPokoj} onClose={togglDeleteRoom}/>}
+            {showEditRoom && <WindowEditRoom roomData={edytowanyPokoj} onClose={togglEditRoom}/>}
+            {showDeleteRoom && <WindowDeleteRoom roomData={edytowanyPokoj} onClose={togglDeleteRoom}/>}
+            {showInviteRoom && <WindowInviteSettings roomData={edytowanyPokoj} onClose={toggleInviteRoom}/>}
             {showAccountNickname && <WindowAccountNickname userData={userData} onClose={togglAccountNickname}/>}
             {showAccountEmail && <WindowAccountEmail userData={userData} onClose={togglAccountEmail}/>}
             {showAccountAvatar && <WindowAccountAvatar userData={userData} onClose={togglAccountAvatar}/>}

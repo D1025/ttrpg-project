@@ -1,58 +1,84 @@
-import {AccountBar, Button, iconClose, Label, RoomFrame, setTittle, storageLoad, Window} from "../../NovaX";
+import {
+    AccountBar,
+    Button,
+    Label,
+    setTittle,
+    storageLoad,
+    Window,
+    iconClose,
+} from "../../NovaX";
 import React, {useEffect, useState} from "react";
-import {imgBase64} from "../index";
+import {imgBase64, websiteAdres} from "../index";
 
-const InvitePage = () => {
+const InvitePage = () =>
+{
     setTittle("./Grafiki/Logo.png", "TTRPG | Join");
     const idParam = window.location.pathname.split('/').pop();
     const [roomData, setRoomData] = useState(null);
 
     const loginData = storageLoad('loginData');
 
-    const backToHome = () => {
+    const backToHome = () =>
+    {
         window.location.href = '/';
     }
 
     const uuidv4Regex = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;
 
-    useEffect(() => {
-        if (uuidv4Regex.test(idParam)) {
+    useEffect(() =>
+    {
+        if(uuidv4Regex.test(idParam))
+        {
             getInvitationData();
-        } else {
+        }
+        else
+        {
             //if not, redirect to main page
             backToHome();
         }
     }, [idParam]);
 
     // Pobieranie danych pokoju
-    const getInvitationData = async () => {
-        try {
-            const response = await fetch(`http://localhost:8086/api/v1/room/join/${idParam}`, {
+    const getInvitationData = async() =>
+    {
+        try
+        {
+            const response = await fetch(`${websiteAdres}/api/v1/room/join/${idParam}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
 
-            if (!response.ok) {
-                if (response.status === 400) {
+            if(!response.ok)
+            {
+                if(response.status === 400)
+                {
                     const error = await response.json();
                     console.log(`${error.message}`);
-                } else {
+                }
+                else
+                {
                     console.log(`Error: ${response.status}`);
                 }
-            } else {
+            }
+            else
+            {
                 const data = await response.json();
                 setRoomData(data);
             }
-        } catch (error) {
+        }
+        catch(error)
+        {
             console.log(`Unexpected error: ${error}`);
         }
     }
 
-    const joinToRoom = async () => {
-        try {
-            const response = await fetch(`http://localhost:8086/api/v1/room/join/${idParam}`, {
+    const joinToRoom = async() =>
+    {
+        try
+        {
+            const response = await fetch(`${websiteAdres}/api/v1/room/join/${idParam}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -60,17 +86,25 @@ const InvitePage = () => {
                 }
             });
 
-            if (!response.ok) {
-                if (response.status === 400) {
+            if(!response.ok)
+            {
+                if(response.status === 400)
+                {
                     const error = await response.json();
                     console.log(`${error.message}`);
-                } else {
+                }
+                else
+                {
                     console.log(`Error: ${response.status}`);
                 }
-            } else {
-                window.location.href = '/Gra?id='+roomData.id;
             }
-        } catch (error) {
+            else
+            {
+                window.location.href = '/Gra?id=' + roomData.id;
+            }
+        }
+        catch(error)
+        {
             console.log(`Unexpected error: ${error}`);
         }
     }
@@ -89,8 +123,9 @@ const InvitePage = () => {
                 </div>
                 <div className={"WindowCreateRoom-Main"}>
                     <div style={{textAlign: "left"}}>
-                        <Label style={{fontWeight:'bold'}}>Właściciel</Label><br/>
-                        <AccountBar title={roomData ? roomData.ownerNickname : ''} src={roomData && imgBase64(roomData.ownerAvatarExtension,roomData.ownerAvatar)}/>
+                        <Label style={{fontWeight: 'bold'}}>Właściciel</Label><br/>
+                        <AccountBar title={roomData ? roomData.ownerNickname : ''}
+                                    src={roomData && imgBase64(roomData.ownerAvatarExtension, roomData.ownerAvatar)}/>
                         <br/>
 
                         {/*{console.log(roomData)}*/}
