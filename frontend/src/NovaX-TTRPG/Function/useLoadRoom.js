@@ -24,7 +24,7 @@ function useLoadRoom({
                          search,
                      })
 {
-    return useCallback(async p =>
+    return useCallback(async () =>
     {
         try
         {
@@ -32,7 +32,7 @@ function useLoadRoom({
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': p.userData.token && !p.isPublic ? p.userData.token : ''
+                    'Authorization': userData.token && !isPublic ? userData.token : ''
                 }
             });
 

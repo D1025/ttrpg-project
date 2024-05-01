@@ -23,7 +23,7 @@ function useLoadMyRoom({
                          search,
                      })
 {
-    return useCallback(async p =>
+    return useCallback(async () =>
     {
         try
         {
