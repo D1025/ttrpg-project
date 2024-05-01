@@ -37,8 +37,8 @@ public class RoomController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<RoomReturnDTO>> getAllRooms(@RequestParam Status status, @RequestHeader(name = "Authorization", required = false) String authorizationHeader, @RequestParam(defaultValue = "0") Integer page, @RequestParam(required = false)  String name) {
-        Pageable pageable = pageUtils.getPageable(page, 10);
+    public ResponseEntity<Page<RoomReturnDTO>> getAllRooms(@RequestParam Status status, @RequestHeader(name = "Authorization", required = false) String authorizationHeader, @RequestParam(defaultValue = "0") Integer pageNumber, @RequestParam(required = false)  String name) {
+        Pageable pageable = pageUtils.getPageable(pageNumber, 10);
         return ResponseEntity.ok(roomsService.getAllRooms(status, authorizationHeader, pageable, name));
     }
 
@@ -55,9 +55,9 @@ public class RoomController {
     }
 
     @GetMapping("/my")
-    public ResponseEntity<Page<RoomReturnDTO>> getMyOwnedRooms(@RequestHeader(name = "Authorization") String authorizationHeader, @RequestParam(defaultValue = "0") Integer page, @RequestParam(required = false) String name) {
+    public ResponseEntity<Page<RoomReturnDTO>> getMyOwnedRooms(@RequestHeader(name = "Authorization") String authorizationHeader, @RequestParam(defaultValue = "0") Integer pageNumber, @RequestParam(required = false) String name) {
         jwtAuthorization.authorize(authorizationHeader);
-        Pageable pageable = pageUtils.getPageable(page, 10);
+        Pageable pageable = pageUtils.getPageable(pageNumber, 10);
         return ResponseEntity.ok(roomsService.getMyOwnedRooms(authorizationHeader, pageable, name));
     }
 

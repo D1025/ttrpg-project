@@ -21,7 +21,7 @@ import
 import {
     imgBase64,
     ModulHeader,
-    useDebounce,
+    useDebounce, useLoadRoom,
     useLogOut, websiteAdres,
     WindowCreateRoom,
     WindowDeleteRoom,
@@ -168,72 +168,8 @@ const HomePage = () =>
     }
 
     // Załaój pokoje.
-    const [pokoje, setPokoje] = useState([]);
-    const ladujPokoje = useCallback(async({publiczny = true, page, search}) =>
-    {
-        try
-        {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room?status=${publiczny ? 'PUBLIC' : 'PRIVATE'}&page=${page}&name=${search}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': userData.token && publiczny === false ? (userData.token) : ''
-                }
-            });
-
-            if(!odpowiedz.ok)
-            {
-                // Obróbka błędów
-                if(odpowiedz.status === 400)
-                {
-                    const blad = await odpowiedz.json();
-                    console.log(`${blad.message}`);
-                }
-                else
-                {
-                    console.log(`Błąd: ${odpowiedz.status}`);
-                }
-            }
-            else
-            {
-                const dane = await odpowiedz.json();
-                setPageMax(dane.totalPages - 1);
-
-                // Przetwarzanie i tworzenie komponentów pokoi
-                const zrenderowanePokoje = dane.content.map(room => (
-                    <RoomFrame
-                        key={room.id}
-                        src={imgBase64(room.imageExtension, room.image)}
-                        description={room.description}
-                        title={room.name}
-                    >
-                        {isLogIn === true && (
-                            <>
-                                {(userData.id === room.ownerId || userData.admin === true) &&
-                                    <>
-                                        <Button colorNumber={4} onClick={() => togglDeleteRoom(room)}
-                                                src={iconTrashCan}/>
-                                        <Button colorNumber={5} onClick={() => toggleInvite(room)}
-                                                src={iconShare}/>
-                                        <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
-                                    </>
-                                }
-                                <a href={`/Gra?id=${room.id}`}>
-                                    <Button src={iconPlay}/>
-                                </a>
-                            </>
-                        )}
-                    </RoomFrame>
-                ));
-
-                setPokoje(zrenderowanePokoje);
-            }
-        }
-        catch(blad)
-        {
-            console.log(`Nieoczekiwany błąd: ${blad}`);
-        }
-    }, [userData.token]); // Zależności useCallback'a
+    const [rooms, setRooms] = useState([]);
+    const LoadRooms = useLoadRoom(true, isLogIn, page, setPageMax, setRooms, togglDeleteRoom, toggleInvite, togglEditRoom, search, userData);
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
@@ -250,8 +186,8 @@ const HomePage = () =>
             setUserData('');
             setIsLogIn(false);
         }
-        ladujPokoje({publiczny: !lobby, page: page, search: debouncedSearchTerm});
-    }, [lobby, ladujPokoje, showCreateRoom === false, showEditRoom === false, showDeleteRoom === false, showLogIn === false, LogOut, page, debouncedSearchTerm]);
+        LoadRooms({publiczny: !lobby, page: page, search: debouncedSearchTerm});
+    }, [lobby, LoadRooms, showCreateRoom === false, showEditRoom === false, showDeleteRoom === false, showLogIn === false, LogOut, page, debouncedSearchTerm]);
 
     // Aplikacja.
     return (
@@ -293,7 +229,7 @@ const HomePage = () =>
                         )}
                     </ArticleTitle>
 
-                    {pokoje}
+                    {rooms}
                 </MainArticle>
             </Main>
 

@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class PageUtils {
 
-    public Pageable getPageable(Integer page, Integer size) {
+    public Pageable getPageable(Integer pageNumber, Integer size) {
 
-        return PageRequest.of(page, Math.min(size, 10));
+        return PageRequest.of(pageNumber, Math.min(size, 10));
     }
 }
