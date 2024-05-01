@@ -10,7 +10,6 @@ import
 import {
     ModulHeader,
     useLogOut,
-    WindowLogIn
 } from "../index";
 
 const AdminPanel = () =>
