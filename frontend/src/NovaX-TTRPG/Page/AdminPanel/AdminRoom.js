@@ -5,28 +5,24 @@ import
     MainArticle,
     ArticleTitle,
     storageLoad,
-    setTittle, Button, ArticleTitleOption
-} from "../../NovaX";
+    setTittle
+} from "../../../NovaX";
 import {
     ModulHeader,
-    useLogOut, useToggleConst,
-    WindowLogIn
-} from "../../NovaX-TTRPG";
+    useLogOut,
+    PageLogo,
+} from "../../index";
 
-const Game = () =>
+const AdminRoom = () =>
 {
-    setTittle("/Grafiki/Logo.png", "TTRPG | Błąd");
+    // Tittle.
+    setTittle(PageLogo, "TTRPG | Panel | Room");
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
-
     // Wylogowywanie.
     const LogOut = useLogOut(userData, setIsLogIn, setUserData);
-
-    // Formularz Logowanie/Rejestracja.
-    const [showLogIn, setShowLogIn] = useState(false);
-    const toggleLogIn = useToggleConst({setData: setShowLogIn})
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
@@ -40,34 +36,30 @@ const Game = () =>
         }
         else
         {
-            setUserData('');
             setIsLogIn(false);
+            setUserData('');
+            window.location.href = '/';
         }
-    }, [showLogIn === false, LogOut]);
+    }, [LogOut]);
 
+    // Aplikacja.
     return (
         <>
             {/* Nagłłówek Strony. */}
-            <ModulHeader userData={userData} logIn={toggleLogIn} logOut={LogOut} isLogIn={isLogIn}/>
+            <ModulHeader navAdmin={true} navUser={false} isLogIn={isLogIn} userData={userData}
+                         logOut={LogOut}/>
 
             {/* Home Strony. */}
             <Main design={2}>
+
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <ArticleTitle tag={"h1"} title={"Błąd 404"}>
-                        <ArticleTitleOption>
-                            <Button title={"Strona główna"} href={"/"}/>
-                        </ArticleTitleOption>
-                    </ArticleTitle>
-                    <p style={{display: "inline-block"}}>
-                       Nie odnaleziono strony.
-                    </p>
+                    <ArticleTitle title={"Panel"} tag={"h2"}/>
+                    Panel
                 </MainArticle>
             </Main>
-
-            {showLogIn && <WindowLogIn onClose={toggleLogIn}/>}
         </>
     );
 }
 
-export default Game;
+export default AdminRoom;

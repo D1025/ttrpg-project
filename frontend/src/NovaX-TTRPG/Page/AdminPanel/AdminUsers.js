@@ -6,16 +6,16 @@ import
     ArticleTitle,
     storageLoad,
     setTittle
-} from "../../NovaX";
+} from "../../../NovaX";
 import {
     ModulHeader,
     useLogOut,
-} from "../index";
+} from "../../index";
 
-const AdminPanel = () =>
+const AdminRoom = () =>
 {
     // Tittle.
-    setTittle("../Grafiki/Logo.png", "TTRPG | Panel");
+    setTittle("../Grafiki/Logo.png", "TTRPG | Panel | User");
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
@@ -61,4 +61,4 @@ const AdminPanel = () =>
     );
 }
 
-export default AdminPanel;
+export default AdminRoom;

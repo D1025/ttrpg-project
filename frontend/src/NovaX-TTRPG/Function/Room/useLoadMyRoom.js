@@ -11,19 +11,19 @@ import {imgBase64} from "../../index";
 import {websiteAdres} from "../../index";
 
 function useLoadMyRoom({
-                         isLogIn,
-                         setPageMax,
-                         setRooms,
-                         togglDeleteRoom,
-                         toggleInviteRoom,
-                         togglEditRoom,
-                         userData,
-                         // Dynamicznie zmieniające się.
-                         page,
-                         search,
-                     })
+                           isLogIn,
+                           setPageMax,
+                           setRooms,
+                           togglDeleteRoom,
+                           toggleInviteRoom,
+                           togglEditRoom,
+                           userData,
+                           // Dynamicznie zmieniające się.
+                           page = 0,
+                           search = "",
+                       })
 {
-    return useCallback(async () =>
+    return useCallback(async() =>
     {
         try
         {
@@ -70,15 +70,28 @@ function useLoadMyRoom({
                         color: 'var(--Kolor-Oznaczenia)',
                         fontSize: '0.86rem',
                         fontWeight: 'bold'
-                    }}>{room.isPrivate === false ? 'Publiczny' : 'Prywatny'}</span>
+                    }}>
+                        {room.isPrivate === false ? 'Publiczny' : 'Prywatny'}
+                    </span>
                     {isLogIn && (
                         <>
-                            <Button colorNumber={4} onClick={() => togglDeleteRoom(room)}
-                                    src={iconTrashCan}/>
-                            <Button colorNumber={5} onClick={() => toggleInviteRoom(room)}
-                                    src={iconShare}/>
-                            <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
-                            <Button src={iconPlay} href={`/Gra?id=${room.id}`}/>
+                            <Button
+                                colorNumber={4}
+                                onClick={() => togglDeleteRoom(room)}
+                                src={iconTrashCan}
+                            />
+                            <Button
+                                colorNumber={5}
+                                onClick={() => toggleInviteRoom(room)}
+                                src={iconShare}
+                            />
+                            <Button
+                                onClick={() => togglEditRoom(room)} src={iconEdit}
+                            />
+                            <Button
+                                src={iconPlay}
+                                href={`/Gra?id=${room.id}`}
+                            />
                         </>
                     )}
                 </RoomFrame>

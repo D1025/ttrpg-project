@@ -19,12 +19,12 @@ function useLoadRoom({
                          togglEditRoom,
                          userData,
                          // Dynamicznie zmieniające się.
-                         isPublic,
-                         page,
-                         search,
+                         isPublic = true,
+                         page = 0,
+                         search = "",
                      })
 {
-    return useCallback(async () =>
+    return useCallback(async() =>
     {
         try
         {
@@ -63,16 +63,26 @@ function useLoadRoom({
                             <>
                                 {(userData.id === room.ownerId || userData.admin) && (
                                     <>
-                                        <Button colorNumber={4} onClick={() => togglDeleteRoom(room)}
-                                                src={iconTrashCan}/>
-                                        <Button colorNumber={5} onClick={() => toggleInviteRoom(room)}
-                                                src={iconShare}/>
-                                        <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
+                                        <Button
+                                            colorNumber={4}
+                                            onClick={() => togglDeleteRoom(room)}
+                                            src={iconTrashCan}
+                                        />
+                                        <Button
+                                            colorNumber={5}
+                                            onClick={() => toggleInviteRoom(room)}
+                                            src={iconShare}
+                                        />
+                                        <Button
+                                            onClick={() => togglEditRoom(room)}
+                                            src={iconEdit}
+                                        />
                                     </>
                                 )}
-                                <a href={`/Gra?id=${room.id}`}>
-                                    <Button src={iconPlay}/>
-                                </a>
+                                <Button
+                                    src={iconPlay}
+                                    href={`/Gra?id=${room.id}`}
+                                />
                             </>
                         )}
                     </RoomFrame>

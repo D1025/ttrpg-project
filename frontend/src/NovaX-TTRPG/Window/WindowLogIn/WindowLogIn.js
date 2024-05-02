@@ -12,7 +12,7 @@ import
     iconClose
 } from "../../../NovaX";
 import './WindowLogIn.css';
-import {websiteAdres} from "../../index";
+import {PageLogo, websiteAdres} from "../../index";
 
 const OknoLogowania = ({onClose}) =>
 {
@@ -220,7 +220,7 @@ const OknoLogowania = ({onClose}) =>
                             // Logowanie.
                             <form onSubmit={przeslijLogowanie}>
                                 <div>
-                                    <img src={"/Grafiki/Logo.png"} alt={""}/>
+                                    <img src={PageLogo} alt={""}/>
 
                                     <Input type={"text"}
                                            placeholder={"Email"}
@@ -251,7 +251,7 @@ const OknoLogowania = ({onClose}) =>
                             // Rejestracja.
                             <form onSubmit={przeslijRejestracje}>
                                 <div>
-                                    <img src={"/Grafiki/Logo.png"} alt={""}/>
+                                    <img src={PageLogo} alt={""}/>
 
                                     <Input type={"text"} placeholder={"Nazwa"} value={nazwa} onChange={pobierzNazwe}
                                            required/>
