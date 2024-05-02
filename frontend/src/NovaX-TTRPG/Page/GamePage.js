@@ -6,13 +6,15 @@ import {
 import {
     ModulChat,
     ModulHeader,
-    useLogOut
+    useLogOut,
+    WebsiteLogo,
+    WebsiteName
 } from "../../NovaX-TTRPG";
 
 const GamePage = () =>
 {
     // Tittle.
-    setTittle("./Grafiki/Logo.png", "TTRPG | Gra");
+    setTittle(WebsiteLogo, `${WebsiteName} | Gra`);
     const urlParams = new URLSearchParams(window.location.search);
     const idParam = urlParams.get('id');
 

@@ -24,14 +24,16 @@ import {
     WindowAccountPassword,
     useLogOut,
     useDebounce,
-    useLoadMyRoom
+    useLoadMyRoom,
+    WebsiteLogo,
+    WebsiteName
 } from "../../index";
 import WindowInviteSettings from "../../Window/WindowRoom/WindowInviteSettings";
 
 const GamePage = () =>
 {
     // Tittle.
-    setTittle("./Grafiki/Logo.png", "TTRPG | Konto");
+    setTittle(WebsiteLogo, `${WebsiteName} | Konto`);
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.

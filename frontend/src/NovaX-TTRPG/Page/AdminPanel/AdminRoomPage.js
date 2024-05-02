@@ -10,13 +10,14 @@ import
 import {
     ModulHeader,
     useLogOut,
-    PageLogo,
+    WebsiteLogo,
+    WebsiteName
 } from "../../index";
 
-const AdminRoom = () =>
+const AdminRoomPage = () =>
 {
     // Tittle.
-    setTittle(PageLogo, "TTRPG | Panel | Room");
+    setTittle(WebsiteLogo, `${WebsiteName} | Pokoje`);
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
@@ -54,12 +55,12 @@ const AdminRoom = () =>
 
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <ArticleTitle title={"Panel"} tag={"h2"}/>
-                    Panel
+                    <ArticleTitle title={"Lista Pokoi"} tag={"h2"}/>
+                    Pokoje
                 </MainArticle>
             </Main>
         </>
     );
 }
 
-export default AdminRoom;
+export default AdminRoomPage;

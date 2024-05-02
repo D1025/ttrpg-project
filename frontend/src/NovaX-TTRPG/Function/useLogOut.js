@@ -1,6 +1,6 @@
 import {storageRemove} from "../../NovaX";
 import {useCallback} from "react";
-import {websiteAdres} from "../index";
+import {WebsiteAdres} from "../index";
 
 // Log Out.
 function useLogOut(userData, setIsLogIn, setUserData)
@@ -10,7 +10,7 @@ function useLogOut(userData, setIsLogIn, setUserData)
     {
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/auth/logout`, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/auth/logout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

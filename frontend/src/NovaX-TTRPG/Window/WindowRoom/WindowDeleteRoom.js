@@ -7,7 +7,7 @@ import {
     iconClose
 } from "../../../NovaX";
 import React, {useState} from "react";
-import {websiteAdres} from "../../index";
+import {WebsiteAdres} from "../../index";
 
 const WindowEditRoom = ({onClose, roomData}) =>
 {
@@ -20,7 +20,7 @@ const WindowEditRoom = ({onClose, roomData}) =>
 
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${roomData.id}`, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room/${roomData.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

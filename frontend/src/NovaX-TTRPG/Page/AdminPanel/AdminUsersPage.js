@@ -10,12 +10,14 @@ import
 import {
     ModulHeader,
     useLogOut,
+    WebsiteLogo,
+    WebsiteName
 } from "../../index";
 
 const AdminRoom = () =>
 {
     // Tittle.
-    setTittle("../Grafiki/Logo.png", "TTRPG | Panel | User");
+    setTittle(WebsiteLogo, `${WebsiteName} | Użytkownicy`);
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
@@ -53,8 +55,8 @@ const AdminRoom = () =>
 
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <ArticleTitle title={"Panel"} tag={"h2"}/>
-                    Panel
+                    <ArticleTitle title={"Lista Użytkowników"} tag={"h2"}/>
+                    Użytkownicy
                 </MainArticle>
             </Main>
         </>

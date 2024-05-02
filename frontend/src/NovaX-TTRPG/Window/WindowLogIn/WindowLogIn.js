@@ -12,7 +12,7 @@ import
     iconClose
 } from "../../../NovaX";
 import './WindowLogIn.css';
-import {PageLogo, websiteAdres} from "../../index";
+import {WebsiteLogo, WebsiteAdres} from "../../index";
 
 const OknoLogowania = ({onClose}) =>
 {
@@ -92,7 +92,7 @@ const OknoLogowania = ({onClose}) =>
         {
             const hasloZahashowane = await SHA256(haslo).toString();
 
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/auth/login`, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -162,7 +162,7 @@ const OknoLogowania = ({onClose}) =>
 
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/auth/register`, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -220,7 +220,7 @@ const OknoLogowania = ({onClose}) =>
                             // Logowanie.
                             <form onSubmit={przeslijLogowanie}>
                                 <div>
-                                    <img src={PageLogo} alt={""}/>
+                                    <img src={WebsiteLogo} alt={""}/>
 
                                     <Input type={"text"}
                                            placeholder={"Email"}
@@ -251,7 +251,7 @@ const OknoLogowania = ({onClose}) =>
                             // Rejestracja.
                             <form onSubmit={przeslijRejestracje}>
                                 <div>
-                                    <img src={PageLogo} alt={""}/>
+                                    <img src={WebsiteLogo} alt={""}/>
 
                                     <Input type={"text"} placeholder={"Nazwa"} value={nazwa} onChange={pobierzNazwe}
                                            required/>

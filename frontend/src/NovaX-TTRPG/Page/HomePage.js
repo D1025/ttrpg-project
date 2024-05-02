@@ -22,14 +22,14 @@ import {
     WindowCreateRoom,
     WindowDeleteRoom,
     WindowEditRoom,
-    WindowLogIn
+    WindowLogIn, WebsiteLogo, WebsiteName
 } from "../../NovaX-TTRPG";
 import WindowInviteSettings from "../Window/WindowRoom/WindowInviteSettings";
 
 const HomePage = () =>
 {
     // Tittle.
-    setTittle("../Grafiki/Logo.png", "TTRPG | Lobby");
+    setTittle(WebsiteLogo, `${WebsiteName} | Pokoje`);
 
     // Lobby Publiczne/Prywatne.
     const [lobby, setLobby] = useState(true);

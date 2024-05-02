@@ -9,7 +9,7 @@ import {
     HeaderSpace,
     iconAccount,
 } from "../../../NovaX";
-import {imgBase64, PageLogo} from "../../index";
+import {imgBase64, WebsiteLogo, WebsiteName} from "../../index";
 
 // Modul Header.
 const ModulHeader = ({
@@ -32,7 +32,7 @@ const ModulHeader = ({
         <Header {...rest} design={2} src={src}>
             {(navGame || navUser || navAdmin) === true && <HeaderLeft>
                 {/* Logo. */}
-                {navGame !== true && <ButtonLogo title={"TTRPG"} src={PageLogo} href={"/"}/>}
+                {navGame !== true && <ButtonLogo title={WebsiteName} src={WebsiteLogo} href={"/"}/>}
                 {navGame === true && <Button title={"Wyjdź"} href={"/"}/>}
 
                 {(navUser === true || navAdmin === true) && <HeaderSpace/>}

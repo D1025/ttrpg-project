@@ -8,7 +8,7 @@ import {
     iconPlay
 } from "../../../NovaX";
 import {imgBase64} from "../../index";
-import {websiteAdres} from "../../index";
+import {WebsiteAdres} from "../../index";
 
 function useLoadRoom({
                          isLogIn,
@@ -28,7 +28,7 @@ function useLoadRoom({
     {
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room?status=${isPublic ? 'PUBLIC' : 'PRIVATE'}&page=${page}&name=${search}`, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room?status=${isPublic ? 'PUBLIC' : 'PRIVATE'}&page=${page}&name=${search}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

@@ -9,13 +9,13 @@ import
 } from "../../NovaX";
 import {
     ModulHeader,
-    useLogOut, useToggleConst,
+    useLogOut, useToggleConst, WebsiteLogo, WebsiteName,
     WindowLogIn
 } from "../../NovaX-TTRPG";
 
 const Game = () =>
 {
-    setTittle("/Grafiki/Logo.png", "TTRPG | Błąd");
+    setTittle(WebsiteLogo, `${WebsiteName} | Błąd`);
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
