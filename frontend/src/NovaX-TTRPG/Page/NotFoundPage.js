@@ -5,17 +5,17 @@ import
     MainArticle,
     ArticleTitle,
     storageLoad,
-    setTittle
+    setTittle, Button, ArticleTitleOption
 } from "../../NovaX";
 import {
     ModulHeader,
-    useLogOut,
+    useLogOut, useToggleConst, WebsiteLogo, WebsiteName,
     WindowLogIn
 } from "../../NovaX-TTRPG";
 
 const Game = () =>
 {
-    setTittle("/Grafiki/Logo.png", "TTRPG | Błąd");
+    setTittle(WebsiteLogo, `${WebsiteName} | Błąd`);
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
@@ -26,10 +26,7 @@ const Game = () =>
 
     // Formularz Logowanie/Rejestracja.
     const [showLogIn, setShowLogIn] = useState(false);
-    const toggleLogIn = () =>
-    {
-        setShowLogIn(prevShowLogin => !prevShowLogin);
-    };
+    const toggleLogIn = useToggleConst({setData: setShowLogIn})
 
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
@@ -57,9 +54,13 @@ const Game = () =>
             <Main design={2}>
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <ArticleTitle tag={"h1"} title={"Błąd 404"}/>
+                    <ArticleTitle tag={"h1"} title={"Błąd 404"}>
+                        <ArticleTitleOption>
+                            <Button title={"Strona główna"} href={"/"}/>
+                        </ArticleTitleOption>
+                    </ArticleTitle>
                     <p style={{display: "inline-block"}}>
-                        Podana strona nie istnieje.
+                       Nie odnaleziono strony.
                     </p>
                 </MainArticle>
             </Main>

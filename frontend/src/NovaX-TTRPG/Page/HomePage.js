@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import
 {
     Button,
@@ -22,14 +22,14 @@ import {
     WindowCreateRoom,
     WindowDeleteRoom,
     WindowEditRoom,
-    WindowLogIn
+    WindowLogIn, WebsiteLogo, WebsiteName
 } from "../../NovaX-TTRPG";
 import WindowInviteSettings from "../Window/WindowRoom/WindowInviteSettings";
 
 const HomePage = () =>
 {
     // Tittle.
-    setTittle("../Grafiki/Logo.png", "TTRPG | Lobby");
+    setTittle(WebsiteLogo, `${WebsiteName} | Pokoje`);
 
     // Lobby Publiczne/Prywatne.
     const [lobby, setLobby] = useState(true);
@@ -184,15 +184,14 @@ const HomePage = () =>
             {/* Home Strony. */}
             <Main design={2}>
                 {/* Nawigacja Home'a. */}
-                {isLogIn === true &&
-                    (
-                        <MainPanel>
-                            <Button title={"Publiczne"} width={2} colorNumber={lobby === true ? 1 : 0}
-                                    onClick={() => setLobby(true)}/>
-                            <Button title={"Prywatne"} width={2} colorNumber={lobby === false ? 1 : 0}
-                                    onClick={() => setLobby(false)}/>
-                        </MainPanel>
-                    )}
+                {isLogIn === true && (
+                    <MainPanel>
+                        <Button title={"Publiczne"} width={2} colorNumber={lobby === true ? 1 : 0}
+                                onClick={() => setLobby(true)}/>
+                        <Button title={"Prywatne"} width={2} colorNumber={lobby === false ? 1 : 0}
+                                onClick={() => setLobby(false)}/>
+                    </MainPanel>
+                )}
 
                 {/* Artykuły Maina. */}
                 <MainArticle>

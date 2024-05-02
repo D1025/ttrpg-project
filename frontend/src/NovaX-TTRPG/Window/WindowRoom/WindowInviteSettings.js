@@ -9,7 +9,7 @@ import {
     iconCopy_1
 } from "../../../NovaX";
 import React, {useEffect, useState} from "react";
-import {websiteAdres} from "../../index";
+import {WebsiteAdres} from "../../index";
 
 const WindowInviteSettings = ({onClose, roomData}) =>
 {
@@ -21,7 +21,7 @@ const WindowInviteSettings = ({onClose, roomData}) =>
     {
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${roomData.id}/invitations`, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room/${roomData.id}/invitations`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ const WindowInviteSettings = ({onClose, roomData}) =>
     {
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${roomData.id}/invitations`, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room/${roomData.id}/invitations`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ const WindowInviteSettings = ({onClose, roomData}) =>
     {
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room/${roomData.id}/invitations`, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room/${roomData.id}/invitations`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -153,13 +153,13 @@ const WindowInviteSettings = ({onClose, roomData}) =>
                             <div style={{display: 'flex'}}>
                                 <Input
                                     type={"text"}
-                                    value={invitationLink ? `${websiteAdres}/invite/` + invitationLink : ""}
+                                    value={invitationLink ? `${WebsiteAdres}/invite/` + invitationLink : ""}
                                     style={{width: 'calc(20vw - var(--Button-Height))'}}
                                     placeholder={"Link do zaproszenia"}
                                 />
                                 <Button
                                     src={iconCopy_1}
-                                    onClick={() => {navigator.clipboard.writeText(invitationLink ? `${websiteAdres}/invite/` + invitationLink : "")}}
+                                    onClick={() => {navigator.clipboard.writeText(invitationLink ? `${WebsiteAdres}/invite/` + invitationLink : "")}}
                                     active={invitationLink !== ''}
                                 />
                             </div>

@@ -8,27 +8,27 @@ import {
     iconPlay
 } from "../../../NovaX";
 import {imgBase64} from "../../index";
-import {websiteAdres} from "../../index";
+import {WebsiteAdres} from "../../index";
 
 function useLoadMyRoom({
-                         isLogIn,
-                         setPageMax,
-                         setRooms,
-                         togglDeleteRoom,
-                         toggleInviteRoom,
-                         togglEditRoom,
-                         userData,
-                         // Dynamicznie zmieniające się.
-                         page,
-                         search,
-                     })
+                           isLogIn,
+                           setPageMax,
+                           setRooms,
+                           togglDeleteRoom,
+                           toggleInviteRoom,
+                           togglEditRoom,
+                           userData,
+                           // Dynamicznie zmieniające się.
+                           page = 0,
+                           search = "",
+                       })
 {
-    return useCallback(async () =>
+    return useCallback(async() =>
     {
         try
         {
             // Zapytanie dla publicznych pokoi
-            const odpowiedzPubliczne = await fetch(`${websiteAdres}/api/v1/room/my?page=${page}&name=${search}`, {
+            const odpowiedzPubliczne = await fetch(`${WebsiteAdres}/api/v1/room/my?page=${page}&name=${search}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -70,15 +70,28 @@ function useLoadMyRoom({
                         color: 'var(--Kolor-Oznaczenia)',
                         fontSize: '0.86rem',
                         fontWeight: 'bold'
-                    }}>{room.isPrivate === false ? 'Publiczny' : 'Prywatny'}</span>
+                    }}>
+                        {room.isPrivate === false ? 'Publiczny' : 'Prywatny'}
+                    </span>
                     {isLogIn && (
                         <>
-                            <Button colorNumber={4} onClick={() => togglDeleteRoom(room)}
-                                    src={iconTrashCan}/>
-                            <Button colorNumber={5} onClick={() => toggleInviteRoom(room)}
-                                    src={iconShare}/>
-                            <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
-                            <Button src={iconPlay} href={`/Gra?id=${room.id}`}/>
+                            <Button
+                                colorNumber={4}
+                                onClick={() => togglDeleteRoom(room)}
+                                src={iconTrashCan}
+                            />
+                            <Button
+                                colorNumber={5}
+                                onClick={() => toggleInviteRoom(room)}
+                                src={iconShare}
+                            />
+                            <Button
+                                onClick={() => togglEditRoom(room)} src={iconEdit}
+                            />
+                            <Button
+                                src={iconPlay}
+                                href={`/Gra?id=${room.id}`}
+                            />
                         </>
                     )}
                 </RoomFrame>

@@ -8,7 +8,7 @@ import {
 } from "../../../NovaX";
 import React, {useState} from 'react';
 import Cropper from 'react-easy-crop';
-import {websiteAdres} from "../../index";
+import {WebsiteAdres} from "../../index";
 
 const WindowAccountAvatar = ({onClose, userData}) =>
 {
@@ -97,7 +97,7 @@ const WindowAccountAvatar = ({onClose, userData}) =>
 
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/users/` + userData.id, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/users/` + userData.id, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

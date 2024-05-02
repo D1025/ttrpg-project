@@ -1,27 +1,27 @@
 import {useEffect, useState} from "react";
-import {
+import
+{
+    Main,
+    MainArticle,
+    ArticleTitle,
     storageLoad,
     setTittle
-} from "../../NovaX";
+} from "../../../NovaX";
 import {
-    ModulChat,
     ModulHeader,
     useLogOut,
     WebsiteLogo,
     WebsiteName
-} from "../../NovaX-TTRPG";
+} from "../../index";
 
-const GamePage = () =>
+const AdminRoomPage = () =>
 {
     // Tittle.
-    setTittle(WebsiteLogo, `${WebsiteName} | Gra`);
-    const urlParams = new URLSearchParams(window.location.search);
-    const idParam = urlParams.get('id');
+    setTittle(WebsiteLogo, `${WebsiteName} | Pokoje`);
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
-
     // Wylogowywanie.
     const LogOut = useLogOut(userData, setIsLogIn, setUserData);
 
@@ -29,6 +29,7 @@ const GamePage = () =>
     useEffect(() =>
     {
         const loginData = storageLoad('loginData');
+        // Jeśli dane logowania istnieją.
         if(loginData)
         {
             setIsLogIn(true);
@@ -42,14 +43,24 @@ const GamePage = () =>
         }
     }, [LogOut]);
 
+    // Aplikacja.
     return (
         <>
             {/* Nagłłówek Strony. */}
-            <ModulHeader isLogIn={isLogIn} userData={userData} logOut={LogOut} navUser={false} navGame={true}/>
+            <ModulHeader navAdmin={true} navUser={false} isLogIn={isLogIn} userData={userData}
+                         logOut={LogOut}/>
 
-            <ModulChat roomId={idParam} userId={userData.id}/>
+            {/* Home Strony. */}
+            <Main design={2}>
+
+                {/* Artykuły Maina. */}
+                <MainArticle>
+                    <ArticleTitle title={"Lista Pokoi"} tag={"h2"}/>
+                    Pokoje
+                </MainArticle>
+            </Main>
         </>
     );
 }
 
-export default GamePage;
+export default AdminRoomPage;

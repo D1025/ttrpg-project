@@ -1,9 +1,17 @@
+// Global.
+export {default as WebsiteAdres} from './Global/websiteAdres.js';
+export {default as WebsiteLogo} from './Global/websiteLogo.png';
+export {default as WebsiteName} from './Global/websiteName.js';
+
 // Page.
 export {default as Game} from './Page/GamePage.js';
 export {default as HomePage} from './Page/HomePage.js';
-export {default as AdminPanel} from './Page/AdminPanel.js';
 export {default as NotFoundPage} from './Page/NotFoundPage.js';
-export {default as AccountPage} from './Page/AccountPage/AccountPage.js';
+export {default as AccountPage} from './Page/Account/AccountPage.js';
+export {default as InviteRoom} from './Page/InvitePage.jsx';
+
+export {default as AdminRoom} from './Page/AdminPanel/AdminRoomPage.js';
+export {default as AdminUser} from './Page/AdminPanel/AdminUsersPage.js';
 
 // Window.
 export {default as WindowLogIn} from './Window/WindowLogIn/WindowLogIn.js';
@@ -29,5 +37,4 @@ export {default as useLoadRoom} from './Function/Room/useLoadRoom.js';
 export {default as useLoadMyRoom} from './Function/Room/useLoadMyRoom.js';
 
 // Unit.
-export {default as websiteAdres} from './Function/websiteAdres.js';
-export {default as useDebounce} from './Utils/useDebounce.js';
+export {default as useDebounce} from './Function/useDebounce.js';

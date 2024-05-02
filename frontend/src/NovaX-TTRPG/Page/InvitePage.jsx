@@ -8,11 +8,11 @@ import {
     iconClose,
 } from "../../NovaX";
 import React, {useEffect, useState} from "react";
-import {imgBase64, websiteAdres} from "../index";
+import {imgBase64, WebsiteAdres, WebsiteLogo, WebsiteName} from "../index";
 
 const InvitePage = () =>
 {
-    setTittle("./Grafiki/Logo.png", "TTRPG | Join");
+    setTittle(WebsiteLogo, `${WebsiteName} | Zaproszenie`);
     const idParam = window.location.pathname.split('/').pop();
     const [roomData, setRoomData] = useState(null);
 
@@ -43,7 +43,7 @@ const InvitePage = () =>
     {
         try
         {
-            const response = await fetch(`${websiteAdres}/api/v1/room/join/${idParam}`, {
+            const response = await fetch(`${WebsiteAdres}/api/v1/room/join/${idParam}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ const InvitePage = () =>
     {
         try
         {
-            const response = await fetch(`${websiteAdres}/api/v1/room/join/${idParam}`, {
+            const response = await fetch(`${WebsiteAdres}/api/v1/room/join/${idParam}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

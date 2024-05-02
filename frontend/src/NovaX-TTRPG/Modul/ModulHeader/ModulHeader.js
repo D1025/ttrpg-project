@@ -9,12 +9,11 @@ import {
     HeaderSpace,
     iconAccount,
 } from "../../../NovaX";
-import {imgBase64} from "../../index";
+import {imgBase64, WebsiteLogo, WebsiteName} from "../../index";
 
 // Modul Header.
 const ModulHeader = ({
                          userData,
-                         design = 2,
                          src,
                          navAdmin = false,
                          navUser = true,
@@ -26,14 +25,14 @@ const ModulHeader = ({
                      }) =>
 {
     const path = window.location.pathname;
-    const currentLocation  = path.split('/')[1];
+    const currentLocation = path.split('/')[1];
 
     // Return.
     return (
-        <Header {...rest} design={design} src={src}>
+        <Header {...rest} design={2} src={src}>
             {(navGame || navUser || navAdmin) === true && <HeaderLeft>
                 {/* Logo. */}
-                {navGame !== true && <ButtonLogo title={"TTRPG"} src={"./Grafiki/Logo.png"} href={"/"}/>}
+                {navGame !== true && <ButtonLogo title={WebsiteName} src={WebsiteLogo} href={"/"}/>}
                 {navGame === true && <Button title={"Wyjdź"} href={"/"}/>}
 
                 {(navUser === true || navAdmin === true) && <HeaderSpace/>}
@@ -68,10 +67,10 @@ const ModulHeader = ({
                 {navAdmin === true && <>
                     <Menu2 tag={"nav"}>
                         <li>
-                            <Button title={"Pokoje"} width={2} href={""}/>
+                            <Button title={"Pokoje"} width={2} href={"/AdminPanel/Room"}/>
                         </li>
                         <li>
-                            <Button title={"Użytkownicy"} width={2} href={""}/>
+                            <Button title={"Użytkownicy"} width={2} href={"/AdminPanel/User"}/>
                         </li>
                     </Menu2>
                 </>}
@@ -84,23 +83,30 @@ const ModulHeader = ({
                 {isLogIn === true ? (
                     <Menu2>
                         <li>
-                            <AccountBar design={1}
-                                        width={2}
-                                        title={userData.nickname}
-                                        subTitle={userData.admin === true && "[Admin]"}
-                                        src={imgBase64(userData.imageExtension, userData.avatar)}
+                            <AccountBar
+                                design={1}
+                                width={2}
+                                title={userData.nickname}
+                                subTitle={userData.admin === true && "[Admin]"}
+                                src={imgBase64(userData.imageExtension, userData.avatar)}
                             >
                             </AccountBar>
                             <Menu2>
                                 {userData.admin === true && <li>
-                                    <Button title={"Panel"} width={0}
-                                            href={currentLocation !== 'PanelAdmina' && "/PanelAdmina"}
-                                            active={currentLocation !== 'PanelAdmina' && "/PanelAdmina"}/>
+                                    <Button
+                                        title={"Panel"}
+                                        width={0}
+                                        href={'/AdminPanel/Room'}
+                                        active={currentLocation !== 'AdminPanel'}
+                                    />
                                 </li>}
                                 <li>
-                                    <Button title={"Ustawienia"} width={0}
-                                            href={currentLocation !== 'UstawieniaKonta' && "/UstawieniaKonta"}
-                                            active={currentLocation !== 'UstawieniaKonta'}/>
+                                    <Button
+                                        title={"Ustawienia"}
+                                        width={0}
+                                        href={currentLocation !== 'UstawieniaKonta' && "/UstawieniaKonta"}
+                                        active={currentLocation !== 'UstawieniaKonta'}
+                                    />
                                 </li>
                                 <li>
                                     <Button title={"Wyloguj Się"} onClick={logOut} width={0}/>

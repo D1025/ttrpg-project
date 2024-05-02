@@ -8,7 +8,7 @@ import {
     iconPlay
 } from "../../../NovaX";
 import {imgBase64} from "../../index";
-import {websiteAdres} from "../../index";
+import {WebsiteAdres} from "../../index";
 
 function useLoadRoom({
                          isLogIn,
@@ -19,16 +19,16 @@ function useLoadRoom({
                          togglEditRoom,
                          userData,
                          // Dynamicznie zmieniające się.
-                         isPublic,
-                         page,
-                         search,
+                         isPublic = true,
+                         page = 0,
+                         search = "",
                      })
 {
-    return useCallback(async () =>
+    return useCallback(async() =>
     {
         try
         {
-            const odpowiedz = await fetch(`${websiteAdres}/api/v1/room?status=${isPublic ? 'PUBLIC' : 'PRIVATE'}&page=${page}&name=${search}`, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room?status=${isPublic ? 'PUBLIC' : 'PRIVATE'}&page=${page}&name=${search}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -63,16 +63,26 @@ function useLoadRoom({
                             <>
                                 {(userData.id === room.ownerId || userData.admin) && (
                                     <>
-                                        <Button colorNumber={4} onClick={() => togglDeleteRoom(room)}
-                                                src={iconTrashCan}/>
-                                        <Button colorNumber={5} onClick={() => toggleInviteRoom(room)}
-                                                src={iconShare}/>
-                                        <Button onClick={() => togglEditRoom(room)} src={iconEdit}/>
+                                        <Button
+                                            colorNumber={4}
+                                            onClick={() => togglDeleteRoom(room)}
+                                            src={iconTrashCan}
+                                        />
+                                        <Button
+                                            colorNumber={5}
+                                            onClick={() => toggleInviteRoom(room)}
+                                            src={iconShare}
+                                        />
+                                        <Button
+                                            onClick={() => togglEditRoom(room)}
+                                            src={iconEdit}
+                                        />
                                     </>
                                 )}
-                                <a href={`/Gra?id=${room.id}`}>
-                                    <Button src={iconPlay}/>
-                                </a>
+                                <Button
+                                    src={iconPlay}
+                                    href={`/Gra?id=${room.id}`}
+                                />
                             </>
                         )}
                     </RoomFrame>

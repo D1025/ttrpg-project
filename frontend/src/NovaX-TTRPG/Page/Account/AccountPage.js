@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import {
     Button,
     storageLoad,
@@ -21,19 +21,19 @@ import {
     WindowAccountAvatar,
     imgBase64,
     ModulHeader,
-    WindowLogIn,
     WindowAccountPassword,
     useLogOut,
     useDebounce,
-    useToggleConst,
-    useLoadMyRoom
+    useLoadMyRoom,
+    WebsiteLogo,
+    WebsiteName
 } from "../../index";
 import WindowInviteSettings from "../../Window/WindowRoom/WindowInviteSettings";
 
 const GamePage = () =>
 {
     // Tittle.
-    setTittle("./Grafiki/Logo.png", "TTRPG | Konto");
+    setTittle(WebsiteLogo, `${WebsiteName} | Konto`);
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
@@ -44,7 +44,8 @@ const GamePage = () =>
     const [search, setSearch] = useState('');
     const debouncedSearchTerm = useDebounce(search, 500);
 
-    useEffect(() => {
+    useEffect(() =>
+    {
         setPage(0);
         setPageMax(0);
     }, [debouncedSearchTerm]);
@@ -56,10 +57,6 @@ const GamePage = () =>
 
     // Wylogowywanie.
     const LogOut = useLogOut(userData, setIsLogIn, setUserData);
-
-    // Formularz Logowanie/Rejestracja.
-    const [showLogIn, setShowLogIn] = useState(false);
-    const toggleLogIn = useToggleConst({setData: setShowLogIn})
 
     // Formularz EditRoom.
     const [showEditRoom, setEditRoom] = useState(false);
@@ -229,7 +226,6 @@ const GamePage = () =>
             setIsLogIn(true);
             setUserData(LoadLogInData);
             LoadRooms({
-                isPublic: false,
                 isLogIn: isLogIn,
                 page: page,
                 setPageMax: setPageMax,
@@ -247,12 +243,12 @@ const GamePage = () =>
             setIsLogIn(false);
             window.location.href = '/';
         }
-    }, [LoadRooms, showEditRoom === false, showDeleteRoom === false, showAccountNickname === false, showAccountEmail === false, showAccountAvatar === false, showLogIn, LogOut, debouncedSearchTerm]);
+    }, [LoadRooms, showEditRoom === false, showDeleteRoom === false, showAccountNickname === false, showAccountEmail === false, showAccountAvatar === false, LogOut, debouncedSearchTerm]);
 
     return (
         <>
             {/* Nagłłówek Strony. */}
-            <ModulHeader userData={userData} logIn={toggleLogIn} logOut={LogOut} isLogIn={isLogIn}/>
+            <ModulHeader userData={userData} logOut={LogOut} isLogIn={isLogIn}/>
 
             <Main design={1}>
                 <MainArticle>
@@ -295,15 +291,23 @@ const GamePage = () =>
 
                     <HrSeparator title={"Moje Pokoje"}/>
                     <div style={{display: "flex", marginBottom: "0.5vw", alignItems: 'center'}}>
-                        <InputNumber
-                            valueMin={0}
-                            value={page}
-                            valueMax={pageMax}
-                            onChange={takePage}
-                            width={0}
+                        {pageMax > 0 &&
+                            <InputNumber
+                                valueMin={0}
+                                value={page}
+                                valueMax={pageMax}
+                                onChange={takePage}
+                                width={0}
+                            />
+                        }
+                        <Input
+                            type={"text"}
+                            placeholder={"Szukaj Pokoje"}
+                            width={2}
+                            value={search}
+                            onChange={e => setSearch(e.target.value)}
                         />
-                        <Input type={"text"} placeholder={"Szukaj"} width={2} value={search} onChange={e => setSearch(e.target.value)}/>
-                        <p style={{marginLeft:'auto', color: 'var(--Kolor-Oznaczenia)'}}>
+                        <p style={{marginLeft: 'auto', color: 'var(--Kolor-Oznaczenia)'}}>
                             Strony pokoi: {isNaN(pageMax) ? 0 : pageMax + 1}
                         </p>
                     </div>
@@ -311,7 +315,6 @@ const GamePage = () =>
                 </MainArticle>
             </Main>
 
-            {showLogIn && <WindowLogIn onClose={toggleLogIn}/>}
             {showEditRoom && <WindowEditRoom roomData={edytowanyPokoj} onClose={togglEditRoom}/>}
             {showDeleteRoom && <WindowDeleteRoom roomData={edytowanyPokoj} onClose={togglDeleteRoom}/>}
             {showInviteRoom && <WindowInviteSettings roomData={edytowanyPokoj} onClose={toggleInviteRoom}/>}

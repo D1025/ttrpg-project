@@ -6,17 +6,18 @@ import
     ArticleTitle,
     storageLoad,
     setTittle
-} from "../../NovaX";
+} from "../../../NovaX";
 import {
     ModulHeader,
     useLogOut,
-    WindowLogIn
-} from "../index";
+    WebsiteLogo,
+    WebsiteName
+} from "../../index";
 
-const AdminPanel = () =>
+const AdminRoom = () =>
 {
     // Tittle.
-    setTittle("../Grafiki/Logo.png", "TTRPG | Panel");
+    setTittle(WebsiteLogo, `${WebsiteName} | Użytkownicy`);
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
@@ -54,12 +55,12 @@ const AdminPanel = () =>
 
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <ArticleTitle title={"Panel"} tag={"h2"}/>
-                    Panel
+                    <ArticleTitle title={"Lista Użytkowników"} tag={"h2"}/>
+                    Użytkownicy
                 </MainArticle>
             </Main>
         </>
     );
 }
 
-export default AdminPanel;
+export default AdminRoom;
