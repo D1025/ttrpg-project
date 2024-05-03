@@ -10,7 +10,7 @@ import {
 import {imgBase64} from "../../index";
 import {WebsiteAdres} from "../../index";
 
-function useLoadMyRoom({
+function useLoadAllRoom({
                            isLogIn,
                            setPageMax,
                            setRooms,
@@ -28,7 +28,7 @@ function useLoadMyRoom({
         try
         {
             // Zapytanie dla publicznych pokoi
-            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room/my?page=${page}&name=${search}`, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/admin/rooms?page=${page}&name=${search}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,12 +52,12 @@ function useLoadMyRoom({
             }
 
             // Przetwarzanie odpowiedzi dla publicznych pokoi
-            const danePubliczne = await odpowiedz.json();
+            const odpowiedzDane = await odpowiedz.json();
 
-            setPageMax(danePubliczne.totalPages - 1);
+            setPageMax(odpowiedzDane.totalPages - 1);
 
             // Połączenie danych
-            const zrenderowanePokoje = danePubliczne.content.map(room => (
+            const zrenderowanePokoje = odpowiedzDane.content.map(room => (
                 room.ownerId === userData.id &&
                 <RoomFrame
                     key={room.id}
@@ -103,7 +103,7 @@ function useLoadMyRoom({
         {
             console.log(`Nieoczekiwany błąd: ${blad}`);
         }
-    }, [userData.token, isLogIn, page]); // Zależności useCallback'a
+    }, [userData.token, page, search]);
 }
 
-export default useLoadMyRoom;
+export default useLoadAllRoom;
