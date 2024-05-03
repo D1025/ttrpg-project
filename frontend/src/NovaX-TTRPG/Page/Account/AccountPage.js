@@ -25,10 +25,10 @@ import {
     useLogOut,
     useDebounce,
     useLoadMyRoom,
+    WindowInviteRoom,
     WebsiteLogo,
     WebsiteName
 } from "../../index";
-import WindowInviteSettings from "../../Window/WindowRoom/WindowInviteSettings";
 
 const GamePage = () =>
 {
@@ -317,7 +317,7 @@ const GamePage = () =>
 
             {showEditRoom && <WindowEditRoom roomData={edytowanyPokoj} onClose={togglEditRoom}/>}
             {showDeleteRoom && <WindowDeleteRoom roomData={edytowanyPokoj} onClose={togglDeleteRoom}/>}
-            {showInviteRoom && <WindowInviteSettings roomData={edytowanyPokoj} onClose={toggleInviteRoom}/>}
+            {showInviteRoom && <WindowInviteRoom roomData={edytowanyPokoj} onClose={toggleInviteRoom}/>}
             {showAccountNickname && <WindowAccountNickname userData={userData} onClose={togglAccountNickname}/>}
             {showAccountEmail && <WindowAccountEmail userData={userData} onClose={togglAccountEmail}/>}
             {showAccountAvatar && <WindowAccountAvatar userData={userData} onClose={togglAccountAvatar}/>}

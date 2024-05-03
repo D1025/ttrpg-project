@@ -22,9 +22,11 @@ import {
     WindowCreateRoom,
     WindowDeleteRoom,
     WindowEditRoom,
-    WindowLogIn, WebsiteLogo, WebsiteName
+    WindowLogIn,
+    WindowInviteRoom,
+    WebsiteLogo,
+    WebsiteName
 } from "../../NovaX-TTRPG";
-import WindowInviteSettings from "../Window/WindowRoom/WindowInviteSettings";
 
 const HomePage = () =>
 {
@@ -222,7 +224,7 @@ const HomePage = () =>
             {showCreateRoom && <WindowCreateRoom onClose={togglCreateRoom}/>}
             {showEditRoom && <WindowEditRoom roomData={choiceRoom} onClose={togglEditRoom}/>}
             {showDeleteRoom && <WindowDeleteRoom roomData={choiceRoom} onClose={togglDeleteRoom}/>}
-            {showInviteRoom && <WindowInviteSettings roomData={choiceRoom} onClose={toggleInviteRoom}/>}
+            {showInviteRoom && <WindowInviteRoom roomData={choiceRoom} onClose={toggleInviteRoom}/>}
         </>
     );
 }
