@@ -5,13 +5,13 @@ import
     MainArticle,
     ArticleTitle,
     storageLoad,
-    setTittle
+    setTittle, InputNumber, Input, Button, iconAdd, ArticleTitleOption
 } from "../../../NovaX";
 import {
-    ModulHeader,
-    useLogOut,
+    ModulHeader, useDebounce, useLoadAllRooms,
+    useLogOut, useToggleConst,
     WebsiteLogo,
-    WebsiteName
+    WebsiteName, WindowCreateRoom, WindowDeleteRoom, WindowEditRoom, WindowInviteRoom
 } from "../../index";
 
 const AdminRoomPage = () =>
@@ -25,6 +25,106 @@ const AdminRoomPage = () =>
     // Wylogowywanie.
     const LogOut = useLogOut(userData, setIsLogIn, setUserData);
 
+    // Formularz CreateRoom.
+    const [showCreateRoom, setShowCreateRoom] = useState(false);
+    const togglCreateRoom = useToggleConst({setData: setShowCreateRoom})
+    // Formularz EditRoom.
+    const [showEditRoom, setShowEditRoom] = useState(false);
+    const [choiceRoom, setChoiceRoom] = useState("");
+    const togglEditRoom = (choiceRoom) =>
+    {
+        if(!showEditRoom)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setShowEditRoom(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
+        setChoiceRoom(choiceRoom);
+        setShowEditRoom(!showEditRoom);
+    };
+    // Formularz DeleteRoom.
+    const [showDeleteRoom, setDeleteRoom] = useState(false);
+    const togglDeleteRoom = (choiceRoom) =>
+    {
+        if(!showDeleteRoom)
+        {
+            // Dodanie nasłuchiwania na klawisz Esc tylko, gdy aktywujemy avatar
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setDeleteRoom(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
+        setChoiceRoom(choiceRoom);
+        setDeleteRoom(!showDeleteRoom);
+    };
+
+    const [showInviteRoom, setShowInviteRoom] = useState(false);
+    const toggleInviteRoom = (choiceRoom) =>
+    {
+        if(!showInviteRoom)
+        {
+            const handleEscape = (event) =>
+            {
+                if(event.key === 'Escape')
+                {
+                    setShowInviteRoom(false);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+        }
+        setChoiceRoom(choiceRoom);
+        setShowInviteRoom(!showInviteRoom);
+    }
+
+    // Ilość Stron.
+    const [page, setPage] = useState(0);
+    const [pageMax, setPageMax] = useState(0);
+    // Dane Wyszukiwania.
+    const [search, setSearch] = useState('');
+    const debouncedSearchTerm = useDebounce(search, 400);
+
+    useEffect(() =>
+    {
+        setPage(0);
+        setPageMax(0);
+    }, [debouncedSearchTerm]);
+
+    // Obecnie wybrana strona.
+    const takePage = (event) =>
+    {
+        setPage(event.target.value);
+    }
+
+    // Załaój pokoje.
+    const [rooms, setRooms] = useState([]);
+    const LoadRooms = useLoadAllRooms({
+        isLogIn: isLogIn,
+        page: page,
+        setPageMax: setPageMax,
+        setRooms: setRooms,
+        togglDeleteRoom: togglDeleteRoom,
+        toggleInviteRoom: toggleInviteRoom,
+        togglEditRoom: togglEditRoom,
+        search: search,
+        userData: userData
+    });
+
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
@@ -34,6 +134,17 @@ const AdminRoomPage = () =>
         {
             setIsLogIn(true);
             setUserData(loginData);
+            LoadRooms({
+                isLogIn: isLogIn,
+                page: page,
+                setPageMax: setPageMax,
+                setRooms: setRooms,
+                togglDeleteRoom: togglDeleteRoom,
+                toggleInviteRoom: toggleInviteRoom,
+                togglEditRoom: togglEditRoom,
+                search: search,
+                userData: userData
+            });
         }
         else
         {
@@ -41,7 +152,7 @@ const AdminRoomPage = () =>
             setUserData('');
             window.location.href = '/';
         }
-    }, [LogOut]);
+    }, [LoadRooms, showCreateRoom === false, showEditRoom === false, showDeleteRoom === false, showInviteRoom === false, LogOut, page, debouncedSearchTerm]);
 
     // Aplikacja.
     return (
@@ -55,10 +166,30 @@ const AdminRoomPage = () =>
 
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <ArticleTitle title={"Lista Pokoi"} tag={"h2"}/>
-                    Pokoje
+                    <ArticleTitle title={"Lista Pokoi"} tag={"h2"}>
+                        <ArticleTitleOption>
+                            {pageMax > 0 &&
+                                <InputNumber
+                                    valueMin={0}
+                                    value={page}
+                                    valueMax={pageMax}
+                                    onChange={takePage}
+                                    width={0}
+                                />
+                            }
+                            <Input type={"text"} placeholder={"Szukaj"} width={2} value={search}
+                                   onChange={e => setSearch(e.target.value)}/>
+                            <Button src={iconAdd} title={"Stwóż Pokój"} width={2} onClick={togglCreateRoom}/>
+                        </ArticleTitleOption>
+                    </ArticleTitle>
+                    {rooms}
                 </MainArticle>
             </Main>
+
+            {showCreateRoom && <WindowCreateRoom onClose={togglCreateRoom}/>}
+            {showEditRoom && <WindowEditRoom roomData={choiceRoom} onClose={togglEditRoom}/>}
+            {showDeleteRoom && <WindowDeleteRoom roomData={choiceRoom} onClose={togglDeleteRoom}/>}
+            {showInviteRoom && <WindowInviteRoom roomData={choiceRoom} onClose={toggleInviteRoom}/>}
         </>
     );
 }

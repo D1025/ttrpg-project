@@ -302,7 +302,7 @@ const GamePage = () =>
                         }
                         <Input
                             type={"text"}
-                            placeholder={"Szukaj Pokoje"}
+                            placeholder={"Szukaj Pokoju"}
                             width={2}
                             value={search}
                             onChange={e => setSearch(e.target.value)}

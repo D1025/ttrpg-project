@@ -28,7 +28,7 @@ function useLoadMyRoom({
         try
         {
             // Zapytanie dla publicznych pokoi
-            const odpowiedzPubliczne = await fetch(`${WebsiteAdres}/api/v1/room/my?page=${page}&name=${search}`, {
+            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room/my?page=${page}&name=${search}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,23 +36,23 @@ function useLoadMyRoom({
                 }
             });
 
-            // Sprawdzenie odpowiedzi dla publicznych pokoi
-            if(!odpowiedzPubliczne.ok)
+            // Sprawdzenie odpowiedzi dla pokoi.
+            if(!odpowiedz.ok)
             {
                 // Obróbka błędów
-                if(odpowiedzPubliczne.status === 400)
+                if(odpowiedz.status === 400)
                 {
-                    const blad = await odpowiedzPubliczne.json();
+                    const blad = await odpowiedz.json();
                     console.log(`${blad.message}`);
                 }
                 else
                 {
-                    console.log(`Błąd: ${odpowiedzPubliczne.status}`);
+                    console.log(`Błąd: ${odpowiedz.status}`);
                 }
             }
 
             // Przetwarzanie odpowiedzi dla publicznych pokoi
-            const danePubliczne = await odpowiedzPubliczne.json();
+            const danePubliczne = await odpowiedz.json();
 
             setPageMax(danePubliczne.totalPages - 1);
 
