@@ -16,6 +16,10 @@ public interface RoomRepository extends JpaRepository<Room, UUID> {
 
     Page<Room> findAllByPrivateRoomIsAndNameContaining(boolean privateRoom, String name, Pageable pageable);
 
+    Page<Room> findAllByUsersContainsOrOwnerIsAndNameContaining(UUID userId, String name, UUID owner, Pageable pageable);
+
+    Page<Room> findAllByUsersContainsOrOwnerIs(UUID userId, UUID owner, Pageable pageable);
+
     List<Room> findAllByPrivateRoomIsAndOwnerId(boolean privateRoom, UUID ownerId);
 
     Page<Room> findByUsers_Id(UUID userId, Pageable pageable);

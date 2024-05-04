@@ -56,10 +56,18 @@ public class RoomsServiceImpl implements RoomsService {
             jwtAuthorization.authorize(authorizationHeader);
         }
         Page<Room> rooms;
-        if (name != null) {
-            rooms = roomRepository.findAllByPrivateRoomIsAndNameContaining(isPrivate, name, pageable);
-        } else {
-            rooms = roomRepository.findAllByPrivateRoomIs(isPrivate, pageable);
+        if (name != null && !isPrivate) {
+            rooms = roomRepository.findAllByPrivateRoomIsAndNameContaining(false, name, pageable);
+        } else if(!isPrivate){
+            rooms = roomRepository.findAllByPrivateRoomIs(false, pageable);
+        }
+        else if (name != null) {
+            UUID user = userService.getUserByToken(authorizationHeader).getId();
+            rooms = roomRepository.findAllByUsersContainsOrOwnerIsAndNameContaining(user, name, user, pageable);
+        }
+        else {
+            UUID user = userService.getUserByToken(authorizationHeader).getId();
+            rooms = roomRepository.findAllByUsersContainsOrOwnerIs(user, user, pageable);
         }
         return rooms.map(roomMapper::roomToRoomReturnDTO);
     }
@@ -166,8 +174,11 @@ public class RoomsServiceImpl implements RoomsService {
         if (room == null) {
             throw new MessageException("Room not found");
         }
-        room.getUsers().add(user);
-        roomRepository.save(room);
+        List<Users> usersInRoom = room.getUsers();
+        if (!usersInRoom.contains(user)) {
+            room.getUsers().add(user);
+            roomRepository.save(room);
+        }
     }
 
     @Override
