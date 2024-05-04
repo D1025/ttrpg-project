@@ -1,16 +1,23 @@
 package com.ttrpg.project.controller;
 
-import com.ttrpg.project.dto.PublicUserReturnDTO;
-import com.ttrpg.project.dto.UserReturnDTO;
-import com.ttrpg.project.dto.room.RoomReturnDTO;
-import com.ttrpg.project.service.UserService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import com.ttrpg.project.service.JwtAuthorization;
-import com.ttrpg.project.service.RoomsService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.ttrpg.project.dto.PublicUserReturnDTO;
+import com.ttrpg.project.dto.room.RoomReturnDTO;
+import com.ttrpg.project.service.RoomsService;
+import com.ttrpg.project.service.UserService;
+import com.ttrpg.project.utils.PageUtils;
+
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/v1/admin")
@@ -19,15 +26,18 @@ public class AdminController {
 
     private final RoomsService roomsService;
     private final UserService userService;
+    private final PageUtils pageUtils;
 
     @GetMapping("/rooms")
-    public ResponseEntity<List<RoomReturnDTO>> getAllRooms(@RequestHeader(name = "Authorization") String authorizationHeader) {
-        return ResponseEntity.ok(roomsService.getAllRooms(authorizationHeader));
+    public ResponseEntity<Page<RoomReturnDTO>> getAllRooms(@RequestHeader(name = "Authorization") String authorizationHeader, @RequestParam(defaultValue = "0") Integer pageNumber) {
+        Pageable pageable = pageUtils.getPageable(pageNumber, 10);
+        return ResponseEntity.ok(roomsService.getAllRooms(authorizationHeader, pageable));
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<PublicUserReturnDTO>> getAllUsers(@RequestHeader(name = "Authorization") String authorizationHeader) {
-        return ResponseEntity.ok(userService.getAllUsers(authorizationHeader));
+    public ResponseEntity<Page<PublicUserReturnDTO>> getAllUsers(@RequestHeader(name = "Authorization") String authorizationHeader @RequestParam(defaultValue = "0") Integer pageNumber) {
+        Pageable pageable = pageUtils.getPageable(pageNumber, 10);
+        return ResponseEntity.ok(userService.getAllUsers(authorizationHeader, pageable));
     }
 
     @PostMapping("/users/{id}/ban")

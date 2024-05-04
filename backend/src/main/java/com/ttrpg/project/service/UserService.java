@@ -1,13 +1,16 @@
 package com.ttrpg.project.service;
 
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.ttrpg.project.dto.EditUser;
 import com.ttrpg.project.dto.EditUserPassword;
 import com.ttrpg.project.dto.PublicUserReturnDTO;
 import com.ttrpg.project.dto.UserReturnDTO;
 import com.ttrpg.project.model.Users;
-
-import java.util.List;
-import java.util.UUID;
 
 public interface UserService {
 
@@ -17,7 +20,7 @@ public interface UserService {
 
     List<PublicUserReturnDTO> getAllUsers();
 
-    List<PublicUserReturnDTO> getAllUsers(String token);
+    Page<PublicUserReturnDTO> getAllUsers(String token, Pageable pageable);
 
     UserReturnDTO editUser(UUID id, EditUser editUser, String token);
 

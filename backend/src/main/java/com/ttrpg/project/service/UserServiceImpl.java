@@ -1,19 +1,23 @@
 package com.ttrpg.project.service;
 
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
 import com.ttrpg.project.dao.UsersRepository;
 import com.ttrpg.project.dto.EditUser;
-import com.ttrpg.project.dto.PublicUserReturnDTO;
 import com.ttrpg.project.dto.EditUserPassword;
+import com.ttrpg.project.dto.PublicUserReturnDTO;
 import com.ttrpg.project.dto.UserReturnDTO;
 import com.ttrpg.project.exceptions.MessageException;
 import com.ttrpg.project.mapper.UserMapper;
 import com.ttrpg.project.model.Users;
+
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -39,12 +43,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<PublicUserReturnDTO> getAllUsers(String token) {
+    public Page<PublicUserReturnDTO> getAllUsers(String token, Pageable pageable) {
         Users user = getUserByToken(token);
         if (!user.isAdmin()) {
             throw new MessageException("Niewystarczające uprawnienia");
         }
-        return userMapper.usersToPublicUserReturnDTOs(userRepository.findAll());
+        return userRepository.findAll(pageable).map(userMapper::userToPublicUserReturnDTO);
     }
 
     @Override
