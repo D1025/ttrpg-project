@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.ttrpg.project.model.Room;
+import com.ttrpg.project.model.Users;
 
 @Repository
 public interface RoomRepository extends JpaRepository<Room, UUID> {
@@ -16,9 +17,9 @@ public interface RoomRepository extends JpaRepository<Room, UUID> {
 
     Page<Room> findAllByPrivateRoomIsAndNameContaining(boolean privateRoom, String name, Pageable pageable);
 
-    Page<Room> findAllByUsersContainsOrOwnerIsAndNameContaining(UUID userId, String name, UUID owner, Pageable pageable);
+    Page<Room> findAllByUsersContainsOrOwnerIsAndNameContaining(Users user, String name, Users owner, Pageable pageable);
 
-    Page<Room> findAllByUsersContainsOrOwnerIs(UUID userId, UUID owner, Pageable pageable);
+    Page<Room> findAllByUsersContainsOrOwnerIs(Users user, Users owner, Pageable pageable);
 
     List<Room> findAllByPrivateRoomIsAndOwnerId(boolean privateRoom, UUID ownerId);
 

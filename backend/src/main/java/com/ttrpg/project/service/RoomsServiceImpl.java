@@ -5,10 +5,9 @@ import java.util.UUID;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import com.ttrpg.project.dao.MessagesRepository;
 import org.springframework.stereotype.Service;
 
+import com.ttrpg.project.dao.MessagesRepository;
 import com.ttrpg.project.dao.RoomRepository;
 import com.ttrpg.project.dto.room.CreateRoom;
 import com.ttrpg.project.dto.room.EditRoom;
@@ -17,7 +16,6 @@ import com.ttrpg.project.exceptions.MessageException;
 import com.ttrpg.project.mapper.RoomMapper;
 import com.ttrpg.project.model.Room;
 import com.ttrpg.project.model.Users;
-import com.ttrpg.project.model.enums.Status;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -62,24 +60,24 @@ public class RoomsServiceImpl implements RoomsService {
             rooms = roomRepository.findAllByPrivateRoomIs(false, pageable);
         }
         else if (name != null) {
-            UUID user = userService.getUserByToken(authorizationHeader).getId();
+            Users user = userService.getUserByToken(authorizationHeader);
             rooms = roomRepository.findAllByUsersContainsOrOwnerIsAndNameContaining(user, name, user, pageable);
         }
         else {
-            UUID user = userService.getUserByToken(authorizationHeader).getId();
+            Users user = userService.getUserByToken(authorizationHeader);
             rooms = roomRepository.findAllByUsersContainsOrOwnerIs(user, user, pageable);
         }
         return rooms.map(roomMapper::roomToRoomReturnDTO);
     }
 
     @Override
-    public List<RoomReturnDTO> getAllRooms(String authorizationHeader) {
+    public Page<RoomReturnDTO> getAllRooms(String authorizationHeader, Pageable pageable) {
         jwtAuthorization.authorize(authorizationHeader);
         Users user = userService.getUserByToken(authorizationHeader);
         if (!user.isAdmin()) {
             throw new MessageException("Niewystarczające uprawnienia");
         }
-        return roomMapper.roomsToRoomReturnDTOs(roomRepository.findAll());
+        return roomRepository.findAll(pageable).map(roomMapper::roomToRoomReturnDTO);
     }
 
     @Override

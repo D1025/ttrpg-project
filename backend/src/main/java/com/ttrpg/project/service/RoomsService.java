@@ -1,15 +1,13 @@
 package com.ttrpg.project.service;
 
+import java.util.UUID;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import java.util.List;
-import java.util.UUID;
 
 import com.ttrpg.project.dto.room.CreateRoom;
 import com.ttrpg.project.dto.room.EditRoom;
 import com.ttrpg.project.dto.room.RoomReturnDTO;
-import com.ttrpg.project.model.enums.Status;
 
 public interface RoomsService {
 
@@ -17,7 +15,7 @@ public interface RoomsService {
 
     Page<RoomReturnDTO> getAllRooms(Status status, String authorizationHeader , Pageable pageable, String name);
 
-    List<RoomReturnDTO> getAllRooms(String authorizationHeader);
+    Page<RoomReturnDTO> getAllRooms(String authorizationHeader, Pageable pageable);
 
     Page<RoomReturnDTO> getMyOwnedRooms(String authorizationHeader, Pageable pageable, String name);
 
