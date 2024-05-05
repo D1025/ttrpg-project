@@ -16,6 +16,7 @@ import com.ttrpg.project.exceptions.MessageException;
 import com.ttrpg.project.mapper.RoomMapper;
 import com.ttrpg.project.model.Room;
 import com.ttrpg.project.model.Users;
+import com.ttrpg.project.model.enums.Status;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
