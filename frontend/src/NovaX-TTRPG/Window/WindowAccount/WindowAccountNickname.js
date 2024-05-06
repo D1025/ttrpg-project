@@ -20,8 +20,6 @@ const WindowAccountNickname = ({onClose, userData, userAuthorization = userData}
         setNickname(event.target.value);
     };
 
-    // console.log(userAuthorization)
-
     // Edytuj dane użytkownika.
     const [powiadomienie, ustawPowiadomienie] = useState('');
     const stworzLobby = async(event) =>

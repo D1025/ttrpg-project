@@ -10,7 +10,7 @@ import React, {useState} from 'react';
 import Cropper from 'react-easy-crop';
 import {ServerAdres} from "../../index";
 
-const WindowAccountAvatar = ({onClose, userData}) =>
+const WindowAccountAvatar = ({onClose, userData, userAuthorization = userData}) =>
 {
     // Do Przetwozenia.
     const [crop, setCrop] = useState({x: 0, y: 0});
@@ -101,7 +101,7 @@ const WindowAccountAvatar = ({onClose, userData}) =>
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': userData.token
+                    'Authorization': userAuthorization.token
                 },
                 body: JSON.stringify({
                     avatar: croppedImageURL,
@@ -126,8 +126,11 @@ const WindowAccountAvatar = ({onClose, userData}) =>
             else
             {
                 // Sukces - obsługa odpowiedzi
-                const data = await odpowiedz.json();
-                storageSave("loginData", data)
+                if(userData.id === userAuthorization.id)
+                {
+                    const data = await odpowiedz.json();
+                    storageSave("loginData", data)
+                }
                 onClose();
             }
         }

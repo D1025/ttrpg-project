@@ -9,11 +9,10 @@ import {
 import React, {useState} from "react";
 import {ServerAdres} from "../../index";
 
-const WindowAccountEmail = ({onClose, userData}) =>
+const WindowAccountEmail = ({onClose, userData, userAuthorization = userData}) =>
 {
     // Do Przetwozenia.
     const [email, setEmail] = useState(userData.email);
-
     // Pobieranie z formulaża.
     const takeNickname = (event) => // Email.
     {
@@ -28,15 +27,13 @@ const WindowAccountEmail = ({onClose, userData}) =>
 
         try
         {
-            const odpowiedz = await fetch(`${ServerAdres}/api/v1/users/` + userData.id, {
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/users/${userData.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': userData.token
+                    'Authorization': userAuthorization.token
                 },
                 body: JSON.stringify({
-                    // "avatar": avatar,
-                    // "avatarExtension": "",
                     "email": email
                 })
             });
@@ -58,8 +55,11 @@ const WindowAccountEmail = ({onClose, userData}) =>
             else
             {
                 // Sukces - obsługa odpowiedzi
-                const data = await odpowiedz.json();
-                storageSave("loginData", data)
+                if(userData.id === userAuthorization.id)
+                {
+                    const data = await odpowiedz.json();
+                    storageSave("loginData", data)
+                }
                 onClose();
             }
         }

@@ -184,17 +184,17 @@ const AdminPage_Users = () =>
                 banned={choiceUser.banned}
                 onClose={togglBan}
             />}
-            {showNickname && <WindowAccountNickname //TODO.
+            {showNickname && <WindowAccountNickname
                 userData={choiceUser}
                 userAuthorization={userData}
                 onClose={togglNickname}
             />}
-            {showEmail && <WindowAccountEmail //TODO.
+            {showEmail && <WindowAccountEmail
                 userData={choiceUser}
                 userAuthorization={userData}
                 onClose={togglEmail}
             />}
-            {showAvatar && <WindowAccountAvatar //TODO.
+            {showAvatar && <WindowAccountAvatar
                 userData={choiceUser}
                 userAuthorization={userData}
                 onClose={togglAvatar}
