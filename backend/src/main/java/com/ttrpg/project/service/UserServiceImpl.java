@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
     public UserReturnDTO editUser(UUID id, EditUser editUser, String token) {
         Users user = getUserById(id);
         Users actualUser = getUserByToken(token);
-        if (user.getToken().equals(token) || actualUser.isAdmin()) {
+        if (actualUser.isAdmin() || user.getToken().equals(token)) {
             if (editUser.nickname() != null && !editUser.nickname().isBlank()) {
                 user.setNickname(editUser.nickname());
             }
