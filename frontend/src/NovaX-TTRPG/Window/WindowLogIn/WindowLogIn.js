@@ -12,7 +12,7 @@ import
     iconClose
 } from "../../../NovaX";
 import './WindowLogIn.css';
-import {WebsiteLogo, WebsiteAdres} from "../../index";
+import {WebsiteLogo, ServerAdres} from "../../index";
 
 const OknoLogowania = ({onClose}) =>
 {
@@ -92,7 +92,7 @@ const OknoLogowania = ({onClose}) =>
         {
             const hasloZahashowane = await SHA256(haslo).toString();
 
-            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/auth/login`, {
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -162,7 +162,7 @@ const OknoLogowania = ({onClose}) =>
 
         try
         {
-            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/auth/register`, {
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

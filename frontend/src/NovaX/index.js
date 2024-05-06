@@ -20,6 +20,13 @@ export {default as ArticleTitle} from './Main/MainArticleTitle/ArticleTitle/Arti
     export {default as ArticleTitleOption} from './Main/MainArticleTitle/ArticleTitleOption/ArticleTitleOption.js'; // Gotowe.
     export {default as ArticleTitleTag} from './Main/MainArticleTitle/ArticleTitleTag/ArticleTitleTag.js';          // Gotowe.
 
+// Bar.
+export {default as InfoBar} from './Bar/InfoBar/InfoBar.js';                                  // Gotowe.
+    export {default as InfoBarBig} from './Bar/InfoBar/InfoBarSize/InfoBarBig.js';            // Gotowe.
+    export {default as InfoBarMiddle} from './Bar/InfoBar/InfoBarSize/InfoBarMiddle.js';      // Gotowe.
+    export {default as InfoeBarSmall} from './Bar/InfoBar/InfoBarSize/InfoBarSmall.js';        // Gotowe.
+    export {default as InfoBarTiny} from './Bar/InfoBar/InfoBarSize/InfoBarTiny.js';          // Gotowe.
+
 // Frame.
 export {default as RoomFrame} from './Frame/RoomFrame/RoomFrame.js';                             // Gotowe.
 
@@ -95,3 +102,7 @@ export {default as iconDislike} from './Icon/Dislike.png';
 export {default as iconSettings} from './Icon/Settings.png';
 export {default as iconSend} from './Icon/Send.png';
 export {default as iconShare} from './Icon/Share.png';
+export {default as iconBan} from './Icon/Ban.png';
+export {default as iconUnBan} from './Icon/UnBan.png';
+export {default as iconEmail} from './Icon/Email.png';
+export {default as iconNickname} from './Icon/Nickname.png';

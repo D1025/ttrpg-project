@@ -7,6 +7,8 @@ const Button = ({
                     href,
                     src,
                     alt = "",
+                    src2,
+                    alt2 = "",
                     marginTop = false,
                     marginBottom = false,
                     marginLeftRight = true,
@@ -60,12 +62,20 @@ const Button = ({
         >
             {href ? (
                 <a href={href}>
-                    {src && <img src={src} alt={alt}/>}
+                    {src && (
+                        <div className={"Button-Img"}>
+                            <img src={src} alt={alt}/>
+                            {(src2 && !title) && <img src={src2} alt={alt2}/>}
+                        </div>)}
                     {title && <div>{title}</div>}
                 </a>
             ) : (
                 <>
-                    {src && <img src={src} alt={alt}/>}
+                    {src && (
+                        <div className={"Button-Img"}>
+                            <img src={src} alt={alt}/>
+                            {(src2 && !title) && <img src={src2} alt={alt2}/>}
+                        </div>)}
                     {title && <div>{title}</div>}
                 </>
             )}

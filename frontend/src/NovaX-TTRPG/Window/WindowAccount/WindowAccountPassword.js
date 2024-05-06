@@ -8,7 +8,7 @@ import {
 } from "../../../NovaX";
 import React, {useState} from "react";
 import SHA256 from "crypto-js/sha256";
-import {WebsiteAdres} from "../../index";
+import {ServerAdres} from "../../index";
 
 const WindowAccountPassword = ({onClose, userData}) =>
 {
@@ -52,7 +52,7 @@ const WindowAccountPassword = ({onClose, userData}) =>
 
         try
         {
-            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/users/${userData.id}/password`, {
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/users/${userData.id}/password`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

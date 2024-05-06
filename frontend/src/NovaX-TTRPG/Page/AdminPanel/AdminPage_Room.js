@@ -14,7 +14,7 @@ import {
     WebsiteName, WindowCreateRoom, WindowDeleteRoom, WindowEditRoom, WindowInviteRoom
 } from "../../index";
 
-const AdminRoomPage = () =>
+const AdminPage_Room = () =>
 {
     // Tittle.
     setTittle(WebsiteLogo, `${WebsiteName} | Pokoje`);
@@ -194,4 +194,4 @@ const AdminRoomPage = () =>
     );
 }
 
-export default AdminRoomPage;
+export default AdminPage_Room;

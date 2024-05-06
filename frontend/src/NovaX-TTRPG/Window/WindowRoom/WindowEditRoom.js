@@ -12,7 +12,7 @@ import {
     iconImage
 } from "../../../NovaX";
 import React, {useState} from "react";
-import {imgBase64, WebsiteAdres} from "../../index";
+import {imgBase64, ServerAdres} from "../../index";
 
 const WindowEditRoom = ({onClose, roomData}) =>
 {
@@ -78,7 +78,7 @@ const WindowEditRoom = ({onClose, roomData}) =>
 
         try
         {
-            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room/` + roomData.id, {
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/room/` + roomData.id, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,32 +1,31 @@
-import './WindowRoom.css';
+import './WindowAccount.css';
 import {
     Button,
     Input,
     Window,
-    storageLoad,
+    storageSave,
     iconClose
 } from "../../../NovaX";
 import React, {useState} from "react";
 import {ServerAdres} from "../../index";
 
-const WindowEditRoom = ({onClose, roomData}) =>
+const WindowAccountBan = ({onClose, userData, userAuthorization, banned = false}) =>
 {
-    // Usuń lobby.
+    // Edytuj dane użytkownika.
     const [powiadomienie, ustawPowiadomienie] = useState('');
     const stworzLobby = async(event) =>
     {
         event.preventDefault();
-        const userData = storageLoad('loginData');
 
         try
         {
-            const odpowiedz = await fetch(`${ServerAdres}/api/v1/room/${roomData.id}`, {
-                method: 'DELETE',
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/admin/users/${userData.id}/${banned ? 'unban' : 'ban'}`, {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': userData.token
+                    'Authorization': userAuthorization.token
                 },
-                body: JSON.stringify()
+                body: JSON.stringify({})
             });
 
             // Reagowanie na odpowiedź
@@ -45,7 +44,6 @@ const WindowEditRoom = ({onClose, roomData}) =>
             }
             else
             {
-                // Sukces - obsługa odpowiedzi
                 onClose();
             }
         }
@@ -58,29 +56,25 @@ const WindowEditRoom = ({onClose, roomData}) =>
 
     return (
         <Window>
-            <div className={"WindowCreateRoom"}>
+            <div className={"WindowAccount"}>
 
                 <form onSubmit={stworzLobby}>
-                    <div className={"WindowCreateRoom-Top"}>
+                    <div className={"WindowAccount-Top"}>
                         <div>
-                            Usuwanie: {'"' + (roomData.name.length > 10 ? roomData.name.substring(0, 10) + '...' : roomData.name) + '"'}
+                            Blokowanie Użytkownika
                         </div>
                         <div>
                             <Button src={iconClose} onClick={onClose} marginLeftRight={false}/>
                         </div>
                     </div>
 
-                    <div className={"WindowCreateRoom-Bottom"}>
+                    <div className={"WindowAccount-Main"}>
+                        Nazwa: {userData.nickname}
+                    </div>
+
+                    <div className={"WindowAccount-Bottom"}>
                         <div>
-                            <div>
-                                <Input
-                                    type={"submit"}
-                                    width={4}
-                                    value={"Potwierdzam Usunięcie"}
-                                    className={"BackgroundColor-4"}
-                                    autoFocus={true}
-                                />
-                            </div>
+                            <div><Input type={"submit"} value={"Potwierdzam Zablokowanie"} width={0} style={{width:'15vw'}}/></div>
                             {powiadomienie && <div>{powiadomienie}</div>}
                         </div>
                     </div>
@@ -92,4 +86,4 @@ const WindowEditRoom = ({onClose, roomData}) =>
     );
 }
 
-export default WindowEditRoom;
+export default WindowAccountBan;

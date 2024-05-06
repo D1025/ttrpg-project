@@ -9,7 +9,10 @@ import {
     iconCopy_1
 } from "../../../NovaX";
 import React, {useEffect, useState} from "react";
-import {WebsiteAdres} from "../../index";
+import {
+    ServerAdres,
+    WebsiteAdres
+} from "../../index";
 
 const WindowInviteSettings = ({onClose, roomData}) =>
 {
@@ -21,7 +24,7 @@ const WindowInviteSettings = ({onClose, roomData}) =>
     {
         try
         {
-            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room/${roomData.id}/invitations`, {
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/room/${roomData.id}/invitations`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +67,7 @@ const WindowInviteSettings = ({onClose, roomData}) =>
     {
         try
         {
-            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room/${roomData.id}/invitations`, {
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/room/${roomData.id}/invitations`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -101,7 +104,7 @@ const WindowInviteSettings = ({onClose, roomData}) =>
     {
         try
         {
-            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room/${roomData.id}/invitations`, {
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/room/${roomData.id}/invitations`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -159,7 +162,10 @@ const WindowInviteSettings = ({onClose, roomData}) =>
                                 />
                                 <Button
                                     src={iconCopy_1}
-                                    onClick={() => {navigator.clipboard.writeText(invitationLink ? `${WebsiteAdres}/invite/` + invitationLink : "")}}
+                                    onClick={() =>
+                                    {
+                                        navigator.clipboard.writeText(invitationLink ? `${WebsiteAdres}/invite/` + invitationLink : "")
+                                    }}
                                     active={invitationLink !== ''}
                                 />
                             </div>

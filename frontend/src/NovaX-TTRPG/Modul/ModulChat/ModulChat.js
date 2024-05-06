@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import SockJs from "sockjs-client";
 import Stomp from "stompjs";
 import {Chat, storageLoad, ChatMessage} from "../../../NovaX";
-import {imgBase64, ModulUserList, WebsiteAdres} from "../../index";
+import {imgBase64, ModulUserList, ServerAdres} from "../../index";
 import './ModulChat.css';
 import dayjs from "dayjs";
 
@@ -24,7 +24,7 @@ const ModulChat = ({roomId, userId}) =>
 
     const connect = () =>
     {
-        const socket = new SockJs(`${WebsiteAdres}/ws`);
+        const socket = new SockJs(`${ServerAdres}/ws`);
         const temp = Stomp.over(socket);
         setStompClient(temp);
 
