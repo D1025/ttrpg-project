@@ -8,7 +8,12 @@ import {
     iconClose,
 } from "../../NovaX";
 import React, {useEffect, useState} from "react";
-import {imgBase64, ServerAdres, WebsiteLogo, WebsiteName} from "../index";
+import {
+    imgBase64,
+    ServerAdres,
+    WebsiteLogo,
+    WebsiteName
+} from "../index";
 
 const InviteRoomPage = () =>
 {
@@ -109,9 +114,19 @@ const InviteRoomPage = () =>
         }
     }
 
+    // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
+    useEffect(() =>
+    {
+        // Czy zalogowany.
+        const loginData = storageLoad('loginData');
+        if(!loginData)
+        {
+            window.location.href = '/';
+        }
+    }, []);
 
     return (
-        <Window>
+        <Window style={{zIndex: '1 !important'}}>
             <div className={"WindowCreateRoom"}>
                 <div className={"WindowCreateRoom-Top"}>
                     <div>

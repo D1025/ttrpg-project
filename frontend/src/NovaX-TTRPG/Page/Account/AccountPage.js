@@ -219,8 +219,8 @@ const GamePage = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
+        // Czy zalogowany.
         const LoadLogInData = storageLoad('loginData')
-        // Jeśli dane logowania istnieją.
         if(LoadLogInData)
         {
             setIsLogIn(true);

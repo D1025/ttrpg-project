@@ -5,12 +5,17 @@ import
     MainArticle,
     ArticleTitle,
     storageLoad,
-    setTittle, Button, ArticleTitleOption
+    setTittle,
+    Button,
+    ArticleTitleOption
 } from "../../NovaX";
 import {
     ModulHeader,
-    useLogOut, useToggleConst, WebsiteLogo, WebsiteName,
-    WindowLogIn
+    useLogOut,
+    useToggleConst,
+    WindowLogIn,
+    WebsiteLogo,
+    WebsiteName,
 } from "../../NovaX-TTRPG";
 
 const Game = () =>
@@ -31,8 +36,8 @@ const Game = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
+        // Czy zalogowany.
         const loginData = storageLoad('loginData');
-        // Jeśli dane logowania istnieją.
         if(loginData)
         {
             setIsLogIn(true);

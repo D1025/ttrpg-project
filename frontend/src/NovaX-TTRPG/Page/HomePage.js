@@ -11,7 +11,7 @@ import
     ArticleTitleOption,
     Input,
     InputNumber,
-    iconAdd,
+    iconAdd
 } from "../../NovaX";
 import {
     ModulHeader,
@@ -151,8 +151,8 @@ const HomePage = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
+        // Czy zalogowany.
         const loginData = storageLoad('loginData');
-        // Jeśli dane logowania istnieją.
         if(loginData)
         {
             setIsLogIn(true);

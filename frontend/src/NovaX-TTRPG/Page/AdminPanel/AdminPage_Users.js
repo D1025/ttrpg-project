@@ -14,13 +14,13 @@ import {
     ModulHeader,
     useDebounce,
     useLogOut,
-    WebsiteLogo,
-    WebsiteName,
     useLoadAllUsers,
     WindowAccountNickname,
     WindowAccountEmail,
     WindowAccountAvatar,
-    WindowAccountBan
+    WindowAccountBan,
+    WebsiteLogo,
+    WebsiteName,
 } from "../../index";
 
 const AdminPage_Users = () =>
@@ -115,8 +115,8 @@ const AdminPage_Users = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
+        // Czy zalogowany.
         const loginData = storageLoad('loginData');
-        // Jeśli dane logowania istnieją.
         if(loginData)
         {
             setIsLogIn(true);

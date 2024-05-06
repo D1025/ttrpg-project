@@ -5,13 +5,25 @@ import
     MainArticle,
     ArticleTitle,
     storageLoad,
-    setTittle, InputNumber, Input, Button, iconAdd, ArticleTitleOption
+    setTittle,
+    InputNumber,
+    Input,
+    Button,
+    ArticleTitleOption,
+    iconAdd
 } from "../../../NovaX";
 import {
-    ModulHeader, useDebounce, useLoadAllRooms,
-    useLogOut, useToggleConst,
+    ModulHeader,
+    useDebounce,
+    useLoadAllRooms,
+    useLogOut,
+    useToggleConst,
+    WindowCreateRoom,
+    WindowDeleteRoom,
+    WindowEditRoom,
+    WindowInviteRoom,
     WebsiteLogo,
-    WebsiteName, WindowCreateRoom, WindowDeleteRoom, WindowEditRoom, WindowInviteRoom
+    WebsiteName
 } from "../../index";
 
 const AdminPage_Room = () =>
@@ -128,8 +140,8 @@ const AdminPage_Room = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
+        // Czy zalogowany.
         const loginData = storageLoad('loginData');
-        // Jeśli dane logowania istnieją.
         if(loginData)
         {
             setIsLogIn(true);
