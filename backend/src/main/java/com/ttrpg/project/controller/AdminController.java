@@ -35,9 +35,9 @@ public class AdminController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<Page<PublicUserReturnDTO>> getAllUsers(@RequestHeader(name = "Authorization") String authorizationHeader, @RequestParam(defaultValue = "0") Integer pageNumber) {
+    public ResponseEntity<Page<PublicUserReturnDTO>> getAllUsers(@RequestHeader(name = "Authorization") String authorizationHeader, @RequestParam(defaultValue = "0") Integer pageNumber,  @RequestParam(required = false) String name) {
         Pageable pageable = pageUtils.getPageable(pageNumber, 10);
-        return ResponseEntity.ok(userService.getAllUsers(authorizationHeader, pageable));
+        return ResponseEntity.ok(userService.getAllUsers(authorizationHeader, name, pageable));
     }
 
     @PostMapping("/users/{id}/ban")

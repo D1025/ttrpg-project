@@ -15,9 +15,9 @@ import com.ttrpg.project.model.Users;
 public interface RoomRepository extends JpaRepository<Room, UUID> {
     Page<Room> findAllByPrivateRoomIs(boolean privateRoom, Pageable pageable);
 
-    Page<Room> findAllByPrivateRoomIsAndNameContaining(boolean privateRoom, String name, Pageable pageable);
+    Page<Room> findAllByPrivateRoomIsAndNameIsContainingIgnoreCase(boolean privateRoom, String name, Pageable pageable);
 
-    Page<Room> findAllByUsersContainsOrOwnerIsAndNameContaining(Users user, String name, Users owner, Pageable pageable);
+    Page<Room> findAllByNameIsContainingIgnoreCaseAndUsersContainsOrNameIsContainingIgnoreCaseAndOwnerIs(String name, Users users, String name2, Users owner, Pageable pageable);
 
     Page<Room> findAllByUsersContainsOrOwnerIs(Users user, Users owner, Pageable pageable);
 

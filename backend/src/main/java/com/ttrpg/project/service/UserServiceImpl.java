@@ -43,10 +43,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<PublicUserReturnDTO> getAllUsers(String token, Pageable pageable) {
+    public Page<PublicUserReturnDTO> getAllUsers(String token, String name, Pageable pageable) {
         Users user = getUserByToken(token);
         if (!user.isAdmin()) {
             throw new MessageException("Niewystarczające uprawnienia");
+        }
+        if (name != null && !name.isBlank()) {
+            return userRepository.findAllByNicknameContainingIgnoreCaseOrEmailContainingIgnoreCase(name, name, pageable).map(userMapper::userToPublicUserReturnDTO);
         }
         return userRepository.findAll(pageable).map(userMapper::userToPublicUserReturnDTO);
     }
@@ -56,21 +59,17 @@ public class UserServiceImpl implements UserService {
     public UserReturnDTO editUser(UUID id, EditUser editUser, String token) {
         Users user = getUserById(id);
         Users actualUser = getUserByToken(token);
-        if (user.getToken().equals(token) || actualUser.isAdmin()) {
-            if (editUser.nickname() != null) {
+        if (actualUser.isAdmin() || user.getToken().equals(token)) {
+            if (editUser.nickname() != null && !editUser.nickname().isBlank()) {
                 user.setNickname(editUser.nickname());
-                System.out.println("User nickname: " + user.getNickname());
             }
             if (editUser.avatar() != null) {
                 user.setAvatar(editUser.avatar());
-                System.out.println("User avatar working");
-
             }
             if (editUser.avatarExtension() != null) {
                 user.setAvatarExtension(editUser.avatarExtension());
             }
-            if (editUser.email() != null) {
-                System.out.println("User email working");
+            if (editUser.email() != null && !editUser.email().isBlank()) {
                 user.setEmail(editUser.email());
             }
             userRepository.save(user);
