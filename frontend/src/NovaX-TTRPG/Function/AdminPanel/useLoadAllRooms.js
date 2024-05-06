@@ -8,7 +8,7 @@ import {
     iconPlay
 } from "../../../NovaX";
 import {imgBase64} from "../../index";
-import {WebsiteAdres} from "../../index";
+import {ServerAdres} from "../../index";
 
 function useLoadAllRoom({
                            isLogIn,
@@ -28,7 +28,7 @@ function useLoadAllRoom({
         try
         {
             // Zapytanie dla publicznych pokoi
-            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/admin/rooms?page=${page}&name=${search}`, {
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/admin/rooms?page=${page}&name=${search}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,7 +58,6 @@ function useLoadAllRoom({
 
             // Połączenie danych
             const zrenderowanePokoje = odpowiedzDane.content.map(room => (
-                room.ownerId === userData.id &&
                 <RoomFrame
                     key={room.id}
                     src={imgBase64(room.imageExtension, room.image)}

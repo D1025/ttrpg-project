@@ -1,0 +1,144 @@
+/* RoomFrame. */
+.InfoBar
+{
+    width: initial;
+    font-size: 1.0rem;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0.5vw;
+    display: flex;
+    /*cursor: pointer;*/
+}
+    /* Ostatni albo jedyny nie ma marginesu dolnego. */
+    .InfoBar:last-of-type,
+    .InfoBar:only-of-type
+    {
+        margin-bottom: 0.0vw;
+    }
+
+    /* Środkowe Elementy Pola. */
+    .InfoBar > Div
+    {
+        background-color: var(--Motyw-Ciemny);
+        border-right: 0.2vw solid;
+        border-right-color: var(--Motyw);
+        transition: var(--Animacja);
+    }
+
+    /* Po Najechaniu. */
+    /*.InfoBar:hover > Div*/
+    /*{*/
+    /*    background-color: var(--Motyw-Czarny)!important;*/
+    /*}*/
+
+    /*!* Po Aktywacji. *!*/
+    /*.InfoBar:active > Div*/
+    /*{*/
+    /*    background-color: var(--Motyw)!important;*/
+    /*}*/
+
+    /* Pierwszy Element Pola. */
+    .InfoBar > :first-of-type
+    {
+        border-radius: var(--Radius-2) 0 0 var(--Radius-2);
+        border-left: 0.3vw solid;
+        border-left-color: var(--Kolor-Dodatkowy);
+    }
+
+    /* Ostatni Element Pola. */
+    .InfoBar > :last-of-type
+    {
+        border-radius: 0 var(--Radius-2) var(--Radius-2) 0;
+        border-right: 0.3vw solid;
+        border-right-color: var(--Kolor-Dodatkowy);
+    }
+
+    /* Jedyny Element Pola. */
+    .InfoBar > :only-of-type
+    {
+        border-radius: var(--Radius-2);
+        border-right: 0.3vw solid;
+        border-left: 0.3vw solid;
+        border-right-color: var(--Kolor-Dodatkowy);
+        border-left-color: var(--Kolor-Dodatkowy);
+    }
+
+/* Element w Polu [Duży]. */
+.InfoBar-Big
+{
+    min-width: 20.0vw;
+    min-height: calc(var(--Button-Height) - 0.5vw);
+    text-align: center;
+    align-items: center;
+    justify-content: left;
+    font-size: inherit;
+    padding: 0.5vw;
+    display: flex;
+    flex: 1;
+}
+
+/* Element w Polu [Średni]. */
+.InfoBar-Middle
+{
+    width: 11.0vw;
+    min-height: calc(var(--Button-Height) - 0.5vw);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: inherit;
+    padding: 0.5vw;
+    display: flex;
+}
+
+/* Element w Polu [Mały]. */
+.InfoBar-Small
+{
+    width: 8.0vw;
+    min-height: calc(var(--Button-Height) - 0.5vw);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: inherit;
+    padding: 0.5vw;
+    display: flex;
+}
+
+/* Element w Polu [Mały]. */
+.InfoBar-Tiny
+{
+    width: calc(var(--Button-Height) - 0.5vw);
+    min-height: calc(var(--Button-Height) - 0.5vw);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5vw;
+    display: flex;
+}
+
+
+/* Nieaktywny. */
+.InfoBar-Inactive > Div,
+.InfoBar-Inactive:hover > Div,
+.InfoBar-Inactive:active > Div
+{
+    color: var(--Kolor-Oznaczenia)!important;
+    background-color: var(--Motyw-Ciemny-Przezroczysty)!important;
+    border-color: var(--Motyw-Ciemny)!important;
+    cursor: auto!important;
+}
+
+/* Aktywny. */
+.InfoBar-Active > Div
+{
+    color: var(--Kolor-Oznaczenia)!important;
+}
+    /* Odcinek Obejrzany. */
+    .InfoBar-Active > :first-of-type
+    {
+        border-left-color: var(--Kolor-Oznaczenia)!important;
+    }
+    /* Odcinek Obejrzany. */
+    .InfoBar-Active > :last-of-type
+    {
+        border-right-color: var(--Kolor-Oznaczenia)!important;
+    }

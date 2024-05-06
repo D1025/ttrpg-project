@@ -8,7 +8,7 @@ import {
     iconPlay
 } from "../../../NovaX";
 import {imgBase64} from "../../index";
-import {WebsiteAdres} from "../../index";
+import {ServerAdres} from "../../index";
 
 function useLoadRoom({
                          isLogIn,
@@ -19,7 +19,7 @@ function useLoadRoom({
                          togglEditRoom,
                          userData,
                          // Dynamicznie zmieniające się.
-                         isPublic = true,
+                         isPublic,
                          page = 0,
                          search = "",
                      })
@@ -28,7 +28,7 @@ function useLoadRoom({
     {
         try
         {
-            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/room?status=${isPublic ? 'PUBLIC' : 'PRIVATE'}&page=${page}&name=${search}`, {
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/room?status=${isPublic === true ? 'PUBLIC' : 'PRIVATE'}&page=${page}&name=${search}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

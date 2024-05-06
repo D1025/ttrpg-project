@@ -1,6 +1,18 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import {Game, HomePage, NotFoundPage, AdminRoom, AccountPage, AdminUser, InviteRoom} from "./NovaX-TTRPG";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route
+} from 'react-router-dom';
+import {
+    GamePage,
+    HomePage,
+    NotFoundPage,
+    AdminPage_Rooms,
+    AccountPage,
+    AdminPage_Users,
+    InviteRoomPage
+} from "./NovaX-TTRPG";
 
 function App()
 {
@@ -8,11 +20,13 @@ function App()
         <Router>
             <Routes>
                 <Route path="/" element={<HomePage/>}/>
-                <Route path="/Gra" element={<Game/>}/>
+                <Route path="/Gra" element={<GamePage/>}/>
                 <Route path="/UstawieniaKonta" element={<AccountPage/>}/>
-                <Route path="/AdminPanel/Room" element={<AdminRoom/>}/>
-                <Route path="/AdminPanel/User" element={<AdminUser/>}/>
-                <Route path="/invite/:id" element={<InviteRoom/>}/>
+
+                <Route path="/AdminPanel/Room" element={<AdminPage_Rooms/>}/>
+                <Route path="/AdminPanel/User" element={<AdminPage_Users/>}/>
+
+                <Route path="/invite/:id" element={<InviteRoomPage/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
             </Routes>
         </Router>

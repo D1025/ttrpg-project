@@ -7,9 +7,9 @@ import {
     storageSave
 } from "../../../NovaX";
 import React, {useState} from "react";
-import {WebsiteAdres} from "../../index";
+import {ServerAdres} from "../../index";
 
-const WindowAccountNickname = ({onClose, userData}) =>
+const WindowAccountNickname = ({onClose, userData, userAuthorization = userData}) =>
 {
     // Do Przetwozenia.
     const [nickname, setNickname] = useState(userData.nickname);
@@ -28,11 +28,11 @@ const WindowAccountNickname = ({onClose, userData}) =>
 
         try
         {
-            const odpowiedz = await fetch(`${WebsiteAdres}/api/v1/users/` + userData.id, {
+            const odpowiedz = await fetch(`${ServerAdres}/api/v1/users/${userData.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': userData.token
+                    'Authorization': userAuthorization.token
                 },
                 body: JSON.stringify({
                     "nickname": nickname,
@@ -56,8 +56,11 @@ const WindowAccountNickname = ({onClose, userData}) =>
             else
             {
                 // Sukces - obsługa odpowiedzi
-                const data = await odpowiedz.json();
-                storageSave("loginData", data)
+                if(userAuthorization.id === userData.id)
+                {
+                    const data = await odpowiedz.json();
+                    storageSave("loginData", data)
+                }
                 onClose();
             }
         }
@@ -83,7 +86,8 @@ const WindowAccountNickname = ({onClose, userData}) =>
                     </div>
 
                     <div className={"WindowAccount-Main"}>
-                        <Input value={nickname} type={"text"} placeholder={"Nazwa"} onChange={takeNickname} marginBottom={true} autoFocus={true} required/><br/>
+                        <Input value={nickname} type={"text"} placeholder={"Nazwa"} onChange={takeNickname}
+                               marginBottom={true} autoFocus={true} required/><br/>
                     </div>
 
                     <div className={"WindowAccount-Bottom"}>
