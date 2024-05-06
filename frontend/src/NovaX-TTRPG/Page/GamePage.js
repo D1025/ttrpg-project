@@ -73,7 +73,6 @@ const GamePage = () =>
         <>
             {/* Nagłłówek Strony. */}
             <ModulHeader isLogIn={isLogIn} userData={userData} logOut={LogOut} navUser={false} navGame={true} logIn={toggleLogIn}/>
-
             <ModulChat roomId={idParam} userId={userData.id}/>
 
             {showLogIn && <WindowLogIn onClose={toggleLogIn}/>}

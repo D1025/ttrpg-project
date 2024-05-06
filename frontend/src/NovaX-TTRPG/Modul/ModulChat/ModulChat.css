@@ -38,3 +38,8 @@ Div.ObszarGry
         width: 35vw;
         margin: auto 2.5vw 2.5vw auto;
     }
+
+.ModulChatZIndex {
+    position: absolute; /* lub absolute, fixed, sticky */
+    z-index: 1; /* Możesz dostosować tę wartość do swoich potrzeb */
+}

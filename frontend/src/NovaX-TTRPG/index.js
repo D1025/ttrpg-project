@@ -17,7 +17,7 @@ export {default as WindowAccountAvatar} from './Window/WindowAccount/WindowAccou
 export {default as WindowAccountPassword} from './Window/WindowAccount/WindowAccountPassword.js';
 
 // Modul.
-export {default as ModulChat} from './Modul/ModulChat/ModulChat.js';
+export {default as ModulChat} from './Modul/ModulChat/ModulChat.jsx';
 export {default as ModulUserList} from './Modul//ModulUserList/ModulUserList.js';
 export {default as ModulHeader} from './Modul/ModulHeader/ModulHeader.js';
 
