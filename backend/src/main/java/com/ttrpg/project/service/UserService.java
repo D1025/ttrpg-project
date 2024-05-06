@@ -20,7 +20,7 @@ public interface UserService {
 
     List<PublicUserReturnDTO> getAllUsers();
 
-    Page<PublicUserReturnDTO> getAllUsers(String token, Pageable pageable);
+    Page<PublicUserReturnDTO> getAllUsers(String token, String name, Pageable pageable);
 
     UserReturnDTO editUser(UUID id, EditUser editUser, String token);
 

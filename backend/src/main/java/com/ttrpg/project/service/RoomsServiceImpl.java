@@ -55,19 +55,21 @@ public class RoomsServiceImpl implements RoomsService {
             jwtAuthorization.authorize(authorizationHeader);
         }
         Page<Room> rooms;
-        if (name != null && !isPrivate) {
-            rooms = roomRepository.findAllByPrivateRoomIsAndNameContaining(false, name, pageable);
-        } else if(!isPrivate){
-            rooms = roomRepository.findAllByPrivateRoomIs(false, pageable);
-        }
-        else if (name != null) {
+        if (isPrivate) {
             Users user = userService.getUserByToken(authorizationHeader);
-            rooms = roomRepository.findAllByUsersContainsOrOwnerIsAndNameContaining(user, name, user, pageable);
+            if (name != null && !name.isBlank()) {
+                rooms = roomRepository.findAllByNameIsContainingIgnoreCaseAndUsersContainsOrNameIsContainingIgnoreCaseAndOwnerIs(name, user, name, user, pageable);
+            } else {
+                rooms = roomRepository.findAllByUsersContainsOrOwnerIs(user, user, pageable);
+            }
+        } else {
+            if (name != null && !name.isBlank()) {
+                rooms = roomRepository.findAllByPrivateRoomIsAndNameIsContainingIgnoreCase(false, name, pageable);
+            } else {
+                rooms = roomRepository.findAllByPrivateRoomIs(false, pageable);
+            }
         }
-        else {
-            Users user = userService.getUserByToken(authorizationHeader);
-            rooms = roomRepository.findAllByUsersContainsOrOwnerIs(user, user, pageable);
-        }
+
         return rooms.map(roomMapper::roomToRoomReturnDTO);
     }
 
