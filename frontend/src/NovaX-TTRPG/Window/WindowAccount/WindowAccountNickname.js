@@ -20,12 +20,14 @@ const WindowAccountNickname = ({onClose, userData, userAuthorization = userData}
         setNickname(event.target.value);
     };
 
+    // console.log(userAuthorization)
+
     // Edytuj dane użytkownika.
     const [powiadomienie, ustawPowiadomienie] = useState('');
     const stworzLobby = async(event) =>
     {
         event.preventDefault();
-        console.log(userAuthorization)
+
         try
         {
             const odpowiedz = await fetch(`${ServerAdres}/api/v1/users/${userData.id}`, {
