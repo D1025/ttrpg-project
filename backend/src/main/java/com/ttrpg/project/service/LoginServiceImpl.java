@@ -37,7 +37,7 @@ public class LoginServiceImpl implements LoginService {
             user.setToken(generateToken(user));
             user.setTokenExpirationTime(LocalDateTime.now().plusHours(projectProperties.getExpirationTime()));
             usersRepository.save(user);
-            return new UserReturnDTO(user.getId(), user.getEmail(), user.getNickname(), user.getToken(), user.isAdmin(), user.getAvatar(), user.getAvatarExtension());
+            return new UserReturnDTO(user.getId(), user.getEmail(), user.getNickname(), user.getToken(), user.isAdmin(), user.isBanned(),  user.getAvatar(), user.getAvatarExtension());
         }
 
         throw new MessageException("Blędne hasło");
