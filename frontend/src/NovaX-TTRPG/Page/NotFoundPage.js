@@ -5,12 +5,17 @@ import
     MainArticle,
     ArticleTitle,
     storageLoad,
-    setTittle, Button, ArticleTitleOption
+    setTittle,
+    Button,
+    ArticleTitleOption, storageRemove
 } from "../../NovaX";
 import {
     ModulHeader,
-    useLogOut, useToggleConst, WebsiteLogo, WebsiteName,
-    WindowLogIn
+    useLogOut,
+    useToggleConst,
+    WindowLogIn,
+    WebsiteLogo,
+    WebsiteName,
 } from "../../NovaX-TTRPG";
 
 const Game = () =>
@@ -31,12 +36,22 @@ const Game = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
+        // Czy zalogowany.
         const loginData = storageLoad('loginData');
-        // Jeśli dane logowania istnieją.
         if(loginData)
         {
-            setIsLogIn(true);
-            setUserData(loginData);
+            if(loginData.banned === true)
+            {
+                storageRemove('loginData');
+                setUserData('');
+                setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else
+            {
+                setIsLogIn(true);
+                setUserData(loginData);
+            }
         }
         else
         {

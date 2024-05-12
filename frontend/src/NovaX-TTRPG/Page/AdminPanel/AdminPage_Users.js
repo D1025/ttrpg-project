@@ -8,19 +8,19 @@ import
     setTittle,
     InputNumber,
     Input,
-    ArticleTitleOption
+    ArticleTitleOption, storageRemove
 } from "../../../NovaX";
 import {
     ModulHeader,
     useDebounce,
     useLogOut,
-    WebsiteLogo,
-    WebsiteName,
     useLoadAllUsers,
     WindowAccountNickname,
     WindowAccountEmail,
     WindowAccountAvatar,
-    WindowAccountBan
+    WindowAccountBan,
+    WebsiteLogo,
+    WebsiteName,
 } from "../../index";
 
 const AdminPage_Users = () =>
@@ -115,24 +115,34 @@ const AdminPage_Users = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
+        // Czy zalogowany.
         const loginData = storageLoad('loginData');
-        // Jeśli dane logowania istnieją.
         if(loginData)
         {
-            setIsLogIn(true);
-            setUserData(loginData);
-            LoadRooms({
-                isLogIn: isLogIn,
-                page: page,
-                setPageMax: setPageMax,
-                setUsers: setUsers,
-                togglBan: togglBan,
-                togglAvatar: togglAvatar,
-                togglEmail: togglEmail,
-                togglNickname: togglNickname,
-                search: search,
-                userData: userData
-            });
+            if(loginData.banned === true)
+            {
+                storageRemove('loginData');
+                setUserData('');
+                setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else
+            {
+                setIsLogIn(true);
+                setUserData(loginData);
+                LoadRooms({
+                    isLogIn: isLogIn,
+                    page: page,
+                    setPageMax: setPageMax,
+                    setUsers: setUsers,
+                    togglBan: togglBan,
+                    togglAvatar: togglAvatar,
+                    togglEmail: togglEmail,
+                    togglNickname: togglNickname,
+                    search: search,
+                    userData: userData
+                });
+            }
         }
         else
         {

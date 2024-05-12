@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {
     Button,
     storageLoad,
@@ -10,7 +10,7 @@ import {
     AccountInformation,
     Input,
     InputNumber,
-    iconEdit
+    iconEdit, storageRemove
 } from "../../../NovaX";
 import './AccountPage.css';
 import {
@@ -219,23 +219,34 @@ const GamePage = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
-        const LoadLogInData = storageLoad('loginData')
-        // Jeśli dane logowania istnieją.
-        if(LoadLogInData)
+        // Czy zalogowany.
+        const loginData = storageLoad('loginData')
+
+        if(loginData)
         {
-            setIsLogIn(true);
-            setUserData(LoadLogInData);
-            LoadRooms({
-                isLogIn: isLogIn,
-                page: page,
-                setPageMax: setPageMax,
-                setRooms: setRooms,
-                togglDeleteRoom: togglDeleteRoom,
-                toggleInviteRoom: toggleInviteRoom,
-                togglEditRoom: togglEditRoom,
-                search: search,
-                userData: userData
-            });
+            if(loginData.banned === true)
+            {
+                storageRemove('loginData');
+                setUserData('');
+                setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else
+            {
+                setIsLogIn(true);
+                setUserData(loginData);
+                LoadRooms({
+                    isLogIn: isLogIn,
+                    page: page,
+                    setPageMax: setPageMax,
+                    setRooms: setRooms,
+                    togglDeleteRoom: togglDeleteRoom,
+                    toggleInviteRoom: toggleInviteRoom,
+                    togglEditRoom: togglEditRoom,
+                    search: search,
+                    userData: userData
+                });
+            }
         }
         else
         {

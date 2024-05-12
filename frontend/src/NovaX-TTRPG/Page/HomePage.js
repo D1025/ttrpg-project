@@ -11,7 +11,7 @@ import
     ArticleTitleOption,
     Input,
     InputNumber,
-    iconAdd,
+    iconAdd, storageRemove
 } from "../../NovaX";
 import {
     ModulHeader,
@@ -151,24 +151,34 @@ const HomePage = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
+        // Czy zalogowany.
         const loginData = storageLoad('loginData');
-        // Jeśli dane logowania istnieją.
         if(loginData)
         {
-            setIsLogIn(true);
-            setUserData(loginData);
-            LoadRooms({
-                isPublic: lobby,
-                isLogIn: isLogIn,
-                page: page,
-                setPageMax: setPageMax,
-                setRooms: setRooms,
-                togglDeleteRoom: togglDeleteRoom,
-                toggleInviteRoom: toggleInviteRoom,
-                togglEditRoom: togglEditRoom,
-                search: search,
-                userData: userData
-            });
+            if(loginData.banned === true)
+            {
+                storageRemove('loginData');
+                setUserData('');
+                setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else
+            {
+                setIsLogIn(true);
+                setUserData(loginData);
+                LoadRooms({
+                    isPublic: lobby,
+                    isLogIn: isLogIn,
+                    page: page,
+                    setPageMax: setPageMax,
+                    setRooms: setRooms,
+                    togglDeleteRoom: togglDeleteRoom,
+                    toggleInviteRoom: toggleInviteRoom,
+                    togglEditRoom: togglEditRoom,
+                    search: search,
+                    userData: userData
+                });
+            }
         }
         else
         {

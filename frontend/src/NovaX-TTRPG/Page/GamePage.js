@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {
     storageLoad,
-    setTittle
+    setTittle, storageRemove
 } from "../../NovaX";
 import {
     ModulChat,
@@ -28,11 +28,22 @@ const GamePage = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
+        // Czy zalogowany.
         const loginData = storageLoad('loginData');
         if(loginData)
         {
-            setIsLogIn(true);
-            setUserData(loginData);
+            if(loginData.banned === true)
+            {
+                storageRemove('loginData');
+                setUserData('');
+                setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else
+            {
+                setIsLogIn(true);
+                setUserData(loginData);
+            }
         }
         else
         {

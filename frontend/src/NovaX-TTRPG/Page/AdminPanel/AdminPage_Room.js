@@ -5,13 +5,25 @@ import
     MainArticle,
     ArticleTitle,
     storageLoad,
-    setTittle, InputNumber, Input, Button, iconAdd, ArticleTitleOption
+    setTittle,
+    InputNumber,
+    Input,
+    Button,
+    ArticleTitleOption,
+    iconAdd, storageRemove
 } from "../../../NovaX";
 import {
-    ModulHeader, useDebounce, useLoadAllRooms,
-    useLogOut, useToggleConst,
+    ModulHeader,
+    useDebounce,
+    useLoadAllRooms,
+    useLogOut,
+    useToggleConst,
+    WindowCreateRoom,
+    WindowDeleteRoom,
+    WindowEditRoom,
+    WindowInviteRoom,
     WebsiteLogo,
-    WebsiteName, WindowCreateRoom, WindowDeleteRoom, WindowEditRoom, WindowInviteRoom
+    WebsiteName
 } from "../../index";
 
 const AdminPage_Room = () =>
@@ -128,23 +140,33 @@ const AdminPage_Room = () =>
     // Sprawdza logowanie i odświeża dynamiczne elementy po zmianie.
     useEffect(() =>
     {
+        // Czy zalogowany.
         const loginData = storageLoad('loginData');
-        // Jeśli dane logowania istnieją.
         if(loginData)
         {
-            setIsLogIn(true);
-            setUserData(loginData);
-            LoadRooms({
-                isLogIn: isLogIn,
-                page: page,
-                setPageMax: setPageMax,
-                setRooms: setRooms,
-                togglDeleteRoom: togglDeleteRoom,
-                toggleInviteRoom: toggleInviteRoom,
-                togglEditRoom: togglEditRoom,
-                search: search,
-                userData: userData
-            });
+            if(loginData.banned === true)
+            {
+                storageRemove('loginData');
+                setUserData('');
+                setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else
+            {
+                setIsLogIn(true);
+                setUserData(loginData);
+                LoadRooms({
+                    isLogIn: isLogIn,
+                    page: page,
+                    setPageMax: setPageMax,
+                    setRooms: setRooms,
+                    togglDeleteRoom: togglDeleteRoom,
+                    toggleInviteRoom: toggleInviteRoom,
+                    togglEditRoom: togglEditRoom,
+                    search: search,
+                    userData: userData
+                });
+            }
         }
         else
         {
