@@ -20,30 +20,30 @@ const OknoLogowania = ({onClose}) =>
     const [LogowanieCzyRejestracja, ustawLogowanieCzyRejestracja] = useState(true);
 
     // Statusy Logowanie/Rejestracji.
-    const [nazwa, ustawNazwe] = useState('');
-    const [email, ustawEmail] = useState('');
-    const [haslo, ustawHaslo] = useState('');
-    const [haslo2, ustawHaslo2] = useState('');
-    const [powiadomienie, ustawPowiadomienie] = useState(''); // Powiadomienia.
+    const [nickname, setNickname] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [notification, setNotification] = useState(''); // Powiadomienia.
     const [checkbox, ustawCheckbox] = useState(false); // Zapamiętaj mnie.
 
     // Do logowanie.
     const pobierzEmail = (event) => // Email.
     {
-        ustawEmail(event.target.value);
+        setEmail(event.target.value);
     };
     const pobierzHaslo = (event) => // Haslo.
     {
-        ustawHaslo(event.target.value);
+        setPassword(event.target.value);
     };
     // Dodatkowe do rejestracji.
     const pobierzNazwe = (event) => // Nazwa.
     {
-        ustawNazwe(event.target.value);
+        setNickname(event.target.value);
     };
     const pobierzHaslo2 = (event) => // Haslo2.
     {
-        ustawHaslo2(event.target.value);
+        setConfirmPassword(event.target.value);
     };
     // Zapamiętaj email.
     const pobierzCheckbox = (event) => // Checkbox.
@@ -56,10 +56,10 @@ const OknoLogowania = ({onClose}) =>
     {
         if(!LogowanieCzyRejestracja)
         {
-            ustawEmail('');
-            ustawHaslo('');
-            ustawNazwe('');
-            ustawHaslo2('');
+            setEmail('');
+            setPassword('');
+            setNickname('');
+            setConfirmPassword('');
         }
         else if(LogowanieCzyRejestracja)
         {
@@ -68,18 +68,18 @@ const OknoLogowania = ({onClose}) =>
             if(ZapisanyEmail)
             {
                 ustawCheckbox(ZapisanyEmail.checkboxChecked);
-                ustawEmail(ZapisanyEmail.email);
+                setEmail(ZapisanyEmail.email);
             }
             else
             {
-                ustawEmail('');
+                setEmail('');
             }
-            ustawHaslo('');
+            setPassword('');
         }
 
-        if(powiadomienie)
+        if(notification)
         {
-            ustawPowiadomienie('');
+            setNotification('');
         }
     }, [LogowanieCzyRejestracja]);
 
@@ -90,7 +90,7 @@ const OknoLogowania = ({onClose}) =>
 
         try
         {
-            const hasloZahashowane = await SHA256(haslo).toString();
+            const hasloZahashowane = await SHA256(password).toString();
 
             const odpowiedz = await fetch(`${ServerAdres}/api/v1/auth/login`, {
                 method: 'POST',
@@ -109,11 +109,11 @@ const OknoLogowania = ({onClose}) =>
                 if(odpowiedz.status === 400)
                 {
                     const blad = await odpowiedz.json();
-                    ustawPowiadomienie(`${blad.message}`);
+                    setNotification(`${blad.message}`);
                 }
                 else
                 {
-                    ustawPowiadomienie(`Błąd: ${odpowiedz.status}`);
+                    setNotification(`Błąd: ${odpowiedz.status}`);
                 }
             }
             else
@@ -134,14 +134,21 @@ const OknoLogowania = ({onClose}) =>
                 }
 
                 // Zapisuje dane logowania.
-                const dane = await odpowiedz.json();
-                storageSave('loginData', dane);
-                onClose();
+                const loginData = await odpowiedz.json();
+                if(loginData.banned === true)
+                {
+                    setNotification("Twoje konto zostało zbanowane.")
+                }
+                else
+                {
+                    storageSave('loginData', loginData);
+                    onClose();
+                }
             }
         }
         catch(blad)
         {
-            ustawPowiadomienie(`Nieoczekiwany błąd: ${blad}`);
+            setNotification(`Nieoczekiwany błąd: ${blad}`);
         }
     };
 
@@ -151,14 +158,14 @@ const OknoLogowania = ({onClose}) =>
     {
         event.preventDefault();
 
-        if(haslo !== haslo2)
+        if(password !== confirmPassword)
         {
-            ustawPowiadomienie(`Hasła nie pokrywają się`);
+            setNotification(`Hasła nie pokrywają się`);
             return;
         }
 
         // Asynchroniczne haszowanie hasła.
-        const hasloZahashowane = await SHA256(haslo).toString();
+        const hasloZahashowane = await SHA256(password).toString();
 
         try
         {
@@ -170,7 +177,7 @@ const OknoLogowania = ({onClose}) =>
                 body: JSON.stringify({
                     email: email,
                     password: hasloZahashowane,
-                    nickname: nazwa
+                    nickname: nickname
                 })
             });
 
@@ -180,21 +187,21 @@ const OknoLogowania = ({onClose}) =>
                 if(odpowiedz.status === 400)
                 {
                     const blad = await odpowiedz.json();
-                    ustawPowiadomienie(`${blad.message}`);
+                    setNotification(`${blad.message}`);
                 }
                 else
                 {
-                    ustawPowiadomienie(`Błąd: ${odpowiedz.status}`);
+                    setNotification(`Błąd: ${odpowiedz.status}`);
                 }
             }
             else
             {
-                ustawPowiadomienie(`Rejestracja udana`);
+                setNotification(`Rejestracja udana`);
             }
         }
         catch(blad)
         {
-            ustawPowiadomienie(`Nieoczekiwany błąd: ${blad}`);
+            setNotification(`Nieoczekiwany błąd: ${blad}`);
         }
     };
 
@@ -231,7 +238,7 @@ const OknoLogowania = ({onClose}) =>
                                     />
                                     <Input type={"password"}
                                            placeholder={"Hasło"}
-                                           value={haslo}
+                                           value={password}
                                            onChange={pobierzHaslo}
                                            required
                                     />
@@ -253,13 +260,13 @@ const OknoLogowania = ({onClose}) =>
                                 <div>
                                     <img src={WebsiteLogo} alt={""}/>
 
-                                    <Input type={"text"} placeholder={"Nazwa"} value={nazwa} onChange={pobierzNazwe}
+                                    <Input type={"text"} placeholder={"Nazwa"} value={nickname} onChange={pobierzNazwe}
                                            required/>
                                     <Input type={"text"} placeholder={"Email"} value={email} onChange={pobierzEmail}
                                            required/>
-                                    <Input type={"password"} placeholder={"Hasło"} value={haslo} onChange={pobierzHaslo}
+                                    <Input type={"password"} placeholder={"Hasło"} value={password} onChange={pobierzHaslo}
                                            required/>
-                                    <Input type={"password"} placeholder={"Powtórz Hasło"} value={haslo2}
+                                    <Input type={"password"} placeholder={"Powtórz Hasło"} value={confirmPassword}
                                            onChange={pobierzHaslo2}
                                            required/>
 
@@ -274,7 +281,7 @@ const OknoLogowania = ({onClose}) =>
                     </div>
 
                     <div className={"WindowLogIn-Bottom"}>
-                        {powiadomienie}
+                        {notification}
                     </div>
                 </div>
             </div>

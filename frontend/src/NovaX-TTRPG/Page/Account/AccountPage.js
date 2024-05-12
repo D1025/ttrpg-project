@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {
     Button,
     storageLoad,
@@ -10,7 +10,7 @@ import {
     AccountInformation,
     Input,
     InputNumber,
-    iconEdit
+    iconEdit, storageRemove
 } from "../../../NovaX";
 import './AccountPage.css';
 import {
@@ -220,22 +220,33 @@ const GamePage = () =>
     useEffect(() =>
     {
         // Czy zalogowany.
-        const LoadLogInData = storageLoad('loginData')
-        if(LoadLogInData)
+        const loginData = storageLoad('loginData')
+
+        if(loginData)
         {
-            setIsLogIn(true);
-            setUserData(LoadLogInData);
-            LoadRooms({
-                isLogIn: isLogIn,
-                page: page,
-                setPageMax: setPageMax,
-                setRooms: setRooms,
-                togglDeleteRoom: togglDeleteRoom,
-                toggleInviteRoom: toggleInviteRoom,
-                togglEditRoom: togglEditRoom,
-                search: search,
-                userData: userData
-            });
+            if(loginData.banned === true)
+            {
+                storageRemove('loginData');
+                setUserData('');
+                setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else
+            {
+                setIsLogIn(true);
+                setUserData(loginData);
+                LoadRooms({
+                    isLogIn: isLogIn,
+                    page: page,
+                    setPageMax: setPageMax,
+                    setRooms: setRooms,
+                    togglDeleteRoom: togglDeleteRoom,
+                    toggleInviteRoom: toggleInviteRoom,
+                    togglEditRoom: togglEditRoom,
+                    search: search,
+                    userData: userData
+                });
+            }
         }
         else
         {

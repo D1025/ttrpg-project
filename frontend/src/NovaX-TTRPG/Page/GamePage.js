@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {
     storageLoad,
-    setTittle
+    setTittle, storageRemove
 } from "../../NovaX";
 import {
     ModulChat,
@@ -32,8 +32,18 @@ const GamePage = () =>
         const loginData = storageLoad('loginData');
         if(loginData)
         {
-            setIsLogIn(true);
-            setUserData(loginData);
+            if(loginData.banned === true)
+            {
+                storageRemove('loginData');
+                setUserData('');
+                setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else
+            {
+                setIsLogIn(true);
+                setUserData(loginData);
+            }
         }
         else
         {

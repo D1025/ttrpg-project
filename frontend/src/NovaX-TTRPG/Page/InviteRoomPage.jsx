@@ -5,7 +5,7 @@ import {
     setTittle,
     storageLoad,
     Window,
-    iconClose,
+    iconClose, storageRemove,
 } from "../../NovaX";
 import React, {useEffect, useState} from "react";
 import {
@@ -121,6 +121,11 @@ const InviteRoomPage = () =>
         const loginData = storageLoad('loginData');
         if(!loginData)
         {
+            window.location.href = '/';
+        }
+        else if(loginData.banned === true)
+        {
+            storageRemove('loginData');
             window.location.href = '/';
         }
     }, []);

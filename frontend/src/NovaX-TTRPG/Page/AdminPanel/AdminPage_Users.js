@@ -8,7 +8,7 @@ import
     setTittle,
     InputNumber,
     Input,
-    ArticleTitleOption
+    ArticleTitleOption, storageRemove
 } from "../../../NovaX";
 import {
     ModulHeader,
@@ -119,20 +119,30 @@ const AdminPage_Users = () =>
         const loginData = storageLoad('loginData');
         if(loginData)
         {
-            setIsLogIn(true);
-            setUserData(loginData);
-            LoadRooms({
-                isLogIn: isLogIn,
-                page: page,
-                setPageMax: setPageMax,
-                setUsers: setUsers,
-                togglBan: togglBan,
-                togglAvatar: togglAvatar,
-                togglEmail: togglEmail,
-                togglNickname: togglNickname,
-                search: search,
-                userData: userData
-            });
+            if(loginData.banned === true)
+            {
+                storageRemove('loginData');
+                setUserData('');
+                setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else
+            {
+                setIsLogIn(true);
+                setUserData(loginData);
+                LoadRooms({
+                    isLogIn: isLogIn,
+                    page: page,
+                    setPageMax: setPageMax,
+                    setUsers: setUsers,
+                    togglBan: togglBan,
+                    togglAvatar: togglAvatar,
+                    togglEmail: togglEmail,
+                    togglNickname: togglNickname,
+                    search: search,
+                    userData: userData
+                });
+            }
         }
         else
         {

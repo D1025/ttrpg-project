@@ -7,7 +7,7 @@ import
     storageLoad,
     setTittle,
     Button,
-    ArticleTitleOption
+    ArticleTitleOption, storageRemove
 } from "../../NovaX";
 import {
     ModulHeader,
@@ -40,8 +40,18 @@ const Game = () =>
         const loginData = storageLoad('loginData');
         if(loginData)
         {
-            setIsLogIn(true);
-            setUserData(loginData);
+            if(loginData.banned === true)
+            {
+                storageRemove('loginData');
+                setUserData('');
+                setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else
+            {
+                setIsLogIn(true);
+                setUserData(loginData);
+            }
         }
         else
         {
