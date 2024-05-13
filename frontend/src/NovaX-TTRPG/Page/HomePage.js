@@ -200,14 +200,14 @@ const HomePage = () =>
                     <MainPanel>
                         <Button title={"Publiczne"} width={2} colorNumber={lobby === true ? 1 : 0}
                                 onClick={() => setLobby(true)}/>
-                        <Button title={"Prywatne"} width={2} colorNumber={lobby === false ? 1 : 0}
+                        <Button title={"Dołączone"} width={2} colorNumber={lobby === false ? 1 : 0}
                                 onClick={() => setLobby(false)}/>
                     </MainPanel>
                 )}
 
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <ArticleTitle title={lobby === true ? ("Pokoje Publiczne") : ("Pokoje Prywatne")} tag={"h2"}>
+                    <ArticleTitle title={lobby === true ? ("Pokoje Publiczne") : ("Pokoje Dołączone")} tag={"h2"}>
                         {isLogIn === true && (
                             <ArticleTitleOption>
                                 {pageMax > 0 &&
