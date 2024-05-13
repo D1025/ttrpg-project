@@ -45,6 +45,11 @@ public class LoginServiceImpl implements LoginService {
         throw new MessageException("Blędne hasło");
     }
 
+    @Override
+    public UserReturnDTO verify(String token) {
+        return userMapper.userToUserReturnDTO(usersRepository.findByToken(token));
+    }
+
     private String generateToken(Users user) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         JwtBuilder builder = Jwts.builder()
@@ -89,7 +94,10 @@ public class LoginServiceImpl implements LoginService {
     @Override
     @Transactional
     public HttpStatus logout(String token) {
-        Users user = (Users) usersRepository.findByToken(token).orElseThrow(() -> new RuntimeException("User not found"));
+        Users user =  usersRepository.findByToken(token);
+        if (user == null) {
+            throw new MessageException("Nie znaleziono użytkownika");
+        }
         user.setToken(null);
         user.setTokenExpirationTime(null);
         usersRepository.save(user);
