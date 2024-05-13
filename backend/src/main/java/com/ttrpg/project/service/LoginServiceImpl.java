@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.ttrpg.project.dto.UserReturnDTO;
 import com.ttrpg.project.exceptions.MessageException;
+import com.ttrpg.project.mapper.UserMapper;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -25,6 +26,7 @@ public class LoginServiceImpl implements LoginService {
 
     final private UsersRepository usersRepository;
     final private ProjectProperties projectProperties;
+    final private UserMapper userMapper;
     
     @Override
     @Transactional
@@ -37,7 +39,7 @@ public class LoginServiceImpl implements LoginService {
             user.setToken(generateToken(user));
             user.setTokenExpirationTime(LocalDateTime.now().plusHours(projectProperties.getExpirationTime()));
             usersRepository.save(user);
-            return new UserReturnDTO(user.getId(), user.getEmail(), user.getNickname(), user.getToken(), user.isAdmin(), user.isBanned(),  user.getAvatar(), user.getAvatarExtension());
+            return userMapper.userToUserReturnDTO(user);
         }
 
         throw new MessageException("Blędne hasło");
