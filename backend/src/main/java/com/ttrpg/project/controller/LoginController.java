@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -28,6 +26,12 @@ public class LoginController {
     @PostMapping("/register")
     public ResponseEntity<HttpStatus> register(@RequestBody PartialUsers registerForm) {
         return ResponseEntity.ok(loginService.register(registerForm));
+    }
+
+    @GetMapping("/verify")
+    public ResponseEntity<UserReturnDTO> verify(@RequestHeader(name = "Authorization") String authorizationHeader) {
+        jwtAuthorization.authorize(authorizationHeader);
+        return ResponseEntity.ok(loginService.verify(authorizationHeader));
     }
 
     @PostMapping("/logout")

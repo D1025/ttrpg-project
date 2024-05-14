@@ -9,6 +9,8 @@ public interface LoginService {
 
     UserReturnDTO login(String email, String password, boolean rememberMe);
 
+    UserReturnDTO verify(String token);
+
     HttpStatus register(PartialUsers registerForm);
 
     boolean validateToken(String token);

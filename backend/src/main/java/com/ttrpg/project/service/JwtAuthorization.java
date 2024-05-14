@@ -1,6 +1,7 @@
 package com.ttrpg.project.service;
 
 import com.ttrpg.project.exceptions.AuthorizationException;
+import com.ttrpg.project.exceptions.MessageException;
 import com.ttrpg.project.model.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class JwtAuthorization {
 
         if (user == null) {
             throw new AuthorizationException();
+        }
+
+        if (user.isBanned()) {
+            throw new MessageException("Zostałeś zbanowany");
         }
     }
 }
