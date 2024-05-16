@@ -12,6 +12,7 @@ export {default as InviteRoomPage} from './Page/InviteRoomPage.jsx';
 export {default as NotFoundPage} from './Page/NotFoundPage.js';
 export {default as AdminPage_Rooms} from './Page/AdminPanel/AdminPage_Room.js';
 export {default as AdminPage_Users} from './Page/AdminPanel/AdminPage_Users.js';
+export {default as YouHaveBeenBaned} from './Page/YouHaveBeenBaned.js';
 
 // Window.
 export {default as WindowLogIn} from './Window/WindowLogIn/WindowLogIn.js';
@@ -36,6 +37,7 @@ export {default as imgBase64} from './Function/imgBase64.js';
 export {default as useToggleConst} from './Function/useToggleConst.js';
 export {default as useLogOut} from './Function/useLogOut.js';
 export {default as useDebounce} from './Function/useDebounce.js';
+export {default as verifyUser} from './Function/useVerify/verifyUser.js';
 // Pokoje.
 export {default as useLoadRoom} from './Function/Room/useLoadRoom.js';
 export {default as useLoadMyRoom} from './Function/Room/useLoadMyRoom.js';

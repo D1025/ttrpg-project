@@ -23,7 +23,7 @@ import {
     WindowEditRoom,
     WindowInviteRoom,
     WebsiteLogo,
-    WebsiteName
+    WebsiteName, verifyUser
 } from "../../index";
 
 const AdminPage_Room = () =>
@@ -34,6 +34,7 @@ const AdminPage_Room = () =>
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
+    verifyUser(userData);
     // Wylogowywanie.
     const LogOut = useLogOut(userData, setIsLogIn, setUserData);
 
@@ -149,6 +150,10 @@ const AdminPage_Room = () =>
                 storageRemove('loginData');
                 setUserData('');
                 setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else if(loginData.admin === false)
+            {
                 window.location.href = '/';
             }
             else

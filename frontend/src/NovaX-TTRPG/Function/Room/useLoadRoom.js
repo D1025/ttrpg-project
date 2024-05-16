@@ -32,7 +32,7 @@ function useLoadRoom({
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': userData.token && !isPublic ? userData.token : ''
+                    'Authorization': userData.token && isPublic === false ? userData.token : ''
                 }
             });
 

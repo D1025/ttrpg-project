@@ -44,19 +44,13 @@ const ModulHeader = ({
                             <Button title={"Pokoje"} width={2} href={"/"}/>
                         </li>
                         {/*<li>*/}
-                        {/*    <a href={""}>*/}
-                        {/*        <Button title={"O Nas"} width={2}/>*/}
-                        {/*    </a>*/}
+                        {/*    <Button title={"O Nas"} width={2} href={""}/>*/}
                         {/*    <Menu2>*/}
                         {/*        <li>*/}
-                        {/*            <a href={""}>*/}
-                        {/*                <Button title={"Wiadomości"} style={{width: "100%"}}/>*/}
-                        {/*            </a>*/}
+                        {/*            <Button title={"Wiadomości"} style={{width: "100%"}} href={""}/>*/}
                         {/*        </li>*/}
                         {/*        <li>*/}
-                        {/*            <a href={""}>*/}
-                        {/*                <Button title={"Regulamin"} style={{width: "100%"}}/>*/}
-                        {/*            </a>*/}
+                        {/*            <Button title={"Regulamin"} style={{width: "100%"}} href={""}/>*/}
                         {/*        </li>*/}
                         {/*    </Menu2>*/}
                         {/*</li>*/}

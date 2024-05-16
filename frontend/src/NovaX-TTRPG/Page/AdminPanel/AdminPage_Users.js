@@ -20,7 +20,7 @@ import {
     WindowAccountAvatar,
     WindowAccountBan,
     WebsiteLogo,
-    WebsiteName,
+    WebsiteName, verifyUser,
 } from "../../index";
 
 const AdminPage_Users = () =>
@@ -31,6 +31,7 @@ const AdminPage_Users = () =>
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
+    verifyUser(userData);
     // Wylogowywanie.
     const LogOut = useLogOut(userData, setIsLogIn, setUserData);
 
@@ -117,6 +118,7 @@ const AdminPage_Users = () =>
     {
         // Czy zalogowany.
         const loginData = storageLoad('loginData');
+        console.log(loginData);
         if(loginData)
         {
             if(loginData.banned === true)
@@ -124,6 +126,10 @@ const AdminPage_Users = () =>
                 storageRemove('loginData');
                 setUserData('');
                 setIsLogIn(false);
+                window.location.href = '/';
+            }
+            else if(loginData.admin === false)
+            {
                 window.location.href = '/';
             }
             else

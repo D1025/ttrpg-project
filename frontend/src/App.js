@@ -11,7 +11,7 @@ import {
     AdminPage_Rooms,
     AccountPage,
     AdminPage_Users,
-    InviteRoomPage
+    InviteRoomPage, YouHaveBeenBaned
 } from "./NovaX-TTRPG";
 
 function App()
@@ -22,6 +22,7 @@ function App()
                 <Route path="/" element={<HomePage/>}/>
                 <Route path="/Gra" element={<GamePage/>}/>
                 <Route path="/UstawieniaKonta" element={<AccountPage/>}/>
+                <Route path="/Zbanowany" element={<YouHaveBeenBaned/>}/>
 
                 <Route path="/AdminPanel/Room" element={<AdminPage_Rooms/>}/>
                 <Route path="/AdminPanel/User" element={<AdminPage_Users/>}/>

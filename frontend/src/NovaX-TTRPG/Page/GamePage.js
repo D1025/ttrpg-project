@@ -1,12 +1,14 @@
 import {useEffect, useState} from "react";
 import {
     storageLoad,
-    setTittle, storageRemove
+    setTittle,
+    storageRemove
 } from "../../NovaX";
 import {
     ModulChat,
     ModulHeader,
     useLogOut,
+    verifyUser,
     WebsiteLogo,
     WebsiteName
 } from "../../NovaX-TTRPG";
@@ -21,7 +23,7 @@ const GamePage = () =>
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
-
+    verifyUser(userData);
     // Wylogowywanie.
     const LogOut = useLogOut(userData, setIsLogIn, setUserData);
 

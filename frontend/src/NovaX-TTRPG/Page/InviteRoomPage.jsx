@@ -5,12 +5,14 @@ import {
     setTittle,
     storageLoad,
     Window,
-    iconClose, storageRemove,
+    iconClose,
+    storageRemove,
 } from "../../NovaX";
 import React, {useEffect, useState} from "react";
 import {
     imgBase64,
     ServerAdres,
+    verifyUser,
     WebsiteLogo,
     WebsiteName
 } from "../index";
@@ -21,7 +23,9 @@ const InviteRoomPage = () =>
     const idParam = window.location.pathname.split('/').pop();
     const [roomData, setRoomData] = useState(null);
 
-    const loginData = storageLoad('loginData');
+    // Dane logowania.
+    const userData = (storageLoad('loginData'));
+    if(userData !== '') verifyUser(userData);
 
     const backToHome = () =>
     {
@@ -87,7 +91,7 @@ const InviteRoomPage = () =>
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': loginData.token
+                    'Authorization': userData.token
                 }
             });
 
