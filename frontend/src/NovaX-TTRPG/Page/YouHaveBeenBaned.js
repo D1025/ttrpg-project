@@ -17,17 +17,17 @@ import {
     WindowLogIn,
     WebsiteLogo,
     WebsiteName,
-    verifyUser,
 } from "../../NovaX-TTRPG";
 
 const Game = () =>
 {
     setTittle(WebsiteLogo, `${WebsiteName} | Błąd`);
 
+    storageRemove('loginData');
+
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
-    if(userData !== '') verifyUser(userData);
 
     // Wylogowywanie.
     const LogOut = useLogOut(userData, setIsLogIn, setUserData);
@@ -72,13 +72,13 @@ const Game = () =>
             <Main design={2}>
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <ArticleTitle tag={"h1"} title={"Błąd 404"}>
+                    <ArticleTitle tag={"h1"} title={"Twoje konto zostało zbanowane!"}>
                         <ArticleTitleOption>
                             <Button title={"Strona główna"} href={"/"}/>
                         </ArticleTitleOption>
                     </ArticleTitle>
                     <p style={{display: "inline-block"}}>
-                       Nie odnaleziono strony.
+                       Zostałeś automatycznie wylogowany.
                     </p>
                 </MainArticle>
             </Main>

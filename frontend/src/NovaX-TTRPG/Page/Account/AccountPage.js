@@ -27,7 +27,8 @@ import {
     useLoadMyRoom,
     WindowInviteRoom,
     WebsiteLogo,
-    WebsiteName
+    WebsiteName,
+    verifyUser
 } from "../../index";
 
 const GamePage = () =>
@@ -38,6 +39,7 @@ const GamePage = () =>
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
+    verifyUser(userData);
     const [page, setPage] = useState(0);
     const [pageMax, setPageMax] = useState(0);
 
@@ -221,9 +223,9 @@ const GamePage = () =>
     {
         // Czy zalogowany.
         const loginData = storageLoad('loginData')
-
         if(loginData)
         {
+            verifyUser(loginData);
             if(loginData.banned === true)
             {
                 storageRemove('loginData');

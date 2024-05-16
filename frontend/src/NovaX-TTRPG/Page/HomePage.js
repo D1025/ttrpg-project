@@ -25,7 +25,8 @@ import {
     WindowLogIn,
     WindowInviteRoom,
     WebsiteLogo,
-    WebsiteName
+    WebsiteName,
+    verifyUser
 } from "../../NovaX-TTRPG";
 
 const HomePage = () =>
@@ -39,6 +40,7 @@ const HomePage = () =>
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
+    if(userData !== '') verifyUser(userData);
 
     // Ilość Stron.
     const [page, setPage] = useState(0);
@@ -166,18 +168,6 @@ const HomePage = () =>
             {
                 setIsLogIn(true);
                 setUserData(loginData);
-                LoadRooms({
-                    isPublic: lobby,
-                    isLogIn: isLogIn,
-                    page: page,
-                    setPageMax: setPageMax,
-                    setRooms: setRooms,
-                    togglDeleteRoom: togglDeleteRoom,
-                    toggleInviteRoom: toggleInviteRoom,
-                    togglEditRoom: togglEditRoom,
-                    search: search,
-                    userData: userData
-                });
             }
         }
         else
@@ -185,6 +175,19 @@ const HomePage = () =>
             setUserData('');
             setIsLogIn(false);
         }
+
+        LoadRooms({
+            isPublic: lobby,
+            isLogIn: isLogIn,
+            page: page,
+            setPageMax: setPageMax,
+            setRooms: setRooms,
+            togglDeleteRoom: togglDeleteRoom,
+            toggleInviteRoom: toggleInviteRoom,
+            togglEditRoom: togglEditRoom,
+            search: search,
+            userData: userData
+        });
     }, [lobby, LoadRooms, showCreateRoom === false, showEditRoom === false, showDeleteRoom === false, showLogIn === false, LogOut, page, debouncedSearchTerm]);
 
     // Aplikacja.
