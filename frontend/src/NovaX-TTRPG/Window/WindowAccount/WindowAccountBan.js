@@ -3,7 +3,6 @@ import {
     Button,
     Input,
     Window,
-    storageSave,
     iconClose
 } from "../../../NovaX";
 import React, {useState} from "react";
@@ -74,7 +73,7 @@ const WindowAccountBan = ({onClose, userData, userAuthorization, banned = false}
 
                     <div className={"WindowAccount-Bottom"}>
                         <div>
-                            <div><Input type={"submit"} value={"Potwierdzam Zablokowanie"} width={0} style={{width:'15vw'}}/></div>
+                            <div><Input type={"submit"} value={!userData.banned  ? "Potwierdzam Zablokowanie" : "Potwierdzam Odblokowanie"} width={0} style={{backgroundColor: !userData.banned ? 'var(--Kolor-Negatywny)' : 'var(--Kolor-Informacji)'}} autoFocus={true}/></div>
                             {powiadomienie && <div>{powiadomienie}</div>}
                         </div>
                     </div>

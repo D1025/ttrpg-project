@@ -85,7 +85,7 @@ const WindowAccountEmail = ({onClose, userData, userAuthorization = userData}) =
                     </div>
 
                     <div className={"WindowAccount-Main"}>
-                        <Input value={email} type={"text"} placeholder={"Email"} onChange={takeNickname} marginBottom={true} autoFocus={true} required/><br/>
+                        <Input value={email} type={"text"} placeholder={"Nowy email"} onChange={takeNickname} marginBottom={true} autoFocus={true} required/><br/>
                     </div>
 
                     <div className={"WindowAccount-Bottom"}>
