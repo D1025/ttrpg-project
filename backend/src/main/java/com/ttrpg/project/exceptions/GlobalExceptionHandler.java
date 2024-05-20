@@ -23,4 +23,10 @@ public class GlobalExceptionHandler {
         ExceptionDTO exceptionDTO = new ExceptionDTO(ex.getClass().getSimpleName(), ex.getMessage());
         return new ResponseEntity<>(exceptionDTO, HttpStatus.UNAUTHORIZED);
     }
+
+    @ExceptionHandler(BannedException.class)
+    public ResponseEntity<ExceptionDTO> handleBannedException(BannedException ex) {
+        ExceptionDTO exceptionDTO = new ExceptionDTO(ex.getClass().getSimpleName(), ex.getMessage());
+        return new ResponseEntity<>(exceptionDTO, HttpStatus.FORBIDDEN);
+    }
 }

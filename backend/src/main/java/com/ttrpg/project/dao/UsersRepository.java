@@ -3,7 +3,6 @@ package com.ttrpg.project.dao;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.apache.catalina.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
