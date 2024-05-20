@@ -48,6 +48,7 @@ const Game = () =>
                 {
                     storageRemove('loginData');
                     setBanned(true);
+                    setIsLogIn(false)
                 }
             }
             else
