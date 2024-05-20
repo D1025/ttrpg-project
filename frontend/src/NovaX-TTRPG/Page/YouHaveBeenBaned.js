@@ -106,13 +106,13 @@ const Game = () =>
             <Main design={2}>
                 {/* Artykuły Maina. */}
                 <MainArticle>
-                    <ArticleTitle tag={"h1"} title={"Twoje konto zostało zbanowane!"}>
+                    <ArticleTitle tag={"h1"} title={isLogIn && "Twoje konto zostało zbanowane!" : "Prosimy się zalogować"}>
                         <ArticleTitleOption>
                             <Button title={"Strona główna"} href={"/"}/>
                         </ArticleTitleOption>
                     </ArticleTitle>
                     <p style={{display: "inline-block"}}>
-                       Zostałeś automatycznie wylogowany.
+                        {isLogIn && "Zostałeś automatycznie wylogowany."}
                     </p>
                 </MainArticle>
             </Main>
