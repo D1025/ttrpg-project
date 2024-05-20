@@ -1,7 +1,7 @@
 /* Nadpisany: Input do Klikania. */
 Input.Input[type="submit"], Input.Input[type="button"]
 {
-    width: 0.0vw;
+    width: max-content;
     height: var(--Button-Height);
     align-items: center;
     text-align: center;

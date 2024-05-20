@@ -8,7 +8,7 @@ import {
 } from "../../../NovaX";
 import React, {useState} from "react";
 import SHA256 from "crypto-js/sha256";
-import {ServerAdres} from "../../index";
+import {ServerAdres, WebsiteAdres} from "../../index";
 
 const WindowAccountPassword = ({onClose, userData}) =>
 {
@@ -73,6 +73,7 @@ const WindowAccountPassword = ({onClose, userData}) =>
                     // Ustawienie powiadomienia o błędzie
                     ustawPowiadomienie(`${blad.message}`);
                 }
+                else if(odpowiedz.status === 403) window.location.href = `${WebsiteAdres}/Zbanowany`;
                 else
                 {
                     ustawPowiadomienie(`Błąd: ${odpowiedz.status}`);

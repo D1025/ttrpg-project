@@ -11,7 +11,8 @@ import {
     AdminPage_Rooms,
     AccountPage,
     AdminPage_Users,
-    InviteRoomPage, YouHaveBeenBaned
+    InviteRoomPage,
+    YouHaveBeenBaned
 } from "./NovaX-TTRPG";
 
 function App()

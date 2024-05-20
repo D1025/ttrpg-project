@@ -3,11 +3,10 @@ import {
     Button,
     Input,
     Window,
-    storageSave,
     iconClose
 } from "../../../NovaX";
 import React, {useState} from "react";
-import {ServerAdres} from "../../index";
+import {ServerAdres, WebsiteAdres} from "../../index";
 
 const WindowAccountBan = ({onClose, userData, userAuthorization, banned = false}) =>
 {
@@ -37,6 +36,7 @@ const WindowAccountBan = ({onClose, userData, userAuthorization, banned = false}
                     // Ustawienie powiadomienia o błędzie
                     ustawPowiadomienie(`${blad.message}`);
                 }
+                else if(odpowiedz.status === 403) window.location.href = `${WebsiteAdres}/Zbanowany`;
                 else
                 {
                     ustawPowiadomienie(`Błąd: ${odpowiedz.status}`);
@@ -74,7 +74,7 @@ const WindowAccountBan = ({onClose, userData, userAuthorization, banned = false}
 
                     <div className={"WindowAccount-Bottom"}>
                         <div>
-                            <div><Input type={"submit"} value={"Potwierdzam Zablokowanie"} width={0} style={{width:'15vw'}}/></div>
+                            <div><Input type={"submit"} value={!userData.banned  ? "Potwierdzam Zablokowanie" : "Potwierdzam Odblokowanie"} width={0} style={{backgroundColor: !userData.banned ? 'var(--Kolor-Negatywny)' : 'var(--Kolor-Informacji)'}} autoFocus={true}/></div>
                             {powiadomienie && <div>{powiadomienie}</div>}
                         </div>
                     </div>

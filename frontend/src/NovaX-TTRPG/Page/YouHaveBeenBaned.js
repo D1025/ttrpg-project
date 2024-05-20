@@ -17,17 +17,49 @@ import {
     WindowLogIn,
     WebsiteLogo,
     WebsiteName,
+    ServerAdres
 } from "../../NovaX-TTRPG";
 
 const Game = () =>
 {
-    setTittle(WebsiteLogo, `${WebsiteName} | Błąd`);
-
-    storageRemove('loginData');
+    setTittle(WebsiteLogo, `${WebsiteName} | Ban`);
 
     // Status Zalogowaniay.
     const [isLogIn, setIsLogIn] = useState(false); // Czy zalogowany.
     const [userData, setUserData] = useState(''); // Dane zalogowanego.
+    const [banned, setBanned] = useState('');
+
+    const check = async() =>
+    {
+        try
+        {
+            const response = await fetch(`${ServerAdres}/api/v1/auth/verify`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': userData.token,
+                }
+            });
+
+            if(!response.ok)
+            {
+                const result = await response.json();
+                if(response.status === 403)
+                {
+                    storageRemove('loginData');
+                    setBanned(true);
+                }
+            }
+            else
+            {
+                window.location.href = `/`;
+            }
+        }
+        catch(error)
+        {
+            console.error('Verification failed:', error);
+        }
+    }
 
     // Wylogowywanie.
     const LogOut = useLogOut(userData, setIsLogIn, setUserData);
@@ -48,7 +80,6 @@ const Game = () =>
                 storageRemove('loginData');
                 setUserData('');
                 setIsLogIn(false);
-                window.location.href = '/';
             }
             else
             {
@@ -62,6 +93,8 @@ const Game = () =>
             setIsLogIn(false);
         }
     }, [showLogIn === false, LogOut]);
+
+    check();
 
     return (
         <>

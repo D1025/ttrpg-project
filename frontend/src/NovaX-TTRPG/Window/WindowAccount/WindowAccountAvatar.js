@@ -4,11 +4,12 @@ import {
     Input,
     Window,
     iconClose,
-    storageSave, InputFile
+    storageSave,
+    InputFile
 } from "../../../NovaX";
 import React, {useState} from 'react';
 import Cropper from 'react-easy-crop';
-import {ServerAdres} from "../../index";
+import {ServerAdres, WebsiteAdres} from "../../index";
 
 const WindowAccountAvatar = ({onClose, userData, userAuthorization = userData}) =>
 {
@@ -118,6 +119,7 @@ const WindowAccountAvatar = ({onClose, userData, userAuthorization = userData}) 
                     // Ustawienie powiadomienia o błędzie
                     ustawPowiadomienie(`${blad.message}`);
                 }
+                else if(odpowiedz.status === 403) window.location.href = `${WebsiteAdres}/Zbanowany`;
                 else
                 {
                     ustawPowiadomienie(`Błąd: ${odpowiedz.status}`);

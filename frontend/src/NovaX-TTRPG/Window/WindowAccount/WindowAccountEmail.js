@@ -7,7 +7,7 @@ import {
     storageSave
 } from "../../../NovaX";
 import React, {useState} from "react";
-import {ServerAdres} from "../../index";
+import {ServerAdres, WebsiteAdres} from "../../index";
 
 const WindowAccountEmail = ({onClose, userData, userAuthorization = userData}) =>
 {
@@ -47,6 +47,7 @@ const WindowAccountEmail = ({onClose, userData, userAuthorization = userData}) =
                     // Ustawienie powiadomienia o błędzie
                     ustawPowiadomienie(`${blad.message}`);
                 }
+                else if(odpowiedz.status === 403) window.location.href = `${WebsiteAdres}/Zbanowany`;
                 else
                 {
                     ustawPowiadomienie(`Błąd: ${odpowiedz.status}`);
@@ -85,7 +86,7 @@ const WindowAccountEmail = ({onClose, userData, userAuthorization = userData}) =
                     </div>
 
                     <div className={"WindowAccount-Main"}>
-                        <Input value={email} type={"text"} placeholder={"Email"} onChange={takeNickname} marginBottom={true} autoFocus={true} required/><br/>
+                        <Input value={email} type={"text"} placeholder={"Nowy email"} onChange={takeNickname} marginBottom={true} autoFocus={true} required/><br/>
                     </div>
 
                     <div className={"WindowAccount-Bottom"}>
