@@ -1,4 +1,7 @@
-import {ServerAdres,WebsiteAdres} from "../../index";
+import {
+    ServerAdres,
+    WebsiteAdres
+} from "../../index";
 
 const verifyUser = async(userData) =>
 {
@@ -18,7 +21,7 @@ const verifyUser = async(userData) =>
         }
 
         const result = await response.json();
-        if(result.message === "Zostałeś zbanowany")
+        if(response.status === 403)
         {
             window.location.href = `${WebsiteAdres}/Zbanowany`;
         }
