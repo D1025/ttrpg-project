@@ -39,6 +39,7 @@ const WindowInviteSettings = ({onClose, roomData}) =>
                     const blad = await odpowiedz.json();
                     ustawPowiadomienie(`${blad.message}`);
                 }
+                else if(odpowiedz.status === 403) window.location.href = `${WebsiteAdres}/Zbanowany`;
                 else
                 {
                     ustawPowiadomienie(`Błąd: ${odpowiedz.status}`);

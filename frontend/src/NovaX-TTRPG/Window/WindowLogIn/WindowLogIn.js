@@ -12,7 +12,7 @@ import
     iconClose
 } from "../../../NovaX";
 import './WindowLogIn.css';
-import {WebsiteLogo, ServerAdres} from "../../index";
+import {WebsiteLogo, ServerAdres, WebsiteAdres} from "../../index";
 
 const OknoLogowania = ({onClose}) =>
 {
@@ -111,6 +111,7 @@ const OknoLogowania = ({onClose}) =>
                     const blad = await odpowiedz.json();
                     setNotification(`${blad.message}`);
                 }
+                else if(odpowiedz.status === 403) window.location.href = `${WebsiteAdres}/Zbanowany`;
                 else
                 {
                     setNotification(`Błąd: ${odpowiedz.status}`);
@@ -189,6 +190,7 @@ const OknoLogowania = ({onClose}) =>
                     const blad = await odpowiedz.json();
                     setNotification(`${blad.message}`);
                 }
+                else if(odpowiedz.status === 403) window.location.href = `${WebsiteAdres}/Zbanowany`;
                 else
                 {
                     setNotification(`Błąd: ${odpowiedz.status}`);

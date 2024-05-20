@@ -48,7 +48,6 @@ const Game = () =>
                 storageRemove('loginData');
                 setUserData('');
                 setIsLogIn(false);
-                window.location.href = '/';
             }
             else
             {

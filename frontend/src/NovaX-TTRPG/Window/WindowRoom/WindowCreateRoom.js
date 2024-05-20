@@ -12,7 +12,7 @@ import {
     iconClose
 } from "../../../NovaX";
 import React, {useState} from "react";
-import {ServerAdres} from "../../index";
+import {ServerAdres, WebsiteAdres} from "../../index";
 
 const WindowCreateRoom = ({onClose}) =>
 {
@@ -95,6 +95,7 @@ const WindowCreateRoom = ({onClose}) =>
                     // Ustawienie powiadomienia o błędzie
                     ustawPowiadomienie(`${blad.message}`);
                 }
+                else if(odpowiedz.status === 403) window.location.href = `${WebsiteAdres}/Zbanowany`;
                 else
                 {
                     ustawPowiadomienie(`Błąd: ${odpowiedz.status}`);
