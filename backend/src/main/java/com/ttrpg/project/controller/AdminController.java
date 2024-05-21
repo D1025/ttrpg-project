@@ -29,14 +29,14 @@ public class AdminController {
     private final PageUtils pageUtils;
 
     @GetMapping("/rooms")
-    public ResponseEntity<Page<RoomReturnDTO>> getAllRooms(@RequestHeader(name = "Authorization") String authorizationHeader, @RequestParam(defaultValue = "0") Integer pageNumber) {
-        Pageable pageable = pageUtils.getPageable(pageNumber, 10);
+    public ResponseEntity<Page<RoomReturnDTO>> getAllRooms(@RequestHeader(name = "Authorization") String authorizationHeader, @RequestParam(defaultValue = "0") Integer page) {
+        Pageable pageable = pageUtils.getPageable(page, 10);
         return ResponseEntity.ok(roomsService.getAllRooms(authorizationHeader, pageable));
     }
 
     @GetMapping("/users")
-    public ResponseEntity<Page<PublicUserReturnDTO>> getAllUsers(@RequestHeader(name = "Authorization") String authorizationHeader, @RequestParam(defaultValue = "0") Integer pageNumber,  @RequestParam(required = false) String name) {
-        Pageable pageable = pageUtils.getPageable(pageNumber, 10);
+    public ResponseEntity<Page<PublicUserReturnDTO>> getAllUsers(@RequestHeader(name = "Authorization") String authorizationHeader, @RequestParam(defaultValue = "0") Integer page,  @RequestParam(required = false) String name) {
+        Pageable pageable = pageUtils.getPageable(page, 10);
         return ResponseEntity.ok(userService.getAllUsers(authorizationHeader, name, pageable));
     }
 
