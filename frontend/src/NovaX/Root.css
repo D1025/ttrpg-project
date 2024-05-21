@@ -9,19 +9,20 @@
     --Motyw-Czarny: rgba(0, 0, 0, 0.4);
 
     --Kolor-Oznaczenia: rgba(169, 169, 169, 1.0);
-    --Kolor-Negatywny: rgba(180, 40, 40, 1);
-    --Kolor-Pozytywny: rgba(0, 105, 0, 1);
-    --Kolor-Ostrzezezenia: rgba(209, 98, 0, 1);
-    --Kolor-Informacji: rgba(0, 163, 204, 1);
+    --Kolor-Negatywny: rgba(180, 40, 40, 0.9);
+    --Kolor-Pozytywny: rgba(0, 105, 0, 0.8);
+    --Kolor-Ostrzezezenia: rgba(209, 98, 0, 0.8);
+    --Kolor-Informacji: rgba(0, 163, 204, 0.9);
 
     --Animacja: background-color 0.05s ease-in-out, color 0.0s ease-in-out;
     --Blur: blur(2.5vw);
 
     /*--Tło-Menu: url("");*/
 
-    --Tło-Strony: url("https://cdn.openart.ai/stable_diffusion/9527cd1e77a614a32dd167420d1f1c0e535b5673_2000x2000.webp");
+    /*--Tło-Strony: url("https://cdn.openart.ai/stable_diffusion/9527cd1e77a614a32dd167420d1f1c0e535b5673_2000x2000.webp");*/
+    --Tło-Strony: url("/public/Grafiki/Tło/MainBackground.webp");
 
-    --Kolor-Dodatkowy: rgba(87, 159, 100, 0.8);
+    --Kolor-Dodatkowy: rgba(31, 125, 81, 0.8);
     /*--Kolor-Dodatkowy: rgba(87, 159, 100, 1.0);*/
 
 
